@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to your Jupyter Book &#8212; My sample book</title>
+    <title>フレッシュマンセミナーII（城西大学） &#8212; Freshman Seminar II</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,12 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="next" title="1. Pythonの概要" href="contents/1_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +154,8 @@
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="Freshman Seminar II - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Freshman Seminar II - Home"/>`);</script>
   
   
 </a></div>
@@ -178,14 +176,13 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to your Jupyter Book
+                    フレッシュマンセミナーII（城西大学）
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contents/1_python.html">1. Pythonの概要</a></li>
 </ul>
 
     </div>
@@ -358,7 +355,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -369,11 +368,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to your Jupyter Book</h1>
+    <h1>フレッシュマンセミナーII（城西大学）</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">講義情報</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">概要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">目的</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">到達目標：</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">講義スケジュール</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,20 +394,125 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Link to this heading">#</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="ii">
+<h1>フレッシュマンセミナーII（城西大学）<a class="headerlink" href="#ii" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>講義情報<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>対象：情報数理学科１年</p></li>
+<li><p>開講日：秋学期月曜日２時限</p></li>
+<li><p>教室：紀-3号棟3203</p></li>
+<li><p><a class="reference external" href="https://junavi.josai.ac.jp/camweb/slbssbdu.do?value(risyunen)=2025&amp;amp;value(semekikn)=1&amp;amp;value(kougicd)=00002284">シラバス</a></p></li>
+</ul>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/1_python.html">1. Pythonの概要</a></li>
 </ul>
 </div>
+</section>
+<section id="id2">
+<h2>概要<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>本科目は，プログラミング言語Pythonを学ぶ．Pythonはデータサイエンス，人工知能，科学技術計算と幅広い分野で使われている．</p>
+</section>
+<section id="id3">
+<h2>目的<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>本科目ではJupyterNotebookを用いてPythonのプログラミング技術の初歩を習得する．</p>
+</section>
+<section id="id4">
+<h2>到達目標：<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Pythonによる変数の使い方，加減乗除，条件分岐，繰り返しを習得する．</p></li>
+<li><p>Pythonによる簡単な数値計算プログラムを習得する．</p></li>
+<li><p>Pythonによる可視化技術を習得する．</p></li>
+<li><p>UNIX系のOSによるPythonの実行方法を習得する．</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>講義スケジュール<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>■1回目</strong></p>
+<!-- **[■1回目](/contents/)** -->
+<p>【テーマ】Pythonの概要</p>
+<p>【到達目標】Pythonの概要を理解する．Pythonを使える環境を構築する．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）1章を読んでおくこと．</p>
+<p><strong>■2回目</strong></p>
+<!-- **[■2回目](/contents/)** -->
+<p>【テーマ】変数と加減乗除</p>
+<p>【到達目標】Pythonによる変数と加減乗除を理解する．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）2章を読んでおくこと．</p>
+<p><strong>■3回目</strong></p>
+<!-- **[■3回目](/contents/)** -->
+<p>【テーマ】条件分岐</p>
+<p>【到達目標】if文を理解する．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）3章を読んでおくこと．</p>
+<p><strong>■4回目</strong></p>
+<!-- **[■4回目](/contents/)** -->
+<p>【テーマ】繰り返し</p>
+<p>【到達目標】for文，while文を理解する．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）3章を読んでおくこと．</p>
+<p><strong>■5回目</strong></p>
+<!-- **[■5回目](/contents/)** -->
+<p>【テーマ】関数</p>
+<p>【到達目標】関数の使い方を理解する．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）4章を読んでおくこと．</p>
+<p><strong>■6回目</strong></p>
+<!-- **[■6回目](/contents/)** -->
+<p>【テーマ】ファイル操作</p>
+<p>【到達目標】テキストファイル，csvファイルの取り扱い方を理解する．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）6章を読んでおくこと．</p>
+<p><strong>■7回目</strong></p>
+<!-- **[■7回目](/contents/)** -->
+<p>【テーマ】整数を扱う計算</p>
+<p>【到達目標】素因数分解，ユークリッドの互除法のプログラムを書けるようになること．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）7章を読んでおくこと．</p>
+<p><strong>■8回目</strong></p>
+<!-- **[■8回目](/contents/)** -->
+<p>【テーマ】数値計算1</p>
+<p>【到達目標】2分法，ニュートン法のプログラムを書けるようになること．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）8章を読んでおくこと．</p>
+<p><strong>■9回目</strong></p>
+<!-- **[■9回目](/contents/)** -->
+<p>【テーマ】数値計算2</p>
+<p>【到達目標】数値微分，数値積分のプログラムを書けるようになること．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）8章を読んでおくこと．</p>
+<p><strong>■10回目</strong></p>
+<!-- **[■10回目](/contents/)** -->
+<p>【テーマ】数値計算3</p>
+<p>【到達目標】乱数のプログラムを書けるようになること．</p>
+<p>【準備学習】大和田 勇人，金盛 克俊，Pythonで始めるプログラミング入門，コロナ社（2015）8章を読んでおくこと．</p>
+<p><strong>■11回目</strong></p>
+<!-- **[■11回目](/contents/)** -->
+<p>【テーマ】可視化</p>
+<p>【到達目標】Matplotlibによるグラフ作成を習得する．</p>
+<p>【準備学習】なし．</p>
+<p><strong>■12回目</strong></p>
+<!-- **[■12回目](/contents/)** -->
+<p>【テーマ】UNIX系のOS，エディタの使い方</p>
+<p>【到達目標】ターミナル，VS Codeの使い方を習得する．</p>
+<p>【準備学習】大津 真, これから学macOSターミナル，インプレス（2016）Chapter1, 2を読んでおくこと．</p>
+<p><strong>■13回目</strong></p>
+<!-- **[■13回目](/contents/)** -->
+<p>【テーマ】UNIX系のOSによるPythonの実行方法</p>
+<p>【到達目標】VS Codeとターミナルを用いた計算実行方法を習得する．</p>
+<p>【準備学習】大津 真, これから学macOSターミナル，インプレス（2016）Chapter1, 2を読んでおくこと．</p>
+<!-- 
+```{warning}
+これはwarningです。  
+```
+
+```{admonition} タイトル
+これはadmonitionです。  
+```
+
+```{tip}
+これはtipです。  
+```
+
+```{note}
+これはnoteです。  
+``` 
+-->
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -430,11 +546,11 @@ It does not go in-depth into any particular topic - check out <a class="referenc
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="markdown.html"
+       href="contents/1_python.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Pythonの概要</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -445,6 +561,25 @@ It does not go in-depth into any particular topic - check out <a class="referenc
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">講義情報</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">概要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">目的</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">到達目標：</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">講義スケジュール</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -454,7 +589,7 @@ It does not go in-depth into any particular topic - check out <a class="referenc
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Keiichiro Kagawa
 </p>
 
   </div>
