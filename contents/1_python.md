@@ -121,8 +121,8 @@ Anacondaは導入済みのものとする．
 4. Pythonの作業用フォルダを作成する．
    1. "New"をクリックする．
    2. "New Folder"をクリックし，"Untitled Folder"が作成される．
-   3. フォルダ名を"Python"とする．
-5. "Python"フォルダをクリックして移動する．
+   3. フォルダ名を"Fresh"とする．
+5. "Fresh"フォルダをクリックして移動する．
 
 ![3-1](/contents/figs/1/3-1.png)
 ![3-2](/contents/figs/1/3-2.png)
