@@ -393,7 +393,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">2.2.3. f-string</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3. リストとタプル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3. リストとタプル</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list">2.3.1. リスト (list)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">2.3.2. タプル (tuple)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.4. 演習</a></li>
 </ul>
             </nav>
@@ -408,15 +412,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2. </span>変数と加減乗除<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：847256</p>
 <p>到達目標</p>
 <ul class="simple">
 <li><p>Pythonによる変数と加減乗除を理解する．</p></li>
 </ul>
 <p>準備</p>
 <ol class="arabic simple">
-<li><p>anacondaを使用し，jupyter labを起動する．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダをダブルクリックで開き<code class="docutils literal notranslate"><span class="pre">+</span></code>記号をクリックして新しいファイルを作成する．</p></li>
-<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">2_{学籍番号}_{氏名}.ipynb</span></code>に変更する．</p></li>
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダをダブルクリックで開き<code class="docutils literal notranslate"><span class="pre">+</span></code>をクリックして新しいファイルを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">2_{学籍番号}_{氏名}.ipynb</span></code>に変更する．例：<code class="docutils literal notranslate"><span class="pre">2_SI25999_香川渓一郎.ipynb</span></code></p></li>
 </ol>
 <section id="id2">
 <h2><span class="section-number">2.1. </span>導入<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -424,8 +429,14 @@ document.write(`
 <h3><span class="section-number">2.1.1. </span>用語<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>文：計算手続きを表す．</p></li>
-<li><p>文字列：</p></li>
-<li><p>オブジェクト：</p></li>
+<li><p>文字列：文字の並び．</p></li>
+<li><p>オブジェクト：Pythonで扱うもの全て．データやそれを扱う機能を持つものなど．</p>
+<ul>
+<li><p>型 (type)：変数や値の種類．</p></li>
+<li><p>値 (value)</p></li>
+<li><p>識別子 (id)：メモリ上の場所</p></li>
+</ul>
+</li>
 <li><p>出力：プログラムを実行した結果として出てくる文字．</p></li>
 <li><p>コメント文：プログラムの挙動に影響を及ぼさない文．プログラムの内容についての説明文などを自由に加筆できる．プログラミング言語によってコメント文の書き方は異なる．Pythonでは<code class="docutils literal notranslate"><span class="pre">#</span></code>以降の同一行内の文字はコメント文になる．</p></li>
 <li><p>変数：値を変えることのできる文字列．</p></li>
@@ -642,12 +653,72 @@ document.write(`
 <p>比較演算子には次のものがある．</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>演算</p></th>
-<th class="head"><p>記号</p></th>
-<th class="head"><p>例</p></th>
+<tr class="row-odd"><th class="head"><p>演算子</p></th>
 <th class="head"><p>意味</p></th>
+<th class="head"><p>例</p></th>
+<th class="head"><p>結果</p></th>
 </tr>
 </thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>等しい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">==</span> <span class="pre">3</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>等しくない</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">!=</span> <span class="pre">4</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>より大きい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">&gt;</span> <span class="pre">3</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>より小さい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&lt;</span> <span class="pre">8</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>以上</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&gt;=</span> <span class="pre">3</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>以下</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>複数の条件を組み合わせるには次の論理演算子を用いる．</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>演算子</p></th>
+<th class="head"><p>意味</p></th>
+<th class="head"><p>例</p></th>
+<th class="head"><p>結果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p>両方TrueならTrue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">10</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p>どちらかTrueならTrue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">or</span> <span class="pre">0</span> <span class="pre">==</span> <span class="pre">10</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td><p>真偽を反転</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">True</span></code></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </section>
@@ -702,12 +773,12 @@ document.write(`
 <tr class="row-even"><td><p>結合</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;+&quot;World&quot;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World</span></code>と出力される．</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HelloWorld</span></code>と出力される．</p></td>
 </tr>
 <tr class="row-odd"><td><p>繰り返し結合</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;*3</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">Hello</span> <span class="pre">Hello</span></code>と出力される．</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HelloHelloHello</span></code>と出力される．</p></td>
 </tr>
 <tr class="row-even"><td><p>結合代入</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">+=</span></code></p></td>
@@ -720,6 +791,24 @@ document.write(`
 </section>
 <section id="f-string">
 <h3><span class="section-number">2.2.3. </span>f-string<a class="headerlink" href="#f-string" title="Link to this heading">#</a></h3>
+<p>f-string：変数を文字列の中に直接埋め込める記法．</p>
+<p>printは<code class="docutils literal notranslate"><span class="pre">,</span></code>で区切ると複数の変数や文字列を出力できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;カツオ&quot;</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;さんの点数は&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="s2">&quot;点です。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>しかし，<code class="docutils literal notranslate"><span class="pre">,</span></code>で区切ると間にスペース<code class="docutils literal notranslate"> </code>が入るため，読みにくい．
+f-stringでは次のルールに従って文を書く．</p>
+<ul class="simple">
+<li><p>先頭に<code class="docutils literal notranslate"><span class="pre">f</span></code>を付ける。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{}</span></code>の中に変数名や式を書く。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;カツオ&quot;</span>
+<span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">さんの点数は </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2"> 点です。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>課題2</strong></p>
@@ -730,7 +819,6 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 <span class="c1"># エラーになる</span>
 
-<span class="err">```</span><span class="n">python</span>
 <span class="c1"># intに変換して加算する．15と出力される．</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 
@@ -743,13 +831,66 @@ document.write(`
 </section>
 <section id="id11">
 <h2><span class="section-number">2.3. </span>リストとタプル<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>複数のデータをまとめて扱うデータとして<span style="color:red">リスト</span>と<span style="color:red">タプル</span>がある．</p>
+<ul class="simple">
+<li><p>リスト</p>
+<ul>
+<li><p>要素の追加や削除を行える（ミュータブル，mutable）．</p></li>
+</ul>
+</li>
+<li><p>タプル</p>
+<ul>
+<li><p>一度生成すると要素の追加・変更・削除を行えない（イミュータブル，immutable）．</p></li>
+</ul>
+</li>
+</ul>
+<section id="list">
+<h3><span class="section-number">2.3.1. </span>リスト (list)<a class="headerlink" href="#list" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code>で作成し，各要素は<code class="docutils literal notranslate"><span class="pre">,</span></code>で区切る．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a[2]</span></code>のように番号で要素にアクセスすることができる．</p></li>
+<li><p>各要素の<span style="color:red">番号は0から始まる</span>．</p></li>
+<li><p>マイナスの番号を用いて末尾から数えた番号の要素にアクセスできる．</p></li>
+<li><p>連番の要素にアクセスする場合は<code class="docutils literal notranslate"><span class="pre">:</span></code>を用いてアクセスする．</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">a[2:4]</span></code>で2番から(4-1)=3番までアクセスする．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a[:4]</span></code>で0番から(4-1)=3番までアクセスする．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a[2:]</span></code>で2番から末尾までアクセスする．</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空のリスト</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 初期値を持つリスト</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># 要素へのアクセス（0から始まる）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 5（末尾）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span><span class="c1"># [2, 3]</span>
+</pre></div>
+</div>
+</section>
+<section id="tuple">
+<h3><span class="section-number">2.3.2. </span>タプル (tuple)<a class="headerlink" href="#tuple" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">()</span></code>で作成し，各要素は<code class="docutils literal notranslate"><span class="pre">,</span></code>で区切る．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 1</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="id12">
 <h2><span class="section-number">2.4. </span>演習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>課題3</strong></p>
-<p>自由に架空の人物やキャラクターの身長と体重を調べ，そのBMI (Body Mass Index) を計算せよ．
+<p>自由に実在・架空の人物やキャラクターの身長と体重を調べ，そのBMI (Body Mass Index) を計算せよ．
 ただしBMIは次の式に従って算出され，18.5未満で痩せ体型・18.5以上25未満で普通・25以上で肥満と診断される．</p>
 <div class="math notranslate nohighlight">
 \[
@@ -836,7 +977,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">2.2.3. f-string</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3. リストとタプル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3. リストとタプル</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list">2.3.1. リスト (list)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">2.3.2. タプル (tuple)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.4. 演習</a></li>
 </ul>
   </nav></div>
