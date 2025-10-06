@@ -412,6 +412,12 @@ document.write(`
 <ul class="simple">
 <li><p>Pythonによる変数と加減乗除を理解する．</p></li>
 </ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，jupyter labを起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダをダブルクリックで開き<code class="docutils literal notranslate"><span class="pre">+</span></code>記号をクリックして新しいファイルを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">2_{学籍番号}_{氏名}.ipynb</span></code>に変更する．</p></li>
+</ol>
 <section id="id2">
 <h2><span class="section-number">2.1. </span>導入<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
@@ -700,7 +706,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>繰り返し結合</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code>*3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;*3</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">Hello</span> <span class="pre">Hello</span></code>と出力される．</p></td>
 </tr>
 <tr class="row-even"><td><p>結合代入</p></td>
@@ -723,16 +729,15 @@ document.write(`
 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 <span class="c1"># エラーになる</span>
-</pre></div>
-</div>
-</div>
-<p>テスト</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># intに変換して加算する．15と出力される．</span>
+
+<span class="err">```</span><span class="n">python</span>
+<span class="c1"># intに変換して加算する．15と出力される．</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 
 <span class="c1"># stringに変換して結合する．&quot;105&quot;と出力される．</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </section>
 </section>
@@ -743,7 +748,7 @@ document.write(`
 <h2><span class="section-number">2.4. </span>演習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>課題2-1</strong></p>
+<p><strong>課題3</strong></p>
 <p>自由に架空の人物やキャラクターの身長と体重を調べ，そのBMI (Body Mass Index) を計算せよ．
 ただしBMIは次の式に従って算出され，18.5未満で痩せ体型・18.5以上25未満で普通・25以上で肥満と診断される．</p>
 <div class="math notranslate nohighlight">
@@ -751,8 +756,7 @@ document.write(`
 \text{BMI} = \dfrac{\text{(体重[kg])}}{\text{(身長[m])}^2}
 \]</div>
 <p><strong>実装例</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 課題2-1</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;ピカチュウ（ポケットモンスター）&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;ピカチュウ（ポケットモンスター）&quot;</span>
 <span class="n">weight</span> <span class="o">=</span> <span class="mf">6.0</span>
 <span class="n">height</span> <span class="o">=</span> <span class="mf">0.4</span>
 <span class="n">BMI</span> <span class="o">=</span> <span class="s2">&quot;各自記入&quot;</span>
