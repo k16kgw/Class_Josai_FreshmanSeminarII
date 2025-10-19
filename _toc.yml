@@ -10,7 +10,7 @@ parts:
     chapters:
       - file: contents/1_python
       - file: contents/2_variable
-      # - file: contents/3_if
+      - file: contents/3_if
       # - file: contents/4_for
       # - file: contents/5_function
       # - file: contents/6_file

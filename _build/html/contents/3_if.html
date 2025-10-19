@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. 条件分岐（if文） &#8212; Freshman Seminar II</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/3_if';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2. 変数と加減乗除" href="2_variable.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Freshman Seminar II - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Freshman Seminar II - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    フレッシュマンセミナーII（城西大学）
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 条件分岐（if文）</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontents/3_if.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contents/3_if.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>条件分岐（if文）</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. 導入（第2回の復習）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.2. 制御構文</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2.1. フローチャート</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.3. 条件分岐（if文）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3.1. 基本形（インデントに注意）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">3.3.2. if-else</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">3.3.3. if-elif-else（多分岐）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4. 比較と論理（条件式の書き方）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truthiness">3.5. 真偽と「真とみなす／偽とみなす」値（Truthiness）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-if">3.6. 入力の検証（try/except と if の併用）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.7. ガード節（早期リターンの発想）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ifif">3.8. ネストと可読性（ifの中のif）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.9. ありがちなエラーと対策</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.10. 課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.11. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.11.1. if文のテンプレート</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.11.2. 予習</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="if">
+<h1><span class="section-number">3. </span>条件分岐（if文）<a class="headerlink" href="#if" title="Link to this heading">#</a></h1>
+<p>出席パスワード：875309</p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p>if文を理解し，条件に応じて処理を分岐できるようになる．</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code> フォルダを開き <code class="docutils literal notranslate"><span class="pre">+</span></code> をクリックして新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を <code class="docutils literal notranslate"><span class="pre">3_{学籍番号}_{氏名}.ipynb</span></code> に変更する．例：<code class="docutils literal notranslate"><span class="pre">3_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<section id="id1">
+<h2><span class="section-number">3.1. </span>導入（第2回の復習）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>変数と型：<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p>算術演算子：<code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span> <span class="pre">//</span> <span class="pre">%</span> <span class="pre">**</span></code></p></li>
+<li><p>文字列操作：<code class="docutils literal notranslate"><span class="pre">+</span></code>（結合），<code class="docutils literal notranslate"><span class="pre">*</span></code>（繰り返し），f-string（<code class="docutils literal notranslate"><span class="pre">f&quot;{...}&quot;</span></code>）</p></li>
+<li><p>入出力：<code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code> で型変換</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>第2回 課題3 - 解答例</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\text{BMI} = \dfrac{\text{(体重[kg])}}{\text{(身長[m])}^2}
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;ピカチュウ（ポケットモンスター）&quot;</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mf">6.0</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="n">BMI</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">height</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">のBMIは</span><span class="si">{</span><span class="n">BMI</span><span class="si">}</span><span class="s2">です．&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.2. </span>制御構文<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>制御構文：プログラムの実行の流れ（処理の順番）を制御するための文．</p>
+<ul class="simple">
+<li><p><strong>分岐</strong>：条件によって実行する処理を分けたい（例：「合格」か「不合格」）</p></li>
+<li><p><strong>反復</strong>：同じ処理を繰り返したい（例：データの集計）</p></li>
+<li><p><strong>中断</strong>：エラーが起きたときに別の処理をしたい（例：入力ミス対応）</p></li>
+</ul>
+<p>書き方のルール</p>
+<ul class="simple">
+<li><p>文の末尾にコロン（<code class="docutils literal notranslate"><span class="pre">:</span></code>）を付ける．</p></li>
+<li><p>インデント（字下げ）でブロック（処理の範囲）を表す．</p></li>
+<li><p>インデントはTabを入力して使う．</p></li>
+</ul>
+<p><img alt="Tabキー・コロン" src="../_images/mac_keyboard_tab.jpg" /></p>
+<p>※ Mac book air 商品紹介画像</p>
+<section id="id3">
+<h3><span class="section-number">3.2.1. </span>フローチャート<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>フローチャート：アルゴリズムの処理の手順を表す．</p>
+<p>基本要素</p>
+<p><img alt="基本要素" src="../_images/flow.png" /></p>
+<p>これらの要素を矢印で結合し，矢印の向きによって処理の流れを示す．</p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.3. </span>条件分岐（if文）<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>条件を満たすかどうか（真か偽か）によって，指定の処理をするかどうかを決定する．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>型の値を用いる．</p></li>
+<li><p>比較演算子によって条件を表す．</p></li>
+<li><p>論理演算子によって複数の条件を組み合わせる．</p></li>
+</ul>
+<p><strong>比較演算子</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>演算子</p></th>
+<th class="head"><p>意味</p></th>
+<th class="head"><p>例</p></th>
+<th class="head"><p>結果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>等しい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">==</span> <span class="pre">3</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>等しくない</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">!=</span> <span class="pre">4</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>より大きい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">&gt;</span> <span class="pre">3</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>より小さい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&lt;</span> <span class="pre">8</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>以上</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&gt;=</span> <span class="pre">3</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>以下</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>論理演算子</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>演算子</p></th>
+<th class="head"><p>意味</p></th>
+<th class="head"><p>例</p></th>
+<th class="head"><p>結果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p>両方TrueならTrue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">10</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p>どちらかTrueならTrue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">or</span> <span class="pre">0</span> <span class="pre">==</span> <span class="pre">10</span></code></p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td><p>真偽を反転</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">True</span></code></p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id5">
+<h3><span class="section-number">3.3.1. </span>基本形（インデントに注意）<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5より大きいよ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">条件:</span></code> の行末はコロン <code class="docutils literal notranslate"><span class="pre">:</span></code></p></li>
+<li><p>「条件」が <code class="docutils literal notranslate"><span class="pre">True</span></code> のときだけ，下のインデントされたブロックを実行する．</p></li>
+</ul>
+</section>
+<section id="if-else">
+<h3><span class="section-number">3.3.2. </span>if-else<a class="headerlink" href="#if-else" title="Link to this heading">#</a></h3>
+<p>ifの条件が</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> のとき，直下のブロックを実行する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> のとき，<code class="docutils literal notranslate"><span class="pre">else:</span></code> 以下のブロックを実行する．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;非負&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;負&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="if-elif-else">
+<h3><span class="section-number">3.3.3. </span>if-elif-else（多分岐）<a class="headerlink" href="#if-elif-else" title="Link to this heading">#</a></h3>
+<p>ifの条件が</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> のとき，直下のブロックを実行する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> のとき，次の <code class="docutils literal notranslate"><span class="pre">elif</span></code> の条件を判定し</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> のとき，直下のブロックを実行する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> のとき，以下同様．</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<p>次のコードを実行すると，<code class="docutils literal notranslate"><span class="pre">A</span></code>，<code class="docutils literal notranslate"><span class="pre">B</span></code>，<code class="docutils literal notranslate"><span class="pre">C</span></code>，<code class="docutils literal notranslate"><span class="pre">D</span></code>のどれが出力されるかを確認せよ．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<p>好きな年齢 <code class="docutils literal notranslate"><span class="pre">age</span></code> を与え，年齢が</p>
+<ul class="simple">
+<li><p>75歳以上なら「後期高齢者」</p></li>
+<li><p>65歳以上なら「高齢者」</p></li>
+<li><p>18歳以上なら「成年」</p></li>
+<li><p>18歳未満なら「未成年」
+と表示するプログラムを書け．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="p">{</span><span class="n">好きな値を入力</span><span class="p">}</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">75</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;後期高齢者&quot;</span><span class="p">)</span>
+<span class="p">{</span><span class="n">続きを記入</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.4. </span>比較と論理（条件式の書き方）<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>boolを利用</p>
+<ul class="simple">
+<li><p>比較演算子：<code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">&gt;</span> <span class="pre">&lt;</span> <span class="pre">&gt;=</span> <span class="pre">&lt;=</span></code></p></li>
+<li><p>論理演算：<code class="docutils literal notranslate"><span class="pre">and</span></code>（かつ） / <code class="docutils literal notranslate"><span class="pre">or</span></code>（または） / <code class="docutils literal notranslate"><span class="pre">not</span></code>（否定）</p></li>
+<li><p>連鎖比較：<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">10</span></code> は <code class="docutils literal notranslate"><span class="pre">(0</span> <span class="pre">&lt;=</span> <span class="pre">x)</span> <span class="pre">and</span> <span class="pre">(x</span> <span class="pre">&lt;</span> <span class="pre">10)</span></code> と同じ意味</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">student</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="mi">18</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">student</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;大学生年齢帯かつ学生&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<p>整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられたとき，<code class="docutils literal notranslate"><span class="pre">n</span></code> が <strong>偶数かつ 3 の倍数</strong> なら「OK」を表示するプログラムを実装せよ．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">346</span>
+<span class="k">if</span> <span class="p">{</span><span class="n">条件を記入</span><span class="p">}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="truthiness">
+<h2><span class="section-number">3.5. </span>真偽と「真とみなす／偽とみなす」値（Truthiness）<a class="headerlink" href="#truthiness" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Pythonでは次のものは偽と評価される：<code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">{}</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p>それ以外は真と評価される．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;名前あり&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未入力です&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習4</strong></p>
+<p>入力文字列が空なら「未入力」，そうでなければ「入力あり」と表示するコードを実装せよ．</p>
+<!-- （`strip()` で空白のみの入力も未入力とみなす） -->
+</div>
+</section>
+<section id="try-except-if">
+<h2><span class="section-number">3.6. </span>入力の検証（try/except と if の併用）<a class="headerlink" href="#try-except-if" title="Link to this heading">#</a></h2>
+<p>例外的な手続きが発生した場合の処理．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;整数を入力: &quot;</span><span class="p">)</span><span class="c1"># inputでキーボードからの入力値を変数に代入する</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;偶数&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;奇数&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;整数を入力してください&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2><span class="section-number">3.7. </span>ガード節（早期リターンの発想）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>入れ子が深くなるのを避けるため，<strong>先に不適切条件をはじく</strong>書き方（読みやすさ向上）．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;0〜100の点数: &quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;範囲外です&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># ここに正しい処理</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ifif">
+<h2><span class="section-number">3.8. </span>ネストと可読性（ifの中のif）<a class="headerlink" href="#ifif" title="Link to this heading">#</a></h2>
+<p>ネスト：ある構文（文やブロック）の中に、さらに別の構文を入れ子状に書いた構造．入れ子の数が多いほど「ネストが深い」と表現する．</p>
+<p>深いネストは読みづらい → 条件の整理・早期リターン・<code class="docutils literal notranslate"><span class="pre">elif</span></code> の活用で改善する．</p>
+<p>悪い例（深いネスト）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">cond1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cond2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>良い例（条件の連結による浅いネスト）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2><span class="section-number">3.9. </span>ありがちなエラーと対策<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>症状</p></th>
+<th class="head"><p>原因</p></th>
+<th class="head"><p>対策</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IndentationError</span></code></p></td>
+<td><p>インデント不一致</p></td>
+<td><p>ブロック部分を適切にインデントしているか</p></td>
+</tr>
+<tr class="row-odd"><td><p>何も表示されない</p></td>
+<td><p>条件が常にFalse</p></td>
+<td><p>条件式を <code class="docutils literal notranslate"><span class="pre">print()</span></code> で確認</p></td>
+</tr>
+<tr class="row-even"><td><p>代入と比較を混同</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">=</span></code> と <code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>比較は <code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>無限に入力を求める</p></td>
+<td><p>例外未対応</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">try/except</span></code> を追加</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id9">
+<h2><span class="section-number">3.10. </span>課題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習4</strong></p>
+<p>うるう年は次のルールに基づいて決められる．これを元に<code class="docutils literal notranslate"><span class="pre">year</span></code>の年が「うるう年」かそれ以外の「平年」かを出力するプログラムを実装せよ．</p>
+<ul class="simple">
+<li><p>4で割り切れる年はうるう年</p></li>
+<li><p>ただし100で割り切れる年は平年</p></li>
+<li><p>ただし400で割り切れる年はうるう年</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2025</span>
+<span class="k">if</span> <span class="p">{</span><span class="n">条件を記入</span><span class="p">}:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;うるう年&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平年&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h2><span class="section-number">3.11. </span>まとめ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">/</span> <span class="pre">elif</span> <span class="pre">/</span> <span class="pre">else</span></code> で<strong>条件に応じた処理の分岐</strong>ができる．</p></li>
+<li><p>比較・論理演算子で条件式を作る／連鎖比較が読みやすい．</p></li>
+<li><p>入力検証は <code class="docutils literal notranslate"><span class="pre">try/except</span></code>＋<code class="docutils literal notranslate"><span class="pre">if</span></code> の併用が基本．</p></li>
+<li><p>可読性を意識してネストを浅く保つ（ガード節・<code class="docutils literal notranslate"><span class="pre">elif</span></code>）．</p></li>
+</ul>
+<section id="id11">
+<h3><span class="section-number">3.11.1. </span>if文のテンプレート<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 典型テンプレ</span>
+<span class="k">if</span> <span class="n">条件A</span><span class="p">:</span>
+    <span class="c1"># Aのとき</span>
+<span class="k">elif</span> <span class="n">条件B</span><span class="p">:</span>
+    <span class="c1"># Bのとき</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># それ以外</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ガード節（早期終了）</span>
+<span class="k">if</span> <span class="n">不適切条件</span><span class="p">:</span>
+    <span class="n">処理中止や警告</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">正常処理</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3><span class="section-number">3.11.2. </span>予習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>「Pythonで始めるプログラミング入門」<span style="color:red">3章</span>を読んでおくこと．</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_variable.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>変数と加減乗除</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. 導入（第2回の復習）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.2. 制御構文</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2.1. フローチャート</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.3. 条件分岐（if文）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3.1. 基本形（インデントに注意）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">3.3.2. if-else</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">3.3.3. if-elif-else（多分岐）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4. 比較と論理（条件式の書き方）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truthiness">3.5. 真偽と「真とみなす／偽とみなす」値（Truthiness）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-if">3.6. 入力の検証（try/except と if の併用）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.7. ガード節（早期リターンの発想）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ifif">3.8. ネストと可読性（ifの中のif）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.9. ありがちなエラーと対策</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.10. 課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.11. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.11.1. if文のテンプレート</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.11.2. 予習</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Keiichiro Kagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
