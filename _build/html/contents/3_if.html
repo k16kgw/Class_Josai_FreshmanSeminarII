@@ -389,18 +389,20 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3.1. 基本形（インデントに注意）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">3.3.2. if-else</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">3.3.3. if-elif-else（多分岐）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.3.4. 比較と論理（条件式の書き方）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truthiness">3.3.5. 真偽と「真とみなす／偽とみなす」値（Truthiness）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4. 比較と論理（条件式の書き方）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truthiness">3.5. 真偽と「真とみなす／偽とみなす」値（Truthiness）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-if">3.6. 入力の検証（try/except と if の併用）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.7. ガード節（早期リターンの発想）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ifif">3.8. ネストと可読性（ifの中のif）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.9. ありがちなエラーと対策</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.10. 課題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.11. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.11.1. if文のテンプレート</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.11.2. 予習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-if">3.4. 入力の検証（try/except と if の併用）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.4.1. ガード節（早期リターンの発想）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ifif">3.4.2. ネストと可読性（ifの中のif）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.5. ありがちなエラーと対策</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. 課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.7.1. if文のテンプレート</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.7.2. 予習</a></li>
 </ul>
 </li>
 </ul>
@@ -639,9 +641,8 @@ document.write(`
 </div>
 </div>
 </section>
-</section>
 <section id="id6">
-<h2><span class="section-number">3.4. </span>比較と論理（条件式の書き方）<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.3.4. </span>比較と論理（条件式の書き方）<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>boolを利用</p>
 <ul class="simple">
 <li><p>比較演算子：<code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">&gt;</span> <span class="pre">&lt;</span> <span class="pre">&gt;=</span> <span class="pre">&lt;=</span></code></p></li>
@@ -666,7 +667,7 @@ document.write(`
 </div>
 </section>
 <section id="truthiness">
-<h2><span class="section-number">3.5. </span>真偽と「真とみなす／偽とみなす」値（Truthiness）<a class="headerlink" href="#truthiness" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.3.5. </span>真偽と「真とみなす／偽とみなす」値（Truthiness）<a class="headerlink" href="#truthiness" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Pythonでは次のものは偽と評価される：<code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">{}</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p>それ以外は真と評価される．</p></li>
@@ -678,15 +679,10 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未入力です&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>演習4</strong></p>
-<p>入力文字列が空なら「未入力」，そうでなければ「入力あり」と表示するコードを実装せよ．</p>
-<!-- （`strip()` で空白のみの入力も未入力とみなす） -->
-</div>
+</section>
 </section>
 <section id="try-except-if">
-<h2><span class="section-number">3.6. </span>入力の検証（try/except と if の併用）<a class="headerlink" href="#try-except-if" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>入力の検証（try/except と if の併用）<a class="headerlink" href="#try-except-if" title="Link to this heading">#</a></h2>
 <p>例外的な手続きが発生した場合の処理．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;整数を入力: &quot;</span><span class="p">)</span><span class="c1"># inputでキーボードからの入力値を変数に代入する</span>
 <span class="k">try</span><span class="p">:</span>
@@ -699,9 +695,8 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;整数を入力してください&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
 <section id="id7">
-<h2><span class="section-number">3.7. </span>ガード節（早期リターンの発想）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.4.1. </span>ガード節（早期リターンの発想）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>入れ子が深くなるのを避けるため，<strong>先に不適切条件をはじく</strong>書き方（読みやすさ向上）．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;0〜100の点数: &quot;</span><span class="p">))</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">):</span>
@@ -713,7 +708,7 @@ document.write(`
 </div>
 </section>
 <section id="ifif">
-<h2><span class="section-number">3.8. </span>ネストと可読性（ifの中のif）<a class="headerlink" href="#ifif" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.4.2. </span>ネストと可読性（ifの中のif）<a class="headerlink" href="#ifif" title="Link to this heading">#</a></h3>
 <p>ネスト：ある構文（文やブロック）の中に、さらに別の構文を入れ子状に書いた構造．入れ子の数が多いほど「ネストが深い」と表現する．</p>
 <p>深いネストは読みづらい → 条件の整理・早期リターン・<code class="docutils literal notranslate"><span class="pre">elif</span></code> の活用で改善する．</p>
 <p>悪い例（深いネスト）</p>
@@ -728,8 +723,9 @@ document.write(`
 </pre></div>
 </div>
 </section>
+</section>
 <section id="id8">
-<h2><span class="section-number">3.9. </span>ありがちなエラーと対策<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>ありがちなエラーと対策<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>症状</p></th>
@@ -759,7 +755,7 @@ document.write(`
 </div>
 </section>
 <section id="id9">
-<h2><span class="section-number">3.10. </span>課題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>課題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>演習4</strong></p>
@@ -777,9 +773,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>おまけ（時間が余った人）</strong></p>
+<p>整数 <code class="docutils literal notranslate"><span class="pre">n</span></code> が与えられたとき，<code class="docutils literal notranslate"><span class="pre">n</span></code> が <strong>3の倍数または3のつく数字</strong> ならその数字に「!!!」をつけて表示するプログラムを実装せよ．</p>
+<p>例：<code class="docutils literal notranslate"><span class="pre">n=3</span></code>なら<code class="docutils literal notranslate"><span class="pre">3!!!</span></code>，<code class="docutils literal notranslate"><span class="pre">n=4</span></code>なら<code class="docutils literal notranslate"><span class="pre">4</span></code>，<code class="docutils literal notranslate"><span class="pre">n=13</span></code>なら<code class="docutils literal notranslate"><span class="pre">13!!!</span></code></p>
+<p>ヒント：文字列<code class="docutils literal notranslate"><span class="pre">s</span></code>に特定の文字<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>が含まれているかを判定するには<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span> <span class="pre">in</span> <span class="pre">s</span></code>とすれば良い．</p>
+</div>
 </section>
 <section id="id10">
-<h2><span class="section-number">3.11. </span>まとめ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>まとめ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">/</span> <span class="pre">elif</span> <span class="pre">/</span> <span class="pre">else</span></code> で<strong>条件に応じた処理の分岐</strong>ができる．</p></li>
 <li><p>比較・論理演算子で条件式を作る／連鎖比較が読みやすい．</p></li>
@@ -787,7 +790,7 @@ document.write(`
 <li><p>可読性を意識してネストを浅く保つ（ガード節・<code class="docutils literal notranslate"><span class="pre">elif</span></code>）．</p></li>
 </ul>
 <section id="id11">
-<h3><span class="section-number">3.11.1. </span>if文のテンプレート<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.1. </span>if文のテンプレート<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 典型テンプレ</span>
 <span class="k">if</span> <span class="n">条件A</span><span class="p">:</span>
     <span class="c1"># Aのとき</span>
@@ -806,7 +809,7 @@ document.write(`
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">3.11.2. </span>予習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.2. </span>予習<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>「Pythonで始めるプログラミング入門」<span style="color:red">3章</span>を読んでおくこと．</p></li>
 </ul>
@@ -878,18 +881,20 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3.1. 基本形（インデントに注意）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">3.3.2. if-else</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">3.3.3. if-elif-else（多分岐）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.3.4. 比較と論理（条件式の書き方）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truthiness">3.3.5. 真偽と「真とみなす／偽とみなす」値（Truthiness）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4. 比較と論理（条件式の書き方）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truthiness">3.5. 真偽と「真とみなす／偽とみなす」値（Truthiness）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-if">3.6. 入力の検証（try/except と if の併用）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.7. ガード節（早期リターンの発想）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ifif">3.8. ネストと可読性（ifの中のif）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.9. ありがちなエラーと対策</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.10. 課題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.11. まとめ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.11.1. if文のテンプレート</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.11.2. 予習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-if">3.4. 入力の検証（try/except と if の併用）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.4.1. ガード節（早期リターンの発想）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ifif">3.4.2. ネストと可読性（ifの中のif）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.5. ありがちなエラーと対策</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. 課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.7.1. if文のテンプレート</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.7.2. 予習</a></li>
 </ul>
 </li>
 </ul>
