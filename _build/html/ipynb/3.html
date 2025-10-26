@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/3_if.html">3. 条件分岐（if文）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/4_for.html">4. 繰り返し</a></li>
 </ul>
 
     </div>
@@ -413,30 +414,54 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;香川&quot;</span>
-<span class="n">score</span> <span class="o">=</span> <span class="mi">85</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;さんの点数は&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="s2">&quot;点です。&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;整数を入力: &quot;</span><span class="p">)</span><span class="c1"># inputでキーボードからの入力値を変数に代入する</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;偶数&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;奇数&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;整数を入力してください&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>香川 さんの点数は 85 点です。
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;整数を入力: &quot;</span><span class="p">)</span><span class="c1"># inputでキーボードからの入力値を変数に代入する</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="nn">File ~/localdoc/github/Class/.venv/lib/python3.13/site-packages/ipykernel/kernelbase.py:1274,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1272</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span>     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1274</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1275</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1277</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1278</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1279</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1280</span> <span class="p">)</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;ピカチュウ（ポケットモンスター）&quot;</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="mf">6.0</span>
-<span class="n">height</span> <span class="o">=</span> <span class="mf">0.4</span>
-<span class="n">BMI</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">height</span><span class="o">**</span><span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">のBMIは</span><span class="si">{</span><span class="n">BMI</span><span class="si">}</span><span class="s2">です．&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2100</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">year</span><span class="o">%</span><span class="k">4</span>==0 and year%100!=0) or year%400==0:
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;うるう年&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平年&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ピカチュウ（ポケットモンスター）のBMIは37.49999999999999です．
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>平年
 </pre></div>
 </div>
 </div>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>4. 繰り返し &#8212; Freshman Seminar II</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/4_for';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="3. 条件分岐（if文）" href="3_if.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,10 +179,11 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 繰り返し</a></li>
 </ul>
 
     </div>
@@ -369,7 +369,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>繰り返し</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,9 +378,36 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 導入（第3回の復習）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 繰り返し</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.3.1. 用途の例</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for">4.4. for文の基本構文</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range">4.4.1. range関数と組み合わせ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while">4.5. while文の基本構文</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breakcontinue">4.6. break文とcontinue文</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">4.6.1. break：ループを途中で抜ける</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue">4.6.2. continue：残りの処理をスキップして次の繰り返しへ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-break">4.7. 入力による繰り返し（while + break）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.8. ネストされたループ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.9. for文とリストの活用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate">4.9.1. enumerate関数（番号付き）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zip">4.9.2. zip関数</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.10. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.10.1. よくあるエラーと注意点</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.11. 課題</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -391,7 +418,474 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">4. </span>繰り返し<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：337840</p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p>for文とwhile文を理解し，繰り返し処理を行えるようになる．</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き <code class="docutils literal notranslate"><span class="pre">+</span></code> をクリックして新しいファイルを作成する．</p></li>
+<li><p>ファイル名を <code class="docutils literal notranslate"><span class="pre">4_{学籍番号}_{氏名}.ipynb</span></code> に変更する．例：<code class="docutils literal notranslate"><span class="pre">4_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<hr class="docutils" />
+<section id="id2">
+<h2><span class="section-number">4.1. </span>導入（第3回の復習）<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>条件分岐（if文）</strong>：条件がTrueかFalseかによって処理を分ける</p></li>
+<li><p>比較演算子：<code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></li>
+<li><p>論理演算子：<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code></p></li>
+<li><p>例外処理：<code class="docutils literal notranslate"><span class="pre">try</span></code> / <code class="docutils literal notranslate"><span class="pre">except</span></code></p></li>
+<li><p>入力チェック：<code class="docutils literal notranslate"><span class="pre">int(input())</span></code> で整数化し、ValueErrorを捕捉</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習4</strong></p>
+<p>うるう年は次のルールに基づいて決められる．これを元に<code class="docutils literal notranslate"><span class="pre">year</span></code>の年が「うるう年」かそれ以外の「平年」かを出力するプログラムを実装せよ．</p>
+<ul class="simple">
+<li><p>4で割り切れる年はうるう年</p></li>
+<li><p>ただし100で割り切れる年は平年</p></li>
+<li><p>ただし400で割り切れる年はうるう年</p></li>
+</ul>
+</div>
+<p><strong>半答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2025</span>
+<span class="k">if</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;うるう年&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平年&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;うるう年&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平年&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>論理的には正しいが，<code class="docutils literal notranslate"><span class="pre">print</span></code>の出力を変更する際に，変更箇所が複数あるために変更漏れが起きる可能性がある．
+変更箇所は一箇所にしておくとミスが起きにくい．</p>
+<p><strong>完答</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2025</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">year</span><span class="o">%</span><span class="mi">4</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">year</span><span class="o">%</span><span class="mi">100</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year</span><span class="o">%</span><span class="mi">400</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;うるう年&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平年&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<!-- 
+```{note}
+**おまけ（時間が余った人）**  
+
+整数 `n` が与えられたとき，`n` が **3の倍数または3のつく数字** ならその数字に「!!!」をつけて表示するプログラムを実装せよ．
+
+例：`n=3`なら`3!!!`，`n=4`なら`4`，`n=13`なら`13!!!`
+
+ヒント：文字列`s`に特定の文字`"a"`が含まれているかを判定するには`"a" in s`とすれば良い．
+```
+ -->
+</section>
+<section id="id3">
+<h2><span class="section-number">4.2. </span>関数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>関数：何度も使う処理をひとまとまりにして名前をつけたもの．</p>
+<p>メリット</p>
+<ul class="simple">
+<li><p>同じ処理を何度も書かなくてよい（再利用できる）．</p></li>
+<li><p>プログラムが整理されて読みやすくなる．</p></li>
+<li><p>複雑な処理を分割できる（バグを見つけやすくなる）．</p></li>
+</ul>
+<p>基本構文</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">関数名</span><span class="p">(</span><span class="n">引数1</span><span class="p">,</span> <span class="n">引数2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="n">実行したい処理</span>
+    <span class="k">return</span> <span class="n">戻り値</span>
+</pre></div>
+</div>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 5.0 と出力される</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">4.3. </span>繰り返し<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>同じ処理を<strong>複数回繰り返す</strong>構文を「<strong>繰り返し（ループ）</strong>」という．</p>
+<section id="id5">
+<h3><span class="section-number">4.3.1. </span>用途の例<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>同じ計算を複数のデータに対して行う</p></li>
+<li><p>回数を指定して繰り返す</p></li>
+<li><p>入力が正しいまで繰り返す</p></li>
+</ul>
+<p>Pythonには代表的に2種類のループがある：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>種類</p></th>
+<th class="head text-left"><p>使い方</p></th>
+<th class="head text-left"><p>指定すること</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文</p></td>
+<td class="text-left"><p>決まった回数繰り返す</p></td>
+<td class="text-left"><p>回数</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">while</span></code>文</p></td>
+<td class="text-left"><p>条件がTrueの間繰り返す</p></td>
+<td class="text-left"><p>条件</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="for">
+<h2><span class="section-number">4.4. </span>for文の基本構文<a class="headerlink" href="#for" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">変数</span> <span class="ow">in</span> <span class="n">繰り返し対象</span><span class="p">:</span>
+    <span class="n">処理</span>
+</pre></div>
+</div>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>意味：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>変数`i`へ順に`1`,`2`,`3`を代入しながら，ブロック内の処理 `print(i)` を実行する．
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+</pre></div>
+</div>
+<section id="range">
+<h3><span class="section-number">4.4.1. </span>range関数と組み合わせ<a class="headerlink" href="#range" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">range(n)</span></code>：<code class="docutils literal notranslate"><span class="pre">0</span></code>から<code class="docutils literal notranslate"><span class="pre">n-1</span></code>までの<code class="docutils literal notranslate"><span class="pre">n</span></code>個の成分を有する整数列を生成する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<p>range関数では，<code class="docutils literal notranslate"><span class="pre">range(開始値,</span> <span class="pre">終了値,</span> <span class="pre">増分)</span></code>と指定して配列を作ることができる．
+このとき開始値から増やす数を順次加えていき，終了値未満の整数を含む配列を作成する．
+増分は指定しない場合には<code class="docutils literal notranslate"><span class="pre">1</span></code>となる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+<span class="mi">4</span>
+<span class="mi">6</span>
+<span class="mi">8</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>終了値は <strong>含まれない</strong>ことに注意。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて<code class="docutils literal notranslate"><span class="pre">1</span></code>から<code class="docutils literal notranslate"><span class="pre">10</span></code>までの整数をすべて出力せよ．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて<code class="docutils literal notranslate"><span class="pre">1</span></code>から<code class="docutils literal notranslate"><span class="pre">10</span></code>までの偶数だけを出力せよ．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code>文を用いて<code class="docutils literal notranslate"><span class="pre">1</span></code>から<code class="docutils literal notranslate"><span class="pre">10</span></code>までの整数の合計を求め，<code class="docutils literal notranslate"><span class="pre">print(f&quot;合計は</span> <span class="pre">{total}&quot;)</span></code>の形で出力せよ．</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="while">
+<h2><span class="section-number">4.5. </span>while文の基本構文<a class="headerlink" href="#while" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">条件</span><span class="p">:</span>
+    <span class="n">処理</span>
+</pre></div>
+</div>
+<p>条件がTrueの間ブロック内の処理を繰り返す．
+逆に言えば，条件がFalseになるまで繰り返す．
+そのため，処理によっては無限ループに入る可能性があることに注意すること．
+これを避けるためにブロック内の処理で条件が変わるようにするか，後述の<code class="docutils literal notranslate"><span class="pre">break</span></code>を使う．</p>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;発射！&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>5
+4
+3
+2
+1
+発射！
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<ol class="arabic simple">
+<li><p>1から100までの整数の合計をwhile文で計算せよ．</p></li>
+<li><p>while文を使って1から100までの偶数のみの合計を求めよ．</p></li>
+</ol>
+</div>
+</section>
+<section id="breakcontinue">
+<h2><span class="section-number">4.6. </span>break文とcontinue文<a class="headerlink" href="#breakcontinue" title="Link to this heading">#</a></h2>
+<section id="break">
+<h3><span class="section-number">4.6.1. </span>break：ループを途中で抜ける<a class="headerlink" href="#break" title="Link to this heading">#</a></h3>
+<p>breakの一つ外側の繰り返し処理を終了する．</p>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="continue">
+<h3><span class="section-number">4.6.2. </span>continue：残りの処理をスキップして次の繰り返しへ<a class="headerlink" href="#continue" title="Link to this heading">#</a></h3>
+<p>continueの一つ外側の繰り返し処理における次の処理に入る．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(1,</span> <span class="pre">10):</span></code>の処理において<code class="docutils literal notranslate"><span class="pre">continue</span></code>を使用し，3の倍数をスキップして出力せよ．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(1,</span> <span class="pre">10):</span></code>の処理において<code class="docutils literal notranslate"><span class="pre">break</span></code>を使い，<code class="docutils literal notranslate"><span class="pre">5</span></code>になったら<code class="docutils literal notranslate"><span class="pre">5</span></code>を出力せずにループを終了せよ．</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="while-break">
+<h2><span class="section-number">4.7. </span>入力による繰り返し（while + break）<a class="headerlink" href="#while-break" title="Link to this heading">#</a></h2>
+<p>条件が決まっていない場合，入力値でループを制御する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;整数を入力（qで終了）: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;偶数&quot;</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;奇数&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;整数を入力してください&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True:</span></code>：無限ループ（強制的に止める条件が必要）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>で脱出する</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2><span class="section-number">4.8. </span>ネストされたループ<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>for文やif文を入れ子（ネスト）にして複雑な処理を行うことができる．</p>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;i=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, j=</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="mi">1</span>
+<span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習4</strong></p>
+<p>九九表を出力せよ（1〜9×1〜9）．
+ただし，f-stringを用いて <code class="docutils literal notranslate"><span class="pre">&quot;1×1=1&quot;</span></code> の形式で表示せよ。</p>
+</div>
+</section>
+<section id="id7">
+<h2><span class="section-number">4.9. </span>for文とリストの活用<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>リストの要素を変数に順番に代入して繰り返し処理を実行できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="enumerate">
+<h3><span class="section-number">4.9.1. </span>enumerate関数（番号付き）<a class="headerlink" href="#enumerate" title="Link to this heading">#</a></h3>
+<p>for文では変数を複数回すことができる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fruits</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">apple</span>
+<span class="mi">1</span> <span class="n">banana</span>
+<span class="mi">2</span> <span class="n">cherry</span>
+</pre></div>
+</div>
+</section>
+<section id="zip">
+<h3><span class="section-number">4.9.2. </span>zip関数<a class="headerlink" href="#zip" title="Link to this heading">#</a></h3>
+<p>複数の配列をまとめ，そこから要素を取得してfor文を回すことができる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;国語&quot;</span><span class="p">,</span> <span class="s2">&quot;数学&quot;</span><span class="p">,</span> <span class="s2">&quot;英語&quot;</span><span class="p">]</span>
+<span class="n">scores</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">sub</span><span class="p">,</span> <span class="n">sc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">subjects</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sc</span><span class="si">}</span><span class="s2">点&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">国語</span><span class="p">:</span> <span class="mi">80</span><span class="n">点</span>
+<span class="n">数学</span><span class="p">:</span> <span class="mi">70</span><span class="n">点</span>
+<span class="n">英語</span><span class="p">:</span> <span class="mi">90</span><span class="n">点</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">4.10. </span>まとめ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>繰り返し処理には <strong>for</strong> と <strong>while</strong> がある．</p></li>
+<li><p><strong>for</strong> は「範囲・回数」で繰り返し，<strong>while</strong> は「条件」で繰り返す．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> で中断，<code class="docutils literal notranslate"><span class="pre">continue</span></code> でスキップする．</p></li>
+<li><p>ネストを使って多重ループを書ける．</p></li>
+<li><p>終了条件を忘れると無限ループになる点に注意すること．</p></li>
+</ul>
+<section id="id9">
+<h3><span class="section-number">4.10.1. </span>よくあるエラーと注意点<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>エラー</p></th>
+<th class="head text-left"><p>原因</p></th>
+<th class="head text-left"><p>対策</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">IndentationError</span></code></p></td>
+<td class="text-left"><p>インデントの不一致</p></td>
+<td class="text-left"><p>4スペースで統一</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>無限ループ</p></td>
+<td class="text-left"><p>終了条件を満たさない</p></td>
+<td class="text-left"><p>変数を更新する／<code class="docutils literal notranslate"><span class="pre">break</span></code>を入れる</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">TypeError</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">range</span></code> に数値以外を渡した</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">int()</span></code> で型変換する</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>出力が多すぎる</p></td>
+<td class="text-left"><p>ループ範囲が大きすぎる</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">print</span></code>の回数を制御する</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">4.11. </span>課題<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>次の2つの課題に取り組み，ipynbファイルを「第4回課題」から提出すること．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>課題1</strong></p>
+<p>1から30までの整数について，次の規則に従って出力するプログラムを作れ。</p>
+<ul class="simple">
+<li><p>3の倍数のとき <code class="docutils literal notranslate"><span class="pre">&quot;Fizz&quot;</span></code></p></li>
+<li><p>5の倍数のとき <code class="docutils literal notranslate"><span class="pre">&quot;Buzz&quot;</span></code></p></li>
+<li><p>3と5の両方の倍数のとき <code class="docutils literal notranslate"><span class="pre">&quot;FizzBuzz&quot;</span></code></p></li>
+<li><p>それ以外は数値そのもの</p></li>
+</ul>
+<p>出力例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">Fizz</span>
+<span class="mi">4</span>
+<span class="n">Buzz</span>
+<span class="n">Fizz</span>
+<span class="mi">7</span>
+<span class="mi">8</span>
+<span class="n">Fizz</span>
+<span class="n">Buzz</span>
+<span class="mi">11</span>
+<span class="n">Fizz</span>
+<span class="mi">13</span>
+<span class="mi">14</span>
+<span class="n">FizzBuzz</span>
+<span class="mi">16</span>
+<span class="mi">17</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>課題2</strong></p>
+<p>1から100までの整数の中で，</p>
+<ul class="simple">
+<li><p>偶数かつ3の倍数の個数</p></li>
+<li><p>奇数かつ5の倍数の個数</p></li>
+</ul>
+<p>をそれぞれ数えて出力せよ．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>おまけ（時間が余った人）</strong></p>
+<p>整数<code class="docutils literal notranslate"><span class="pre">n</span></code>を入力し，次のルールに基づいて<code class="docutils literal notranslate"><span class="pre">n</span></code>を繰り返し更新し，毎回<code class="docutils literal notranslate"><span class="pre">n</span></code>を表示せよ：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>が偶数なら<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span> <span class="pre">/</span> <span class="pre">2</span></code>とする．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>が奇数なら<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3n</span> <span class="pre">+</span> <span class="pre">1</span></code>とする．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>が1になったらループを終了する．</p></li>
+</ul>
+<p>※ この手続きによって得られる数列を<span style="color:red">コラッツ数列</span>と呼ぶ．</p>
+</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -422,6 +916,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="3_if.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>条件分岐（if文）</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -437,9 +940,36 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 導入（第3回の復習）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 繰り返し</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.3.1. 用途の例</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for">4.4. for文の基本構文</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range">4.4.1. range関数と組み合わせ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while">4.5. while文の基本構文</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breakcontinue">4.6. break文とcontinue文</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">4.6.1. break：ループを途中で抜ける</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue">4.6.2. continue：残りの処理をスキップして次の繰り返しへ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-break">4.7. 入力による繰り返し（while + break）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.8. ネストされたループ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.9. for文とリストの活用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate">4.9.1. enumerate関数（番号付き）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zip">4.9.2. zip関数</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.10. まとめ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.10.1. よくあるエラーと注意点</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.11. 課題</a></li>
+</ul>
   </nav></div>
 
 </div></div>
