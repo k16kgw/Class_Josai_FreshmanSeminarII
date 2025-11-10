@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>5. 関数 &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/5_function';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="4. 繰り返し" href="4_for.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,12 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. 関数</a></li>
 </ul>
 
     </div>
@@ -370,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>関数</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,9 +381,34 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 第4回の復習</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.1.1. 課題1の解答例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.2. 課題2の解答例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.1.3. 導入</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2. 関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.1. 数学との関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.2. 関数の種類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.2.3. 関数の定義と呼び出し</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5.3. 具体例</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">5.3.1. 2つの数の平均を返す関数</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5.4. 機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return">5.4.1. returnのない関数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">5.4.2. 引数の省略と固定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">5.4.3. 変数のスコープ（有効範囲）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">5.4.4. 関数を使うメリット</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">5.5. 演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">5.6. 課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">5.7. まとめ</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -392,7 +419,527 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">5. </span>関数<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：734186</p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p>関数の基本的な構造（定義と呼び出し）を理解する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> による戻り値の仕組みを理解する．</p></li>
+<li><p>引数の使い方を理解し，自分で関数を定義できる．</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">5_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+　例：<code class="docutils literal notranslate"><span class="pre">5_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<section id="id2">
+<h2><span class="section-number">5.1. </span>第4回の復習<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>前回は <strong>繰り返し（for文・while文）</strong></p>
+<ul class="simple">
+<li><p>一定回数の繰り返し → <code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
+<li><p>条件による繰り返し → <code class="docutils literal notranslate"><span class="pre">while</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>／<code class="docutils literal notranslate"><span class="pre">continue</span></code>による制御</p></li>
+</ul>
+<section id="id3">
+<h3><span class="section-number">5.1.1. </span>課題1の解答例<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>課題1</strong></p>
+<p>1から30までの整数について，次の規則に従って出力するプログラムを作れ。</p>
+<ul class="simple">
+<li><p>3の倍数のとき <code class="docutils literal notranslate"><span class="pre">&quot;Fizz&quot;</span></code></p></li>
+<li><p>5の倍数のとき <code class="docutils literal notranslate"><span class="pre">&quot;Buzz&quot;</span></code></p></li>
+<li><p>3と5の両方の倍数のとき <code class="docutils literal notranslate"><span class="pre">&quot;FizzBuzz&quot;</span></code></p></li>
+<li><p>それ以外は数値そのもの</p></li>
+</ul>
+<p>出力例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">Fizz</span>
+<span class="mi">4</span>
+<span class="n">Buzz</span>
+<span class="n">Fizz</span>
+<span class="mi">7</span>
+<span class="mi">8</span>
+<span class="n">Fizz</span>
+<span class="n">Buzz</span>
+<span class="mi">11</span>
+<span class="n">Fizz</span>
+<span class="mi">13</span>
+<span class="mi">14</span>
+<span class="n">FizzBuzz</span>
+<span class="mi">16</span>
+<span class="mi">17</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<p>解答例1</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;Fizz&quot;</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;Buzz&quot;</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span><span class="o">%</span><span class="mi">5</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>解答例2</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FizzBuzz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">5.1.2. </span>課題2の解答例<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>課題2</strong></p>
+<p>1から100までの整数の中で，</p>
+<ul class="simple">
+<li><p>偶数かつ3の倍数の個数</p></li>
+<li><p>奇数かつ5の倍数の個数</p></li>
+</ul>
+<p>をそれぞれ数えて出力せよ．</p>
+</div>
+<p>解答例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count_a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count_b</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">count_a</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">i</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">count_b</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;偶数かつ3の倍数の個数は </span><span class="si">{</span><span class="n">count_a</span><span class="si">}</span><span class="s2">個，奇数かつ5の倍数の個数は </span><span class="si">{</span><span class="n">count_b</span><span class="si">}</span><span class="s2">個&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">5.1.3. </span>導入<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">と</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">の平均は</span><span class="si">{</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">と</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">の平均は</span><span class="si">{</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>これでも動くが「平均を出す計算」が何度も登場している．
+もし出力の形式を変更したくなった場合，複数箇所を修正する必要があり，それだけバグが入り込む可能性が高くなる．</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2><span class="section-number">5.2. </span>関数<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p><strong>関数</strong>（function）：ある処理をひとまとまりにして名前をつけたもの</p>
+<ul class="simple">
+<li><p>入力を受け取り，処理をして，結果を返す「小さなプログラム」．</p></li>
+</ul>
+<section id="id7">
+<h3><span class="section-number">5.2.1. </span>数学との関係<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>数学では</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = x^2 + 1
+\]</div>
+<p>というように，「入力<span class="math notranslate nohighlight">\(x\)</span>」に対して「出力<span class="math notranslate nohighlight">\(f(x)\)</span>」を返す．</p>
+<p>Pythonの関数も同じ考え方</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>概念</p></th>
+<th class="head text-left"><p>数学</p></th>
+<th class="head text-left"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>関数の定義</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(f(x) = x^2 + 1\)</span></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x):</span> <span class="pre">return</span> <span class="pre">x**2</span> <span class="pre">+</span> <span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>呼び出し</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(f(3) = 10\)</span></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">f(3)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">5.2.2. </span>関数の種類<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>作成された関数</p>
+<ul>
+<li><p>組み込み関数</p></li>
+<li><p>標準ライブラリの関数</p></li>
+<li><p>外部ライブラリの関数</p></li>
+</ul>
+</li>
+<li><p>ユーザが自分で作る関数</p>
+<ul>
+<li><p>独自関数（ユーザ定義関数）</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>作成された関数を使用する場合には，引数や処理内容を把握して使う必要がある．</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>種類</p></th>
+<th class="head text-left"><p>使用例</p></th>
+<th class="head text-left"><p>import</p></th>
+<th class="head text-left"><p>インストール</p></th>
+<th class="head text-left"><p>特徴</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>組み込み関数</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">type()</span></code></p></td>
+<td class="text-left"><p>不要</p></td>
+<td class="text-left"><p>不要</p></td>
+<td class="text-left"><p>最初から使える基本関数</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>標準ライブラリの関数</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>, <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code></p></td>
+<td class="text-left"><p>必要</p></td>
+<td class="text-left"><p>不要</p></td>
+<td class="text-left"><p>Python標準で付属する便利機能</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>外部ライブラリの関数</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">numpy.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code></p></td>
+<td class="text-left"><p>必要</p></td>
+<td class="text-left"><p>必要（pipで導入）</p></td>
+<td class="text-left"><p>他者が開発した拡張機能</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>組み込み関数</strong>：Pythonに最初から含まれており，どのプログラムでも import なしで使用できる．</p>
+<p><strong>標準ライブラリの関数</strong>：Pythonに最初から含まれており，importすることで使えるようになる．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>mathライブラリの使用例</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>   <span class="c1"># √16 = 4.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>         <span class="c1"># 円周率 3.141592...</span>
+</pre></div>
+</div>
+</div>
+<p><strong>外部ライブラリの関数</strong>：Pythonには最初からは含まれておらず，pipなどでインストールした上でimportして使えるようになる．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>numpyライブラリの使用例</strong></p>
+<p>ターミナルで<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span></code>をした上で次のようにpythonのプログラムで使用する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>  <span class="c1"># 平均値を計算 → 2.5</span>
+</pre></div>
+</div>
+</div>
+<!-- 関数の使い方の調べ方 -->
+</section>
+<section id="id9">
+<h3><span class="section-number">5.2.3. </span>関数の定義と呼び出し<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>基本構文</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">関数名</span><span class="p">(</span><span class="n">引数1</span><span class="p">,</span> <span class="n">引数2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="n">処理内容</span>
+    <span class="k">return</span> <span class="n">戻り値</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span></code>：define（定義する）の略で，これ以降に関数の定義が続く．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">引数</span></code>：関数が受け取るオブジェクト．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return</span></code>：処理の結果を呼び出して返す．<code class="docutils literal notranslate"><span class="pre">関数名(引数1,引数2,...)</span></code>に値が返ってくる．</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>引数は関数を定義するときに関数内の処理を記述するために使用するものであるから，関数を使用する場合には同じ名前の変数を引数に入れる必要はない．</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2><span class="section-number">5.3. </span>具体例<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h3><span class="section-number">5.3.1. </span>2つの数の平均を返す関数<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>呼び出して使う：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span>
+</pre></div>
+</div>
+<p>処理の流れ</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">average(3,</span> <span class="pre">5)</span></code> が呼び出される．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a=3</span></code>, <code class="docutils literal notranslate"><span class="pre">b=5</span></code> が代入される．</p></li>
+<li><p>関数内部で <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">+</span> <span class="pre">b)</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">4.0</span></code> が計算される．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> により <code class="docutils literal notranslate"><span class="pre">average(3,</span> <span class="pre">5)</span></code> へ結果が戻る．</p></li>
+<li><p>呼び出し元の <code class="docutils literal notranslate"><span class="pre">x</span></code> に <code class="docutils literal notranslate"><span class="pre">4.0</span></code> が代入される．</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>例</strong></p>
+<p>BMIを計算する関数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bmi</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;体重(kg)と身長(m)からBMIを計算する関数&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">weight</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1.65</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BMI=</span><span class="si">{</span><span class="n">bmi</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>関数の直後に書かれた文字列 <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;...&quot;&quot;&quot;</span></code> は <strong>ドキュメンテーション文字列（docstring）</strong> と呼ばれ，関数の説明として使われます．</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>例</strong></p>
+<p>偶奇を判定する関数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_even</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_even</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">は偶数&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">は奇数&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2><span class="section-number">5.4. </span>機能<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<section id="return">
+<h3><span class="section-number">5.4.1. </span>returnのない関数<a class="headerlink" href="#return" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">return</span></code> を省略すると，値は返されず，その場で処理を実行するだけの関数になる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;こんにちは，</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">さん！&quot;</span><span class="p">)</span>
+
+<span class="n">hello</span><span class="p">(</span><span class="s2">&quot;カツオ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>こんにちは，カツオさん！
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">5.4.2. </span>引数の省略と固定<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>引数に<span style="color:red">初期値（デフォルト値）</span>を設定しておくこともできる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ゲスト&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;こんにちは，</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">さん！&quot;</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">()</span>
+<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;ワカメ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>こんにちは，ゲストさん！
+こんにちは，ワカメさん！
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3><span class="section-number">5.4.3. </span>変数のスコープ（有効範囲）<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>関数の中で定義した変数はその関数の中でしか使えず，関数内部で使う変数は<span style="color:red">ローカル変数</span>と呼ばれる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># ← エラーになる</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>10
+→ `NameError: name &#39;x&#39; is not defined`
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3><span class="section-number">5.4.4. </span>関数を使うメリット<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>メリット</p></th>
+<th class="head text-left"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>再利用性</p></td>
+<td class="text-left"><p>同じ処理を何度も呼び出せる</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>可読性</p></td>
+<td class="text-left"><p>長いプログラムを整理できる</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>保守性</p></td>
+<td class="text-left"><p>変更箇所が1か所で済む</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>分割統治</p></td>
+<td class="text-left"><p>複雑な問題を小さく分けて考えられる</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2><span class="section-number">5.5. </span>演習<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<p>リスト（例：<code class="docutils literal notranslate"><span class="pre">[70,</span> <span class="pre">85,</span> <span class="pre">90,</span> <span class="pre">100,</span> <span class="pre">60]</span></code>）の平均点を返す関数<code class="docutils literal notranslate"><span class="pre">average_list(scores)</span></code>を作成せよ．</p>
+</div>
+<!-- 
+解答例
+```python
+def average_list(scores):
+    """リストscoresの平均値を返す関数"""
+    total = 0
+    for s in scores:
+        total += s
+    avg = total / len(scores)
+    return avg
+
+
+# 動作確認
+data = [70, 85, 90, 100, 60]
+print(f"平均点は {average_list(data):.1f} 点です。")
+```
+ -->
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<p>BMIを計算する関数<code class="docutils literal notranslate"><span class="pre">bmi(weight,</span> <span class="pre">height)</span></code>を改良し，<br />
+BMI値に応じて「痩せ」「普通」「肥満」を返すようにせよ．</p>
+<p>出力例：「あなたのBMIは 18.1 で 痩せ 型です．」</p>
+<p>ただし判定基準は</p>
+<ul class="simple">
+<li><p>18.5未満 → 痩せ</p></li>
+<li><p>18.5以上25未満 → 普通</p></li>
+<li><p>25以上 → 肥満</p></li>
+</ul>
+<p>とする．</p>
+</div>
+<!-- 
+解答例
+```python
+def bmi(weight, height):
+    """
+    体重(kg)と身長(m)からBMIを計算し、
+    値と判定結果を返す関数
+    """
+    value = weight / (height ** 2)
+
+    # BMIに応じて判定
+    if value < 18.5:
+        category = "痩せ"
+    elif value < 25:
+        category = "普通"
+    else:
+        category = "肥満"
+
+    # 結果をまとめて返す
+    return value, category
+
+
+# 動作確認
+w = 50     # kg
+h = 1.65   # m
+b, c = bmi(w, h)
+print(f"あなたのBMIは {b:.1f} で {c} 型です。")
+```
+ -->
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2><span class="section-number">5.6. </span>課題<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>次の課題に取り組み，ipynbファイルを「第5回課題」から提出すること．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>課題1</strong></p>
+<p>次の処理を行う関数<code class="docutils literal notranslate"><span class="pre">collatz(n)</span></code>を定義し，結果をリストで返せ．</p>
+<ul class="simple">
+<li><p>nが偶数なら <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span> <span class="pre">//</span> <span class="pre">2</span></code></p></li>
+<li><p>nが奇数なら <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3n</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+<li><p>nが1になるまで繰り返す．</p></li>
+<li><p>上の手続きによって得られる数を順に格納したリストを作成する．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">collatz</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1"># 出力：</span>
+<span class="c1"># [6, 3, 10, 5, 16, 8, 4, 2, 1]</span>
+</pre></div>
+</div>
+</div>
+<!-- 
+解答例
+```python
+def collatz(n):
+    """
+    整数 n から始めて、
+    nが1になるまで次の規則で数列を生成し、リストで返す。
+      - n が偶数のとき: n = n // 2
+      - n が奇数のとき: n = 3 * n + 1
+    """
+    seq = [n]  # 最初の値をリストに追加
+
+    # n が 1 になるまで繰り返す
+    while n != 1:
+        if n % 2 == 0:       # 偶数の場合
+            n = n // 2
+        else:                # 奇数の場合
+            n = 3 * n + 1
+        seq.append(n)        # 計算結果をリストに追加
+
+    return seq
+
+
+# 動作確認
+print(collatz(6))
+``` 
+-->
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2><span class="section-number">5.7. </span>まとめ<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>関数は「入力 → 処理 → 出力」をひとまとめにしたもの．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span></code> で定義し，<code class="docutils literal notranslate"><span class="pre">return</span></code> で結果を返す．</p></li>
+<li><p>同じ処理を何度も書かずに済むため，<strong>変更・再利用が容易になる．</strong></p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +970,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="4_for.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>繰り返し</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,9 +994,34 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 第4回の復習</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.1.1. 課題1の解答例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.2. 課題2の解答例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.1.3. 導入</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2. 関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.1. 数学との関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.2. 関数の種類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.2.3. 関数の定義と呼び出し</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5.3. 具体例</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">5.3.1. 2つの数の平均を返す関数</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5.4. 機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return">5.4.1. returnのない関数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">5.4.2. 引数の省略と固定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">5.4.3. 変数のスコープ（有効範囲）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">5.4.4. 関数を使うメリット</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">5.5. 演習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">5.6. 課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">5.7. まとめ</a></li>
+</ul>
   </nav></div>
 
 </div></div>
