@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>6. ファイル操作 &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/6_file';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="5. 関数" href="5_function.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,13 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_function.html">5. 関数</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. ファイル操作</a></li>
 </ul>
 
     </div>
@@ -370,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>ファイル操作</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,9 +382,31 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. (授業中間アンケート) 00002284</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 第5回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">6.3. メソッド（method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list">6.3.1. リスト（list）のメソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict">6.3.2. 辞書（dict）のメソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#str">6.3.3. 文字列（str）のメソッド</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.4. クラスとインスタンス</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.5. ファイルの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.5.1. ファイルの書き込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.5.2. ファイルの読み取り</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">6.5.3. CSVファイルの操作</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandascsv">6.6. pandasを用いたCSVファイルの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.6.1. CSVファイルの読み取り</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.6.2. 統計処理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.6.3. CSVファイルの書き込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.6.4. データの取扱い</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.7. まとめ</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -392,7 +417,443 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">6. </span>ファイル操作<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：<strong>691247</strong></p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p>list・dict・str の代表的な<strong>メソッド</strong>を使えるようになる．</p></li>
+<li><p><strong>クラスとインスタンス</strong>の基本概念を理解する．</p></li>
+<li><p><strong>テキストファイル／CSVファイルの読み書き</strong>ができる．</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">5_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+　例：<code class="docutils literal notranslate"><span class="pre">5_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<hr class="docutils" />
+<section id="id2">
+<h2><span class="section-number">6.1. </span>(授業中間アンケート) 00002284<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>この授業科目に関するアンケートをWebClassにおいて実施します。</p></li>
+<li><p>このアンケートは受講生の皆さんがより授業を受けやすくするために、皆さ
+んの意見を伺うものです。</p></li>
+<li><p>アンケートは全7問（選択と自由記述）、回答時間は約10分です。</p></li>
+<li><p>特に自由記述については、より授業改善につながる貴重な回答になります。</p></li>
+<li><p>回答内容によって不利益を被ることはありません。</p></li>
+</ul>
+<p><img alt="授業中間アンケート" src="../_images/enq.png" /></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.2. </span>第5回の復習<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>関数は「入力 → 処理 → 出力」をひとまとめにしたもの．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span></code> で定義し，<code class="docutils literal notranslate"><span class="pre">return</span></code> で結果を返す．（<code class="docutils literal notranslate"><span class="pre">return</span></code>はなくても良い）</p></li>
+<li><p>同じ処理を何度も書かずに済むため，<strong>変更・再利用が容易になる．</strong></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">average</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;こんにちは，</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">さん！&quot;</span><span class="p">)</span>
+
+<span class="n">hello</span><span class="p">(</span><span class="s2">&quot;カツオ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>第5回の課題1</strong></p>
+<p>次の処理を行う関数<code class="docutils literal notranslate"><span class="pre">collatz(n)</span></code>を定義し，結果をリストで返せ．</p>
+<ul class="simple">
+<li><p>nが偶数なら <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span> <span class="pre">//</span> <span class="pre">2</span></code></p></li>
+<li><p>nが奇数なら <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3n</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+<li><p>nが1になるまで繰り返す．</p></li>
+<li><p>上の手続きによって得られる数を順に格納したリストを作成する．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">collatz</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1"># 出力：</span>
+<span class="c1"># [6, 3, 10, 5, 16, 8, 4, 2, 1]</span>
+</pre></div>
+</div>
+</div>
+<p>解答例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">collatz</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    整数 n から始め，nが1になるまで次の規則で数列を生成し，リストで返す．</span>
+<span class="sd">      - n が偶数のとき: n = n // 2</span>
+<span class="sd">      - n が奇数のとき: n = 3 * n + 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># 最初の値をリストに追加</span>
+    <span class="c1"># n が 1 にならない間は繰り返す</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>        <span class="c1"># 計算結果をリストに追加</span>
+    <span class="k">return</span> <span class="n">seq</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">collatz</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>コラッツ予想</strong></p>
+<p>任意の（全ての）整数 n に対して次の規則を繰り返して整数を得たとき，必ず有限回の繰り返しで1になる．</p>
+<ul class="simple">
+<li><p>n が偶数のとき:<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span> <span class="pre">//</span> <span class="pre">2</span></code></p></li>
+<li><p>n が奇数のとき:<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+</ul>
+<p>数学の未解決問題の一つ．これを解決には日本のベンチャー企業（株式会社音圧爆上げくん）によって1億2000万円の懸賞金が掛けられている．
+（参考：<a class="reference external" href="https://mathprize.net/ja/posts/collatz-conjecture/%EF%BC%89">https://mathprize.net/ja/posts/collatz-conjecture/）</a></p>
+<p>コンピュータによる計算では<span class="math notranslate nohighlight">\(2.95 \times 10^{20}=2\text{垓}9500\text{京}\)</span>程度までは正しいことが確認されている．</p>
+</div>
+</section>
+<section id="method">
+<h2><span class="section-number">6.3. </span>メソッド（method）<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>オブジェクトに結びついた関数</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{オブジェクト}.{メソッド名}()</span></code> の形で呼び出す．</p></li>
+<li><p>Pythonではすべてがオブジェクトのため，データ型ごとに専用のメソッドが存在する．</p></li>
+</ul>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>   <span class="c1"># HELLO（大文字にする）</span>
+</pre></div>
+</div>
+<section id="list">
+<h3><span class="section-number">6.3.1. </span>リスト（list）のメソッド<a class="headerlink" href="#list" title="Link to this heading">#</a></h3>
+<p>よく使うメソッド一覧：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>メソッド</p></th>
+<th class="head text-left"><p>説明</p></th>
+<th class="head text-left"><p>例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.append(x)</span></code></p></td>
+<td class="text-left"><p>xを末尾に追加</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a.append(10)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.insert(i,</span> <span class="pre">x)</span></code></p></td>
+<td class="text-left"><p>xをi番目に追加</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a.insert(1,</span> <span class="pre">5)</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.remove(x)</span></code></p></td>
+<td class="text-left"><p>xを削除</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a.remove(3)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.pop(i)</span></code></p></td>
+<td class="text-left"><p>i番目を取り出す</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a.pop(0)</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.sort()</span></code></p></td>
+<td class="text-left"><p>昇順に並び替える</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a.sort()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.reverse()</span></code></p></td>
+<td class="text-left"><p>逆順に並び替える</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a.reverse()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 後ろに2を追加</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># 昇順に並び替える</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<p>リスト <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">[70,</span> <span class="pre">85,</span> <span class="pre">90,</span> <span class="pre">100,</span> <span class="pre">60]</span></code> を降順（大きい順）に並べ替えよ．</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>別解（メソッドのoptionを使用する）</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="dict">
+<h3><span class="section-number">6.3.2. </span>辞書（dict）のメソッド<a class="headerlink" href="#dict" title="Link to this heading">#</a></h3>
+<p>辞書型（dictionary，dict）は</p>
+<ul class="simple">
+<li><p><strong>“キー（key）” と “値（value）” の組をセットで管理するデータ型</strong> である．</p></li>
+<li><p>順番ではなく「<strong>名前（キー）</strong>」でデータにアクセスする．</p></li>
+<li><p>リストのように番号（0, 1, 2 …）では取り出さない．</p></li>
+</ul>
+<p>作り方</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{}</span></code>（波括弧）で作る</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;キー&quot;:</span> <span class="pre">値</span></code> の形で書く</p></li>
+<li><p>各ペアはカンマ <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切る</p></li>
+</ul>
+<p>例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;国語&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s2">&quot;数学&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="s2">&quot;英語&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">}</span>
+<span class="c1"># 値の取り出し</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s2">&quot;数学&quot;</span><span class="p">])</span>   <span class="c1"># 85</span>
+
+<span class="c1"># 値の変更</span>
+<span class="n">scores</span><span class="p">[</span><span class="s2">&quot;数学&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">95</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>  
+<span class="c1"># {&#39;国語&#39;: 70, &#39;数学&#39;: 95, &#39;英語&#39;: 90}</span>
+
+<span class="c1"># 新しい項目を追加</span>
+<span class="n">scores</span><span class="p">[</span><span class="s2">&quot;理科&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">88</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="c1"># {&#39;国語&#39;: 70, &#39;数学&#39;: 95, &#39;英語&#39;: 90, &#39;理科&#39;: 88}</span>
+</pre></div>
+</div>
+<p>辞書型は <strong>「名前（キー）に対応する値」を扱う場面</strong> に向いている．</p>
+<ul class="simple">
+<li><p>教科名と点数</p></li>
+<li><p>都道府県と人口</p></li>
+<li><p>商品名と価格</p></li>
+<li><p>生徒番号と氏名</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>メソッド</p></th>
+<th class="head text-left"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.keys()</span></code></p></td>
+<td class="text-left"><p>すべてのキーを取得</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.values()</span></code></p></td>
+<td class="text-left"><p>すべての値を取得</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.items()</span></code></p></td>
+<td class="text-left"><p>(キー, 値) の組を取得</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.get(key,</span> <span class="pre">default)</span></code></p></td>
+<td class="text-left"><p>値を取り出す（存在しない場合はdefault）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;国語&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;数学&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;英語&quot;</span><span class="p">,</span> <span class="s2">&quot;なし&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="str">
+<h3><span class="section-number">6.3.3. </span>文字列（str）のメソッド<a class="headerlink" href="#str" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>メソッド</p></th>
+<th class="head text-left"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.upper()</span></code></p></td>
+<td class="text-left"><p>大文字に変換</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.lower()</span></code></p></td>
+<td class="text-left"><p>小文字に変換</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.replace(a,</span> <span class="pre">b)</span></code></p></td>
+<td class="text-left"><p>a を b に置き換え</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.split(sep)</span></code></p></td>
+<td class="text-left"><p>分割してリストにする</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">.join(list)</span></code></p></td>
+<td class="text-left"><p>リストを結合して文字列にする</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello Python&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.4. </span>クラスとインスタンス<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>クラス</p>
+<ul class="simple">
+<li><p>データと処理をまとめた設計図</p></li>
+<li><p>Pythonの「型（type）」の正体</p></li>
+<li><p>例：<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code></p></li>
+</ul>
+<p>インスタンス</p>
+<ul class="simple">
+<li><p>クラスから作られた「実体」</p></li>
+<li><p>例：それぞれの変数（3, “abc”, [1,2]）</p></li>
+</ul>
+<p>例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>   <span class="c1"># strクラスのインスタンス</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># listクラスのインスタンス</span>
+</pre></div>
+</div>
+<!-- 
+### 簡単なクラスを作ってみる
+
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"{self.name}さん，こんにちは！")
+
+p = Person("カツオ")
+p.greet()
+```
+
+出力例
+```
+カツオさん，こんにちは！
+```
+
+- `__init__` はインスタンス生成時に呼ばれる特別なメソッド
+- `self` は「自分自身」を指す
+ -->
+</section>
+<section id="id5">
+<h2><span class="section-number">6.5. </span>ファイルの操作<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>ファイル操作には <strong>with 構文</strong> を使用するのが安全．</p>
+<section id="id6">
+<h3><span class="section-number">6.5.1. </span>ファイルの書き込み<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;1行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;2行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">6.5.2. </span>ファイルの読み取り<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<p>テキストファイル <code class="docutils literal notranslate"><span class="pre">message.txt</span></code> に，好きな文章を3行書き込み，その内容を読み取って1行ずつ表示せよ．</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;グラタンでも食べますか？</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;そうですか</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;お腹いっぱいなんですね</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="csv">
+<h3><span class="section-number">6.5.3. </span>CSVファイルの操作<a class="headerlink" href="#csv" title="Link to this heading">#</a></h3>
+<p>書き込み</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;scores.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;名前&quot;</span><span class="p">,</span> <span class="s2">&quot;国語&quot;</span><span class="p">,</span> <span class="s2">&quot;数学&quot;</span><span class="p">])</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;カツオ&quot;</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;コンブ&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">])</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;ナミヘー&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>読み込み</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;scores.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pandascsv">
+<h2><span class="section-number">6.6. </span>pandasを用いたCSVファイルの操作<a class="headerlink" href="#pandascsv" title="Link to this heading">#</a></h2>
+<p>pandasのインストール</p>
+<p>Jupyter Lab のセルで実行：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+<section id="id8">
+<h3><span class="section-number">6.6.1. </span>CSVファイルの読み取り<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;scores.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<p>pandas DataFrame という型として表形式で表示される．</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">6.6.2. </span>統計処理<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>平均・最大・最小などがメソッドで簡単に計算できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;国語&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;数学&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3><span class="section-number">6.6.3. </span>CSVファイルの書き込み<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;output.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">6.6.4. </span>データの取扱い<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>条件文にすると，条件を満たすかどうかの1列分のDataFrame(Seriesと呼ぶ)が得られる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;国語&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p>DataFrameの呼び出しに真偽が入ったSeriesを使用すると，真の行のみ抜き出すことができる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">sr</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<p>scores.csvをpandasで読み取り，数学の点数が80以上の行だけ抽出せよ</p>
+</div>
+<p>解答例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;数学&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">6.7. </span>まとめ<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>オブジェクトには<strong>メソッド</strong>があり，用途別に使い分ける．</p></li>
+<li><p><strong>クラスとインスタンス</strong>はオブジェクトの基本構造である．</p></li>
+<li><p>Pythonでは <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open()</span></code> で安全にファイル操作できる．</p></li>
+<li><p>CSVは <code class="docutils literal notranslate"><span class="pre">csv</span></code> または <code class="docutils literal notranslate"><span class="pre">pandas</span></code> ライブラリで効率よく扱える．</p></li>
+<li><p>pandasは今後の数値計算・データ分析で必須スキル</p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +884,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="5_function.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>関数</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,9 +908,31 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. (授業中間アンケート) 00002284</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 第5回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">6.3. メソッド（method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list">6.3.1. リスト（list）のメソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict">6.3.2. 辞書（dict）のメソッド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#str">6.3.3. 文字列（str）のメソッド</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.4. クラスとインスタンス</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.5. ファイルの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.5.1. ファイルの書き込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.5.2. ファイルの読み取り</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">6.5.3. CSVファイルの操作</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandascsv">6.6. pandasを用いたCSVファイルの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.6.1. CSVファイルの読み取り</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.6.2. 統計処理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.6.3. CSVファイルの書き込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.6.4. データの取扱い</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.7. まとめ</a></li>
+</ul>
   </nav></div>
 
 </div></div>

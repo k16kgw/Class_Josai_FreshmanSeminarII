@@ -13,7 +13,7 @@ parts:
       - file: contents/3_if
       - file: contents/4_for
       - file: contents/5_function
-      # - file: contents/6_file
+      - file: contents/6_file
       # - file: contents/7_integer
       # - file: contents/8_algorithm
       # - file: contents/9_calculus
