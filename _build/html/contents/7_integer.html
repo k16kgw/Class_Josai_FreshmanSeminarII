@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>7. 整数を扱う計算 &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/7_integer';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="6. ファイル操作" href="6_file.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,14 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_function.html">5. 関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_file.html">6. ファイル操作</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 整数を扱う計算</a></li>
 </ul>
 
     </div>
@@ -370,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>整数を扱う計算</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,9 +383,28 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 第6回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2. 約数と素数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.1. 約数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.2. 素数</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sieve-of-eratosthenes">7.3. エラトステネスの篩（ふるい）(Sieve of Eratosthenes)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.3.1. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7.4. 素因数分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.4.1. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-denominator-gcd">7.5. 最大公約数（greatest common denominator, GCD）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.5.1. ユークリッドの互除法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.5.2. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.6. まとめ</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -392,7 +415,326 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">7. </span>整数を扱う計算<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：<strong>915284</strong></p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p><strong>エラトステネスの篩</strong>や<strong>素因数分解</strong>を例に，アルゴリズムをプログラムに実装できるようになる．</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">6_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+　例：<code class="docutils literal notranslate"><span class="pre">7_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>第6回の復習<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>list, dict, strごとの<strong>メソッド</strong></p></li>
+<li><p><strong>ファイル操作</strong></p>
+<ul class="simple">
+<li><p>書き込み</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;1行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;2行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>読み取り</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>pandas</strong>を用いたCSVファイルの読み書き</p></li>
+<li><p>条件抽出（<code class="docutils literal notranslate"><span class="pre">df[df[&quot;数学&quot;]</span> <span class="pre">&gt;=</span> <span class="pre">80]</span></code>）</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2><span class="section-number">7.2. </span>約数と素数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3><span class="section-number">7.2.1. </span>約数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>約数：整数 <span class="math notranslate nohighlight">\(n\)</span> に対し，<span class="math notranslate nohighlight">\(n\)</span> を割り切る整数</p>
+<p>例：</p>
+<ul class="simple">
+<li><p>12 の約数 → 1, 2, 3, 4, 6, 12</p></li>
+<li><p>15 の約数 → 1, 3, 5, 15</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">7.2.2. </span>素数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>素数：<span class="math notranslate nohighlight">\(1\)</span>より大きく，<strong>約数が<span class="math notranslate nohighlight">\(1\)</span>と自分自身だけ</strong>の数</p>
+<p>例：2, 3, 5, 7, 11, 13, 17, …</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<ol class="arabic simple">
+<li><p>上で定義した素数判定の関数<code class="docutils literal notranslate"><span class="pre">is_prime</span></code>を使い，1～100までに存在する全ての素数を表示せよ．</p></li>
+<li><p>整数<span class="math notranslate nohighlight">\(n\)</span>に対し，<span class="math notranslate nohighlight">\(n\)</span>の全ての約数をリストで返す関数<code class="docutils literal notranslate"><span class="pre">divisors</span></code>を実装せよ．</p></li>
+</ol>
+</div>
+<p>解答例1-1</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1～100 の素数をすべて表示</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>解答例1-2</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">divisors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">divs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">divs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">divs</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sieve-of-eratosthenes">
+<h2><span class="section-number">7.3. </span>エラトステネスの篩（ふるい）(Sieve of Eratosthenes)<a class="headerlink" href="#sieve-of-eratosthenes" title="Link to this heading">#</a></h2>
+<p>素数を大量に求める高速なアルゴリズム</p>
+<p>次のアルゴリズムで自然数<span class="math notranslate nohighlight">\(N\)</span>までの素数を求める．</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(2\)</span>〜<span class="math notranslate nohighlight">\(N\)</span>の整数を並べる．</p></li>
+<li><p>最小の数を素数として確定する．</p></li>
+<li><p>2で確定した素数の倍数を全て消す．</p></li>
+<li><p>次の残った数に対して2,3を繰り返す．</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>例</strong></p>
+<p><span class="math notranslate nohighlight">\(N=15\)</span>までの素数をエラトステネスの篩に従って求める．</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2,3,4,5,6,7,8,9,10,11,12,13,14,15
+→ 2は素数
+
+~,3,~,5,~,7,~,9,~~,11,~~,13,~~,15
+→ 3は素数
+
+~,~,~,5,~,7,~,~,~~,11,~~,13,~~,~~
+→ 5は素数
+
+~,~,~,~,~,7,~,~,~~,11,~~,13,~~,~~
+→ 7は素数
+
+~,~,~,~,~,~,~,~,~~,11,~~,13,~~,~~
+→ 11は素数
+
+~,~,~,~,~,~,~,~,~~,~~,~~,13,~~,~~
+→ 13は素数
+
+~,~,~,~,~,~,~,~,~~,~~,~~,~~,~~,~~
+</pre></div>
+</div>
+</div>
+<section id="id6">
+<h3><span class="section-number">7.3.1. </span>実装例<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">primes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">numbers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>   <span class="c1"># すでに消されている場合は無視する</span>
+    <span class="k">return</span> <span class="n">primes</span>
+</pre></div>
+</div>
+<p>removeを何度も使用すると計算時間が長くなり効率的でない．
+removeで指定した数字を探すためにリスト内の要素を全て調べ上げ，さらにリストの長さを短くするとコンピュータ上のデータの位置の取り直しが行われる．</p>
+<p><code class="docutils literal notranslate"><span class="pre">numbers</span></code>のリストの何番目の要素が素数かを判定するためのリスト<code class="docutils literal notranslate"><span class="pre">is_prime</span></code>を使用することで，リストの長さを変えずにアルゴリズムを実行でき，計算時間が長くなるのを防げる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">is_prime</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">is_prime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_prime</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># </span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># √nまで調べれば十分</span>
+        <span class="k">if</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+                <span class="c1"># 2乗より大きい範囲で倍数を消せば十分</span>
+                <span class="n">is_prime</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="c1"># iを2からnまで繰り返すが（for i in range(2, n+1)），iが素数のとき（is_prime[i]がTrue）のときだけiをリストに入れる．</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sieve(100)</span></code> を実行し，100以下の素数を表示せよ．</p></li>
+<li><p>100以下の素数の個数を数え，次の形式で表示せよ：</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>100以下の素数の個数は X 個です。
+</pre></div>
+</div>
+</div>
+<!-- 
+1の出力例
+```text
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+```
+
+2の解答例
+```python
+primes = sieve(100)
+print(f"100以下の素数の個数は{len(primes)}個です。")
+```
+ -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2><span class="section-number">7.4. </span>素因数分解<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><strong>素因数分解</strong>：整数<span class="math notranslate nohighlight">\(n\)</span>を素数の積に分解する．</p>
+<p>例：</p>
+<ul class="simple">
+<li><p>12 → 2 × 2 × 3</p></li>
+<li><p>60 → 2 × 2 × 3 × 5</p></li>
+</ul>
+<section id="id8">
+<h3><span class="section-number">7.4.1. </span>実装例<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">prime_factorize</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">while</span> <span class="n">k</span><span class="o">*</span><span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">n</span> <span class="o">//=</span> <span class="n">k</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">factors</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題1</strong></span></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prime_factorize()</span></code> を使い，整数 360 を素因数分解せよ．</p></li>
+<li><p>上の結果を<code class="docutils literal notranslate"><span class="pre">360</span> <span class="pre">=</span> <span class="pre">2^3</span> <span class="pre">×</span> <span class="pre">3^2</span> <span class="pre">×</span> <span class="pre">5</span></code>のように表示する関数を実装せよ．</p></li>
+</ol>
+</div>
+<!-- 
+出力例：
+`[2, 2, 2, 3, 3, 5]`
+ -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="greatest-common-denominator-gcd">
+<h2><span class="section-number">7.5. </span>最大公約数（greatest common denominator, GCD）<a class="headerlink" href="#greatest-common-denominator-gcd" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h3><span class="section-number">7.5.1. </span>ユークリッドの互除法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>最大公約数は次の定理に基づくアルゴリズムで求められる．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>定理</strong></p>
+<p>2つの自然数<span class="math notranslate nohighlight">\(a,b\)</span>（<span class="math notranslate nohighlight">\(a&gt;b\)</span>）に対し，<span class="math notranslate nohighlight">\(a\)</span>を<span class="math notranslate nohighlight">\(b\)</span>で割った余りを<span class="math notranslate nohighlight">\(r\)</span>とする．
+このとき，<span class="math notranslate nohighlight">\(a\)</span>と<span class="math notranslate nohighlight">\(b\)</span>の最大公約数は<span class="math notranslate nohighlight">\(b\)</span>と<span class="math notranslate nohighlight">\(r\)</span>の最大公約数に等しい．</p>
+</div>
+<p><span class="math notranslate nohighlight">\(a&gt;b&gt;r\)</span>であるから，<span class="math notranslate nohighlight">\((a,b)\)</span>から<span class="math notranslate nohighlight">\((b,r)\)</span>を求める手続きを繰り返し実施すれば，<span class="math notranslate nohighlight">\(r=0\)</span>すなわち<span class="math notranslate nohighlight">\(b=0\)</span>となって手続きが終了する．
+手続きが終了したタイミングでの<span class="math notranslate nohighlight">\(a\)</span>が最大公約数となる．</p>
+<p>例：
+<span class="math notranslate nohighlight">\(42\)</span>と<span class="math notranslate nohighlight">\(30\)</span>の最大公約数を求める．</p>
+<p><span class="math notranslate nohighlight">\((42,30) \to (30,12) \to (12,6) \to (6,0)\)</span></p>
+<p>であるから，<span class="math notranslate nohighlight">\(42\)</span>と<span class="math notranslate nohighlight">\(30\)</span>の最大公約数は<span class="math notranslate nohighlight">\(6\)</span>である．</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">7.5.2. </span>実装例<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\((a,b)\)</span>から<span class="math notranslate nohighlight">\((b,r)\)</span>，<span class="math notranslate nohighlight">\(r=a\%b\)</span>を得るので</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>とすれば良い．
+この手続きを<span class="math notranslate nohighlight">\(b\)</span>が<span class="math notranslate nohighlight">\(0\)</span>になるまで続ければ良いので</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>としてwhile文のブロックに入れれば良い．
+whileループが終了するときの<span class="math notranslate nohighlight">\(a\)</span>が最大公約数になるから，関数の出力はwhileループの次に<code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">a</span></code>とする．
+従って，関数は次のように実装すれば良い．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span>
+    <span class="k">return</span> <span class="n">a</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(a\)</span>が<span class="math notranslate nohighlight">\(b\)</span>の整数倍になっているような簡単な例となる<span class="math notranslate nohighlight">\((a,b)\)</span>を考え，それについて<code class="docutils literal notranslate"><span class="pre">gcd(a,</span> <span class="pre">b)</span></code>を計算して正しく動作していることを確認せよ．
+（<span class="math notranslate nohighlight">\(a = n \times b\)</span>のとき，<span class="math notranslate nohighlight">\(a\)</span>と<span class="math notranslate nohighlight">\(b\)</span>の最大公約数は<span class="math notranslate nohighlight">\(b\)</span>となる．）</p></li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題2</strong></span></p>
+<ol class="arabic simple">
+<li><p>複数の数の最大公約数を求める関数<code class="docutils literal notranslate"><span class="pre">gcd_list(input_list)</span></code>を実装せよ．</p></li>
+<li><p>実装した<code class="docutils literal notranslate"><span class="pre">gcd_list</span></code>を簡単な例<code class="docutils literal notranslate"><span class="pre">[15,</span> <span class="pre">10,</span> <span class="pre">5]</span></code>に対して使用して，出力が<code class="docutils literal notranslate"><span class="pre">5</span></code>となることを確認せよ．</p></li>
+<li><p>実装した<code class="docutils literal notranslate"><span class="pre">gcd_list</span></code>を使用して<code class="docutils literal notranslate"><span class="pre">[210,</span> <span class="pre">147,</span> <span class="pre">90,</span> <span class="pre">63]</span></code>の最大公約数を求めよ．</p></li>
+</ol>
+</div>
+<!-- # 5. チャレンジ課題（余力のある人へ）
+
+### **チャレンジ1：素因数分解を使って GCD を求める**
+
+両方を素因数分解し，共通部分の積を求めよ．
+
+### **チャレンジ2：LCM（最小公倍数）を求める関数**
+
+最大公約数を使えば
+
+$$
+\text{LCM}(a, b) = \frac{a b}{\gcd(a, b)}
+$$
+
+### **チャレンジ3：1～N の間で最も素因数が多い数を調べる**
+
+例：N=1000 -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2><span class="section-number">7.6. </span>まとめ<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>エラトステネスの篩</strong>で多数の素数を効率よく求められる</p></li>
+<li><p><strong>素因数分解</strong>は試し割りで実装</p></li>
+<li><p><strong>最大公約数</strong>はユークリッドの互除法が最速</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>演習・課題を実施したipynbファイルをWebClassの「第7回課題」より提出してください．</p>
+<p>提出期限は12月1日10:59です．</p>
+</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +765,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="6_file.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>ファイル操作</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,9 +789,28 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 第6回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2. 約数と素数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.1. 約数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.2. 素数</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sieve-of-eratosthenes">7.3. エラトステネスの篩（ふるい）(Sieve of Eratosthenes)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.3.1. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7.4. 素因数分解</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.4.1. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-denominator-gcd">7.5. 最大公約数（greatest common denominator, GCD）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.5.1. ユークリッドの互除法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.5.2. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.6. まとめ</a></li>
+</ul>
   </nav></div>
 
 </div></div>
