@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>9. 数値計算2（数値微分・数値積分） &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/9_calculus';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="8. 数値計算1（2分法・ニュートン法）" href="8_algorithm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,17 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_function.html">5. 関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_file.html">6. ファイル操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_integer.html">7. 整数を扱う計算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_algorithm.html">8. 数値計算1（2分法・ニュートン法）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 数値計算2（数値微分・数値積分）</a></li>
+
 </ul>
 
     </div>
@@ -370,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>数値計算2（数値微分・数値積分）</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,7 +386,27 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">9. 数値計算2（数値微分・数値積分）</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 第8回の復習（2分法・ニュートン法）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation">9.2. 数値微分（numerical differentiation）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-difference">9.2.1. 前進差分（forward difference）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-difference">9.2.2. 後退差分（backward difference）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2.3. 中心差分</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">9.3. 数値積分（numerical integration）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#riemann-sum">9.3.1. 区分求積法（Riemann sum）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">9.3.2. 台形公式（trapezoidal rule）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-rule">9.3.3. シンプソン法（Simpson’s rule）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10. 3. 数値微分・数値積分の注意点</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.1. まとめ</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -392,7 +419,427 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">9. </span>数値計算2（数値微分・数値積分）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：<strong>139572</strong></p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p>数値微分（差分近似）の考え方を理解し，プログラムに実装できる．</p></li>
+<li><p>数値積分（区分求積法，台形公式，シンプソン法）の考え方を理解し，プログラムに実装できる．</p></li>
+<li><p>微積分の「近似」の考え方を，コンピュータの計算として理解する．</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">9_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+例：<code class="docutils literal notranslate"><span class="pre">9_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<hr class="docutils" />
+<section id="id2">
+<h2><span class="section-number">9.1. </span>第8回の復習（2分法・ニュートン法）<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>逐次近似法</strong>：繰り返しで真の解に近い解（近似解）を得る手法．</p></li>
+<li><p>繰り返しの終了条件として誤差許容値<code class="docutils literal notranslate"><span class="pre">eps</span></code>を用いる．</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>方法</p></th>
+<th class="head"><p>収束速度</p></th>
+<th class="head"><p>必要条件</p></th>
+<th class="head"><p>長所</p></th>
+<th class="head"><p>短所</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>2分法</strong></p></td>
+<td><p>遅い（線形収束）</p></td>
+<td><p>区間[a,b]で符号が異なる</p></td>
+<td><p>必ず収束，安定</p></td>
+<td><p>収束が遅い</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ニュートン法</strong></p></td>
+<td><p>非常に速い（二次収束）</p></td>
+<td><p>導関数が必要，初期値が重要</p></td>
+<td><p>収束が速い</p></td>
+<td><p>初期値が悪いと発散</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題1</strong></span></p>
+<p>次の方程式の解を1つ求めよ．区間の設定は適宜調整せよ．
+適切な区間を探す過程で行った計算・コードは残しておくこと．</p>
+<div class="math notranslate nohighlight">
+\[
+\cos x - x = 0
+\]</div>
+<p>ただし<span class="math notranslate nohighlight">\(\cos\)</span>は<code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールをインポートして使用する．
+使用例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p><span style="color:red"><strong>課題1の解答例</strong></span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2分法を使えません（符号が同じです）&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;反復回数</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">回&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>に対する出力は</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>反復回数20回
+0.7390847206115723
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題2</strong></span></p>
+<p>次の方程式の解を1つ求めよ．初期値の設定は適宜調整せよ．
+適切な初期値を探す過程で行った計算・コードは残しておくこと．</p>
+<div class="math notranslate nohighlight">
+\[
+\cos x - x = 0
+\]</div>
+</div>
+<p><span style="color:red"><strong>課題2の解答例</strong></span></p>
+<p>Newton法では導関数を知る必要があるため，手計算で求めておく．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;反復回数</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">回&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">x_new</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>に対する出力は</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>反復回数3回
+0.7390851332151607
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題3</strong></span></p>
+<p>次の方程式について考える．</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = \dfrac{2-x}{x^2}
+\]</div>
+<ol class="arabic simple">
+<li><p>2分法やニュートン法を用いて方程式の解を1つ求めよ．（どちらを使用しても良い）</p></li>
+<li><p>ニュートン法を用いて方程式の解を求めるにあたり，近似解が得られずに発散する初期値を1つ見つけよ．</p></li>
+<li><p>近似解が得られずに発散する状況の特徴を述べよ．（正答でなくとも話の筋が通っていれば加点する）</p></li>
+</ol>
+</div>
+<p><span style="color:red"><strong>課題3の解答例</strong></span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;反復回数</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">回&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">x_new</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p><strong>問1の解答例</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>出力：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1.3333333333333333
+1.6666666666666665
+1.9047619047619047
+1.9913419913419914
+1.9999253619943276
+1.999999994429376
+反復回数6回
+</pre></div>
+</div>
+<p><strong>問2の解答例</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>これの出力は</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>20.0
+42.5
+87.20779220779221
+176.51172925716395
+355.06983217271306
+712.1624518346002
+1426.3362005121485
+2854.6780255735403
+5711.358857496984
+11424.719116693106
+22851.438933867496
+45704.87821788364
+91411.75661081861
+182825.51330915716
+365653.02666207287
+731308.0533460246
+1462618.1067029885
+2925238.2134114467
+5850478.426825628
+11700958.853652623
+23401919.70730593
+46803841.414612204
+93607684.82922459
+187215371.65844926
+374430745.3168986
+...
+</pre></div>
+</div>
+<p>となり，繰り返すほど値が大きくなる様子が見られる．</p>
+<p><strong>問3の解答例</strong></p>
+<p><span class="math notranslate nohighlight">\(\frac{2-x}{x^2}\)</span>のグラフは次のようになる．</p>
+<p><img alt="課題3のグラフ" src="../_images/8_ex3.png" /></p>
+<p>ここで初期値を3より大きい値で取れば，Newton法に従うと繰り返し処理の度に<span class="math notranslate nohighlight">\(x\)</span>軸との交点は<span class="math notranslate nohighlight">\(x\)</span>の値が大きい方へと推移していく．</p>
+</section>
+<hr class="docutils" />
+<section id="numerical-differentiation">
+<h2><span class="section-number">9.2. </span>数値微分（numerical differentiation）<a class="headerlink" href="#numerical-differentiation" title="Link to this heading">#</a></h2>
+<p>関数<span class="math notranslate nohighlight">\(f\)</span>のある点<span class="math notranslate nohighlight">\(x\)</span>における微分係数は，定義より</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
+\]</div>
+<p>と定められる．
+コンピュータでは極限は扱えないので，十分小さな<span class="math notranslate nohighlight">\(h\)</span>を使って近似する．</p>
+<section id="forward-difference">
+<h3><span class="section-number">9.2.1. </span>前進差分（forward difference）<a class="headerlink" href="#forward-difference" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(f(x)\)</span>の次の値（前進方向）を用いて微分の近似を計算する．</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x) \approx \frac{f(x+h) - f(x)}{h}
+\]</div>
+<p>これを次のようにプログラムとして実装できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diff_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+</pre></div>
+</div>
+</section>
+<section id="backward-difference">
+<h3><span class="section-number">9.2.2. </span>後退差分（backward difference）<a class="headerlink" href="#backward-difference" title="Link to this heading">#</a></h3>
+<p>関数<span class="math notranslate nohighlight">\(f\)</span>が点<span class="math notranslate nohighlight">\(x\)</span>で微分可能であれば，</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} = \lim_{h \to 0} \frac{f(x) - f(x-h)}{h}
+\]</div>
+<p>である．
+右辺は前の値（後退方向）を用いた微分係数であり，これで微分係数を近似すると次のようになる．</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x) \approx \frac{f(x) - f(x-h)}{h}
+\]</div>
+<p>これを次のようにプログラムとして実装できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diff_backward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">9.2.3. </span>中心差分<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(f(x)\)</span>の前進方向と後退方向の両方向から<span class="math notranslate nohighlight">\(h \to 0\)</span>の極限を考えれば</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x-h)}{2h}
+\]</div>
+<p>とできる．
+この右辺を用いて近似すると次のようになる．</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}
+\]</div>
+<p>これを次のようにプログラムとして実装できる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diff_center</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1：数値微分</strong></p>
+<ol class="arabic">
+<li><p>関数</p>
+<div class="math notranslate nohighlight">
+\[
+   f(x) = x^2
+   \]</div>
+<p>の点<span class="math notranslate nohighlight">\(x=3\)</span>における微分係数の正確な値 <span class="math notranslate nohighlight">\(f'(3) = 6\)</span> と，
+数値微分（<strong>前進差分</strong>・<strong>中心差分</strong>）で得られる値を比較せよ．</p>
+</li>
+<li><p>関数</p>
+<div class="math notranslate nohighlight">
+\[
+   f(x) = \sin x
+   \]</div>
+<p>の導関数 <span class="math notranslate nohighlight">\(f'(x) = \cos x\)</span> を利用し，<span class="math notranslate nohighlight">\(h\)</span>を小さくすると数値微分の誤差はどう変化するか調べよ．</p>
+</li>
+</ol>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="numerical-integration">
+<h2><span class="section-number">9.3. </span>数値積分（numerical integration）<a class="headerlink" href="#numerical-integration" title="Link to this heading">#</a></h2>
+<p>定積分</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x)dx
+\]</div>
+<p>の値を近似的に求める方法．</p>
+<section id="riemann-sum">
+<h3><span class="section-number">9.3.1. </span>区分求積法（Riemann sum）<a class="headerlink" href="#riemann-sum" title="Link to this heading">#</a></h3>
+<p>区間<span class="math notranslate nohighlight">\([a,b]\)</span>を<span class="math notranslate nohighlight">\(n\)</span>等分し，各小区間で矩形の面積を足し合わせる：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_riemann</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">width</span>  <span class="c1"># 左端の値</span>
+        <span class="n">area</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">width</span>
+    <span class="k">return</span> <span class="n">area</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="trapezoidal-rule">
+<h3><span class="section-number">9.3.2. </span>台形公式（trapezoidal rule）<a class="headerlink" href="#trapezoidal-rule" title="Link to this heading">#</a></h3>
+<p>各区間を台形で近似する．</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x),dx \approx \frac{h}{2} \left(
+f(x_0) + 2f(x_1) + \cdots + 2f(x_{n-1}) + f(x_n)
+\right)
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">h</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">-</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>→ 区分求積法より精度が高い．</p>
+</section>
+<section id="simpson-s-rule">
+<h3><span class="section-number">9.3.3. </span>シンプソン法（Simpson’s rule）<a class="headerlink" href="#simpson-s-rule" title="Link to this heading">#</a></h3>
+<p>2次関数で近似する高度な方法．
+偶数分割が必要．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_simpson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># n は偶数でないといけない</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">h</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">s</span> <span class="o">-</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>→ 精度が非常に高い．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2：数値積分</strong></p>
+<ol class="arabic">
+<li><p>次の積分の正確な値（手計算または電卓で）と，<br />
+区分求積法・台形公式・シンプソン法の結果を比較せよ：</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_0^1 x^2\,dx = \frac{1}{3}
+   \]</div>
+</li>
+<li><p>関数</p>
+<div class="math notranslate nohighlight">
+\[
+   f(x) = \sin x
+   \]</div>
+<p>の積分</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_0^\pi \sin x dx = 2
+   \]</div>
+<p>を各数値積分で求め，誤差の違いを調べよ．</p>
+</li>
+<li><p>分割数 <span class="math notranslate nohighlight">\(n\)</span> を変えたときの誤差の変化を調べ，<br />
+どの方法が最も効率的か考察せよ．</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1><span class="section-number">10. </span>3. 数値微分・数値積分の注意点<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>(h) や分割数 (n) を<strong>小さくすれば良いわけではない</strong>
+→ 浮動小数点誤差が増える</p></li>
+<li><p>求めたい精度に応じて <strong>バランスを取る</strong> ことが大切</p></li>
+<li><p>シンプソン法のように「数式として賢い」方法は少ない計算量で高精度を実現できる</p></li>
+</ul>
+<hr class="docutils" />
+<section id="id5">
+<h2><span class="section-number">10.1. </span>まとめ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>微分・積分はコンピュータでは「近似」でしか求められない</p></li>
+<li><p>数値微分は <strong>前進差分・中心差分</strong> が基本</p></li>
+<li><p>数値積分は <strong>台形公式・シンプソン法</strong> が代表的</p></li>
+<li><p>誤差を意識した計算が重要</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>演習1・演習2を実施したipynbファイルをWebClassの「第9回課題」より提出してください．</p>
+<p>提出期限は <strong>12月15日 10:59</strong> です．</p>
+</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +870,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="8_algorithm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>数値計算1（2分法・ニュートン法）</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,7 +894,27 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">9. 数値計算2（数値微分・数値積分）</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 第8回の復習（2分法・ニュートン法）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation">9.2. 数値微分（numerical differentiation）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-difference">9.2.1. 前進差分（forward difference）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-difference">9.2.2. 後退差分（backward difference）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2.3. 中心差分</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">9.3. 数値積分（numerical integration）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#riemann-sum">9.3.1. 区分求積法（Riemann sum）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">9.3.2. 台形公式（trapezoidal rule）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-rule">9.3.3. シンプソン法（Simpson’s rule）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10. 3. 数値微分・数値積分の注意点</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.1. まとめ</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

@@ -8,7 +8,7 @@
 準備
 1. anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．
 2. `Document（書類）/Fresh`フォルダを開き，新しいノートブックを作成する．
-3. ファイル名を`6_{学籍番号}_{氏名}.ipynb`に変更する．
+3. ファイル名を`7_{学籍番号}_{氏名}.ipynb`に変更する．
    　例：`7_SI25999_香川渓一郎.ipynb`
 
 ## 第6回の復習
@@ -16,21 +16,21 @@
 - list, dict, strごとの**メソッド**
 - **ファイル操作**
 
-  - 書き込み
+    - 書き込み
 
-  ```python
-  with open("message.txt", "w") as f:
-    f.write("1行目\n")
-    f.write("2行目\n")
-  ```
+    ```python
+    with open("message.txt", "w") as f:
+        f.write("1行目\n")
+        f.write("2行目\n")
+    ```
 
-  - 読み取り
+    - 読み取り
 
-  ```python
-  with open("message.txt", "r") as f:
-    text = f.read()
-    print(text)
-  ```
+    ```python
+    with open("message.txt", "r") as f:
+        text = f.read()
+        print(text)
+    ```
 
 - **pandas**を用いたCSVファイルの読み書き
 - 条件抽出（`df[df["数学"] >= 80]`）
@@ -69,7 +69,7 @@ def is_prime(n):
 1. 上で定義した素数判定の関数`is_prime`を使い，1～100までに存在する全ての素数を表示せよ．
 2. 整数$n$に対し，$n$の全ての約数をリストで返す関数`divisors`を実装せよ．
 ```
-<!-- 
+
 解答例1-1
 ```python
 # 1～100 の素数をすべて表示
@@ -87,7 +87,7 @@ def divisors(n):
             divs.append(k)
     return divs
 ```
- -->
+
 ---
 
 ## エラトステネスの篩（ふるい）(Sieve of Eratosthenes)
@@ -143,6 +143,13 @@ def sieve(n):
                 pass   # すでに消されている場合は無視する
     return primes
 ```
+<!-- 
+```{tip}
+**余談**
+
+Cloudflareの大規模障害は，エラー処理が甘かったことが原因．
+```
+ -->
 
 ```{tip}
 **余談**
@@ -175,7 +182,7 @@ def sieve(n):
 ```text
 100以下の素数の個数は X 個です。
 ```
-<!-- 
+
 1の出力例
 ```text
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
@@ -186,7 +193,7 @@ def sieve(n):
 primes = sieve(100)
 print(f"100以下の素数の個数は{len(primes)}個です。")
 ```
- -->
+
 ---
 
 ## 素因数分解

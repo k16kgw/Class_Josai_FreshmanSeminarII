@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>8. 数値計算1（2分法・ニュートン法） &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/8_algorithm';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="7. 整数を扱う計算" href="7_integer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,15 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_function.html">5. 関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_file.html">6. ファイル操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_integer.html">7. 整数を扱う計算</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. 数値計算1（2分法・ニュートン法）</a></li>
 </ul>
 
     </div>
@@ -370,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>数値計算1（2分法・ニュートン法）</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,9 +384,25 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 第7回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2. 代数方程式とその根（解）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.1. 解の公式が存在しない方程式</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method">8.3. 2分法（bisection method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.3.1. 手順</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.3.2. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">8.4. ニュートン法（Newton’s method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.4.1. 手順</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.4.2. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.5. 2分法とニュートン法の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.6. まとめ</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -392,7 +413,423 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">8. </span>数値計算1（2分法・ニュートン法）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：<strong>483915</strong></p>
+<p>到達目標</p>
+<!-- - **代数方程式**とは何かを理解する -->
+<ul class="simple">
+<li><p>解の公式のない方程式を <strong>数値的に解く方法</strong> を学ぶ</p></li>
+<li><p><strong>逐次近似法</strong>（反復によって解に近づく手法）の考え方を習得する</p></li>
+<li><p><strong>2分法</strong>および<strong>ニュートン法</strong>をプログラムで実装できるようになる</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">8_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+例：<code class="docutils literal notranslate"><span class="pre">8_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<section id="id2">
+<h2><span class="section-number">8.1. </span>第7回の復習<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>整数の計算を行うアルゴリズムをプログラムに実装した．</p></li>
+<li><p><strong>エラトステネスの篩</strong>，<strong>最大公約数</strong>など．</p></li>
+<li><p>アルゴリズムの考え方：</p>
+<ol class="arabic simple">
+<li><p>問題の性質を理解する</p></li>
+<li><p>手順（アルゴリズム）を言葉で書く</p></li>
+<li><p>Pythonの構文で表現する（for, while, 条件分岐）</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題1</strong></span></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prime_factorize()</span></code> を使い，整数 360 を素因数分解せよ．</p></li>
+<li><p>上の結果を<code class="docutils literal notranslate"><span class="pre">360</span> <span class="pre">=</span> <span class="pre">2^3</span> <span class="pre">×</span> <span class="pre">3^2</span> <span class="pre">×</span> <span class="pre">5</span></code>のように表示する関数を実装せよ．</p></li>
+</ol>
+</div>
+<p>解答例1-2</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">format_factorization</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># 素因数のリストを得る</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">prime_factorize</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># 出現回数を数える（辞書を使う）</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># 2^3, 3^2, 5 のような文字列を作る</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">^</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># &quot; × &quot; でつなぐ</span>
+    <span class="n">factor_str</span> <span class="o">=</span> <span class="s2">&quot; × &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+    <span class="c1"># 全体を「n = ...」の形にして出力する</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">factor_str</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題2</strong></span></p>
+<ol class="arabic simple">
+<li><p>複数の数の最大公約数を求める関数<code class="docutils literal notranslate"><span class="pre">gcd_list(input_list)</span></code>を実装せよ．</p></li>
+<li><p>実装した<code class="docutils literal notranslate"><span class="pre">gcd_list</span></code>を簡単な例<code class="docutils literal notranslate"><span class="pre">[15,</span> <span class="pre">10,</span> <span class="pre">5]</span></code>に対して使用して，出力が<code class="docutils literal notranslate"><span class="pre">5</span></code>となることを確認せよ．</p></li>
+<li><p>実装した<code class="docutils literal notranslate"><span class="pre">gcd_list</span></code>を使用して<code class="docutils literal notranslate"><span class="pre">[210,</span> <span class="pre">147,</span> <span class="pre">90,</span> <span class="pre">63]</span></code>の最大公約数を求めよ．</p></li>
+</ol>
+</div>
+<p>解答例2-1</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gcd_list</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+    <span class="c1"># 最初の要素を初期値にする</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">input_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># 2番目以降の要素に対して，順に最大公約数を計算する</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2><span class="section-number">8.2. </span>代数方程式とその根（解）<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>2次方程式</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 + x - 2 = 0
+\]</div>
+<p>の解は解の公式に当てはめれば求まる．</p>
+<div class="math notranslate nohighlight">
+\[
+ax^2 + bx + c = 0
+\]</div>
+<p>の解は</p>
+<div class="math notranslate nohighlight">
+\[
+x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]</div>
+<p>で与えられる．</p>
+<p>幾何学的に理解をすれば，<span class="math notranslate nohighlight">\(y=\text{左辺}\)</span>のグラフと<span class="math notranslate nohighlight">\(y=0\)</span>のグラフとの交点が解となる．</p>
+<p><img alt="graph" src="../_images/graph.png" /></p>
+</div>
+<section id="id4">
+<h3><span class="section-number">8.2.1. </span>解の公式が存在しない方程式<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>一般に次の定理が知られている．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>代数学の基本定理</strong></p>
+<p>係数が複素数の<span class="math notranslate nohighlight">\(n\)</span>次方程式（<span class="math notranslate nohighlight">\(n \geq 1\)</span>）は複素数の範囲で解を持つ．</p>
+</div>
+<p>しかし，解の公式があるかは別の問題である．
+解の公式があるかどうかについて，次の定理が知られている．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>アーベル・ルフィニ定理</strong> (Abel–Ruffini theorem)</p>
+<p><span class="math notranslate nohighlight">\(5\)</span>以上の任意の整数<span class="math notranslate nohighlight">\(n\)</span>に対して，一般の<span class="math notranslate nohighlight">\(n\)</span>次方程式を代数的に解く方法は存在しない．</p>
+</div>
+<p>例えば次のような方程式には<strong>解の公式が存在しない</strong>．</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x^5 + x + 1 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x = \cos x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\dfrac{x}{4} = \log x\)</span></p></li>
+</ul>
+<p>このような解の公式が存在しない方程式に対して，解の情報を得る一つの手段として数値的に近似解を求める方法がある．</p>
+<p>そこで一般に方程式</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = 0
+\]</div>
+<p>の解（根）を求めることを考える．</p>
+<p>例：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x^5 + x + 1 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x - \cos x = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\dfrac{x}{4} - \log x = 0\)</span></p></li>
+</ul>
+<p>これらを繰り返し計算（<strong>逐次近似法</strong>）によって近似的に解く．
+逐次近似法として<strong>2分法</strong>と<strong>ニュートン法</strong>があげられる．</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bisection-method">
+<h2><span class="section-number">8.3. </span>2分法（bisection method）<a class="headerlink" href="#bisection-method" title="Link to this heading">#</a></h2>
+<p>ある2つの実数<span class="math notranslate nohighlight">\(a,b\)</span>に対して<span class="math notranslate nohighlight">\(f(a)\)</span>と<span class="math notranslate nohighlight">\(f(b)\)</span>の符号が異なるとき，その間に必ず根がある（中間値の定理）．</p>
+<section id="id5">
+<h3><span class="section-number">8.3.1. </span>手順<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>区間<span class="math notranslate nohighlight">\([a, b]\)</span>の中点<span class="math notranslate nohighlight">\(m = (a + b) / 2\)</span>を求める．</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(m)\)</span>の符号（<span class="math notranslate nohighlight">\(+\)</span>/<span class="math notranslate nohighlight">\(-\)</span>）を調べる．</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(m)\)</span>と<span class="math notranslate nohighlight">\(f(a)\)</span>の符号が一致する場合，<span class="math notranslate nohighlight">\(m\)</span>を<span class="math notranslate nohighlight">\(a\)</span>に置き換える．または<span class="math notranslate nohighlight">\(f(m)\)</span>と<span class="math notranslate nohighlight">\(f(b)\)</span>の符号が一致する場合，<span class="math notranslate nohighlight">\(m\)</span>を<span class="math notranslate nohighlight">\(b\)</span>に置き換える．</p></li>
+<li><p>置き換えた<span class="math notranslate nohighlight">\((a,b)\)</span>に対して1〜3を繰り返す．</p></li>
+</ol>
+</section>
+<section id="id6">
+<h3><span class="section-number">8.3.2. </span>実装例<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>ここでは例として</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = x^2 - 3 = 0
+\]</div>
+<p>の根（<span class="math notranslate nohighlight">\(\sqrt{3}\)</span>）を求める．</p>
+<p>関数<span class="math notranslate nohighlight">\(f\)</span>を定義する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>2分法を関数として実装する．</p>
+<ol class="arabic" start="0">
+<li><p>まず前提として区間<span class="math notranslate nohighlight">\([a, b]\)</span>の端点<span class="math notranslate nohighlight">\(f(a)\)</span>と<span class="math notranslate nohighlight">\(f(b)\)</span>の符号が異なることを確認する．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2分法を使えません（符号が同じです）&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</li>
+<li><p>区間<span class="math notranslate nohighlight">\([a, b]\)</span>の中点<span class="math notranslate nohighlight">\(m = (a + b) / 2\)</span>を求める．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(f(m)\)</span>の符号（<span class="math notranslate nohighlight">\(+\)</span>/<span class="math notranslate nohighlight">\(-\)</span>）を調べる．</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(m)\)</span>と<span class="math notranslate nohighlight">\(f(a)\)</span>の符号が一致する場合，<span class="math notranslate nohighlight">\(m\)</span>を<span class="math notranslate nohighlight">\(a\)</span>に置き換える．または<span class="math notranslate nohighlight">\(f(m)\)</span>と<span class="math notranslate nohighlight">\(f(b)\)</span>の符号が一致する場合，<span class="math notranslate nohighlight">\(m\)</span>を<span class="math notranslate nohighlight">\(b\)</span>に置き換える．
+場合分けなのでif文として実装する．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
+</pre></div>
+</div>
+</li>
+<li><p>置き換えた<span class="math notranslate nohighlight">\((a,b)\)</span>に対して1〜3を繰り返す．
+繰り返しの終了条件は，区間<span class="math notranslate nohighlight">\([a,b]\)</span>の幅が一定値より小さくなったときとする．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>これらをまとめると次のようになる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2分法を使えません（符号が同じです）&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<p>上の2分法を使って，方程式</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 - 3 = 0
+\]</div>
+<p>の解を求めよ（区間<span class="math notranslate nohighlight">\([1,2]\)</span>を与えると良い）．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<p>関数<code class="docutils literal notranslate"><span class="pre">bisection</span></code>を書き換え，終了条件が満たされるまでに繰り返された回数をprintするようにせよ．
+このとき，<span class="math notranslate nohighlight">\(f(x) = x^2 - 3\)</span>，区間<span class="math notranslate nohighlight">\([1,2]\)</span>としたときに繰り返された回数を答えよ．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題1</strong></span></p>
+<p>次の方程式の解を1つ求めよ．区間の設定は適宜調整せよ．
+適切な区間を探す過程で行った計算・コードは残しておくこと．</p>
+<div class="math notranslate nohighlight">
+\[
+\cos x - x = 0
+\]</div>
+<p>ただし<span class="math notranslate nohighlight">\(\cos\)</span>は<code class="docutils literal notranslate"><span class="pre">math</span></code>モジュールをインポートして使用する．
+使用例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<!-- ```python
+import math
+def g(x):
+    return math.cos(x) - x
+``` -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="newton-s-method">
+<h2><span class="section-number">8.4. </span>ニュートン法（Newton’s method）<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h2>
+<p>ニュートン法はニュートン・ラフソン法（Newton–Raphson method）とも呼ばれ，適切な初期値に対しては2分法より速く近似解を得ることのできる反復法である．</p>
+<p>※ 適切な初期値でないと，近似解を得られずに発散することがあることに注意する．</p>
+<section id="id7">
+<h3><span class="section-number">8.4.1. </span>手順<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(i\)</span>ステップ目の<span class="math notranslate nohighlight">\(x\)</span>を<span class="math notranslate nohighlight">\(x_i\)</span>と表すこととする．</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(n\)</span>ステップ目の<span class="math notranslate nohighlight">\(x\)</span>に対して，次に従って<span class="math notranslate nohighlight">\(x\)</span>を更新する．</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+    \]</div>
+</li>
+<li><p>更新した<span class="math notranslate nohighlight">\(x\)</span>に対して，上を繰り返す．</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>例</strong></p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = x^2 - 3,\quad f'(x) = 2x
+\]</div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">8.4.2. </span>実装例<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>関数<span class="math notranslate nohighlight">\(f\)</span>とその導関数を実装する．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(n\)</span>ステップ目の<span class="math notranslate nohighlight">\(x\)</span>に対して，次に従って<span class="math notranslate nohighlight">\(x\)</span>を更新する．</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+    \]</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>1を繰り返す．
+繰り返しの終了条件は，一定回数繰り返しを行った場合か，更新した<span class="math notranslate nohighlight">\(x\)</span>と更新前の<span class="math notranslate nohighlight">\(x\)</span>との差が一定値より小さくなったときとする．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">x_new</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>これらをまとめると次のようになる．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x_new</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<p>上のニュートン法を使って，方程式</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 - 3 = 0
+\]</div>
+<p>の解を求めよ（初期値は<span class="math notranslate nohighlight">\(2\)</span>とする）．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習4</strong></p>
+<p>関数<code class="docutils literal notranslate"><span class="pre">newton</span></code>を書き換え，終了条件が満たされるまでに繰り返された回数をprintするようにせよ．
+ここで，<span class="math notranslate nohighlight">\(f(x) = x^2 - 3\)</span>，初期値<span class="math notranslate nohighlight">\(2\)</span>としたときに繰り返された回数を答えよ．</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題2</strong></span></p>
+<p>次の方程式の解を1つ求めよ．初期値の設定は適宜調整せよ．
+適切な初期値を探す過程で行った計算・コードは残しておくこと．</p>
+<div class="math notranslate nohighlight">
+\[
+\cos x - x = 0
+\]</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題3</strong></span></p>
+<p>次の方程式について考える．</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = \dfrac{2-x}{x^2}
+\]</div>
+<ol class="arabic simple">
+<li><p>2分法やニュートン法を用いて方程式の解を1つ求めよ．（どちらを使用しても良い）</p></li>
+<li><p>ニュートン法を用いて方程式の解を求めるにあたり，近似解が得られずに発散する初期値を1つ見つけよ．</p></li>
+<li><p>近似解が得られずに発散する状況の特徴を述べよ．（正答でなくとも話の筋が通っていれば加点する）</p></li>
+</ol>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2><span class="section-number">8.5. </span>2分法とニュートン法の比較<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>方法</p></th>
+<th class="head"><p>収束速度</p></th>
+<th class="head"><p>必要条件</p></th>
+<th class="head"><p>長所</p></th>
+<th class="head"><p>短所</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>2分法</strong></p></td>
+<td><p>遅い（線形収束）</p></td>
+<td><p>区間[a,b]で符号が異なる</p></td>
+<td><p>必ず収束，安定</p></td>
+<td><p>収束が遅い</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ニュートン法</strong></p></td>
+<td><p>非常に速い（二次収束）</p></td>
+<td><p>導関数が必要，初期値が重要</p></td>
+<td><p>収束が速い</p></td>
+<td><p>初期値が悪いと発散</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2><span class="section-number">8.6. </span>まとめ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>解の公式がない方程式は，数値計算を使って解く</p></li>
+<li><p>逐次近似法：反復計算により解に近づく手法</p></li>
+<li><p><strong>2分法</strong>：必ず収束するが遅い</p></li>
+<li><p><strong>ニュートン法</strong>：速いが初期値と導関数が必要</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>演習1〜4及び課題1〜3を実施したipynbファイルをWebClassの「第8回課題」より提出してください．</p>
+<p>提出期限は12月8日10:59です．</p>
+</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +860,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="7_integer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>整数を扱う計算</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,9 +884,25 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 第7回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2. 代数方程式とその根（解）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.1. 解の公式が存在しない方程式</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bisection-method">8.3. 2分法（bisection method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.3.1. 手順</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.3.2. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">8.4. ニュートン法（Newton’s method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.4.1. 手順</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.4.2. 実装例</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.5. 2分法とニュートン法の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">8.6. まとめ</a></li>
+</ul>
   </nav></div>
 
 </div></div>

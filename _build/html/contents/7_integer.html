@@ -399,11 +399,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-denominator-gcd">7.5. 最大公約数（greatest common denominator, GCD）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.5.1. ユークリッドの互除法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.5.2. 実装例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-algorithm">7.5.1. ユークリッドの互除法（Euclidean algorithm）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.5.2. 実装例</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.6. まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.6. まとめ</a></li>
 </ul>
             </nav>
         </div>
@@ -426,7 +426,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
-<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">6_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">7_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
 　例：<code class="docutils literal notranslate"><span class="pre">7_SI25999_香川渓一郎.ipynb</span></code></p></li>
 </ol>
 <section id="id2">
@@ -438,16 +438,16 @@ document.write(`
 <li><p>書き込み</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;1行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;2行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;1行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;2行目</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>読み取り</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;message.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-  <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -506,6 +506,7 @@ document.write(`
 </div>
 </section>
 </section>
+<hr class="docutils" />
 <section id="sieve-of-eratosthenes">
 <h2><span class="section-number">7.3. </span>エラトステネスの篩（ふるい）(Sieve of Eratosthenes)<a class="headerlink" href="#sieve-of-eratosthenes" title="Link to this heading">#</a></h2>
 <p>素数を大量に求める高速なアルゴリズム</p>
@@ -558,7 +559,17 @@ document.write(`
     <span class="k">return</span> <span class="n">primes</span>
 </pre></div>
 </div>
-<p>removeを何度も使用すると計算時間が長くなり効率的でない．
+<!-- 
+```{tip}
+**余談**
+
+Cloudflareの大規模障害は，エラー処理が甘かったことが原因．
+```
+ -->
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>余談</strong></p>
+<p>上のコードはremoveを何度も使用することにより計算時間が長くなり効率的でない．
 removeで指定した数字を探すためにリスト内の要素を全て調べ上げ，さらにリストの長さを短くするとコンピュータ上のデータの位置の取り直しが行われる．</p>
 <p><code class="docutils literal notranslate"><span class="pre">numbers</span></code>のリストの何番目の要素が素数かを判定するためのリスト<code class="docutils literal notranslate"><span class="pre">is_prime</span></code>を使用することで，リストの長さを変えずにアルゴリズムを実行でき，計算時間が長くなるのを防げる．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sieve</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -574,6 +585,7 @@ removeで指定した数字を探すためにリスト内の要素を全て調�
     <span class="c1"># iを2からnまで繰り返すが（for i in range(2, n+1)），iが素数のとき（is_prime[i]がTrue）のときだけiをリストに入れる．</span>
 </pre></div>
 </div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>演習2</strong></p>
@@ -585,18 +597,15 @@ removeで指定した数字を探すためにリスト内の要素を全て調�
 </pre></div>
 </div>
 </div>
-<!-- 
-1の出力例
-```text
-[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
-```
-
-2の解答例
-```python
-primes = sieve(100)
-print(f"100以下の素数の個数は{len(primes)}個です。")
-```
- -->
+<p>1の出力例</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+</pre></div>
+</div>
+<p>2の解答例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">primes</span> <span class="o">=</span> <span class="n">sieve</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;100以下の素数の個数は</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span><span class="si">}</span><span class="s2">個です。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -643,8 +652,8 @@ print(f"100以下の素数の個数は{len(primes)}個です。")
 <hr class="docutils" />
 <section id="greatest-common-denominator-gcd">
 <h2><span class="section-number">7.5. </span>最大公約数（greatest common denominator, GCD）<a class="headerlink" href="#greatest-common-denominator-gcd" title="Link to this heading">#</a></h2>
-<section id="id9">
-<h3><span class="section-number">7.5.1. </span>ユークリッドの互除法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="euclidean-algorithm">
+<h3><span class="section-number">7.5.1. </span>ユークリッドの互除法（Euclidean algorithm）<a class="headerlink" href="#euclidean-algorithm" title="Link to this heading">#</a></h3>
 <p>最大公約数は次の定理に基づくアルゴリズムで求められる．</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -652,16 +661,16 @@ print(f"100以下の素数の個数は{len(primes)}個です。")
 <p>2つの自然数<span class="math notranslate nohighlight">\(a,b\)</span>（<span class="math notranslate nohighlight">\(a&gt;b\)</span>）に対し，<span class="math notranslate nohighlight">\(a\)</span>を<span class="math notranslate nohighlight">\(b\)</span>で割った余りを<span class="math notranslate nohighlight">\(r\)</span>とする．
 このとき，<span class="math notranslate nohighlight">\(a\)</span>と<span class="math notranslate nohighlight">\(b\)</span>の最大公約数は<span class="math notranslate nohighlight">\(b\)</span>と<span class="math notranslate nohighlight">\(r\)</span>の最大公約数に等しい．</p>
 </div>
-<p><span class="math notranslate nohighlight">\(a&gt;b&gt;r\)</span>であるから，<span class="math notranslate nohighlight">\((a,b)\)</span>から<span class="math notranslate nohighlight">\((b,r)\)</span>を求める手続きを繰り返し実施すれば，<span class="math notranslate nohighlight">\(r=0\)</span>すなわち<span class="math notranslate nohighlight">\(b=0\)</span>となって手続きが終了する．
+<p><span class="math notranslate nohighlight">\(a&gt;b&gt;r\)</span>であるから，<span class="math notranslate nohighlight">\((a,b)\)</span>から<span class="math notranslate nohighlight">\((b,r)\)</span>を求めて<span class="math notranslate nohighlight">\((b,r)\)</span>を新たな<span class="math notranslate nohighlight">\((a,b)\)</span>とし，この手続きを繰り返し実施すれば，<span class="math notranslate nohighlight">\(r=0\)</span>すなわち<span class="math notranslate nohighlight">\(b=0\)</span>となって手続きが終了する．
 手続きが終了したタイミングでの<span class="math notranslate nohighlight">\(a\)</span>が最大公約数となる．</p>
 <p>例：
 <span class="math notranslate nohighlight">\(42\)</span>と<span class="math notranslate nohighlight">\(30\)</span>の最大公約数を求める．</p>
 <p><span class="math notranslate nohighlight">\((42,30) \to (30,12) \to (12,6) \to (6,0)\)</span></p>
 <p>であるから，<span class="math notranslate nohighlight">\(42\)</span>と<span class="math notranslate nohighlight">\(30\)</span>の最大公約数は<span class="math notranslate nohighlight">\(6\)</span>である．</p>
 </section>
-<section id="id10">
-<h3><span class="section-number">7.5.2. </span>実装例<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\((a,b)\)</span>から<span class="math notranslate nohighlight">\((b,r)\)</span>，<span class="math notranslate nohighlight">\(r=a\%b\)</span>を得るので</p>
+<section id="id9">
+<h3><span class="section-number">7.5.2. </span>実装例<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\((a,b)\)</span>から<span class="math notranslate nohighlight">\((b,r=a\%b)\)</span>を得るので</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span>
 </pre></div>
@@ -720,16 +729,16 @@ $$
 </section>
 </section>
 <hr class="docutils" />
-<section id="id11">
-<h2><span class="section-number">7.6. </span>まとめ<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h2><span class="section-number">7.6. </span>まとめ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>エラトステネスの篩</strong>で多数の素数を効率よく求められる</p></li>
-<li><p><strong>素因数分解</strong>は試し割りで実装</p></li>
-<li><p><strong>最大公約数</strong>はユークリッドの互除法が最速</p></li>
+<li><p>素数を求めるプログラム（<strong>エラトステネスの篩</strong>）を実装した．</p></li>
+<li><p><strong>素因数分解</strong>を行うプログラムを実装した．</p></li>
+<li><p><strong>ユークリッドの互除法</strong>によって最大公約数を求めるプログラムを実装した．</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>演習・課題を実施したipynbファイルをWebClassの「第7回課題」より提出してください．</p>
+<p>演習1,2,3・課題1,2を実施したipynbファイルをWebClassの「第7回課題」より提出してください．</p>
 <p>提出期限は12月1日10:59です．</p>
 </div>
 </section>
@@ -805,11 +814,11 @@ $$
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-denominator-gcd">7.5. 最大公約数（greatest common denominator, GCD）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.5.1. ユークリッドの互除法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.5.2. 実装例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-algorithm">7.5.1. ユークリッドの互除法（Euclidean algorithm）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.5.2. 実装例</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.6. まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.6. まとめ</a></li>
 </ul>
   </nav></div>
 
