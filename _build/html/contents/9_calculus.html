@@ -191,7 +191,6 @@
 <li class="toctree-l1"><a class="reference internal" href="7_integer.html">7. 整数を扱う計算</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8_algorithm.html">8. 数値計算1（2分法・ニュートン法）</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 数値計算2（数値微分・数値積分）</a></li>
-
 </ul>
 
     </div>
@@ -387,28 +386,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">9. 数値計算2（数値微分・数値積分）</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 第8回の復習（2分法・ニュートン法）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation">9.2. 数値微分（numerical differentiation）</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-difference">9.2.1. 前進差分（forward difference）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-difference">9.2.2. 後退差分（backward difference）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2.3. 中心差分</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor">9.2.4. Taylor展開</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">9.3. 数値積分（numerical integration）</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#riemann-sum">9.3.1. 区分求積法（Riemann sum）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">9.3.2. 台形公式（trapezoidal rule）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-rule">9.3.3. シンプソン法（Simpson’s rule）</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.4. まとめ</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10. 3. 数値微分・数値積分の注意点</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.1. まとめ</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -424,9 +416,8 @@ document.write(`
 <p>出席パスワード：<strong>139572</strong></p>
 <p>到達目標</p>
 <ul class="simple">
-<li><p>数値微分（差分近似）の考え方を理解し，プログラムに実装できる．</p></li>
-<li><p>数値積分（区分求積法，台形公式，シンプソン法）の考え方を理解し，プログラムに実装できる．</p></li>
-<li><p>微積分の「近似」の考え方を，コンピュータの計算として理解する．</p></li>
+<li><p>差分近似による数値微分の考え方を理解し，プログラムとして実装できる．</p></li>
+<li><p>数値積分（<strong>区分求積法</strong>，<strong>台形公式</strong>）の考え方を理解し，プログラムとして実装できる．</p></li>
 </ul>
 <p>準備</p>
 <ol class="arabic simple">
@@ -486,7 +477,7 @@ document.write(`
 </div>
 <p><span style="color:red"><strong>課題1の解答例</strong></span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
@@ -504,7 +495,7 @@ document.write(`
     <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>に対する出力は</p>
@@ -632,9 +623,10 @@ f(x) = \dfrac{2-x}{x^2}
 </div>
 <p>となり，繰り返すほど値が大きくなる様子が見られる．</p>
 <p><strong>問3の解答例</strong></p>
-<p><span class="math notranslate nohighlight">\(\frac{2-x}{x^2}\)</span>のグラフは次のようになる．</p>
+<p><span class="math notranslate nohighlight">\(\dfrac{2-x}{x^2}\)</span>のグラフは次のようになる．</p>
 <p><img alt="課題3のグラフ" src="../_images/8_ex3.png" /></p>
-<p>ここで初期値を3より大きい値で取れば，Newton法に従うと繰り返し処理の度に<span class="math notranslate nohighlight">\(x\)</span>軸との交点は<span class="math notranslate nohighlight">\(x\)</span>の値が大きい方へと推移していく．</p>
+<p>ここで初期値を<span class="math notranslate nohighlight">\(4\)</span>より大きい値で取れば，Newton法に従うと繰り返し処理の度に<span class="math notranslate nohighlight">\(x\)</span>軸との交点は<span class="math notranslate nohighlight">\(x\)</span>の値が大きい方へと推移していく．</p>
+<p>このことからグラフの傾きが解に近づく方向に一致していないと近似解が得られない．</p>
 </section>
 <hr class="docutils" />
 <section id="numerical-differentiation">
@@ -717,6 +709,85 @@ f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}
 </li>
 </ol>
 </div>
+<!-- 
+**問1の解答例**
+```python
+def f(x):
+    return x**2
+
+x = 3
+exact = 6  # 正確な値
+h = 1e-5
+```
+
+前進差分と中心差分による微分係数の近似値を計算する．
+```python
+forward = diff_forward(f, x, h)
+center = diff_center(f, x, h)
+```
+
+誤差を確認する．
+```python
+print("前進差分の誤差:", abs(forward - exact))
+print("中心差分の誤差:", abs(center - exact))
+```
+
+中心差分の方が誤差が小さく精度が高いことが分かる．
+
+```{warning}
+**数値の表現**
+
+- `3.2e8`は$3.2 \times 10^8$を表す．
+- `1.6e-3`は$1.6 \times 10^{-3}$を表す．
+```
+
+**問2の解答例**
+
+```python
+import math
+def f(x):
+    return math.sin(x)
+
+x = math.pi / 4
+exact = math.cos(x)
+```
+
+複数の$h$について誤差を表示する．
+```python
+for h in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]:
+    approx = diff_forward(f, x, h)
+    error = abs(approx - exact)
+    print(f"h = {h:.0e},  誤差 = {error}")
+```
+ -->
+</section>
+<section id="taylor">
+<h3><span class="section-number">9.2.4. </span>Taylor展開<a class="headerlink" href="#taylor" title="Link to this heading">#</a></h3>
+<p>Taylor展開によれば，十分小さい<span class="math notranslate nohighlight">\(h\)</span>に対して</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+&amp; f(x+h)=f(x)+f^{\prime}(x) h+\frac{f^{(2)}(x)}{2!} h^2+\frac{f^{(3)}(x)}{3!} h^3+\cdots
+&amp;&amp;\qquad\text{(1)}
+\\
+&amp; f(x-h)=f(x)-f^{\prime}(x) h+\frac{f^{(2)}(x)}{2!} h^2-\frac{f^{(3)}(x)}{3!} h^3+\cdots
+&amp;&amp;\qquad\text{(2)}
+\end{split}\]</div>
+<p>が成り立つ．
+これによれば前進差分と後退差分は</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f^{\prime}(x) = \frac{f(x+h)-f(x)}{h} +\frac{f^{(2)}(x)}{2!} h + \cdots
+\\
+f^{\prime}(x) = \frac{f(x)-f(x-h)}{h} +\frac{f^{(2)}(x)}{2!} h + \cdots
+\end{split}\]</div>
+<p>と得られる．
+一方で式(1)から式(2)を引いて整理すれば</p>
+<div class="math notranslate nohighlight">
+\[
+f^{\prime}(x) = \frac{f(x+h)-f(x-h)}{2 h}+\frac{f^3(x)}{3!} h^2+\cdots
+\]</div>
+<p>となる．
+剰余項が<span class="math notranslate nohighlight">\(h^2\)</span>から始まっていることからわかるように，<span class="math notranslate nohighlight">\(h\)</span>が小さければ前進差分や後退差分に比べて中心差分は余りの項が小さくなることが分かる．</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -727,27 +798,34 @@ f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}
 \[
 \int_a^b f(x)dx
 \]</div>
-<p>の値を近似的に求める方法．</p>
+<p>の値を近似的に求める．</p>
 <section id="riemann-sum">
 <h3><span class="section-number">9.3.1. </span>区分求積法（Riemann sum）<a class="headerlink" href="#riemann-sum" title="Link to this heading">#</a></h3>
 <p>区間<span class="math notranslate nohighlight">\([a,b]\)</span>を<span class="math notranslate nohighlight">\(n\)</span>等分し，各小区間で矩形の面積を足し合わせる：</p>
+<p><img alt="区分求積法" src="../_images/rieman_sum.png" /></p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x)dx \approx h \left(
+f(x_0) + f(x_1) + \cdots + f(x_{n-1}) + f(x_n)
+\right)
+\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_riemann</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
     <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">width</span>  <span class="c1"># 左端の値</span>
-        <span class="n">area</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">width</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">width</span>  <span class="c1"># 左端の値</span>
+        <span class="n">area</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">width</span>
     <span class="k">return</span> <span class="n">area</span>
 </pre></div>
 </div>
 </section>
-<hr class="docutils" />
 <section id="trapezoidal-rule">
 <h3><span class="section-number">9.3.2. </span>台形公式（trapezoidal rule）<a class="headerlink" href="#trapezoidal-rule" title="Link to this heading">#</a></h3>
-<p>各区間を台形で近似する．</p>
+<p>各区間を台形で近似する：</p>
+<p><img alt="台形公式" src="../_images/trapezoidal.png" /></p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x),dx \approx \frac{h}{2} \left(
+\int_a^b f(x)dx \approx \frac{h}{2} \left(
 f(x_0) + 2f(x_1) + \cdots + 2f(x_{n-1}) + f(x_n)
 \right)
 \]</div>
@@ -755,87 +833,120 @@ f(x_0) + 2f(x_1) + \cdots + 2f(x_{n-1}) + f(x_n)
     <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
     <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">h</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">s</span> <span class="o">-</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>→ 区分求積法より精度が高い．</p>
-</section>
-<section id="simpson-s-rule">
-<h3><span class="section-number">9.3.3. </span>シンプソン法（Simpson’s rule）<a class="headerlink" href="#simpson-s-rule" title="Link to this heading">#</a></h3>
-<p>2次関数で近似する高度な方法．
-偶数分割が必要．</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_simpson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># n は偶数でないといけない</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<!-- 
+### シンプソン法（Simpson's rule）
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">h</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+2次関数で近似する高度な方法．
+偶数分割が必要．
 
-    <span class="k">return</span> <span class="n">s</span> <span class="o">-</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">3</span>
-</pre></div>
-</div>
-<p>→ 精度が非常に高い．</p>
+```python
+def integral_simpson(f, a, b, n=1000):
+    if n % 2 == 1:
+        n += 1  # n は偶数でないといけない
+    h = (b - a) / n
+    s = f(a) + f(b)
+
+    for i in range(1, n):
+        x = a + i - h
+        if i % 2 == 0:
+            s += 2 - f(x)
+        else:
+            s += 4 - f(x)
+
+    return s - h / 3
+```
+
+→ 精度が非常に高い．
+ -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>演習2：数値積分</strong></p>
+<p><strong>演習2</strong></p>
 <ol class="arabic">
-<li><p>次の積分の正確な値（手計算または電卓で）と，<br />
-区分求積法・台形公式・シンプソン法の結果を比較せよ：</p>
+<li><p>次の積分の正確な値を手計算で求め，区分求積法・台形公式の結果を比較せよ：</p>
 <div class="math notranslate nohighlight">
 \[
-   \int_0^1 x^2\,dx = \frac{1}{3}
+   \int_0^1 x^2 dx = \frac{1}{3}
    \]</div>
 </li>
-<li><p>関数</p>
-<div class="math notranslate nohighlight">
-\[
-   f(x) = \sin x
-   \]</div>
-<p>の積分</p>
+<li><p>積分</p>
 <div class="math notranslate nohighlight">
 \[
    \int_0^\pi \sin x dx = 2
    \]</div>
-<p>を各数値積分で求め，誤差の違いを調べよ．</p>
+<p>を区分求積法・台形公式で求め，誤差の違いを調べよ．
+この場合は<span class="math notranslate nohighlight">\(n\)</span>の値によっては区分求積法・台形公式の誤差の違いはほぼなくなるが，これはなぜか考察せよ．</p>
 </li>
-<li><p>分割数 <span class="math notranslate nohighlight">\(n\)</span> を変えたときの誤差の変化を調べ，<br />
-どの方法が最も効率的か考察せよ．</p></li>
 </ol>
 </div>
-</section>
-</section>
-</section>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="id4">
-<h1><span class="section-number">10. </span>3. 数値微分・数値積分の注意点<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>(h) や分割数 (n) を<strong>小さくすれば良いわけではない</strong>
-→ 浮動小数点誤差が増える</p></li>
-<li><p>求めたい精度に応じて <strong>バランスを取る</strong> ことが大切</p></li>
-<li><p>シンプソン法のように「数式として賢い」方法は少ない計算量で高精度を実現できる</p></li>
-</ul>
-<hr class="docutils" />
-<section id="id5">
-<h2><span class="section-number">10.1. </span>まとめ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>微分・積分はコンピュータでは「近似」でしか求められない</p></li>
-<li><p>数値微分は <strong>前進差分・中心差分</strong> が基本</p></li>
-<li><p>数値積分は <strong>台形公式・シンプソン法</strong> が代表的</p></li>
-<li><p>誤差を意識した計算が重要</p></li>
-</ul>
+<!-- 
+**問1の解答例**
+
+```python
+def f(x):
+    return x**2
+
+exact1 = 1/3
+
+n = 1000
+riem = integral_riemann(f, 0, 1, n)
+trap = integral_trapezoid(f, 0, 1, n)
+
+print("∫_0^1 x^2 dx の正確な値:", exact1)
+print(f"区分求積法(n={n}):", riem, " 誤差:", abs(riem - exact1))
+print(f"台形公式  (n={n}):", trap, " 誤差:", abs(trap - exact1))
+```
+
+**問2の解答例**
+
+```python
+import math
+def f(x):
+    return math.sin(x)
+```
+
+```python
+exact2 = 2.0
+
+n = 1000
+riem2 = integral_riemann(f2, 0, math.pi, n)
+trap2 = integral_trapezoid(f2, 0, math.pi, n)
+
+print("∫_0^π sin x dx の正確な値:", exact2)
+print(f"区分求積法(n={n}):", riem2, " 誤差:", abs(riem2 - exact2))
+print(f"台形公式  (n={n}):", trap2, " 誤差:", abs(trap2 - exact2))
+```
+ -->
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>演習1・演習2を実施したipynbファイルをWebClassの「第9回課題」より提出してください．</p>
-<p>提出期限は <strong>12月15日 10:59</strong> です．</p>
+<p><strong>課題1</strong></p>
+<p>分割数<span class="math notranslate nohighlight">\(n\)</span>を<span class="math notranslate nohighlight">\(10,20,40,80,160\)</span>と変えたときの誤差の変化を調べ，<code class="docutils literal notranslate"><span class="pre">ex2.txt</span></code>ファイルとして出力せよ．
+ただし，出力したファイル自体は提出しなくて良い．</p>
+<p>ヒント：第6回講義ノート「ファイルの操作」を参照のこと．</p>
+</div>
+<!-- 
+# 3. 数値微分・数値積分の注意点
+
+- (h) や分割数 (n) を**小さくすれば良いわけではない**
+  → 浮動小数点誤差が増える
+- 求めたい精度に応じて **バランスを取る** ことが大切
+- シンプソン法のように「数式として賢い」方法は少ない計算量で高精度を実現できる
+ -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2><span class="section-number">9.4. </span>まとめ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>演習1・2，課題1を実施したipynbファイルをWebClassの「第9回課題」より提出してください．</p>
+<p>提出期限は <strong>12月15日(月)10:59</strong> です．</p>
 </div>
 </section>
 </section>
@@ -895,28 +1006,21 @@ f(x_0) + 2f(x_1) + \cdots + 2f(x_{n-1}) + f(x_n)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">9. 数値計算2（数値微分・数値積分）</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 第8回の復習（2分法・ニュートン法）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation">9.2. 数値微分（numerical differentiation）</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-difference">9.2.1. 前進差分（forward difference）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-difference">9.2.2. 後退差分（backward difference）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2.3. 中心差分</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor">9.2.4. Taylor展開</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">9.3. 数値積分（numerical integration）</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#riemann-sum">9.3.1. 区分求積法（Riemann sum）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">9.3.2. 台形公式（trapezoidal rule）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-rule">9.3.3. シンプソン法（Simpson’s rule）</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.4. まとめ</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10. 3. 数値微分・数値積分の注意点</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.1. まとめ</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

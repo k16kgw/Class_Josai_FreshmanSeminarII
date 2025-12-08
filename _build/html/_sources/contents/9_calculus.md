@@ -3,9 +3,8 @@
 出席パスワード：**139572**
 
 到達目標
-- 数値微分（差分近似）の考え方を理解し，プログラムに実装できる．
-- 数値積分（区分求積法，台形公式，シンプソン法）の考え方を理解し，プログラムに実装できる．
-- 微積分の「近似」の考え方を，コンピュータの計算として理解する．
+- 差分近似による数値微分の考え方を理解し，プログラムとして実装できる．
+- 数値積分（**区分求積法**，**台形公式**）の考え方を理解し，プログラムとして実装できる．
 
 準備
 1. anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．
@@ -48,7 +47,7 @@ print(math.cos(x))
 
 ```python
 def f(x):
-    return x**2 - 3
+    return math.cos(x) - x
 
 def bisection(a, b, eps=1e-6):
     if f(a) * f(b) >= 0:
@@ -67,7 +66,7 @@ def bisection(a, b, eps=1e-6):
 ```
 
 ```python
-bisection(1,2)
+bisection(0,1)
 ```
 に対する出力は
 ```text
@@ -206,11 +205,13 @@ newton(5)
 
 **問3の解答例**
 
-$\frac{2-x}{x^2}$のグラフは次のようになる．
+$\dfrac{2-x}{x^2}$のグラフは次のようになる．
 
 ![課題3のグラフ](/contents/figs/9/8_ex3.png)
 
-ここで初期値を3より大きい値で取れば，Newton法に従うと繰り返し処理の度に$x$軸との交点は$x$の値が大きい方へと推移していく．
+ここで初期値を$4$より大きい値で取れば，Newton法に従うと繰り返し処理の度に$x$軸との交点は$x$の値が大きい方へと推移していく．
+
+このことからグラフの傾きが解に近づく方向に一致していないと近似解が得られない．
 
 ---
 
@@ -301,6 +302,87 @@ def diff_center(f, x, h=1e-5):
 
    の導関数 $f'(x) = \cos x$ を利用し，$h$を小さくすると数値微分の誤差はどう変化するか調べよ．
 ```
+<!-- 
+**問1の解答例**
+```python
+def f(x):
+    return x**2
+
+x = 3
+exact = 6  # 正確な値
+h = 1e-5
+```
+
+前進差分と中心差分による微分係数の近似値を計算する．
+```python
+forward = diff_forward(f, x, h)
+center = diff_center(f, x, h)
+```
+
+誤差を確認する．
+```python
+print("前進差分の誤差:", abs(forward - exact))
+print("中心差分の誤差:", abs(center - exact))
+```
+
+中心差分の方が誤差が小さく精度が高いことが分かる．
+
+```{warning}
+**数値の表現**
+
+- `3.2e8`は$3.2 \times 10^8$を表す．
+- `1.6e-3`は$1.6 \times 10^{-3}$を表す．
+```
+
+**問2の解答例**
+
+```python
+import math
+def f(x):
+    return math.sin(x)
+
+x = math.pi / 4
+exact = math.cos(x)
+```
+
+複数の$h$について誤差を表示する．
+```python
+for h in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]:
+    approx = diff_forward(f, x, h)
+    error = abs(approx - exact)
+    print(f"h = {h:.0e},  誤差 = {error}")
+```
+ -->
+### Taylor展開
+
+Taylor展開によれば，十分小さい$h$に対して
+
+$$
+& f(x+h)=f(x)+f^{\prime}(x) h+\frac{f^{(2)}(x)}{2!} h^2+\frac{f^{(3)}(x)}{3!} h^3+\cdots
+&&\qquad\text{(1)}
+\\
+& f(x-h)=f(x)-f^{\prime}(x) h+\frac{f^{(2)}(x)}{2!} h^2-\frac{f^{(3)}(x)}{3!} h^3+\cdots
+&&\qquad\text{(2)}
+$$
+
+が成り立つ．
+これによれば前進差分と後退差分は
+
+$$
+f^{\prime}(x) = \frac{f(x+h)-f(x)}{h} +\frac{f^{(2)}(x)}{2!} h + \cdots
+\\
+f^{\prime}(x) = \frac{f(x)-f(x-h)}{h} +\frac{f^{(2)}(x)}{2!} h + \cdots
+$$
+
+と得られる．
+一方で式(1)から式(2)を引いて整理すれば
+
+$$
+f^{\prime}(x) = \frac{f(x+h)-f(x-h)}{2 h}+\frac{f^3(x)}{3!} h^2+\cdots
+$$
+
+となる．
+剰余項が$h^2$から始まっていることからわかるように，$h$が小さければ前進差分や後退差分に比べて中心差分は余りの項が小さくなることが分かる．
 
 ---
 
@@ -312,30 +394,38 @@ $$
 \int_a^b f(x)dx
 $$
 
-の値を近似的に求める方法．
+の値を近似的に求める．
 
 ### 区分求積法（Riemann sum）
 
 区間$[a,b]$を$n$等分し，各小区間で矩形の面積を足し合わせる：
+
+![区分求積法](/contents/figs/9/rieman_sum.png)
+
+$$
+\int_a^b f(x)dx \approx h \left(
+f(x_0) + f(x_1) + \cdots + f(x_{n-1}) + f(x_n)
+\right)
+$$
 
 ```python
 def integral_riemann(f, a, b, n=1000):
     width = (b - a) / n
     area = 0
     for i in range(n):
-        x = a + i - width  # 左端の値
-        area += f(x) - width
+        x = a + i * width  # 左端の値
+        area += f(x) * width
     return area
 ```
 
----
-
 ### 台形公式（trapezoidal rule）
 
-各区間を台形で近似する．
+各区間を台形で近似する：
+
+![台形公式](/contents/figs/9/trapezoidal.png)
 
 $$
-\int_a^b f(x),dx \approx \frac{h}{2} \left(
+\int_a^b f(x)dx \approx \frac{h}{2} \left(
 f(x_0) + 2f(x_1) + \cdots + 2f(x_{n-1}) + f(x_n)
 \right)
 $$
@@ -345,14 +435,14 @@ def integral_trapezoid(f, a, b, n=1000):
     h = (b - a) / n
     s = 0
     for i in range(1, n):
-        x = a + i - h
-        s += 2 - f(x)
+        x = a + i * h
+        s += 2 * f(x)
     s += f(a) + f(b)
-    return s - h / 2
+    return s * h / 2
 ```
 
 → 区分求積法より精度が高い．
-
+<!-- 
 ### シンプソン法（Simpson's rule）
 
 2次関数で近似する高度な方法．
@@ -376,56 +466,86 @@ def integral_simpson(f, a, b, n=1000):
 ```
 
 → 精度が非常に高い．
-
+ -->
 ```{note}
-**演習2：数値積分**
+**演習2**
 
-1. 次の積分の正確な値（手計算または電卓で）と，  
-   区分求積法・台形公式・シンプソン法の結果を比較せよ：
-
-   $$
-   \int_0^1 x^2\,dx = \frac{1}{3}
-   $$
-
-2. 関数  
+1. 次の積分の正確な値を手計算で求め，区分求積法・台形公式の結果を比較せよ：
 
    $$
-   f(x) = \sin x
+   \int_0^1 x^2 dx = \frac{1}{3}
    $$
 
-   の積分
+2. 積分
 
    $$
    \int_0^\pi \sin x dx = 2
    $$
 
-   を各数値積分で求め，誤差の違いを調べよ．
+   を区分求積法・台形公式で求め，誤差の違いを調べよ．
+   この場合は$n$の値によっては区分求積法・台形公式の誤差の違いはほぼなくなるが，これはなぜか考察せよ．
+```
+<!-- 
+**問1の解答例**
 
-3. 分割数 $n$ を変えたときの誤差の変化を調べ，  
-   どの方法が最も効率的か考察せよ．
+```python
+def f(x):
+    return x**2
+
+exact1 = 1/3
+
+n = 1000
+riem = integral_riemann(f, 0, 1, n)
+trap = integral_trapezoid(f, 0, 1, n)
+
+print("∫_0^1 x^2 dx の正確な値:", exact1)
+print(f"区分求積法(n={n}):", riem, " 誤差:", abs(riem - exact1))
+print(f"台形公式  (n={n}):", trap, " 誤差:", abs(trap - exact1))
 ```
 
----
+**問2の解答例**
 
+```python
+import math
+def f(x):
+    return math.sin(x)
+```
+
+```python
+exact2 = 2.0
+
+n = 1000
+riem2 = integral_riemann(f2, 0, math.pi, n)
+trap2 = integral_trapezoid(f2, 0, math.pi, n)
+
+print("∫_0^π sin x dx の正確な値:", exact2)
+print(f"区分求積法(n={n}):", riem2, " 誤差:", abs(riem2 - exact2))
+print(f"台形公式  (n={n}):", trap2, " 誤差:", abs(trap2 - exact2))
+```
+ -->
+```{note}
+**課題1**
+
+分割数$n$を$10,20,40,80,160$と変えたときの誤差の変化を調べ，`ex2.txt`ファイルとして出力せよ．
+ただし，出力したファイル自体は提出しなくて良い．
+
+ヒント：第6回講義ノート「ファイルの操作」を参照のこと．
+```
+
+<!-- 
 # 3. 数値微分・数値積分の注意点
 
 - (h) や分割数 (n) を**小さくすれば良いわけではない**
   → 浮動小数点誤差が増える
 - 求めたい精度に応じて **バランスを取る** ことが大切
 - シンプソン法のように「数式として賢い」方法は少ない計算量で高精度を実現できる
-
+ -->
 ---
 
 ## まとめ
 
-- 微分・積分はコンピュータでは「近似」でしか求められない
-- 数値微分は **前進差分・中心差分** が基本
-- 数値積分は **台形公式・シンプソン法** が代表的
-- 誤差を意識した計算が重要
-
-
 ```{note}
-演習1・演習2を実施したipynbファイルをWebClassの「第9回課題」より提出してください．
+演習1・2，課題1を実施したipynbファイルをWebClassの「第9回課題」より提出してください．
 
-提出期限は **12月15日 10:59** です．
+提出期限は **12月15日(月)10:59** です．
 ```

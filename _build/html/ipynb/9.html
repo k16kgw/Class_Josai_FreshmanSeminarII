@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ipynb/8';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ipynb/9';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -261,7 +261,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fipynb/8.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fipynb/9.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="../_sources/ipynb/8.ipynb" target="_blank"
+      <li><a href="../_sources/ipynb/9.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,264 +399,149 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2分法を使えません（符号が同じです）&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
-        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;反復回数</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">回&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bisection</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>反復回数20回
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7390847206115723
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
-        <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;反復回数</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">回&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">x_new</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>
-    <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>反復回数3回
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7390851332151607
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># return x**5 - 2*x**3 + 3</span>
-    <span class="c1"># return x**3 - 2*x + 3</span>
-    <span class="c1"># return math.log(x) - 0.3*x</span>
-    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">df</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># return 3*x**2 - 2</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
-        <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_new</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;反復回数</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">回&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">x_new</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>
-    <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diff_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">diff_center</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">exact</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># 正確な値</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="n">forward</span> <span class="o">=</span> <span class="n">diff_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">diff_center</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="c1"># print(&quot;正確な値:&quot;, exact)</span>
+<span class="c1"># print(&quot;前進差分:&quot;, forward)</span>
+<span class="c1"># print(&quot;中心差分:&quot;, center)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;前進差分の誤差:&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">forward</span> <span class="o">-</span> <span class="n">exact</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;中心差分の誤差:&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">center</span> <span class="o">-</span> <span class="n">exact</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3333333333333333
-1.6666666666666665
-1.9047619047619047
-1.9913419913419914
-1.9999253619943276
-1.999999994429376
-反復回数6回
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>前進差分の誤差: 9.999951315897704e-06
+中心差分の誤差: 3.930633596382904e-11
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">diff_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="n">exact</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">]:</span>
+    <span class="n">approx</span> <span class="o">=</span> <span class="n">diff_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">approx</span> <span class="o">-</span> <span class="n">exact</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;h = </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">.0e</span><span class="si">}</span><span class="s2">,  誤差 = </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.0
-42.5
-87.20779220779221
-176.51172925716395
-355.06983217271306
-712.1624518346002
-1426.3362005121485
-2854.6780255735403
-5711.358857496984
-11424.719116693106
-22851.438933867496
-45704.87821788364
-91411.75661081861
-182825.51330915716
-365653.02666207287
-731308.0533460246
-1462618.1067029885
-2925238.2134114467
-5850478.426825628
-11700958.853652623
-23401919.70730593
-46803841.414612204
-93607684.82922459
-187215371.65844926
-374430745.3168986
-748861492.6337972
-1497722987.2675943
-2995445976.5351887
-5990891955.070377
-11981783912.140755
-23963567826.28151
-47927135654.56302
-95854271311.12604
-191708542624.25208
-383417085250.50415
-766834170503.0083
-1533668341008.0166
-3067336682018.033
-6134673364038.066
-12269346728078.133
-24538693456158.266
-49077386912318.53
-98154773824639.06
-196309547649280.12
-392619095298562.25
-785238190597126.5
-1570476381194255.0
-3140952762388512.0
-6281905524777026.0
-1.2563811049554052e+16
-2.5127622099108108e+16
-5.0255244198216216e+16
-1.0051048839643245e+17
-2.010209767928649e+17
-4.020419535857298e+17
-8.040839071714596e+17
-1.6081678143429192e+18
-3.2163356286858383e+18
-6.432671257371677e+18
-1.2865342514743353e+19
-2.5730685029486707e+19
-5.146137005897341e+19
-1.0292274011794683e+20
-2.0584548023589365e+20
-4.116909604717873e+20
-8.233819209435746e+20
-1.6467638418871492e+21
-3.2935276837742985e+21
-6.587055367548597e+21
-1.3174110735097194e+22
-2.6348221470194388e+22
-5.2696442940388775e+22
-1.0539288588077755e+23
-2.107857717615551e+23
-4.215715435231102e+23
-8.431430870462204e+23
-1.6862861740924408e+24
-3.3725723481848816e+24
-6.745144696369763e+24
-1.3490289392739526e+25
-2.6980578785479053e+25
-5.396115757095811e+25
-1.0792231514191621e+26
-2.1584463028383242e+26
-4.3168926056766485e+26
-8.633785211353297e+26
-1.7267570422706594e+27
-3.453514084541319e+27
-6.907028169082638e+27
-1.3814056338165275e+28
-2.762811267633055e+28
-5.52562253526611e+28
-1.105124507053222e+29
-2.210249014106444e+29
-4.420498028212888e+29
-8.840996056425776e+29
-1.7681992112851552e+30
-3.5363984225703104e+30
-7.072796845140621e+30
-1.4145593690281242e+31
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4145593690281242e+31
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h = 1e-01,  誤差 = 0.03650380828255784
+h = 1e-02,  誤差 = 0.0035472894973379576
+h = 1e-03,  誤差 = 0.0003536712121802177
+h = 1e-04,  誤差 = 3.535651724428934e-05
+h = 1e-05,  誤差 = 3.5355413900983734e-06
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_riemann</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">width</span>  <span class="c1"># 左端の値</span>
+        <span class="n">area</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">width</span>
+    <span class="k">return</span> <span class="n">area</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integral_trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># 被積分関数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exact1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">riem</span> <span class="o">=</span> <span class="n">integral_riemann</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">trap</span> <span class="o">=</span> <span class="n">integral_trapezoid</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;∫_0^1 x^2 dx の正確な値:&quot;</span><span class="p">,</span> <span class="n">exact1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;区分求積法(n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">,</span> <span class="n">riem</span><span class="p">,</span> <span class="s2">&quot; 誤差:&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">riem</span> <span class="o">-</span> <span class="n">exact1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;台形公式  (n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">,</span> <span class="n">trap</span><span class="p">,</span> <span class="s2">&quot; 誤差:&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">trap</span> <span class="o">-</span> <span class="n">exact1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6931471805599453
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>∫_0^1 x^2 dx の正確な値: 0.3333333333333333
+区分求積法(n=1000): 0.33283350000000034  誤差: 0.0004998333333329774
+台形公式  (n=1000): 0.33333349999999995  誤差: 1.6666666663445184e-07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exact2</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">riem2</span> <span class="o">=</span> <span class="n">integral_riemann</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">trap2</span> <span class="o">=</span> <span class="n">integral_trapezoid</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;∫_0^π sin x dx の正確な値:&quot;</span><span class="p">,</span> <span class="n">exact2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;区分求積法(n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">,</span> <span class="n">riem2</span><span class="p">,</span> <span class="s2">&quot; 誤差:&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">riem2</span> <span class="o">-</span> <span class="n">exact2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;台形公式  (n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">,</span> <span class="n">trap2</span><span class="p">,</span> <span class="s2">&quot; 誤差:&quot;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">trap2</span> <span class="o">-</span> <span class="n">exact2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>∫_0^π sin x dx の正確な値: 2.0
+区分求積法(n=1000): 1.999998355065664  誤差: 1.6449343360758206e-06
+台形公式  (n=1000): 1.9999983550656624  誤差: 1.6449343376301329e-06
 </pre></div>
 </div>
 </div>

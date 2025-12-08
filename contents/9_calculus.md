@@ -1,6 +1,6 @@
 # 数値計算2（数値微分・数値積分）
 
-<!-- 出席パスワード：**139572** -->
+出席パスワード：**139572**
 
 到達目標
 - 差分近似による数値微分の考え方を理解し，プログラムとして実装できる．
@@ -47,7 +47,7 @@ print(math.cos(x))
 
 ```python
 def f(x):
-    return x**2 - 3
+    return math.cos(x) - x
 
 def bisection(a, b, eps=1e-6):
     if f(a) * f(b) >= 0:
@@ -302,7 +302,7 @@ def diff_center(f, x, h=1e-5):
 
    の導関数 $f'(x) = \cos x$ を利用し，$h$を小さくすると数値微分の誤差はどう変化するか調べよ．
 ```
-
+<!-- 
 **問1の解答例**
 ```python
 def f(x):
@@ -352,17 +352,17 @@ for h in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]:
     error = abs(approx - exact)
     print(f"h = {h:.0e},  誤差 = {error}")
 ```
-
+ -->
 ### Taylor展開
 
 Taylor展開によれば，十分小さい$h$に対して
 
 $$
 & f(x+h)=f(x)+f^{\prime}(x) h+\frac{f^{(2)}(x)}{2!} h^2+\frac{f^{(3)}(x)}{3!} h^3+\cdots
-\tag{1}
+&&\qquad\text{(1)}
 \\
 & f(x-h)=f(x)-f^{\prime}(x) h+\frac{f^{(2)}(x)}{2!} h^2-\frac{f^{(3)}(x)}{3!} h^3+\cdots
-\tag{2}
+&&\qquad\text{(2)}
 $$
 
 が成り立つ．
@@ -382,7 +382,7 @@ f^{\prime}(x) = \frac{f(x+h)-f(x-h)}{2 h}+\frac{f^3(x)}{3!} h^2+\cdots
 $$
 
 となる．
-剰余項が$h^3$から始まっていることからわかるように，$h$が小さければ前進差分や後退差分に比べて中心差分は余りの項が小さくなることが分かる．
+剰余項が$h^2$から始まっていることからわかるように，$h$が小さければ前進差分や後退差分に比べて中心差分は余りの項が小さくなることが分かる．
 
 ---
 
@@ -413,8 +413,8 @@ def integral_riemann(f, a, b, n=1000):
     width = (b - a) / n
     area = 0
     for i in range(n):
-        x = a + i - width  # 左端の値
-        area += f(x) - width
+        x = a + i * width  # 左端の値
+        area += f(x) * width
     return area
 ```
 
@@ -435,10 +435,10 @@ def integral_trapezoid(f, a, b, n=1000):
     h = (b - a) / n
     s = 0
     for i in range(1, n):
-        x = a + i - h
-        s += 2 - f(x)
+        x = a + i * h
+        s += 2 * f(x)
     s += f(a) + f(b)
-    return s - h / 2
+    return s * h / 2
 ```
 
 → 区分求積法より精度が高い．
@@ -483,8 +483,9 @@ def integral_simpson(f, a, b, n=1000):
    $$
 
    を区分求積法・台形公式で求め，誤差の違いを調べよ．
+   この場合は$n$の値によっては区分求積法・台形公式の誤差の違いはほぼなくなるが，これはなぜか考察せよ．
 ```
-
+<!-- 
 **問1の解答例**
 
 ```python
@@ -501,7 +502,6 @@ print("∫_0^1 x^2 dx の正確な値:", exact1)
 print(f"区分求積法(n={n}):", riem, " 誤差:", abs(riem - exact1))
 print(f"台形公式  (n={n}):", trap, " 誤差:", abs(trap - exact1))
 ```
-
 
 **問2の解答例**
 
@@ -522,7 +522,7 @@ print("∫_0^π sin x dx の正確な値:", exact2)
 print(f"区分求積法(n={n}):", riem2, " 誤差:", abs(riem2 - exact2))
 print(f"台形公式  (n={n}):", trap2, " 誤差:", abs(trap2 - exact2))
 ```
-
+ -->
 ```{note}
 **課題1**
 
