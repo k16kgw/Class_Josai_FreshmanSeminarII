@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>10. 数値計算3（乱数とシミュレーション） &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/10_random';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="9. 数値計算2（数値微分・数値積分）" href="9_calculus.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +181,17 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_function.html">5. 関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_file.html">6. ファイル操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_integer.html">7. 整数を扱う計算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_algorithm.html">8. 数値計算1（2分法・ニュートン法）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_calculus.html">9. 数値計算2（数値微分・数値積分）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. 数値計算3（乱数とシミュレーション）</a></li>
 </ul>
 
     </div>
@@ -370,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>数値計算3（乱数とシミュレーション）</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,9 +386,22 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 第9回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 乱数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.1. 様々な乱数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seed">10.2.2. シード（seed）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2.3. シミュレーション</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-method">10.3. モンテカルロ法（Monte Carlo Method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.3.1. 円周率 π の近似値を求める</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.3.2. 積分</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.4. 確率的シミュレーション</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.5. まとめ</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -392,7 +412,443 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">10. </span>数値計算3（乱数とシミュレーション）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>出席パスワード：<strong>947885</strong></p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p><strong>乱数とは何か</strong>を理解する</p></li>
+<li><p>Python の <code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールを使って乱数を生成できる</p></li>
+<li><p>一様乱数・整数乱数・正規乱数を扱える</p></li>
+<li><p>乱数を使った簡単なシミュレーション（モンテカルロ法）が実装できる</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>anacondaを使用し，<span style="color:red">jupyter lab</span>を起動する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Document（書類）/Fresh</span></code>フォルダを開き，新しいノートブックを作成する．</p></li>
+<li><p>ファイル名を<code class="docutils literal notranslate"><span class="pre">10_{学籍番号}_{氏名}.ipynb</span></code>に変更する．
+例：<code class="docutils literal notranslate"><span class="pre">10_SI25999_香川渓一郎.ipynb</span></code></p></li>
+</ol>
+<section id="id2">
+<h2><span class="section-number">10.1. </span>第9回の復習<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>数値微分</strong>（前進差分・中心差分）</p></li>
+<li><p><strong>数値積分</strong>（区分求積法・台形公式）</p></li>
+<li><p>分割数・差分幅による誤差の変化</p></li>
+</ul>
+<p>これらはすべて「計算を細かく分割して近似する」という数値計算の基本的考え方であった．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>第9回課題1</strong></span></p>
+<p>分割数<span class="math notranslate nohighlight">\(n\)</span>を<span class="math notranslate nohighlight">\(10,20,40,80,160\)</span>と変えたときの誤差の変化を調べ，<code class="docutils literal notranslate"><span class="pre">ex2.txt</span></code>ファイルとして出力せよ．
+ただし，出力したファイル自体は提出しなくて良い．</p>
+<p>ヒント：第6回講義ノート「ファイルの操作」を参照のこと．</p>
+</div>
+<!-- 
+```python
+import math
+
+# 積分したい関数 f(x) = sin(x)
+def f(x):
+    return math.sin(x)
+# 正確な値 ∫_0^π sin x dx = 2
+exact = 2.0
+
+# 区分求積法
+def integral_riemann(f, a, b, n=1000):
+    width = (b - a) / n
+    area = 0
+    for i in range(n):
+        x = a + i * width  # 左端の値
+        area += f(x) * width
+    return area
+
+# 台形公式
+def integral_trapezoid(f, a, b, n=1000):
+    h = (b - a) / n
+    s = 0
+    for i in range(1, n):
+        x = a + i * h
+        s += 2 * f(x)
+    s += f(a) + f(b)
+    return s * h / 2
+
+# 分割数の候補
+ns = [10, 20, 40, 80, 160]
+
+# ex2.txt に書き出す
+with open("ex2.txt", "w") as file:
+    # タイトル行
+    file.write("n, riemann_error, trapezoid_error\n")
+    # nsのリストの要素全てについて数値積分を計算
+    for n in ns:
+        riem = integral_riemann(f, 0, math.pi, n)
+        trap = integral_trapezoid(f, 0, math.pi, n)
+        # 厳密な積分値と区分求積法に基づく数値積分の値の差を比較
+        err_r = abs(riem - exact)
+        # 厳密な積分値と台形公式に基づく数値積分の値の差を比較
+        err_t = abs(trap - exact)
+
+        # ファイルに書き込み（カンマ区切り）
+        file.write(f"{n}, {err_r}, {err_t}\n")
+
+        # 画面にも確認用に表示（任意）
+        print(f"n = {n}, 区分求積法の誤差 = {err_r}, 台形公式の誤差 = {err_t}")
+```
+ -->
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 積分したい関数 f(x) = x^2</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="c1"># 正確な値 ∫_0^1 x^2 dx = 1/3</span>
+<span class="n">exact</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="c1"># 区分求積法</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">integral_riemann</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">width</span>  <span class="c1"># 左端の値</span>
+        <span class="n">area</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">width</span>
+    <span class="k">return</span> <span class="n">area</span>
+
+<span class="c1"># 台形公式</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">integral_trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+    <span class="n">sum_f</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">width</span>
+        <span class="n">x_next</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">width</span>
+        <span class="n">sum_f</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x_next</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sum_f</span> <span class="o">*</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># 分割数の候補</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">160</span><span class="p">]</span>
+
+<span class="c1"># ex2.txt に書き出す</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;ex2.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="c1"># タイトル行</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;n, riemann_error, trapezoid_error</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># nsのリストの要素全てについて数値積分を計算</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+        <span class="n">riem</span> <span class="o">=</span> <span class="n">integral_riemann</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">trap</span> <span class="o">=</span> <span class="n">integral_trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="c1"># 厳密な積分値と区分求積法に基づく数値積分の値の差を比較</span>
+        <span class="n">err_r</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">riem</span> <span class="o">-</span> <span class="n">exact</span><span class="p">)</span>
+        <span class="c1"># 厳密な積分値と台形公式に基づく数値積分の値の差を比較</span>
+        <span class="n">err_t</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">trap</span> <span class="o">-</span> <span class="n">exact</span><span class="p">)</span>
+
+        <span class="c1"># ファイルに書き込み（カンマ区切り）</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">err_r</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">err_t</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 画面にも確認用に表示（任意）</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">, 区分求積法の誤差 = </span><span class="si">{</span><span class="n">err_r</span><span class="si">}</span><span class="s2">, 台形公式の誤差 = </span><span class="si">{</span><span class="n">err_t</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2><span class="section-number">10.2. </span>乱数<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>コンピュータで使う“乱数”は正確には <strong>疑似乱数</strong>（pseudo random numbers）と呼ばれる．</p>
+<ul class="simple">
+<li><p>完全なランダムではない．</p></li>
+<li><p>ある規則に従って計算される（アルゴリズムで生成される）．</p></li>
+<li><p>十分ランダムに見えるため，統計・物理・機械学習などで広く使用される．</p></li>
+</ul>
+<p>Python では <code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールを使用する：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="id4">
+<h3><span class="section-number">10.2.1. </span>様々な乱数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>どのような確率に基づいて乱数を発生するか，どの範囲で乱数を発生させるかによって分類．</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>分類</p></th>
+<th class="head text-left"><p>メソッド</p></th>
+<th class="head text-left"><p>使用例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>デフォルトの設定（0以上1未満の一様乱数）</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.random()</span></code></p></td>
+<td class="text-left"><p>5回繰り返しランダムに数が生成する．<pre><code class="language-python">for i in range(5):<br>    print(random.random())</code></pre></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>一様乱数（任意の区間<span class="math notranslate nohighlight">\([a,b]\)</span>）</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.uniform(a,</span> <span class="pre">b)</span></code></p></td>
+<td class="text-left"><p>区間<span class="math notranslate nohighlight">\([-1,1]\)</span>での実数を等確率で出力する．<br><code class="docutils literal notranslate"><span class="pre">random.uniform(-1,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>整数の乱数（両端は含む）</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.randint(a,</span> <span class="pre">b)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.randint(1,</span> <span class="pre">6)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>リストからランダムに選ぶ</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.choice(mylist)</span></code></p></td>
+<td class="text-left"><p><pre><code class="language-python">cards = [“A”, “J”, “Q”, “K”]<br>random.choice(cards)</code></pre></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>正規分布（平均<code class="docutils literal notranslate"><span class="pre">mu</span></code>，分散<code class="docutils literal notranslate"><span class="pre">sigma</span></code>）に従う乱数</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.gauss(mu,</span> <span class="pre">sigma)</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">random.gauss(0,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="seed">
+<h3><span class="section-number">10.2.2. </span>シード（seed）<a class="headerlink" href="#seed" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>上を実行すれば分かるように，同じプログラムを実行しても乱数は毎回異なる値が出力される．</p></li>
+<li><p>しかし，乱数を使用する前に<code class="docutils literal notranslate"><span class="pre">random.seed(0)</span></code>のようにシードを固定すると，<strong>常に同じ乱数列が得られる</strong>．</p></li>
+<li><p>ここにseedメソッドの引数（ここでは<code class="docutils literal notranslate"><span class="pre">0</span></code>とした）を<strong>シード値</strong>と呼び，この値ごとに異なる乱数が出力される．</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>用途：</p>
+<ul class="simple">
+<li><p>デバッグ</p></li>
+<li><p>再現性が必要な研究</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習1</strong></p>
+<p>以下を2回ずつ実行し，</p>
+<ul class="simple">
+<li><p>シードを指定しないと結果が変わること</p></li>
+<li><p>シードを固定すると結果が変わらないこと</p></li>
+</ul>
+<p>を確認せよ．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<p><strong>シードを指定しない場合</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>シードを指定する場合</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3><span class="section-number">10.2.3. </span>シミュレーション<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>サイコロを 1000 回振ったときの平均値</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平均値 =&quot;</span><span class="p">,</span> <span class="n">total</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>サイコロを振ったときに出る目の期待値<span class="math notranslate nohighlight">\(3.5\)</span>に近い値が得られる．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題1</strong></span></p>
+<p>サイコロを 5000 回振ったときの <strong>1〜6 が出る回数</strong> を数え，<br />
+次の形式で表示せよ：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1: xxx回
+2: xxx回
+3: xxx回
+4: xxx回
+5: xxx回
+6: xxx回
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="monte-carlo-method">
+<h2><span class="section-number">10.3. </span>モンテカルロ法（Monte Carlo Method）<a class="headerlink" href="#monte-carlo-method" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>乱数を用いて数値的に値を近似する強力な方法．</p></li>
+<li><p>例：</p>
+<ul>
+<li><p><strong>円周率 π の近似</strong></p></li>
+<li><p><strong>定積分を近似する方法</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="id6">
+<h3><span class="section-number">10.3.1. </span>円周率 π の近似値を求める<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>考え方：</p>
+<ul class="simple">
+<li><p>半径 1 の 1/4 円を考える</p></li>
+<li><p>正方形（面積 1）にランダムに点を打つ</p></li>
+<li><p>円の中に入った確率が π/4 に近づく</p></li>
+</ul>
+<p><strong>円の中の判定</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>実装例</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">approximate_pi</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">count</span> <span class="o">/</span> <span class="n">N</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">approximate_pi</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習2</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">approximate_pi(N)</span></code> を使って，</p>
+<ul class="simple">
+<li><p>N = 1,000</p></li>
+<li><p>N = 100,000</p></li>
+<li><p>N = 10,000,000</p></li>
+</ul>
+<p>で π の近似値がどれだけ変化するか調べよ．</p>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">10.3.2. </span>積分<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>積分</p>
+<div class="math notranslate nohighlight">
+\[
+I = \int_a^b f(x) dx
+\]</div>
+<p>を求めたいとき，区間 <span class="math notranslate nohighlight">\([a,b]\)</span> にランダムな一様乱数 <span class="math notranslate nohighlight">\(x_i\)</span> を生成し，</p>
+<div class="math notranslate nohighlight">
+\[
+I \sim (b-a)\cdot \dfrac{1}{N} \sum_{i=1}^N f(x_i)
+\]</div>
+<p>と近似する．</p>
+<p>つまり，</p>
+<ol class="arabic simple">
+<li><p>区間<span class="math notranslate nohighlight">\([a,b]\)</span>の中でランダムに点を選ぶ．</p></li>
+<li><p>その点での関数値の平均を取る．</p></li>
+<li><p>その平均に区間の長さをかける．</p></li>
+</ol>
+<p>特徴</p>
+<ul class="simple">
+<li><p>高次元でも適用できる（多重積分に強い）．</p></li>
+<li><p>区分求積法・台形公式より収束が遅い．（<span class="math notranslate nohighlight">\(N\)</span>の増加に対して真の値に近づく速さが遅い）</p></li>
+</ul>
+<!-- - 区分求積法・台形公式より遅い収束（**誤差は $\frac{1}{\sqrt{N}}$**） -->
+<p>関数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mc_integral</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># 区間[a,b] の乱数</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">total</span> <span class="o">/</span> <span class="n">N</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>例：<span class="math notranslate nohighlight">\(\int_0^1 x^2 dx = \frac{1}{3}\)</span>の計算</p>
+<p>解は 1/3 ≈ <strong>0.333333…</strong></p>
+<p>実行例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">approx</span> <span class="o">=</span> <span class="n">mc_integral</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">approx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>演習3</strong></p>
+<p>次の積分をモンテカルロ法で近似する．</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^1 x^2 dx = \frac{1}{3}
+\]</div>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(N = 1000, 3000, 10000\)</span> で近似値を求め，正確な値 <span class="math notranslate nohighlight">\(1/3\)</span> と比較せよ．</p></li>
+<li><p>誤差の減り方が <strong>区分求積法・台形公式</strong> とどう違うか考察せよ．（前回第9回のコードを流用）</p></li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>例：<span class="math notranslate nohighlight">\(\int_0^\pi \sin x dx = 2\)</span>の計算</p>
+<p>解は2．</p>
+<p>実行例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">approx</span> <span class="o">=</span> <span class="n">mc_integral</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">approx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>課題2</strong></span></p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\pi \sin x dx = 2
+\]</div>
+<p>について，</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N = 1000, 3000, 10000, 30000\)</span> でモンテカルロ法による近似値を計算し，<strong>区分求積法と台形公式</strong>に比べて真の値に近づく速さがどのように異なるかを比較せよ．</p></li>
+<li><p>つまり，<span class="math notranslate nohighlight">\(N=1000\)</span>から3・10・30倍になったときに誤差は何倍になるかを<strong>モンテカルロ法</strong>・<strong>区分求積法</strong>・<strong>台形公式</strong>について数値計算して求め，それぞれ比較せよ．</p></li>
+</ul>
+<!-- （ヒント：モンテカルロ法の誤差はおおむね $1/\sqrt{N}$ に比例する） -->
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2><span class="section-number">10.4. </span>確率的シミュレーション<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>モンテカルロ法は，次のような問題にも利用される：</p>
+<ul class="simple">
+<li><p>統計的推定</p></li>
+<li><p>物理シミュレーション（統計力学，分子運動）</p></li>
+<li><p>金融工学</p></li>
+<li><p>機械学習</p></li>
+</ul>
+<!-- - 金融工学（オプション価格の計算） -->
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2><span class="section-number">10.5. </span>まとめ<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>乱数を使用するには，Pythonの <code class="docutils literal notranslate"><span class="pre">random</span></code> モジュールを使用する．</p></li>
+<li><p>乱数には一様乱数・整数乱数・正規乱数などの種類がある．</p></li>
+<li><p><span style="color:red">シード</span>（seed）を固定することにより乱数の再現性を確保できる．</p></li>
+<li><p><span style="color:red">モンテカルロ法</span>：乱数を用いた数値的な手法．</p></li>
+<li><p>乱数は統計・機械学習・物理シミュレーションなどで活用される．</p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +879,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="9_calculus.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>数値計算2（数値微分・数値積分）</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,9 +903,22 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 第9回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 乱数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.1. 様々な乱数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seed">10.2.2. シード（seed）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2.3. シミュレーション</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-method">10.3. モンテカルロ法（Monte Carlo Method）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.3.1. 円周率 π の近似値を求める</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.3.2. 積分</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.4. 確率的シミュレーション</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.5. まとめ</a></li>
+</ul>
   </nav></div>
 
 </div></div>
