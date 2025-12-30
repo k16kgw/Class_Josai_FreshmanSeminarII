@@ -18,6 +18,6 @@ parts:
       - file: contents/8_algorithm
       - file: contents/9_calculus
       - file: contents/10_random
-      # - file: contents/11_visualization
+      - file: contents/11_visualization
       # - file: contents/12_editor
       # - file: contents/13_terminal
