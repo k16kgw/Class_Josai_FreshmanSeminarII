@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Freshman Seminar II</title>
+    <title>12. UNIX系のOS，エディタの使い方 &#8212; Freshman Seminar II</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/12_editor';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="11. 可視化" href="11_visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,11 +179,19 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_for.html">4. 繰り返し</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_function.html">5. 関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_file.html">6. ファイル操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_integer.html">7. 整数を扱う計算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_algorithm.html">8. 数値計算1（2分法・ニュートン法）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_calculus.html">9. 数値計算2（数値微分・数値積分）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_random.html">10. 数値計算3（乱数とシミュレーション）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_visualization.html">11. 可視化</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. UNIX系のOS，エディタの使い方</a></li>
 </ul>
 
     </div>
@@ -370,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>UNIX系のOS，エディタの使い方</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -379,9 +386,32 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">12.1. 第11回の復習（可視化）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-operating-system">12.2. OS（Operating System）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.3. 効率的にパソコンを操作するために</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">12.3.1. 特別な意味を持つキー</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">12.3.2. ショートカット</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cui">12.4. CUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">12.4.1. 基本操作</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">12.4.2. 基本的なコマンド</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path">12.5. パス（path）の考え方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">12.6. エディタとは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code">12.7. VS Codeの基本操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">12.7.1. 起動方法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">12.7.2. 基本操作</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-vs-code">12.8. Jupyter と VS Code の使い分け</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">12.9. 演習1（ターミナル操作）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">12.10. 演習2（VS Code）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">12.11. 次回予告（第13回）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">12.12. まとめ</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -392,7 +422,310 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="unixos">
+<h1><span class="section-number">12. </span>UNIX系のOS，エディタの使い方<a class="headerlink" href="#unixos" title="Link to this heading">#</a></h1>
+<p>出席パスワード：<strong>229502</strong></p>
+<p>到達目標</p>
+<ul class="simple">
+<li><p><strong>UNIX系OSとは何か</strong>を理解する</p></li>
+<li><p><strong>ターミナル</strong>（Terminal）で基本的な操作ができるようになる</p></li>
+<li><p><strong>VS Code</strong>を用いてファイルの編集・保存ができるようになる</p></li>
+<li><p>次回（第13回）の「ターミナルからPythonを実行する」準備を整える</p></li>
+</ul>
+<p>準備</p>
+<ol class="arabic simple">
+<li><p>pythonが使えるかを確認する．</p></li>
+<li></li>
+<li><p><strong>VS Code</strong> がインストールされていることを確認する</p></li>
+</ol>
+<hr class="docutils" />
+<section id="id1">
+<h2><span class="section-number">12.1. </span>第11回の復習（可視化）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>matplotlib を用いた可視化</p>
+<ul>
+<li><p>折れ線グラフ・散布図・ヒストグラム・棒グラフ</p></li>
+</ul>
+</li>
+<li><p>可視化は</p>
+<ul>
+<li><p>分布を見る</p></li>
+<li><p>比較する</p></li>
+<li><p>変化を追う
+という目的に応じて使い分ける</p></li>
+</ul>
+</li>
+</ul>
+<p>Jupyter は「試行錯誤」に向いているが，
+実務や大規模なプログラムでは「ファイル管理」が重要になる。</p>
+</section>
+<hr class="docutils" />
+<section id="os-operating-system">
+<h2><span class="section-number">12.2. </span>OS（Operating System）<a class="headerlink" href="#os-operating-system" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>コンピュータ全体を管理する基本ソフト</p></li>
+<li><p>例：</p>
+<ul>
+<li><p>macOS</p></li>
+<li><p>Linux</p></li>
+<li><p>Windows</p></li>
+</ul>
+</li>
+<li><p>macOS / Linux は<strong>UNIX系OS</strong>と呼ばれる．</p></li>
+<li><p>特徴</p>
+<ul>
+<li><p>コマンド操作が強力．</p></li>
+<li><p>プログラミング・研究用途に適している．</p></li>
+<li><p>サーバ・AI・数値計算で広く使われている．</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2><span class="section-number">12.3. </span>効率的にパソコンを操作するために<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3><span class="section-number">12.3.1. </span>特別な意味を持つキー<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>⇥：Tabキー…</p></li>
+<li><p>⇧：Shiftキー</p></li>
+<li><p>⌘：Commandキー（Windowsでのcontrolキー）</p></li>
+<li><p>^：Controlキー</p></li>
+<li><p>⌥：Optionキー（Windowsでのaltキー）</p></li>
+<li><p>⇪​​：Caps Lockキー…アルファベットの入力を大文字に固定する．（日本語では使う機会は少ないので，システム設定で他のキーに置き換える人も多い）</p></li>
+<li><p>スクリーンショット：画面を画像ファイルとして保存する機能．</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3><span class="section-number">12.3.2. </span>ショートカット<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>キー入力</p></th>
+<th class="head text-left"><p>動作</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>⌘+C</p></td>
+<td class="text-left"><p>選択された文字をクリップボードにコピー</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>⌘+X</p></td>
+<td class="text-left"><p>選択された文字をクリップボードにコピーし，選択箇所の文字を削除</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>⌘+V</p></td>
+<td class="text-left"><p>カーソル位置にクリップボードに保存された文字を貼り付け（ペースト）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>⌘+Z</p></td>
+<td class="text-left"><p>直前に行った操作をキャンセルして元に戻す</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>⌘+⇧+3</p></td>
+<td class="text-left"><p>画面全体のスクリーンショットを撮る．</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>⌘+⇧+4</p></td>
+<td class="text-left"><p>画面内指定の範囲のスクリーンショットを撮る．</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>⌘+⇧+5</p></td>
+<td class="text-left"><p>様々な条件でスクリーンショットを撮る．画面録画も可能．</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="cui">
+<h2><span class="section-number">12.4. </span>CUI<a class="headerlink" href="#cui" title="Link to this heading">#</a></h2>
+<p>コンピュータの操作方法にはGUIとCUIの2種類が存在する．</p>
+<ul class="simple">
+<li><p><strong>GUI</strong> (Graphical User Interface)</p>
+<ul>
+<li><p>アイコン、ボタン、ウィンドウなどの視覚的な要素を使って、マウスやタッチパネルで直感的にコンピューターを操作するための画面（インターフェース）</p></li>
+</ul>
+</li>
+<li><p><strong>CUI</strong> (Character User Interface)</p>
+<ul>
+<li><p>キーボードから文字（コマンド）を入力してコンピューターを操作するための画面（インターフェース）</p></li>
+<li><p>CUIの例：<span style="color:red">ターミナル</span>（Windowsでは「コマンドライン」）</p></li>
+</ul>
+</li>
+</ul>
+<p>ターミナルの使用例</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ {コマンド} {引数}
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ターミナルでのコマンド例を示すとき，行頭に<code class="docutils literal notranslate"><span class="pre">$</span></code>をつける．
+これは一般ユーザ（普段パソコンにログインしている個人アカウント）での実行を表す．</p>
+<p>コンピュータには一般ユーザの他に管理者権限を持つ特別なユーザ「root」が存在し，rootとしてコマンドを実行することを表す場合にはコマンドの行頭に<code class="docutils literal notranslate"><span class="pre">#</span></code>をつける．</p>
+</div>
+<section id="id5">
+<h3><span class="section-number">12.4.1. </span>基本操作<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">12.4.2. </span>基本的なコマンド<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>※ <code class="docutils literal notranslate"><span class="pre">-</span></code>の後にオプションを追加する．</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>コマンド名</p></th>
+<th class="head text-left"><p>挙動</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p></td>
+<td class="text-left"><p>現在いるフォルダの場所を出力する．</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span></code></p></td>
+<td class="text-left"><p>現在いるフォルダに含まれている<strong>ファイル・フォルダの一覧を出力</strong>する．</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span></code>を詳細も含めて出力する．</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span></code></p></td>
+<td class="text-left"><p>ユーザのルートディレクトリに<strong>移動</strong>する．</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">{フォルダ名}</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">{フォルダ名}</span></code>のフォルダに移動する．</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p></td>
+<td class="text-left"><p>1つ上の階層のフォルダに移動する．</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">{フォルダ名}</span></code></p></td>
+<td class="text-left"><p>現在のディレクトリに<code class="docutils literal notranslate"><span class="pre">{フォルダ名}</span></code>の<strong>フォルダを作成</strong>する．</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">{ファイル名}</span></code></p></td>
+<td class="text-left"><p>現在のディレクトリに<code class="docutils literal notranslate"><span class="pre">{ファイル名}</span></code>の<strong>ファイルを作成</strong>する．</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">{ファイル名}</span></code></p></td>
+<td class="text-left"><p>現在のディレクトリにある<code class="docutils literal notranslate"><span class="pre">{ファイル名}</span></code>の<strong>ファイルを削除</strong>する．（ゴミ箱に入れずに直接削除するので注意）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">{フォルダ名}</span></code></p></td>
+<td class="text-left"><p>現在のディレクトリにある<code class="docutils literal notranslate"><span class="pre">{フォルダ名}</span></code>を<strong>フォルダごと削除</strong>する．</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="path">
+<h2><span class="section-number">12.5. </span>パス（path）の考え方<a class="headerlink" href="#path" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>絶対パス</strong>：<code class="docutils literal notranslate"><span class="pre">/Users/username/Documents/...</span></code></p></li>
+<li><p><strong>相対パス</strong>：<code class="docutils literal notranslate"><span class="pre">./</span></code>, <code class="docutils literal notranslate"><span class="pre">../</span></code></p></li>
+</ul>
+<p>cd + ls + pwd を組み合わせると迷子にならない</p>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2><span class="section-number">12.6. </span>エディタとは<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>テキストファイルを編集するためのソフト</strong></p></li>
+<li><p>Word ではなく「プレーンテキスト」</p></li>
+</ul>
+<p>例：</p>
+<ul class="simple">
+<li><p>VS Code</p></li>
+<li><p>vim</p></li>
+<li><p>nano</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="vs-code">
+<h2><span class="section-number">12.7. </span>VS Codeの基本操作<a class="headerlink" href="#vs-code" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3><span class="section-number">12.7.1. </span>起動方法<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>アプリから起動</p></li>
+<li><p>または（設定済みの場合）</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h3><span class="section-number">12.7.2. </span>基本操作<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>新規ファイル作成</p></li>
+<li><p>保存（<code class="docutils literal notranslate"><span class="pre">Cmd</span> <span class="pre">+</span> <span class="pre">S</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code>）</p></li>
+<li><p>拡張子 <code class="docutils literal notranslate"><span class="pre">.py</span></code> を付ける</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="jupyter-vs-code">
+<h2><span class="section-number">12.8. </span>Jupyter と VS Code の使い分け<a class="headerlink" href="#jupyter-vs-code" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>用途</p></th>
+<th class="head"><p>適した環境</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>試行錯誤・学習</p></td>
+<td><p>Jupyter Notebook</p></td>
+</tr>
+<tr class="row-odd"><td><p>プログラム作成</p></td>
+<td><p>VS Code</p></td>
+</tr>
+<tr class="row-even"><td><p>実行・自動化</p></td>
+<td><p>ターミナル</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Jupyter = 実験ノート
+VS Code = 原稿用紙
+ターミナル = 実行装置</p>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2><span class="section-number">12.9. </span>演習1（ターミナル操作）<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>ターミナルを開く</p></li>
+<li><p>Documents フォルダへ移動せよ</p></li>
+<li><p>Fresh フォルダを作成せよ</p></li>
+<li><p>その中に sample.txt を作成せよ</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2><span class="section-number">12.10. </span>演習2（VS Code）<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>VS Code で <a class="reference external" href="http://sample.py">sample.py</a> を作成せよ</p></li>
+<li><p>次の内容を保存せよ</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;UNIX and Editor&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2><span class="section-number">12.11. </span>次回予告（第13回）<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>ターミナルから Python を実行する</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルを直接動かす</p></li>
+<li><p>Jupyter を使わない実行方法</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>次回は「<strong>Pythonを本当の意味で使う回</strong>」です。</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2><span class="section-number">12.12. </span>まとめ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>UNIX系OSはプログラミングに適したOS</p></li>
+<li><p>ターミナルは文字で操作する強力な道具</p></li>
+<li><p>VS Code はプログラムを書くためのエディタ</p></li>
+<li><p>Jupyter・VS Code・ターミナルは役割が異なる</p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -423,6 +756,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="11_visualization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>可視化</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -438,9 +780,32 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">12.1. 第11回の復習（可視化）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-operating-system">12.2. OS（Operating System）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.3. 効率的にパソコンを操作するために</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">12.3.1. 特別な意味を持つキー</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">12.3.2. ショートカット</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cui">12.4. CUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">12.4.1. 基本操作</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">12.4.2. 基本的なコマンド</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path">12.5. パス（path）の考え方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">12.6. エディタとは</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code">12.7. VS Codeの基本操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">12.7.1. 起動方法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">12.7.2. 基本操作</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-vs-code">12.8. Jupyter と VS Code の使い分け</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">12.9. 演習1（ターミナル操作）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">12.10. 演習2（VS Code）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">12.11. 次回予告（第13回）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">12.12. まとめ</a></li>
+</ul>
   </nav></div>
 
 </div></div>
