@@ -322,3 +322,4 @@ else:
 ### 予習
 
 - 「Pythonで始めるプログラミング入門」<span style="color:red">3章</span>を読んでおくこと．
+

@@ -452,3 +452,4 @@ FizzBuzz
 
 ※ この手続きによって得られる数列を<span style="color:red">コラッツ数列</span>と呼ぶ．
 ```
+

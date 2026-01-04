@@ -279,3 +279,4 @@ height = 0.4
 BMI = "各自記入"
 print(f"{target}のBMIは{BMI}です．")
 ```
+
