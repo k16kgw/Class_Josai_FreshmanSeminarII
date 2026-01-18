@@ -20,4 +20,4 @@ parts:
       - file: contents/10_random
       - file: contents/11_visualization
       - file: contents/12_editor
-      # - file: contents/13_terminal
+      - file: contents/13_terminal

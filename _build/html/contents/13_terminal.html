@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>UNIX系のOSによるPythonの実行方法 &#8212; Freshman Seminar II</title>
+    <title>13. UNIX系のOSによるPythonの実行方法 &#8212; Freshman Seminar II</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/13_terminal';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="12. UNIX系のOS，エディタの使い方" href="12_editor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +181,7 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目次</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_python.html">1. Pythonの概要</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_variable.html">2. 変数と加減乗除</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_if.html">3. 条件分岐（if文）</a></li>
@@ -193,6 +194,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10_random.html">10. 数値計算3（乱数とシミュレーション）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_visualization.html">11. 可視化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_editor.html">12. UNIX系のOS，エディタの使い方</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. UNIX系のOSによるPythonの実行方法</a></li>
 </ul>
 
     </div>
@@ -388,30 +390,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">到達目標</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">第12回の復習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonプログラムの正体</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#py"><code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルとは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Pythonの実行方法（基本）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1. ターミナルでフォルダへ移動</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2. Pythonを実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.1. 第12回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-python">13.2. Jupyter Notebook と Python ファイルの違い</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-ipynb">13.2.1. Jupyter Notebookファイル（<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>，アイパイエヌビー）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-py">13.2.2. Pythonファイル（<code class="docutils literal notranslate"><span class="pre">.py</span></code>）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">実行の流れ（重要）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習1（最初の実行）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook">Jupyter Notebook との違い</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">コマンドライン引数（発展）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">よくあるエラーと対処法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">① ファイルが見つからない</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">② 文法エラー</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror">③ NameError</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">13.3. Pythonの環境構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.4. ターミナルでPythonファイルを作成して実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.5. よくあるエラーとその意味</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.5.1. Python が見つからない</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.5.2. ファイルが見つからない</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">実行結果をファイルに保存（発展）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">演習2（これまでのコードを実行）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">課題（第13回）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">この講義の意味（重要）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.6. ターミナルでPython　を実行する利点</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-md">13.7. Markdownファイル（<code class="docutils literal notranslate"><span class="pre">.md</span></code>，マークダウン）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.7.1. 基本記法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.7.2. 表示方法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.8. まとめ</a></li>
 </ul>
             </nav>
         </div>
@@ -423,280 +421,337 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>第12回で身につけた</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="unixospython">
+<h1><span class="section-number">13. </span>UNIX系のOSによるPythonの実行方法<a class="headerlink" href="#unixospython" title="Link to this heading">#</a></h1>
+<!-- 出席パスワード：987654 -->
+<p>到達目標</p>
 <ul class="simple">
-<li><p>ターミナル操作</p></li>
-<li><p>vim / VS Code による編集</p></li>
-<li><p>パスの理解</p></li>
+<li><p><strong>ターミナルから Python プログラムを実行</strong>できるようになる．</p></li>
+<li><p>Pythonスクリプトと<strong>ファイル操作の関係</strong>を理解する．</p></li>
+<li><p>Jupyter / VS Code / ターミナルの役割分担を理解する．</p></li>
+<li><p>将来（研究・レポート・開発）につながる実行環境の基礎を身につける．</p></li>
 </ul>
-<p>を <strong>「PythonをCUIで実行する」ことに収束</strong>させる構成です。</p>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="unixospython">
-<h1>UNIX系のOSによるPythonの実行方法<a class="headerlink" href="#unixospython" title="Link to this heading">#</a></h1>
-<!-- 出席パスワード：**（当日提示）** -->
 <section id="id1">
-<h2>到達目標<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>第12回の復習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>前回は以下を学んだ：</p>
 <ul class="simple">
-<li><p><strong>ターミナルからPythonプログラムを実行</strong>できるようになる．</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルと <strong>Jupyter Notebook の違い</strong>を理解する．</p></li>
-<li><p><strong>エラーが出たときの見方</strong>を知る．</p></li>
-<li><p>第1回〜第11回までに書いたPythonコードを
-「実行可能なプログラム」として扱えるようになる．</p></li>
+<li><p>ターミナルの基本操作（<code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">rm</span></code> など）</p></li>
+<li><p>vim / VS Code によるファイル編集</p></li>
+<li><p>ファイルとフォルダの構造（パス）の考え方</p></li>
+<li><p>各ツールの使い分け</p></li>
 </ul>
-</section>
-<hr class="docutils" />
-<section id="id2">
-<h2>第12回の復習<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>GUI と CUI の違い</p></li>
-<li><p>ターミナルの基本操作</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">rm</span></code></p></li>
-</ul>
-</li>
-<li><p>エディタ</p>
-<ul>
-<li><p>vim：最低限の編集</p></li>
-<li><p>VS Code：普段使い</p></li>
-</ul>
-</li>
-<li><p>**パス（絶対パス・相対パス）**の考え方</p></li>
-</ul>
-<p>第12回は「準備」
-第13回は「実行」</p>
-</section>
-<hr class="docutils" />
-<section id="python">
-<h2>Pythonプログラムの正体<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
-<p>これまで Jupyter Notebook では</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>と書いて <strong>セルを実行</strong>してきた．</p>
-<p>しかし実際には，Pythonは</p>
-<ul class="simple">
-<li><p><strong>テキストファイル（<code class="docutils literal notranslate"><span class="pre">.py</span></code>）</strong></p></li>
-<li><p><strong>ターミナルからの実行</strong></p></li>
-</ul>
-<p>が本来の姿である．</p>
-</section>
-<hr class="docutils" />
-<section id="py">
-<h2><code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルとは<a class="headerlink" href="#py" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Pythonのプログラムを保存した <strong>テキストファイル</strong></p></li>
-<li><p>拡張子が <code class="docutils literal notranslate"><span class="pre">.py</span></code></p></li>
-</ul>
-<p>例：<code class="docutils literal notranslate"><span class="pre">sample.py</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id3">
-<h2>Pythonの実行方法（基本）<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<section id="id4">
-<h3>1. ターミナルでフォルダへ移動<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Users/<span class="o">{</span>ユーザ名<span class="o">}</span>/Documents/Fresh
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">sample.py</span></code> があることを確認する．</p>
-</section>
-<hr class="docutils" />
-<section id="id5">
-<h3>2. Pythonを実行する<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>sample.py
-</pre></div>
-</div>
-<p>または（環境によってはこちら）</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>sample.py
-</pre></div>
-</div>
-<p>macOS / Linux では
-<code class="docutils literal notranslate"><span class="pre">python</span></code> と <code class="docutils literal notranslate"><span class="pre">python3</span></code> の違いに注意</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="id6">
-<h2>実行の流れ（重要）<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>① エディタで .py を作る
-② 保存する
-③ ターミナルでその場所へ移動
-④ python ファイル名.py
-</pre></div>
-</div>
-<p>「どのフォルダで実行しているか」が最重要</p>
-</section>
-<hr class="docutils" />
-<section id="id7">
-<h2>演習1（最初の実行）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>ターミナルで <code class="docutils literal notranslate"><span class="pre">/Users/{ユーザ名}/Documents/Fresh</span></code> に移動せよ．</p></li>
-<li><p>vim または VS Code で <code class="docutils literal notranslate"><span class="pre">hello.py</span></code> を作成せよ．</p></li>
-<li><p>次の内容を保存せよ．</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from terminal&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>ターミナルで実行せよ．</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-```bash
-python hello.py
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="jupyter-notebook">
-<h2>Jupyter Notebook との違い<a class="headerlink" href="#jupyter-notebook" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>項目</p></th>
-<th class="head"><p>Jupyter</p></th>
-<th class="head"><p>ターミナル + .py</p></th>
+<tr class="row-odd"><th class="head"><p>用途</p></th>
+<th class="head"><p>ツール</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>実行方法</p></td>
-<td><p>セルごと</p></td>
-<td><p>ファイル単位</p></td>
+<tr class="row-even"><td><p>試行錯誤・学習</p></td>
+<td><p>Jupyter Notebook</p></td>
 </tr>
-<tr class="row-odd"><td><p>途中実行</p></td>
-<td><p>可能</p></td>
-<td><p>不可</p></td>
+<tr class="row-odd"><td><p>プログラム作成</p></td>
+<td><p>VS Code</p></td>
 </tr>
-<tr class="row-even"><td><p>試行錯誤</p></td>
-<td><p>得意</p></td>
-<td><p>苦手</p></td>
+<tr class="row-even"><td><p>最低限の編集</p></td>
+<td><p>vim</p></td>
 </tr>
-<tr class="row-odd"><td><p>自動実行</p></td>
-<td><p>不向き</p></td>
-<td><p>得意</p></td>
-</tr>
-<tr class="row-even"><td><p>実務・研究</p></td>
-<td><p>補助</p></td>
-<td><p>主役</p></td>
+<tr class="row-odd"><td><p>実行・自動化</p></td>
+<td><p>ターミナル</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Jupyter は「ノート」
-.py は「プログラム」</p>
 </section>
 <hr class="docutils" />
-<section id="id8">
-<h2>コマンドライン引数（発展）<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p>ターミナルから <strong>値を渡す</strong>こともできる．</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># args.py</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>args.py<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">30</span>
-</pre></div>
-</div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;args.py&#39;, &#39;10&#39;, &#39;20&#39;, &#39;30&#39;]
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id9">
-<h2>よくあるエラーと対処法<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<section id="id10">
-<h3>① ファイルが見つからない<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>python: can&#39;t open file &#39;sample.py&#39;
-</pre></div>
-</div>
-<p>→ <strong>今いるディレクトリが違う</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
-ls
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id11">
-<h3>② 文法エラー<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SyntaxError
-</pre></div>
-</div>
-<p>→ <strong>Pythonの文法ミス</strong></p>
+<section id="jupyter-notebook-python">
+<h2><span class="section-number">13.2. </span>Jupyter Notebook と Python ファイルの違い<a class="headerlink" href="#jupyter-notebook-python" title="Link to this heading">#</a></h2>
+<section id="jupyter-notebook-ipynb">
+<h3><span class="section-number">13.2.1. </span>Jupyter Notebookファイル（<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>，アイパイエヌビー）<a class="headerlink" href="#jupyter-notebook-ipynb" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> の付け忘れ</p></li>
-<li><p>インデントのズレ</p></li>
+<li><p>途中経過を試しながら書ける</p></li>
+<li><p>グラフ・数式・説明をまとめやすい</p></li>
+<li><p><strong>学習・実験・レポート向き</strong></p></li>
 </ul>
 </section>
-<hr class="docutils" />
-<section id="nameerror">
-<h3>③ NameError<a class="headerlink" href="#nameerror" title="Link to this heading">#</a></h3>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>NameError: name &#39;x&#39; is not defined
-</pre></div>
-</div>
-<p>→ <strong>変数が定義されていない</strong></p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="id12">
-<h2>実行結果をファイルに保存（発展）<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>calc.py<span class="w"> </span>&gt;<span class="w"> </span>result.txt
-</pre></div>
-</div>
+<section id="python-py">
+<h3><span class="section-number">13.2.2. </span>Pythonファイル（<code class="docutils literal notranslate"><span class="pre">.py</span></code>）<a class="headerlink" href="#python-py" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>標準出力をファイルに保存</p></li>
-<li><p>数値計算・シミュレーションで重要</p></li>
+<li><p>ファイル内のプログラムを最初から最後まで一気に実行する．</p></li>
+<li><p>再利用・自動化に向いている．</p></li>
+<li><p><strong>実用・配布・研究向き</strong></p></li>
 </ul>
 </section>
-<hr class="docutils" />
-<section id="id13">
-<h2>演習2（これまでのコードを実行）<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
-<p>第7回〜第11回で作成したプログラムの中から1つ選び，
-<code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルとして保存し，ターミナルから実行せよ．</p>
-<p>例：</p>
-<ul class="simple">
-<li><p>サイコロシミュレーション</p></li>
-<li><p>数値積分</p></li>
-<li><p>モンテカルロ法</p></li>
-</ul>
 </section>
 <hr class="docutils" />
-<section id="id14">
-<h2>課題（第13回）<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
-<p><strong>第13回 課題</strong></p>
-<ol class="arabic simple">
-<li><p>ターミナルから実行可能なPythonプログラム <code class="docutils literal notranslate"><span class="pre">final.py</span></code> を作成せよ．</p></li>
-<li><p>内容は自由だが，以下を満たすこと：</p>
+<section id="python">
+<h2><span class="section-number">13.3. </span>Pythonの環境構築<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p>Pythonがインストールされていることを確認する．</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">--version</span></code>を実行</p>
+<p>※ 行頭の<code class="docutils literal notranslate"><span class="pre">$</span></code>は一般ユーザでの実行を表す記号であり，実際に打ち込むのは<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>のみ．</p>
 <ul class="simple">
-<li><p>print文を含む</p></li>
-<li><p>for または while を含む</p></li>
-<li><p>第1回〜第11回で学んだ内容を1つ以上使う</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.13.5</span></code>のようにバージョンが表示された場合 → 次の節へ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found:</span> <span class="pre">python</span></code>と表示された場合 → 以下の原因・解決策を確認</p></li>
+</ul>
+<p><u>原因</u></p>
+<ul class="simple">
+<li><p>pythonがインストールされていない．</p></li>
+<li><p>pythonへのパスが通っていない（コンピュータがpythonの居場所を知らない）．</p></li>
+</ul>
+<p><u>解決策</u></p>
+<ul class="simple">
+<li><p>コマンド名<code class="docutils literal notranslate"><span class="pre">python</span></code>に打ち間違いがないかを確認する．</p></li>
+<li><p>python3としてインストールされているかを<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">--version</span></code>で確認する．</p>
+<ul>
+<li><p>同様のエラーが出る場合 → 「<a class="reference internal" href="python_install.html"><span class="std std-doc">Pythonのパスを通す方法</span></a>」（オンラインのリンク：<a class="reference external" href="https://seminar.k16kgw.com/Class_Josai_FreshmanSeminarII/contents/python_install.html">https://seminar.k16kgw.com/Class_Josai_FreshmanSeminarII/contents/python_install.html</a>）から環境構築を実施する．</p></li>
 </ul>
 </li>
-<li><p>ターミナルで実行した結果が正しく表示されることを確認し，
-<code class="docutils literal notranslate"><span class="pre">final.py</span></code> をWebClassから提出せよ．</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2><span class="section-number">13.4. </span>ターミナルでPythonファイルを作成して実行する<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>ターミナルでpythonファイルを実行する場合には次のコマンドを実行する．
+<code class="docutils literal notranslate"><span class="pre">{ファイル名}</span></code>をファイル名に書き換える．拡張子<code class="docutils literal notranslate"><span class="pre">.py</span></code>も含める．</p>
+<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span><span class="o">{</span>ファイル名<span class="o">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>ターミナルを立ち上げる．</p></li>
+<li><p>フレッシュマンセミナー用のフォルダ <code class="docutils literal notranslate"><span class="pre">/Users/{ユーザ名}/Documents/Fresh</span></code> に移動する．</p></li>
+<li><p>前回の演習2で作成した<code class="docutils literal notranslate"><span class="pre">sample.py</span></code>ファイルがあることを確認する．（<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ls</span></code>を実行してファイルの存在を確認する）</p></li>
+<li><p>ファイルの中身を確認する．（<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">vim</span> <span class="pre">sample.py</span></code>で記述内容を確認し，<code class="docutils literal notranslate"><span class="pre">:q</span></code>で閉じる）</p></li>
+<li><p>ファイルを実行する．（<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">sample.py</span></code>）</p></li>
+<li><p>ターミナルの画面に<code class="docutils literal notranslate"><span class="pre">print</span></code>の結果が出ていることを確認できればok．</p></li>
 </ol>
 </section>
 <hr class="docutils" />
-<section id="id15">
-<h2>この講義の意味（重要）<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
-<p>ターミナルからPythonを実行できるようになった時点で，
-「Pythonが書ける」から
-「Pythonが使える」段階に到達した</p>
+<section id="id3">
+<h2><span class="section-number">13.5. </span>よくあるエラーとその意味<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3><span class="section-number">13.5.1. </span>Python が見つからない<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>エラー内容</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>command not found: python
+</pre></div>
+</div>
+<p><u>原因</u></p>
+<ul class="simple">
+<li><p>pythonがインストールされていない．</p></li>
+<li><p>pythonへのパスが通っていない（コンピュータがpythonの居場所を知らない）．</p></li>
+</ul>
+<p><u>解決策</u></p>
+<ul class="simple">
+<li><p>コマンド名<code class="docutils literal notranslate"><span class="pre">python</span></code>に打ち間違いがないかを確認する．</p></li>
+<li><p>python3としてインストールされているかを<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">--version</span></code>で確認する．</p>
+<ul>
+<li><p>同様のエラーが出る場合 → 「<a class="reference internal" href="python_install.html"><span class="std std-doc">Pythonのパスを通す方法</span></a>」（オンラインのリンク：<a class="reference external" href="https://seminar.k16kgw.com/Class_Josai_FreshmanSeminarII/contents/python_install.html">https://seminar.k16kgw.com/Class_Josai_FreshmanSeminarII/contents/python_install.html</a>）を参考にパスを通す．</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">13.5.2. </span>ファイルが見つからない<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>エラー内容</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>python: can&#39;t open file &#39;sample.py&#39;: [Errno 2] No such file or directory
+</pre></div>
+</div>
+<p><u>原因</u></p>
+<ul class="simple">
+<li><p><strong>現在いるディレクトリに<code class="docutils literal notranslate"><span class="pre">sample.py</span></code>ファイルがない</strong>．</p></li>
+</ul>
+<p><u>解決策</u></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ls</span></code>で<code class="docutils literal notranslate"><span class="pre">sample.py</span></code>ファイルがあるか確認する．</p>
+<ul>
+<li><p>ない場合：<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pwd</span></code>で自分のいるフォルダを確認した上で他のフォルダへ探しに行く．</p></li>
+<li><p>ある場合：ファイル名<code class="docutils literal notranslate"><span class="pre">sample.py</span></code>の打ち間違いがないか確認する．</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<!-- 
+## 入力を受け取るプログラム
+
+```python
+name = input("名前を入力してください: ")
+print(f"こんにちは，{name}さん")
+```
+
+```text
+$ python greet.py
+名前を入力してください: Alice
+こんにちは，Aliceさん
+```
+ -->
+<!-- 
+## ファイル入力・出力（復習＋実践）
+
+### ファイルに書き込む
+
+```python
+with open("result.txt", "w") as f:
+    f.write("計算結果\n")
+    f.write("42\n")
+```
+
+### ファイルを読む
+
+```python
+with open("result.txt", "r") as f:
+    text = f.read()
+    print(text)
+```
+
+ターミナルで `ls` → Pythonで `open()`
+→ **同じファイルを扱っている**
+ -->
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">13.6. </span>ターミナルでPython　を実行する利点<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>自動化できる</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python analyze.py
+$ python analyze.py
+$ python analyze.py
+</pre></div>
+</div>
+<p>→ 毎回同じ処理を正確に実行できる</p>
+<ul class="simple">
+<li><p>大量データに強い</p>
+<ul>
+<li><p>数百・数千ファイル</p></li>
+<li><p>長時間計算</p></li>
+<li><p>人が操作する必要なし</p></li>
+</ul>
+</li>
+</ul>
+<!-- 3. 将来につながる
+
+- 研究（数値計算・データ解析）
+- サーバ・クラウド
+- AI・機械学習
+- ソフトウェア開発 -->
+<p>GUI は「手作業」
+CUI + Python は「仕組み化」</p>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>演習1</strong></span></p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^1 4x^3 - x dx = \frac{1}{2}
+\]</div>
+<p>について，
+空間分割数<span class="math notranslate nohighlight">\(N = 1000, 3000, 10000, 30000\)</span>としたときの<strong>区分求積法</strong>での数値積分の値と真の値との誤差を可視化するプログラムを<code class="docutils literal notranslate"><span class="pre">main.py</span></code>として作成し，ターミナルで実行せよ．
+ただし，グラフは横軸を空間分割数<span class="math notranslate nohighlight">\(N\)</span>，縦軸を誤差とした折れ線グラフを採用するものとし，作成したグラフは<code class="docutils literal notranslate"><span class="pre">graph.png</span></code>ファイルとして保存するものとせよ．</p>
+<p>プログラムの作成にあたってはグラフの出力をする必要がないため，<code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>の部分をファイルの保存をする手続き<code class="docutils literal notranslate"><span class="pre">fig.savefig(&quot;plot.png&quot;)</span></code>に書き換えること．</p>
+<p>作成した<code class="docutils literal notranslate"><span class="pre">main.py</span></code>をWebClassの<span style="color:red">「第13回課題」の問1</span>から提出せよ．
+（なお今回は最終回のため，<span style="color:red">提出期限は本日2026年1月19日(月)23:59まで</span>と短くしている．）</p>
+</div>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h2>まとめ<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<section id="markdown-md">
+<h2><span class="section-number">13.7. </span>Markdownファイル（<code class="docutils literal notranslate"><span class="pre">.md</span></code>，マークダウン）<a class="headerlink" href="#markdown-md" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Pythonは本来 <strong>ターミナルから実行</strong>するもの</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルは「実行可能なプログラム」</p></li>
-<li><p>Jupyter と .py は目的によって使い分ける</p></li>
-<li><p>第13回はこの科目の <strong>到達点</strong></p></li>
+<li><p><strong>Markdown</strong>（マークダウン）は，文章を読みやすく書きつつ，簡単な記号だけで <strong>見出し・箇条書き・強調・コード</strong>などの書式を付けられる記法．</p></li>
+<li><p>拡張子は <code class="docutils literal notranslate"><span class="pre">.md</span></code></p></li>
 </ul>
-<!-- ### 最後に -->
-<!-- ここまで来れば，どんなPythonの本・Web資料でも読める土台ができました。 -->
+<p><u>使用される場面</u></p>
+<ul class="simple">
+<li><p>生成AIで出力される文書は特に指定しない限りMarkdown形式となっていることが多い．</p></li>
+<li><p>ブログなどのWebコンテンツはMarkdownに準拠した形式で書かれていることがある．</p></li>
+</ul>
+<section id="id7">
+<h3><span class="section-number">13.7.1. </span>基本記法<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><u>見出し</u></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gh"># 大見出し</span>
+<span class="gu">## 中見出し</span>
+<span class="gu">### 小見出し</span>
+</pre></div>
+</div>
+<p><u>箇条書き</u>（半角ハイフン+半角スペース）</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>りんご
+<span class="k">-</span><span class="w"> </span>みかん
+<span class="k">-</span><span class="w"> </span>ばなな
+</pre></div>
+</div>
+<p><u>番号付き</u>（半角数字+ピリオド+半角スペース）</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="k">1.</span> 手順1
+<span class="k">2.</span> 手順2
+<span class="k">3.</span> 手順3
+</pre></div>
+</div>
+<p><u>強調</u></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gs">**太字**</span>
+<span class="ge">*斜体*</span>
+</pre></div>
+</div>
+<p><u>コード</u>（1行の中でコードを示す）</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="sb">`python hello.py`</span>
+</pre></div>
+</div>
+<p><u>複数行のコード</u></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="sb">```python</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+<p><u>リンク</u></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>[<span class="nt">OpenAI</span>](<span class="na">https://www.openai.com</span>)
+</pre></div>
+</div>
+<p><u>画像</u></p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>![<span class="nt">説明文</span>](<span class="na">画像ファイルのパス</span>)
+</pre></div>
+</div>
+<p>例（同じフォルダに <code class="docutils literal notranslate"><span class="pre">graph.png</span></code> がある場合）：</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>![<span class="nt">graph</span>](<span class="na">graph.png</span>)
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">13.7.2. </span>表示方法<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Markdown は原本はただのテキストだが，多くのツールで整形された表示ができる．</p>
+<ul class="simple">
+<li><p>VS Code：プレビュー（右上の「プレビュー」ボタン）</p></li>
+<li><p>GitHub：自動で整形表示</p></li>
+<li><p>Jupyter：Markdownセルに貼ると整形表示</p></li>
+</ul>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span style="color:red"><strong>演習2</strong></span></p>
+<p>VS codeまたはvimでマークダウンファイル<code class="docutils literal notranslate"><span class="pre">myself.md</span></code>を作成し，次の指示に従い箇条書きで書き込むこと．
+作成した<code class="docutils literal notranslate"><span class="pre">myself.md</span></code>をWebClassの<span style="color:red">「第13回課題」の問2</span>から提出せよ．
+（なお今回は最終回のため，<span style="color:red">提出期限は本日2026年1月19日(月)23:59まで</span>と短くしている．）</p>
+<ul class="simple">
+<li><p>自分を複数の視点から眺めてみる．</p></li>
+<li><p>「私は〇〇なXXである。」という文章を箇条書きで列挙する．</p></li>
+<li><p>「XX」は名詞，「〇〇」はそれを修飾する言葉とする．</p></li>
+<li><p>「XX」や「〇〇」には同じ言葉を2回以上使用してはならない．</p></li>
+<li><p>箇条書きは10個以上作成すること．</p></li>
+</ul>
+<p>例：</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>私は埼玉愛に満ちた埼玉県民である。
+<span class="k">-</span><span class="w"> </span>私は床屋ではほとんど喋らない客である。
+...
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2><span class="section-number">13.8. </span>まとめ<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>ターミナルから Python を実行できるようになった．</p></li>
+<li><p>ファイル・フォルダ・実行が一本につながった．</p></li>
+<li><p>Jupyter で学び，Python ファイルで実行する流れを理解した．</p></li>
+<li><p>Markdownで文書を作成できるようになった．</p></li>
+</ul>
 </section>
 </section>
 
@@ -730,6 +785,15 @@ ls
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="12_editor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>UNIX系のOS，エディタの使い方</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -746,30 +810,26 @@ ls
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">到達目標</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">第12回の復習</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Pythonプログラムの正体</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#py"><code class="docutils literal notranslate"><span class="pre">.py</span></code> ファイルとは</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Pythonの実行方法（基本）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1. ターミナルでフォルダへ移動</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2. Pythonを実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.1. 第12回の復習</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-python">13.2. Jupyter Notebook と Python ファイルの違い</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-ipynb">13.2.1. Jupyter Notebookファイル（<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>，アイパイエヌビー）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-py">13.2.2. Pythonファイル（<code class="docutils literal notranslate"><span class="pre">.py</span></code>）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">実行の流れ（重要）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">演習1（最初の実行）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook">Jupyter Notebook との違い</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">コマンドライン引数（発展）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">よくあるエラーと対処法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">① ファイルが見つからない</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">② 文法エラー</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror">③ NameError</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">13.3. Pythonの環境構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.4. ターミナルでPythonファイルを作成して実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.5. よくあるエラーとその意味</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.5.1. Python が見つからない</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.5.2. ファイルが見つからない</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">実行結果をファイルに保存（発展）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">演習2（これまでのコードを実行）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">課題（第13回）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">この講義の意味（重要）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">まとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.6. ターミナルでPython　を実行する利点</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-md">13.7. Markdownファイル（<code class="docutils literal notranslate"><span class="pre">.md</span></code>，マークダウン）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.7.1. 基本記法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.7.2. 表示方法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.8. まとめ</a></li>
 </ul>
   </nav></div>
 
