@@ -1,0 +1,33 @@
+version: 1
+project:
+  title: Freshman Seminar II
+  authors:
+    - name: Keiichiro Kagawa
+  github: executablebooks/jupyter-book
+  bibliography:
+    - references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/book.pdf
+  toc:
+    - file: intro.md
+    - file: contents/1_python.md
+    # - file: contents/2_variable.md
+    # - file: contents/3_if.md
+    # - file: contents/4_for.md
+    # - file: contents/5_function.md
+    # - file: contents/6_file.md
+    # - file: contents/7_integer.md
+    # - file: contents/8_algorithm.md
+    # - file: contents/9_calculus.md
+    # - file: contents/10_random.md
+    # - file: contents/11_visualization.md
+    # - file: contents/12_editor.md
+    # - file: contents/13_terminal.md
+
+site:
+  options:
+    logo: logo.png
+    folders: true
+  template: book-theme

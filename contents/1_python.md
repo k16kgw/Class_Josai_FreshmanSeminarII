@@ -1,4 +1,4 @@
-# Pythonの概要　
+# 第1回 Pythonの概要　
 
 到達目標
 - Pythonの概要を理解する．
@@ -22,7 +22,7 @@
 
 ## 情報セキュリティテスト
 
-[リンク](https://webclass.josai.ac.jp/webclass/course.php/2025-johosecurity_04/manage/?acs_=6eae6e07)
+<!-- [リンク](https://webclass.josai.ac.jp/webclass/course.php/2025-johosecurity_04/manage/?acs_=6eae6e07) -->
 
 ## 導入
 
