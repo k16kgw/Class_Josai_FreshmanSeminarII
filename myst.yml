@@ -1,6 +1,5 @@
 version: 1
 project:
-  title: フレッシュマンセミナーII
   description: 城西大学理学部情報数理学科1年生対象科目
   authors:
     - name: Keiichiro Kagawa
@@ -17,7 +16,6 @@ project:
   numbering:
     headings: true
   toc:
-    # - file: intro.md
     - file: contents/1_python_review.md
     # - file: contents/2_if.md
     # - file: contents/3_loop.md
@@ -33,6 +31,7 @@ project:
     # - file: contents/13_ai_game2.md
 
 site:
+  title: フレッシュマンセミナーII
   options:
     folders: true
     style: styles/site.css
