@@ -19,7 +19,7 @@ print(square(5))
 
 ## Jupyter Notebookの準備
 
-1. `Documents（書類）/Fresh`フォルダでPython 3のNotebookを新規作成する．
+1. `Documents（書類）/Fresh2`フォルダでPython 3のNotebookを新規作成する．
 2. ファイル名を`5_{学籍番号}_{氏名}.ipynb`へ変更する．
 3. Notebookと入出力するファイルを同じフォルダへ保存する．
 

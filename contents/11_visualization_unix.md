@@ -21,7 +21,7 @@ plt.show()
 
 ## 作業の準備
 
-1. Finderで`Documents（書類）/Fresh`フォルダを確認する．
+1. Finderで`Documents（書類）/Fresh2`フォルダを確認する．
 2. VS Codeで`Fresh`フォルダを開く．
 3. `11_{学籍番号}_{氏名}.py`を新規作成する．
 4. ターミナルを起動する．
@@ -42,7 +42,7 @@ macOSやLinuxはUNIX系OSである．
 `Fresh`フォルダへ移動する．
 
 ```console
-cd ~/Documents/Fresh
+cd ~/Documents/Fresh2
 pwd
 ls
 ```

@@ -13,7 +13,7 @@
 
 ## 作業の準備
 
-1. VS Codeで`Documents（書類）/Fresh`フォルダを開く．
+1. VS Codeで`Documents（書類）/Fresh2`フォルダを開く．
 2. `12_{学籍番号}_{氏名}.py`を新規作成する．
 3. ターミナルで`Fresh`フォルダへ移動する．
 

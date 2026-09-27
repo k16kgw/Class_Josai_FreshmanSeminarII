@@ -21,7 +21,7 @@ print(score)
 ## Jupyter Notebookの準備
 
 1. Anaconda NavigatorからJupyter Notebookを起動する．
-2. `Documents（書類）/Fresh`フォルダを開く．
+2. `Documents（書類）/Fresh2`フォルダを開く．
 3. Python 3のNotebookを新規作成する．
 4. ファイル名を`2_{学籍番号}_{氏名}.ipynb`へ変更する．
 
