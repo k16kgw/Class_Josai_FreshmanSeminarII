@@ -18,19 +18,19 @@ project:
     headings: true
   toc:
     # - file: intro.md
-    - file: contents/1_python.md
-    # - file: contents/2_variable.md
-    # - file: contents/3_if.md
-    # - file: contents/4_for.md
-    # - file: contents/5_function.md
-    # - file: contents/6_file.md
-    # - file: contents/7_integer.md
-    # - file: contents/8_algorithm.md
-    # - file: contents/9_calculus.md
-    # - file: contents/10_random.md
-    # - file: contents/11_visualization.md
-    # - file: contents/12_editor.md
-    # - file: contents/13_terminal.md
+    - file: contents/1_python_review.md
+    # - file: contents/2_if.md
+    # - file: contents/3_loop.md
+    # - file: contents/4_function.md
+    # - file: contents/5_file.md
+    # - file: contents/6_integer.md
+    # - file: contents/7_numerical1.md
+    # - file: contents/8_numerical2.md
+    # - file: contents/9_numerical3.md
+    # - file: contents/10_visualization.md
+    # - file: contents/11_visualization_unix.md
+    # - file: contents/12_ai_game1.md
+    # - file: contents/13_ai_game2.md
 
 site:
   options:
