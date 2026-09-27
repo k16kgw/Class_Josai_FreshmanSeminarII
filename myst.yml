@@ -1,15 +1,21 @@
 version: 1
 project:
-  title: Freshman Seminar II
+  title: フレッシュマンセミナーII
+  description: 城西大学理学部情報数理学科1年生対象科目
   authors:
     - name: Keiichiro Kagawa
-  github: executablebooks/jupyter-book
+      email: kkagawa@josai.ac.jp
+  edit_url: null
+  source_url: null
+  downloads: []
   bibliography:
     - references.bib
   exports:
     - format: pdf
       template: plain_latex_book
       output: exports/book.pdf
+  numbering:
+    headings: true
   toc:
     # - file: intro.md
     - file: contents/1_python.md
@@ -28,6 +34,6 @@ project:
 
 site:
   options:
-    logo: logo.png
     folders: true
+    style: styles/site.css
   template: book-theme
