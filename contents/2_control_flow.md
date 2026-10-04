@@ -515,7 +515,7 @@ for age in ages:
 
 ### 提出期限
 
-<span style="color: red; ">10月10日(土)23:59まで</span>
+<span style="color: red; ">10月8日(金)23:59まで</span>
 
 質問等がある場合には
 
