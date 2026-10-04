@@ -1,28 +1,21 @@
-# 第11回　可視化，UNIX系OSの使い方
+# 第11回　UNIX系のOS，エディタの使い方
 
 ### 到達目標
 
-- Matplotlibで作成したグラフを画像として保存できる．
+- VS CodeでPythonファイルを作成して編集できる．
 - ターミナルでフォルダを移動し，ファイルを確認できる．
 - Pythonファイルをターミナルから実行できる．
 
 ## 前回の復習
 
-第10回では，Matplotlibを用いてデータをグラフで表した．
-
-```python
-import matplotlib.pyplot as plt
-
-plt.plot([1, 2, 3], [1, 4, 9])
-plt.show()
-```
+第10回では，第1回から第9回までの学習内容をテストで確認した．
 
 今回はコードを`.py`ファイルへ保存し，ターミナルから実行する．
 
 ## 作業の準備
 
 1. Finderで`Documents（書類）/Fresh2`フォルダを確認する．
-2. VS Codeで`Fresh`フォルダを開く．
+2. VS Codeで`Fresh2`フォルダを開く．
 3. `11_{学籍番号}_{氏名}.py`を新規作成する．
 4. ターミナルを起動する．
 
@@ -39,7 +32,7 @@ macOSやLinuxはUNIX系OSである．
 | `mkdir 名前` | フォルダを作成する |
 | `python ファイル.py` | Pythonファイルを実行する |
 
-`Fresh`フォルダへ移動する．
+`Fresh2`フォルダへ移動する．
 
 ```console
 cd ~/Documents/Fresh2

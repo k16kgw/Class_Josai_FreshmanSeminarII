@@ -1,4 +1,4 @@
-# 第9回　数値計算3
+# 第8回　数値計算3：Google Colabによる計算
 
 ### 到達目標
 
@@ -8,13 +8,20 @@
 
 ## 前回の復習
 
-第8回では，区間を細かく分けて微分や積分を近似した．
+第7回では，区間を細かく分けて微分や積分を近似した．
 今回は，多数の試行から結果を推定するモンテカルロ法を扱う．
 
-## Jupyter Notebookの準備
+## Google Colabの準備
 
-1. `Documents（書類）/Fresh2`フォルダでPython 3のNotebookを新規作成する．
-2. ファイル名を`9_{学籍番号}_{氏名}.ipynb`へ変更する．
+1. Webブラウザで[Google Colab](https://colab.research.google.com/)を開く．
+2. 大学のGoogleアカウントでログインする．
+3. 「ノートブックを新規作成」を選択する．
+4. ファイル名を`8_{学籍番号}_{氏名}.ipynb`へ変更する．
+5. Codeセルへコードを入力し，実行ボタンまたは`Shift`+`Enter`で実行する．
+
+```{tip} 注意：Google Colabへの保存
+Google Colabで作成したNotebookはGoogle Driveへ保存される．講義終了前にファイル名と保存状態を確認する．
+```
 
 ## 乱数
 
