@@ -19,7 +19,7 @@ project:
   toc:
     - file: intro.md
     - file: contents/1_python_review.md
-    # - file: contents/2_control_flow.md
+    - file: contents/2_control_flow.md
     # - file: contents/3_function.md
     # - file: contents/4_file.md
     # - file: contents/5_integer.md
