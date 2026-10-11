@@ -520,7 +520,7 @@ print(values)
 4. 0点以上100点以下の場合は，次の基準で評価を返せ．
 
    - 95点以上：S
-   - 80点以上90点未満：A
+   - 80点以上95点未満：A
    - 70点以上80点未満：B
    - 60点以上70点未満：C
    - 60点未満：F
@@ -528,7 +528,7 @@ print(values)
 5. 次のリストとfor文を使い，すべての得点について関数を呼び出せ．
 
    ```python
-   scores = [-1, 0, 59, 60, 69, 70, 79, 80, 89, 90, 100, 101]
+   scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
    ```
 
 6. f-stringを使い，「80点：A」の形式で得点と評価を1行ずつ表示せよ．
@@ -544,7 +544,7 @@ def classify_score(score):
     if not (0 <= score <= 100):
         return "範囲外"
 
-    if score >= 90:
+    if score >= 95:
         return "S"
     elif score >= 80:
         return "A"
@@ -553,9 +553,9 @@ def classify_score(score):
     elif score >= 60:
         return "C"
 
-    return "D"
+    return "F"
 
-scores = [-1, 0, 59, 60, 69, 70, 79, 80, 89, 90, 100, 101]
+scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
 
 for score in scores:
     grade = classify_score(score)
@@ -619,6 +619,8 @@ print(f"合格者は{passed}人です．")
 - メール kkagawa@josai.ac.jp
 - Teamsのチャット
 - WebClassのメッセージ
+
+などで連絡してください．
 
 などで連絡してください．
 

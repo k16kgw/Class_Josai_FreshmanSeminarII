@@ -98,6 +98,18 @@ with open("scores.csv", "r", encoding="utf-8") as file:
 - 読み込み時にファイルが存在するか確認する．
 - 日本語が正しく表示されない場合は`encoding="utf-8"`を確認する．
 
+### 提出期限
+
+<span style="color: red; ">10月23日(金)23:59まで</span>
+
+質問等がある場合には
+
+- メール kkagawa@josai.ac.jp
+- Teamsのチャット
+- WebClassのメッセージ
+
+などで連絡してください．
+
 ## まとめ
 
 - `with open`を使ってファイルを開く．
