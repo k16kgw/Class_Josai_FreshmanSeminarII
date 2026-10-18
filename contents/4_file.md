@@ -625,41 +625,64 @@ print(words)
 ````{note} 演習3
 文字列`"apple,banana,orange"`をカンマで分割し，各単語を<span style="color:red">大文字で</span>1行ずつ表示せよ．
 
-次のコードをCodeセルへ入力し，2か所の`_____`を適切なメソッド名または関数名へ書き換えよ．コードを実行し，3種類の果物が1行ずつ表示されることを確認せよ．
+次のコードをCodeセルへ入力し，2か所の`_____`を適切なメソッド名へ書き換えよ．コードを実行し，3種類の果物が大文字で1行ずつ表示されることを確認せよ．
 
 ```python
 text = "apple,banana,orange"
 fruits = text._____(",")
 
 for fruit in fruits:
-    _____(fruit)
+    print(fruit._____())
 ```
 ````
 
-````{hidden-answer} 解答例
+`````{hidden-answer} 解答例
 ```python
 text = "apple,banana,orange"
 fruits = text.split(",")
 
 for fruit in fruits:
-    print(fruit)
+    print(fruit.upper())
 ```
 
 **コードの解説**
 
-- splitメソッドで文字列を分割し，果物名のリストを作る．
+- splitメソッドでカンマの位置から文字列を分割し，果物名のリストを作る．
 
-  ```python
+  ```{code-block} python
+  :linenos:
+  :emphasize-lines: 2
+  :class: code-focus
+
+  text = "apple,banana,orange"
   fruits = text.split(",")
-  ```
 
-- for文でリストの要素を一つずつ取り出して表示する．
-
-  ```python
   for fruit in fruits:
-      print(fruit)
+      print(fruit.upper())
   ```
+
+- for文で果物名を一つずつ取り出す．upperメソッドで大文字へ変換してから表示する．
+
+  ```{code-block} python
+  :linenos:
+  :emphasize-lines: 4-5
+  :class: code-focus
+
+  text = "apple,banana,orange"
+  fruits = text.split(",")
+
+  for fruit in fruits:
+      print(fruit.upper())
+  ```
+
+````{dropdown} 出力例
+```text
+APPLE
+BANANA
+ORANGE
+```
 ````
+`````
 
 ## 変数とファイル
 
@@ -1218,22 +1241,26 @@ with open("temperatures.csv", "r", encoding="utf-8") as file:
 ````{warning} 課題1
 文字列のリストをテキストファイルへ保存する関数`save_plan(filename, plans)`を作成せよ．
 
-1. 新しいMarkdownセルを追加し，`# 課題1`と記入せよ．
-2. 新しいCodeセルを追加し，仮引数`filename`と`plans`を持つ関数`save_plan(filename, plans)`を定義せよ．
-3. 関数の中で，`filename`が表すファイルを書き込みモード`"w"`で開け．
-4. `encoding="utf-8"`を指定せよ．
-5. 関数の中でfor文を使い，`plans`から文字列を一つずつ取り出せ．
-6. 各文字列の末尾に改行文字を付け，1項目につき1行で書き込め．
-7. 関数の外で次のリストを変数`plans`へ代入せよ．
+1. Markdownセルに`# 課題1`と記入せよ．
+2. for文とwriteメソッドを使い，予定を1項目につき1行で`plan.txt`へ保存せよ．
+3. 保存後に`plan.txt`を読み込み，3行が正しく保存されたことを表示して確認せよ．
 
-   ```python
-   plans = ["授業の復習をする", "課題を期限までに提出する", "毎週本を読む"]
-   ```
+次のテンプレートにある4か所の`_____`を埋めて完成させよ．
 
-8. `save_plan("plan.txt", plans)`を呼び出せ．
-9. `plan.txt`を読み込みモードで開き，保存した3行を表示せよ．
+```python
+def save_plan(filename, plans):
+    with open(filename, "_____", encoding="utf-8") as file:
+        for plan in plans:
+            file._____(f"{plan}\n")
 
-関数，仮引数，for文，with文，`write`メソッド，`read`メソッドを使用せよ．
+plans = ["授業の復習をする", "課題を期限までに提出する", "毎週本を読む"]
+_____("plan.txt", plans)
+
+with open("plan.txt", "r", encoding="utf-8") as file:
+    text = file._____()
+
+print(text)
+```
 ````
 
 ````{hidden-answer} 解答例
@@ -1273,29 +1300,46 @@ print(text)
 ````{warning} 課題2
 CSVファイルに保存された最高気温の平均を返す関数`average_temperature(filename)`を作成せよ．
 
-1. 新しいMarkdownセルを追加し，`# 課題2`と記入せよ．
-2. 次のデータを`week_temperature.csv`へ書き込め．
+1. Markdownセルに`# 課題2`と記入し，平日5日分の最高気温を`week_temperature.csv`へ保存せよ．
+2. ヘッダーを除く最高気温を実数へ変換し，その平均を返す関数を完成させよ．
+3. 関数を呼び出し，`平均最高気温は20.5度です．`と表示されることを確認せよ．
 
-   ```python
-   rows = [
-       ["曜日", "最高気温"],
-       ["月", 18.5],
-       ["火", 20.0],
-       ["水", 21.5],
-       ["木", 19.0],
-       ["金", 23.5],
-   ]
-   ```
+次のテンプレートにある7か所の`_____`を埋めて完成させよ．
 
-3. 仮引数`filename`を持つ関数`average_temperature(filename)`を定義せよ．
-4. 関数の中で，`filename`が表すCSVファイルを読み込みモードで開け．
-5. `csv.reader`を使ってCSVファイルを読み込め．
-6. `next(reader)`を使ってヘッダーを読み飛ばせ．
-7. for文で各行を取り出し，最高気温を`float`関数で実数へ変換せよ．
-8. 最高気温の合計とデータ数を求め，平均を戻り値として返せ．
-9. `average_temperature("week_temperature.csv")`を呼び出し，「平均最高気温は20.5度です．」と表示せよ．
+```python
+import csv
 
-`csv`モジュール，関数，for文，`float`関数，return文を使用せよ．
+rows = [
+    ["曜日", "最高気温"],
+    ["月", 18.5],
+    ["火", 20.0],
+    ["水", 21.5],
+    ["木", 19.0],
+    ["金", 23.5],
+]
+
+with open("week_temperature.csv", "w", encoding="utf-8", newline="") as file:
+    writer = csv._____(file)
+    writer._____(rows)
+
+def average_temperature(filename):
+    total = 0.0
+    count = 0
+
+    with open(filename, "_____", encoding="utf-8") as file:
+        reader = csv.reader(file)
+        _____(reader)
+
+        for row in reader:
+            temperature = _____(row[1])
+            total = total + temperature
+            count = count + 1
+
+    return total / _____
+
+average = _____("week_temperature.csv")
+print(f"平均最高気温は{average}度です．")
+```
 ````
 
 ````{hidden-answer} 解答例
@@ -1381,12 +1425,20 @@ print(f"平均最高気温は{average}度です．")
 
 ## まとめ
 
-- メソッドは，特定の種類のオブジェクトに結び付いた関数である．
-- リスト，辞書，文字列には，それぞれのデータ型に応じたメソッドが用意されている．
-- 変数の値は実行中に保持され，ファイルへ書き込んだデータは実行後にも残る．
-- `with open(...)`を使うと，処理後にファイルが自動的に閉じられる．
-- `"r"`は読み込み，`"w"`は上書き，`"a"`は追記を表す．
-- `encoding="utf-8"`を指定すると，日本語をUTF-8で読み書きできる．
-- `csv.writer`と`csv.reader`を使うと，CSVファイルを安全に読み書きできる．
-- ファイル操作を関数にまとめると，保存先やデータを変えて再利用できる．
+1. **メソッドはデータに応じた操作である**：リスト，辞書，文字列では，使用できるメソッドが異なる．
+
+2. **ファイルへ保存すると実行後にもデータが残る**：ファイルはwith文とopen関数を組み合わせて開き，`encoding="utf-8"`を指定する．
+
+3. **モードによってファイル操作が変わる**
+
+   | モード | 操作 | 特に注意すること |
+   | --- | --- | --- |
+   | `"r"` | 読み込み | ファイルがないとエラーになる |
+   | `"w"` | 書き込み | 既存の内容を消して上書きする |
+   | `"a"` | 追記 | 既存の内容を残して末尾へ追加する |
+
+4. **CSVはcsvモジュールで扱う**：csv.writerで書き込み，csv.readerで読み込む．読み込んだ値は文字列なので，計算前に数値へ変換する．
+
+5. **繰り返す処理は関数にまとめる**：ファイル名やデータを引数にすると，同じ処理を別のファイルにも再利用できる．
+
 - 次回は条件分岐，繰り返し，関数を組み合わせて整数の問題を解く．

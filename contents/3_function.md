@@ -552,8 +552,8 @@ def classify_score(score):
         return "B"
     elif score >= 60:
         return "C"
-
-    return "F"
+    else:
+        return "F"
 
 scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
 
