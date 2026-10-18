@@ -38,6 +38,36 @@ values = absolute_values(numbers)
 print(values)
 ```
 
+````{dropdown} コードの解説
+- 次の部分で，実数のリストを受け取る関数を定義する．
+
+  ```python
+  def absolute_values(numbers):
+  ```
+
+- 空のリストを用意し，計算した絶対値を順番に追加する．
+
+  ```python
+  results = []
+  ```
+
+- for文で要素を一つずつ調べる．負の値にはマイナスを付け，正の値へ変換してから追加する．
+
+  ```python
+  for number in numbers:
+      if number >= 0:
+          results.append(number)
+      else:
+          results.append(-number)
+  ```
+
+- すべての要素を処理した後，結果のリストを返す．
+
+  ```python
+  return results
+  ```
+````
+
 この関数では，仮引数`numbers`でリストを受け取り，for文で要素を一つずつ処理する．処理結果は新しいリスト`results`へ追加し，繰り返しが終了してからreturn文で返す．
 
 ### 前回の課題の解答例
@@ -69,6 +99,114 @@ for score in scores:
     print(f"{score}点：{grade}")
 ```
 
+````{dropdown} コードの解説
+- 最初のif文はガード節である．得点が0点から100点までの範囲外なら，その場で文字列を返して関数を終了する．`not (想定する範囲)`で想定範囲外かどうかを判定する．
+
+  ```{code-block} python
+  :linenos:
+  :emphasize-lines: 2-3
+  :class: code-focus
+
+  def classify_score(score):
+      if not (0 <= score <= 100):
+          return "範囲外"
+
+      if score >= 95:
+          return "S"
+      elif score >= 80:
+          return "A"
+      elif score >= 70:
+          return "B"
+      elif score >= 60:
+          return "C"
+      else:
+          return "F"
+
+  scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
+
+  for score in scores:
+      grade = classify_score(score)
+      print(f"{score}点：{grade}")
+  ```
+
+- 高い評価の条件から順番に判定する．一つの条件が成立すると，対応する評価を返して関数を終了する．
+
+  ```{code-block} python
+  :linenos:
+  :emphasize-lines: 5-14
+  :class: code-focus
+
+  def classify_score(score):
+      if not (0 <= score <= 100):
+          return "範囲外"
+
+      if score >= 95:
+          return "S"
+      elif score >= 80:
+          return "A"
+      elif score >= 70:
+          return "B"
+      elif score >= 60:
+          return "C"
+      else:
+          return "F"
+
+  scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
+
+  for score in scores:
+      grade = classify_score(score)
+      print(f"{score}点：{grade}")
+  ```
+
+- for文で複数の得点を一つずつ関数へ渡し，返された評価を表示する．
+
+  ```{code-block} python
+  :linenos:
+  :emphasize-lines: 18-20
+  :class: code-focus
+
+  def classify_score(score):
+      if not (0 <= score <= 100):
+          return "範囲外"
+
+      if score >= 95:
+          return "S"
+      elif score >= 80:
+          return "A"
+      elif score >= 70:
+          return "B"
+      elif score >= 60:
+          return "C"
+      else:
+          return "F"
+
+  scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
+
+  for score in scores:
+      grade = classify_score(score)
+      print(f"{score}点：{grade}")
+  ```
+````
+
+---
+
+出力例
+
+```text
+-1点：範囲外
+0点：F
+59点：F
+60点：C
+69点：C
+70点：B
+79点：B
+80点：A
+94点：A
+95点：S
+100点：S
+101点：範囲外
+```
+
 最初のif文は，0点未満または100点より大きい値を先に処理するガード節である．得点が範囲内の場合は，高い評価の条件から順番に判定する．関数の外側では，for文を使ってリスト内のすべての得点を関数へ渡している．
 
 **課題2：合格者数を数える関数**
@@ -89,6 +227,35 @@ scores = [45, 60, 72, 58, 90, 81]
 passed = count_passes(scores)
 print(f"合格者は{passed}人です．")
 ```
+
+````{dropdown} コードの解説
+- 合格者数を数える変数を0で初期化する．
+
+  ```python
+  count = 0
+  ```
+
+- for文で得点を一つずつ取り出す．得点が60点以上の場合だけ，合格者数へ1を加える．
+
+  ```python
+  for score in scores:
+      if score >= 60:
+          count = count + 1
+  ```
+
+- すべての得点を調べた後，合格者数を返す．
+
+  ```python
+  return count
+  ```
+
+- 関数の戻り値を変数へ代入し，f-stringを使って文章として表示する．
+
+  ```python
+  passed = count_passes(scores)
+  print(f"合格者は{passed}人です．")
+  ```
+````
 
 変数`count`は，60点以上の得点が見つかるたびに1ずつ増える．`return count`はfor文の外側にあるため，すべての得点を調べた後で個数を返す．このように，関数の中でも条件分岐と繰り返しを組み合わせられる．
 
@@ -165,6 +332,16 @@ upper_text = text.upper()
 print(upper_text)
 ```
 
+````{dropdown} コードの解説
+- 文字列に対してupperメソッドを呼び出すと，英小文字を英大文字へ変換した新しい文字列が返される．
+
+  ```python
+  upper_text = text.upper()
+  ```
+
+- 元の文字列は変更されないため，変換結果を別の変数へ代入して表示する．
+````
+
 `upper`メソッドは，英小文字を英大文字へ変換した新しい文字列を返す．出力は`HELLO`となる．
 
 ```{tip} 注意：関数とメソッドの呼び出し方
@@ -191,6 +368,20 @@ numbers.sort()
 print(numbers)
 ```
 
+````{dropdown} コードの解説
+- appendメソッドは，リストの末尾へ要素を一つ追加する．
+
+  ```python
+  numbers.append(2)
+  ```
+
+- sortメソッドは，新しいリストを作らず，呼び出したリスト自体を昇順に並べ替える．
+
+  ```python
+  numbers.sort()
+  ```
+````
+
 `append`メソッドを実行すると`numbers`は`[3, 1, 4, 2]`となる．続いて`sort`メソッドを実行すると，リスト自体が`[1, 2, 3, 4]`へ変更される．
 
 ````{note} 演習1
@@ -208,6 +399,16 @@ scores = [70, 85, 90, 100, 60]
 scores.sort(reverse=True)
 print(scores)
 ```
+
+**コードの解説**
+
+- sortメソッドへ次の引数を渡すと，リスト自体を降順に並べ替える．
+
+  ```python
+  scores.sort(reverse=True)
+  ```
+
+- 並べ替えたリストを表示し，最大値から最小値の順になったことを確認する．
 ````
 
 ### 辞書と辞書のメソッド
@@ -228,6 +429,27 @@ scores["理科"] = 88
 print(scores)
 ```
 
+````{dropdown} コードの解説
+- 波括弧の中へキーと値の組を書き，辞書を作る．
+
+  ```python
+  scores = {"国語": 70, "数学": 85, "英語": 90}
+  ```
+
+- 角括弧へキーを指定すると，対応する値を取り出せる．
+
+  ```python
+  print(scores["数学"])
+  ```
+
+- 既存のキーへ値を代入すると値が更新され，新しいキーへ代入するとキーと値の組が追加される．
+
+  ```python
+  scores["数学"] = 95
+  scores["理科"] = 88
+  ```
+````
+
 辞書は，教科名と点数，商品名と価格，学生番号と氏名のように，名前と値を対応させる場合に適している．
 
 | メソッド | 説明 |
@@ -245,6 +467,22 @@ print(scores.values())
 print(scores.items())
 print(scores.get("英語", "データなし"))
 ```
+
+````{dropdown} コードの解説
+- keysメソッドはキー，valuesメソッドは値，itemsメソッドはキーと値の組を取り出す．
+
+  ```python
+  print(scores.keys())
+  print(scores.values())
+  print(scores.items())
+  ```
+
+- getメソッドでは，指定したキーが存在しない場合に返す値も指定できる．
+
+  ```python
+  print(scores.get("英語", "データなし"))
+  ```
+````
 
 ````{note} 演習2
 教科名と点数を保存した辞書から，教科名と点数を1行ずつ表示せよ．
@@ -266,6 +504,20 @@ scores = {"国語": 78, "数学": 92, "英語": 84}
 for subject, score in scores.items():
     print(f"{subject}：{score}点")
 ```
+
+**コードの解説**
+
+- itemsメソッドを使うと，for文の各回でキーと値を同時に受け取れる．この例では，キーを変数subject，値を変数scoreへ代入する．
+
+  ```python
+  for subject, score in scores.items():
+  ```
+
+- f-stringへ教科名と点数を埋め込み，指定された形式で表示する．
+
+  ```python
+  print(f"{subject}：{score}点")
+  ```
 ````
 
 ### 文字列のメソッド
@@ -286,6 +538,16 @@ words = text.split(",")
 print(words)
 ```
 
+````{dropdown} コードの解説
+- splitメソッドへカンマを指定し，文字列をカンマの位置で分割する．
+
+  ```python
+  words = text.split(",")
+  ```
+
+- 分割された各文字列は，一つのリストにまとめて返される．
+````
+
 `split(",")`は，文字列をカンマで分割し，`["Python", "Math", "Data"]`というリストを返す．CSVファイルを扱うときにも文字列の分割という考え方が関係するが，CSVでは値にカンマが含まれる場合があるため，後で学ぶ`csv`モジュールを使用する．
 
 ````{note} 演習3
@@ -304,6 +566,21 @@ fruits = text.split(",")
 for fruit in fruits:
     print(fruit)
 ```
+
+**コードの解説**
+
+- splitメソッドで文字列を分割し，果物名のリストを作る．
+
+  ```python
+  fruits = text.split(",")
+  ```
+
+- for文でリストの要素を一つずつ取り出して表示する．
+
+  ```python
+  for fruit in fruits:
+      print(fruit)
+  ```
 ````
 
 ## クラスとインスタンス
@@ -322,6 +599,17 @@ print(type(text))
 print(type(numbers))
 ```
 
+````{dropdown} コードの解説
+- type関数へ値を渡すと，その値がどのクラスのインスタンスであるかを確認できる．
+
+  ```python
+  print(type(text))
+  print(type(numbers))
+  ```
+
+- この例では，文字列はstrクラス，リストはlistクラスのインスタンスであることが表示される．
+````
+
 クラスによって利用できるメソッドが異なる．例えば，文字列には`upper`メソッドがあり，リストには`append`メソッドがある．`text.append(10)`のように，文字列にリスト用のメソッドを使うことはできない．
 
 ````{tip} 発展：簡単なクラスを定義する
@@ -339,6 +627,29 @@ class Student:
 student = Student("佐藤", 85)
 student.show_score()
 ```
+````
+
+````{dropdown} コードの解説
+- class文でStudentクラスを定義する．
+
+  ```python
+  class Student:
+  ```
+
+- 初期化を行うメソッドで，受け取った氏名と点数を各インスタンスへ保存する．
+
+  ```python
+  def __init__(self, name, score):
+      self.name = name
+      self.score = score
+  ```
+
+- Studentクラスからインスタンスを作り，そのインスタンスに対してshow_scoreメソッドを呼び出す．
+
+  ```python
+  student = Student("佐藤", 85)
+  student.show_score()
+  ```
 ````
 
 ## 変数とファイル
@@ -392,6 +703,20 @@ with open("message.txt", "w", encoding="utf-8") as file:
     file.write("ファイルへ文字列を書き込みました．\n")
 ```
 
+````{dropdown} コードの解説
+- open関数へ書き込みモードを指定し，message.txtを開く．with文の処理が終わると，ファイルは自動的に閉じられる．
+
+  ```python
+  with open("message.txt", "w", encoding="utf-8") as file:
+  ```
+
+- writeメソッドで文字列を書き込む．末尾の改行文字によって，次の文字列は新しい行へ書き込まれる．
+
+  ```python
+  file.write("Pythonを学習しています．\n")
+  ```
+````
+
 このコードは，次の順序で処理される．
 
 1. `message.txt`を書き込みモードで開く．
@@ -434,6 +759,16 @@ with open("subjects.txt", "w", encoding="utf-8") as file:
     file.write("繰り返し\n")
     file.write("関数\n")
 ```
+
+**コードの解説**
+
+- 書き込みモードを指定しているため，subjects.txtが存在しない場合は新しく作成され，存在する場合は内容が上書きされる．
+
+  ```python
+  with open("subjects.txt", "w", encoding="utf-8") as file:
+  ```
+
+- writeメソッドを3回呼び出し，それぞれの文字列を1行ずつ書き込む．
 ````
 
 ## テキストファイルからの読み込み
@@ -446,6 +781,20 @@ with open("message.txt", "r", encoding="utf-8") as file:
 
 print(text)
 ```
+
+````{dropdown} コードの解説
+- 読み込みモードでmessage.txtを開く．
+
+  ```python
+  with open("message.txt", "r", encoding="utf-8") as file:
+  ```
+
+- readメソッドは，ファイルの内容全体を一つの文字列として返す．読み込んだ文字列は，with文の外でも変数textから利用できる．
+
+  ```python
+  text = file.read()
+  ```
+````
 
 **`read`メソッド**：現在位置からファイルの末尾までを一つの文字列として読み込む．
 
@@ -472,6 +821,17 @@ with open("subjects.txt", "r", encoding="utf-8") as file:
 
 print(text)
 ```
+
+**コードの解説**
+
+- 読み込みモードでsubjects.txtを開き，readメソッドで内容全体を読み込む．
+
+  ```python
+  with open("subjects.txt", "r", encoding="utf-8") as file:
+      text = file.read()
+  ```
+
+- ファイルを閉じた後，読み込んだ文字列を表示する．
 ````
 
 ## テキストファイルへの追記
@@ -482,6 +842,16 @@ print(text)
 with open("message.txt", "a", encoding="utf-8") as file:
     file.write("この行を後から追加しました．\n")
 ```
+
+````{dropdown} コードの解説
+- 追記モードを指定すると，既存の内容を残したままファイルの末尾へ文字列を追加できる．
+
+  ```python
+  with open("message.txt", "a", encoding="utf-8") as file:
+  ```
+
+- このセルを繰り返し実行すると，実行した回数だけ同じ行が追加される．
+````
 
 同じコードを複数回実行すると，実行した回数だけ同じ行が追加される．最初から作り直すときは`"w"`，既存の内容へ追加するときは`"a"`を使用する．
 
@@ -504,6 +874,17 @@ with open("subjects.txt", "r", encoding="utf-8") as file:
 
 print(text)
 ```
+
+**コードの解説**
+
+- 最初のwith文では追記モードを使用し，subjects.txtの末尾へ1行を追加する．
+
+  ```python
+  with open("subjects.txt", "a", encoding="utf-8") as file:
+      file.write("ファイル操作\n")
+  ```
+
+- 次のwith文では読み込みモードを使用し，追記後の内容を確認する．
 ````
 
 ## ファイル操作を関数にまとめる
@@ -519,6 +900,23 @@ def write_lines(filename, lines):
 topics = ["条件分岐", "繰り返し", "関数", "ファイル操作"]
 write_lines("topics.txt", topics)
 ```
+
+````{dropdown} コードの解説
+- filenameで保存先，linesで書き込む文字列のリストを受け取る関数を定義する．
+
+  ```python
+  def write_lines(filename, lines):
+  ```
+
+- for文で文字列を一つずつ取り出し，改行文字を付けてファイルへ書き込む．
+
+  ```python
+  for line in lines:
+      file.write(f"{line}\n")
+  ```
+
+- 関数を呼び出すと，topics.txtへリストの内容が保存される．
+````
 
 この関数では，`filename`が保存先のファイル名，`lines`が書き込む文字列のリストである．for文で要素を一つずつ取り出し，改行文字を付けてファイルへ書き込む．関数を呼び出すと，戻り値ではなくファイルとして結果が残る．
 
@@ -557,6 +955,31 @@ with open("scores.csv", "w", encoding="utf-8", newline="") as file:
     writer.writerows(rows)
 ```
 
+````{dropdown} コードの解説
+- 標準ライブラリのcsvモジュールを読み込む．
+
+  ```python
+  import csv
+  ```
+
+- 一つの内側のリストがCSVの1行に対応する二次元のリストを作る．
+
+  ```python
+  rows = [
+      ["氏名", "国語", "数学"],
+      ["佐藤", 80, 90],
+      ["鈴木", 75, 85],
+      ["高橋", 90, 70],
+  ]
+  ```
+
+- writerowsメソッドで，複数の行をまとめてCSVファイルへ書き込む．
+
+  ```python
+  writer.writerows(rows)
+  ```
+````
+
 - **`csv.writer(file)`**：CSVファイルへ行を書き込むためのwriterオブジェクトを作る．
 - **`writer.writerow(row)`**：一つのリストをCSVの1行として書き込む．
 - **`writer.writerows(rows)`**：複数のリストを複数行としてまとめて書き込む．
@@ -578,6 +1001,21 @@ with open("scores.csv", "r", encoding="utf-8") as file:
         print(row)
 ```
 
+````{dropdown} コードの解説
+- csv.readerへ開いたファイルを渡し，CSVを1行ずつ読み込むreaderオブジェクトを作る．
+
+  ```python
+  reader = csv.reader(file)
+  ```
+
+- for文でreaderオブジェクトから行を一つずつ取り出す．各行は文字列のリストとして得られる．
+
+  ```python
+  for row in reader:
+      print(row)
+  ```
+````
+
 **`csv.reader(file)`**：CSVファイルを1行ずつ読み込むためのreaderオブジェクトを作る．
 
 readerオブジェクトをfor文で繰り返すと，各行がリストとして変数`row`へ代入される．CSVから読み込んだ値は，数字のように見えても文字列である．計算に使う場合は`int`関数や`float`関数で数値へ変換する．
@@ -593,6 +1031,23 @@ with open("scores.csv", "r", encoding="utf-8") as file:
         mathematics = int(row[2])
         print(f"{name}：国語{japanese}点，数学{mathematics}点")
 ```
+
+````{dropdown} コードの解説
+- next関数を1回呼び出し，先頭行にあるヘッダーを読み飛ばす．
+
+  ```python
+  next(reader)
+  ```
+
+- CSVから読み込んだ値は文字列であるため，点数をint関数で整数へ変換する．
+
+  ```python
+  japanese = int(row[1])
+  mathematics = int(row[2])
+  ```
+
+- リストの位置0から氏名，位置1と2から各科目の点数を取り出して表示する．
+````
 
 **`next(reader)`**：readerオブジェクトから次の1行を取り出す．この例では，計算に使わないヘッダーを先に取り出して読み飛ばす．
 
@@ -633,6 +1088,22 @@ with open("temperatures.csv", "r", encoding="utf-8") as file:
     for row in reader:
         print(row)
 ```
+
+**コードの解説**
+
+- ヘッダーと3日分のデータを二次元のリストとして用意する．
+
+  ```python
+  rows = [
+      ["曜日", "最高気温"],
+      ["月", 21.5],
+      ["火", 23.0],
+      ["水", 19.8],
+  ]
+  ```
+
+- writerowsメソッドでCSVへ書き込み，その後readerオブジェクトで同じファイルを読み込む．
+- 読み込み時には，各行が文字列のリストとして表示される．
 ````
 
 ## pandasを使ったCSVファイルの操作
@@ -646,6 +1117,16 @@ Anacondaには通常pandasが含まれている．最初に`pandas`を`pd`とい
 ```python
 import pandas as pd
 ```
+
+````{dropdown} コードの解説
+- pandasライブラリを読み込み，このNotebook内ではpdという短い名前で参照する．
+
+  ```python
+  import pandas as pd
+  ```
+
+- pandasの関数やデータ型を使うときは，先頭にpdを付ける．
+````
 
 `as pd`は，プログラム内で`pandas`を`pd`という名前で参照するための指定である．pandasでは`pd.read_csv(...)`のように`pd`を付けて関数を呼び出す書き方が一般的である．
 
@@ -664,6 +1145,16 @@ data_frame = pd.read_csv("scores.csv")
 data_frame
 ```
 
+````{dropdown} コードの解説
+- read_csv関数でscores.csvを読み込み，表形式のDataFrameを作る．
+
+  ```python
+  data_frame = pd.read_csv("scores.csv")
+  ```
+
+- Codeセルの最後にDataFrameを書くと，Jupyter Notebook上で表として表示される．
+````
+
 Jupyter Notebookでは，Codeセルの最後に変数`data_frame`を書くと，DataFrameが表として表示される．`print(data_frame)`でも内容を確認できるが，Notebook上では最後の式として表示する方が表を読みやすい．
 
 ### 列の選択と統計量
@@ -677,6 +1168,16 @@ print(mathematics.mean())
 print(mathematics.max())
 print(mathematics.min())
 ```
+
+````{dropdown} コードの解説
+- DataFrameの角括弧へ列名を指定し，数学の列をSeriesとして取り出す．
+
+  ```python
+  mathematics = data_frame["数学"]
+  ```
+
+- mean，max，minの各メソッドで，平均値，最大値，最小値を求める．
+````
 
 | メソッド | 説明 |
 | --- | --- |
@@ -694,12 +1195,32 @@ condition = data_frame["数学"] >= 80
 print(condition)
 ```
 
+````{dropdown} コードの解説
+- 数学の列の各値を80と比較する．各行について条件を満たすかどうかを表すTrueまたはFalseのSeriesが作られる．
+
+  ```python
+  condition = data_frame["数学"] >= 80
+  ```
+
+- この段階では行の抽出は行わず，判定結果だけを変数conditionへ保存している．
+````
+
 そのSeriesをDataFrameの角括弧へ指定すると，条件が`True`となる行だけを抽出できる．
 
 ```python
 selected = data_frame[data_frame["数学"] >= 80]
 selected
 ```
+
+````{dropdown} コードの解説
+- 条件をDataFrameの角括弧へ指定すると，条件がTrueとなる行だけが抽出される．
+
+  ```python
+  selected = data_frame[data_frame["数学"] >= 80]
+  ```
+
+- 抽出された行からなる新しいDataFrameを変数selectedへ代入する．
+````
 
 ### CSVファイルへの保存
 
@@ -708,6 +1229,16 @@ DataFrameの`to_csv`メソッドを使うと，表をCSVファイルへ保存で
 ```python
 selected.to_csv("selected_scores.csv", index=False, encoding="utf-8")
 ```
+
+````{dropdown} コードの解説
+- to_csvメソッドでDataFrameをCSVファイルへ保存する．
+
+  ```python
+  selected.to_csv("selected_scores.csv", index=False, encoding="utf-8")
+  ```
+
+- indexをFalseにすると，DataFrameの行番号をCSVへ書き込まない．
+````
 
 `index=False`は，DataFrameの左端に表示される行番号をCSVファイルへ書き込まないための指定である．
 
@@ -737,6 +1268,24 @@ selected
 
 selected.to_csv("selected_scores.csv", index=False, encoding="utf-8")
 ```
+
+**コードの解説**
+
+- read_csv関数でscores.csvをDataFrameとして読み込む．
+- 数学の列にmeanメソッドを使い，平均点を求める．
+
+  ```python
+  average = data_frame["数学"].mean()
+  ```
+
+- 数学が80点以上の行を抽出し，Notebook上で表として表示する．
+
+  ```python
+  selected = data_frame[data_frame["数学"] >= 80]
+  selected
+  ```
+
+- 抽出結果を，行番号を含めずに別のCSVファイルへ保存する．
 ````
 
 ## エラーが出たときにチェックすること
@@ -791,6 +1340,23 @@ with open("plan.txt", "r", encoding="utf-8") as file:
 
 print(text)
 ```
+
+**コードの解説**
+
+- ファイル名と予定のリストを受け取る関数を定義する．
+
+  ```python
+  def save_plan(filename, plans):
+  ```
+
+- for文で予定を一つずつ取り出し，改行文字を付けてファイルへ書き込む．
+
+  ```python
+  for plan in plans:
+      file.write(f"{plan}\n")
+  ```
+
+- 関数を呼び出してplan.txtを作成した後，読み込みモードで開き直して保存内容を確認する．
 ````
 
 ````{warning} 課題2
@@ -856,6 +1422,31 @@ def average_temperature(filename):
 average = average_temperature("week_temperature.csv")
 print(f"平均最高気温は{average}度です．")
 ```
+
+**コードの解説**
+
+- 最初に，ヘッダーと平日5日分の最高気温をweek_temperature.csvへ書き込む．
+- 関数内で，合計を保存する変数とデータ数を数える変数を0で初期化する．
+
+  ```python
+  total = 0.0
+  count = 0
+  ```
+
+- ヘッダーを読み飛ばし，各行の最高気温を実数へ変換して，合計とデータ数を更新する．
+
+  ```python
+  for row in reader:
+      temperature = float(row[1])
+      total = total + temperature
+      count = count + 1
+  ```
+
+- 合計をデータ数で割った平均値を返し，f-stringで表示する．
+
+  ```python
+  return total / count
+  ```
 ````
 
 ### 提出方法
