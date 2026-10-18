@@ -3,6 +3,7 @@
 ### 到達目標
 
 - ゲームの仕様を文章で整理できる．
+- クラス，インスタンス，メソッドの関係を説明できる．
 - 生成AIへ具体的な条件を伝えてコード案を作成できる．
 - 生成されたコードを読み，実行結果を確認できる．
 
@@ -38,15 +39,50 @@
 
 ゲームの流れを日本語で整理してからコードを書く．
 
+## クラスとインスタンス
+
+- **クラス**：データの種類と，そのデータに対して行える処理を定めた設計図．
+- **インスタンス**：クラスに基づいて作られた個々のオブジェクト．
+- **属性**：インスタンスが保持するデータ．
+- **メソッド**：クラスで定められ，インスタンスに結び付いた関数．
+
+ゲームでは，プレイヤー，敵，アイテムなどをクラスとして表すことがある．次のPlayerクラスは，プレイヤー名と入力回数を属性として保持する．
+
+```python
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.attempts = 0
+
+    def record_guess(self):
+        self.attempts = self.attempts + 1
+```
+
+`__init__`メソッドは，インスタンスを作るときに属性の初期値を設定する．次のコードでは，Playerクラスからplayerというインスタンスを作る．
+
+```python
+player = Player("佐藤")
+player.record_guess()
+
+print(player.name)
+print(player.attempts)
+```
+
+`player.record_guess()`を呼び出すと，playerが保持する入力回数が1増える．生成AIが作成したゲームにclass文が含まれている場合は，クラスからどのインスタンスを作り，どの属性とメソッドを使っているかを確認する．
+
 ## 数当てゲーム
+
+先にPlayerクラスのコードをファイルへ入力し，その下へ次のコードを続けて入力する．これにより，数当てゲームからPlayerクラスを利用できる．
 
 ```python
 import random
 
+player = Player(input("名前を入力してください："))
 answer = random.randint(1, 20)
 
 while True:
     guess = int(input("1から20までの整数を入力してください："))
+    player.record_guess()
 
     if guess < answer:
         print("もっと大きい数です．")
@@ -54,6 +90,7 @@ while True:
         print("もっと小さい数です．")
     else:
         print("正解です．")
+        print(f"{player.name}さんは{player.attempts}回で正解しました．")
         break
 ```
 
@@ -107,5 +144,6 @@ if文とwhile文を使用してください．
 ## まとめ
 
 - 先にゲームの仕様を決めてからコードを書く．
+- クラスを使うと，ゲーム内の登場物が持つデータと処理をまとめられる．
 - 生成AIの出力は，読んで実行し，正しさを確認する．
 - 次回はゲームへ機能を追加し，完成度を高める．
