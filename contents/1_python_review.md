@@ -191,9 +191,7 @@ print("Hello, World!")
 4. 2の10乗を，べき乗の演算子を使って求める．
 ```
 
-<!--
-演習1の解答例
-
+````{visible-answer} 演習1の解答例
 ```python
 print("Pythonの計算を復習します．")
 
@@ -205,7 +203,7 @@ print(23 % 5)
 
 print(2 ** 10)
 ```
--->
+````
 
 ### 変数と型
 
@@ -245,9 +243,7 @@ print(f"{name}さんの得点は{score}点です．")
 4. f-stringを使い，「今週は〇〇を△△時間学習します．」と表示する．〇〇と△△の部分には，変数`subject`と`study_time`の値を埋め込む．
 ```
 
-<!--
-演習2の解答例
-
+````{visible-answer} 演習2の解答例
 ```python
 subject = "Python"
 study_time = 3
@@ -257,7 +253,7 @@ print(type(study_time))
 
 print(f"今週は{subject}を{study_time}時間学習します．")
 ```
--->
+````
 
 ## エラーが出たとき
 

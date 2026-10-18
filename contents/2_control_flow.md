@@ -225,7 +225,7 @@ if attendance >= 10 and score >= 60:
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 temperature = 25
 
@@ -368,7 +368,7 @@ for score in range(-10, 111, 20):
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 for score in range(0, 101, 10):
     if score >= 90:
@@ -418,7 +418,7 @@ for score in range(0, 101, 10):
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 year = 2025
 
@@ -484,7 +484,7 @@ for age in ages:
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 **第2段階**：文法誤りだけを修正したコード
 
 ```python

@@ -213,8 +213,7 @@ print(divisors(12))
 4. 24の約数が`[1, 2, 3, 4, 6, 8, 12, 24]`となることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def divisors(number):
     result = []
@@ -229,7 +228,6 @@ print(divisors(18))
 print(divisors(24))
 ```
 ````
--->
 
 ## 素数
 
@@ -284,8 +282,7 @@ def is_prime(number):
 5. `len(primes)`を使い，100以下の素数が25個あることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 primes = []
 
@@ -297,7 +294,6 @@ print(primes)
 print(f"100以下の素数の個数は{len(primes)}個です．")
 ```
 ````
--->
 
 ## エラトステネスの篩
 
@@ -354,15 +350,13 @@ print(sieve(30))
 4. 演習2の結果と一致することを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 primes = sieve(100)
 print(primes)
 print(f"100以下の素数の個数は{len(primes)}個です．")
 ```
 ````
--->
 
 ## 素因数分解
 
@@ -402,14 +396,12 @@ print(prime_factorize(60))
 4. `[2, 2, 2, 3, 3, 5]`と表示されることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 factors = prime_factorize(360)
 print(factors)
 ```
 ````
--->
 
 ### 素因数の個数と文字列の結合
 
@@ -489,15 +481,13 @@ def gcd(a, b):
 3. 互いに素な例として`gcd(8, 15)`を実行し，1が返ることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 print(gcd(48, 18))
 print(gcd(35, 7))
 print(gcd(8, 15))
 ```
 ````
--->
 
 ## 最小公倍数
 
@@ -528,8 +518,7 @@ print(lcm(12, 18))
 4. 二つの結果が等しいことを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 a = 24
 b = 36
@@ -540,7 +529,6 @@ print(gcd(a, b) * lcm(a, b))
 print(a * b)
 ```
 ````
--->
 
 ## エラーが出たときにチェックすること
 
@@ -571,8 +559,7 @@ print(a * b)
 関数，リスト，`for`文，`if`文，文字列，戻り値を組み合わせて使用せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def show_factorization(number):
     factors = prime_factorize(number)
@@ -596,7 +583,6 @@ def show_factorization(number):
 show_factorization(360)
 ```
 ````
--->
 
 ````{warning} 課題2
 正の整数のリストを受け取り，すべての要素の最大公約数を返す関数`gcd_list(numbers)`を作成せよ．
@@ -614,8 +600,7 @@ show_factorization(360)
 関数`gcd_list`の中で`for`文と関数`gcd`を使用せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def gcd_list(numbers):
     result = numbers[0]
@@ -629,7 +614,6 @@ print(gcd_list([15, 10, 5]))
 print(gcd_list([210, 147, 90, 63]))
 ```
 ````
--->
 
 ### 提出方法
 

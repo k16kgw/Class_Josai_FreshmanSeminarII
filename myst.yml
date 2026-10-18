@@ -2,6 +2,8 @@ version: 1
 project:
   title: フレッシュマンセミナーII
   description: 城西大学理学部情報数理学科1年生対象科目
+  plugins:
+    - plugins/answer-toggle.mjs
   authors:
     - name: Keiichiro Kagawa
       email: kkagawa@josai.ac.jp

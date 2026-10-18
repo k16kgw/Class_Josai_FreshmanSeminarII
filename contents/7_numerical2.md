@@ -113,8 +113,7 @@ $f(x)=x^2$の$x=3$における微分係数を近似せよ．
 4. どちらの誤差が小さいか確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -126,7 +125,6 @@ print(forward, abs(forward - 6))
 print(center, abs(center - 6))
 ```
 ````
--->
 
 ````{note} 演習2
 $f(x)=\sin x$の$x=\pi/4$における微分係数を中心差分で近似せよ．
@@ -136,8 +134,7 @@ $f(x)=\sin x$の$x=\pi/4$における微分係数を中心差分で近似せよ�
 3. 正確な値`math.cos(math.pi / 4)`との誤差を表示せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 
@@ -151,7 +148,6 @@ for h in [1e-1, 1e-2, 1e-3, 1e-4]:
     print(h, value, abs(value - exact))
 ```
 ````
--->
 
 ```{tip} 注意：刻み幅は小さければよいとは限らない
 刻み幅を極端に小さくすると，コンピュータが実数を有限桁で扱うことによる丸め誤差の影響が大きくなる場合がある．
@@ -211,8 +207,7 @@ $f(x)=x^2$を0から1まで積分せよ．
 3. どちらの誤差が小さいか確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -224,7 +219,6 @@ print(riemann_value, abs(riemann_value - exact))
 print(trapezoidal_value, abs(trapezoidal_value - exact))
 ```
 ````
--->
 
 ````{note} 演習4
 分割数と誤差の関係を調べよ．
@@ -234,8 +228,7 @@ print(trapezoidal_value, abs(trapezoidal_value - exact))
 3. 分割数を10倍にしたときの誤差の変化を説明せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 for n in [10, 100, 1000, 10000]:
     error_r = abs(riemann_sum(f, 0, 1, n) - exact)
@@ -243,7 +236,6 @@ for n in [10, 100, 1000, 10000]:
     print(n, error_r, error_t)
 ```
 ````
--->
 
 ## 課題
 
@@ -257,8 +249,7 @@ $f(x)=\sin x$の$x=\pi/3$における微分係数を調べよ．
 5. 二つの方法の精度をMarkdownセルに3文程度で比較せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 
@@ -274,7 +265,6 @@ for h in [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]:
 ```
 同じ刻み幅では，中心差分の誤差が前進差分より小さい．刻み幅を小さくすると，どちらも正確な値へ近づく．ただし，極端に小さい刻み幅では丸め誤差に注意する必要がある．
 ````
--->
 
 ````{warning} 課題2
 $f(x)=x^3$を0から1まで数値積分せよ．
@@ -286,8 +276,7 @@ $f(x)=x^3$を0から1まで数値積分せよ．
 5. 二つの方法をMarkdownセルに3文程度で比較せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 3
@@ -303,7 +292,6 @@ with open("numerical_integration.csv", "w", encoding="utf-8") as file:
 ```
 分割数を増やすと，どちらの誤差も小さくなる．同じ分割数では台形公式の誤差が小さい．CSVファイルに保存すると，後から表計算や可視化に利用できる．
 ````
--->
 
 ## エラーが出たときにチェックすること
 

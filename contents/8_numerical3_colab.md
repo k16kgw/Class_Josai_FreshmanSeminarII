@@ -117,8 +117,7 @@ for _ in range(5):
 4. シードを同じにすると結果が一致することを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import random
 
@@ -130,7 +129,6 @@ for _ in range(2):
     print(values)
 ```
 ````
--->
 
 ## サイコロのシミュレーション
 
@@ -160,8 +158,7 @@ print(counts)
 3. 相対度数の合計が1に近いことを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import random
 
@@ -175,7 +172,6 @@ for face in range(1, 7):
     print(f"{face}: {counts[face - 1]}回，相対度数 {counts[face - 1] / trials}")
 ```
 ````
--->
 
 ## モンテカルロ法
 
@@ -206,8 +202,7 @@ print(pi)
 3. `math.pi`との誤差を表示せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 import random
@@ -226,7 +221,6 @@ for trials in [1000, 10000, 100000]:
     print(trials, value, abs(value - math.pi))
 ```
 ````
--->
 
 ## モンテカルロ積分
 
@@ -253,8 +247,7 @@ $\int_0^1x^2\,dx=1/3$をモンテカルロ法で近似せよ．
 3. 同じ試行回数でも実行ごとに結果が変わることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -264,7 +257,6 @@ for trials in [1000, 10000, 100000]:
     print(trials, value, abs(value - 1 / 3))
 ```
 ````
--->
 
 ```{tip} 注意：モンテカルロ法の誤差
 乱数を使うため，試行回数を増やしても誤差が毎回単調に小さくなるとは限らない．複数回実行した結果や全体の傾向を見て判断する．
@@ -283,8 +275,7 @@ for trials in [1000, 10000, 100000]:
 6. 結果をMarkdownセルに2文程度で説明せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import random
 
@@ -303,7 +294,6 @@ print(f"最も多く出た目: {most_common}")
 ```
 各出目の相対度数はおおむね`1 / 6`に近い．シードを固定しているため，同じコードを再実行すると同じ結果を再現できる．
 ````
--->
 
 ````{warning} 課題2
 $\int_0^\pi\sin x\,dx=2$をモンテカルロ法で近似せよ．
@@ -316,8 +306,7 @@ $\int_0^\pi\sin x\,dx=2$をモンテカルロ法で近似せよ．
 6. 試行回数と誤差の関係をMarkdownセルに3文程度で説明せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 import random
@@ -336,7 +325,6 @@ with open("monte_carlo.csv", "w", encoding="utf-8") as file:
 ```
 試行回数を増やすと，近似値は全体として正確な値へ近づく．ただし乱数を使うため，誤差は単調には減らないことがある．CSVへ保存した結果は，次回の可視化で利用できる．
 ````
--->
 
 ## エラーが出たときにチェックすること
 

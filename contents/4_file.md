@@ -202,15 +202,13 @@ print(numbers)
 4. `[100, 90, 85, 70, 60]`と表示されることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 scores = [70, 85, 90, 100, 60]
 scores.sort(reverse=True)
 print(scores)
 ```
 ````
--->
 
 ### 辞書と辞書のメソッド
 
@@ -261,8 +259,7 @@ print(scores.get("英語", "データなし"))
 3. f-stringを使い，「国語：78点」の形式で表示せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 scores = {"国語": 78, "数学": 92, "英語": 84}
 
@@ -270,7 +267,6 @@ for subject, score in scores.items():
     print(f"{subject}：{score}点")
 ```
 ````
--->
 
 ### 文字列のメソッド
 
@@ -300,8 +296,7 @@ print(words)
 3. `for`文を使って各要素を表示せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 text = "apple,banana,orange"
 fruits = text.split(",")
@@ -310,7 +305,6 @@ for fruit in fruits:
     print(fruit)
 ```
 ````
--->
 
 ## クラスとインスタンス
 
@@ -433,8 +427,7 @@ with open("message.txt", "w", encoding="utf-8") as file:
 5. Jupyter Notebookのファイル一覧で`subjects.txt`が作成されたことを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 with open("subjects.txt", "w", encoding="utf-8") as file:
     file.write("条件分岐\n")
@@ -442,7 +435,6 @@ with open("subjects.txt", "w", encoding="utf-8") as file:
     file.write("関数\n")
 ```
 ````
--->
 
 ## テキストファイルからの読み込み
 
@@ -473,8 +465,7 @@ print(text)
 5. 「条件分岐」「繰り返し」「関数」が1行ずつ表示されることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 with open("subjects.txt", "r", encoding="utf-8") as file:
     text = file.read()
@@ -482,7 +473,6 @@ with open("subjects.txt", "r", encoding="utf-8") as file:
 print(text)
 ```
 ````
--->
 
 ## テキストファイルへの追記
 
@@ -504,8 +494,7 @@ with open("message.txt", "a", encoding="utf-8") as file:
 4. ファイルの内容を表示し，「ファイル操作」が末尾に一度だけ追加されたことを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 with open("subjects.txt", "a", encoding="utf-8") as file:
     file.write("ファイル操作\n")
@@ -516,7 +505,6 @@ with open("subjects.txt", "r", encoding="utf-8") as file:
 print(text)
 ```
 ````
--->
 
 ## ファイル操作を関数にまとめる
 
@@ -624,8 +612,7 @@ with open("scores.csv", "r", encoding="utf-8") as file:
 5. `for`文を使ってすべての行を表示せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import csv
 
@@ -647,7 +634,6 @@ with open("temperatures.csv", "r", encoding="utf-8") as file:
         print(row)
 ```
 ````
--->
 
 ## pandasを使ったCSVファイルの操作
 
@@ -737,8 +723,7 @@ selected.to_csv("selected_scores.csv", index=False, encoding="utf-8")
 7. `index=False`を指定せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import pandas as pd
 
@@ -753,7 +738,6 @@ selected
 selected.to_csv("selected_scores.csv", index=False, encoding="utf-8")
 ```
 ````
--->
 
 ## エラーが出たときにチェックすること
 
@@ -792,8 +776,7 @@ selected.to_csv("selected_scores.csv", index=False, encoding="utf-8")
 関数，仮引数，`for`文，`with`文，`write`メソッド，`read`メソッドを使用せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def save_plan(filename, plans):
     with open(filename, "w", encoding="utf-8") as file:
@@ -809,7 +792,6 @@ with open("plan.txt", "r", encoding="utf-8") as file:
 print(text)
 ```
 ````
--->
 
 ````{warning} 課題2
 CSVファイルに保存された最高気温の平均を返す関数`average_temperature(filename)`を作成せよ．
@@ -839,8 +821,7 @@ CSVファイルに保存された最高気温の平均を返す関数`average_te
 `csv`モジュール，関数，`for`文，`float`関数，`return`文を使用せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import csv
 
@@ -876,7 +857,6 @@ average = average_temperature("week_temperature.csv")
 print(f"平均最高気温は{average}度です．")
 ```
 ````
--->
 
 ### 提出方法
 

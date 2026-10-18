@@ -101,8 +101,7 @@ $f(x)=x^3-2$について解を含む区間を確認せよ．
 3. 関数値の符号が異なることを確認せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 3 - 2
@@ -112,7 +111,6 @@ print(f(2))
 ```
 `f(1)=-1`，`f(2)=6`なので，解は1と2の間にある．
 ````
--->
 
 ## 二分法
 
@@ -164,8 +162,7 @@ print(root, count, f(root))
 3. 近似解を`2 ** (1 / 3)`と比較せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 3 - 2
@@ -175,7 +172,6 @@ print(root, count, f(root))
 print(2 ** (1 / 3))
 ```
 ````
--->
 
 ````{note} 演習3
 許容誤差と反復回数の関係を調べよ．
@@ -185,8 +181,7 @@ print(2 ** (1 / 3))
 3. 許容誤差を小さくしたときの変化を説明せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 for tolerance in [1e-2, 1e-4, 1e-6, 1e-8]:
     root, count = bisection(f, 1, 2, tolerance)
@@ -194,7 +189,6 @@ for tolerance in [1e-2, 1e-4, 1e-6, 1e-8]:
 ```
 許容誤差を小さくすると精度は上がるが，反復回数も増える．
 ````
--->
 
 ## ニュートン法
 
@@ -257,8 +251,7 @@ print(root, count, f(root))
 5. 演習2の二分法と反復回数を比較せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 3 - 2
@@ -270,7 +263,6 @@ root, count = newton(f, derivative, 1)
 print(root, count, f(root))
 ```
 ````
--->
 
 ## 二つの方法の比較
 
@@ -283,8 +275,7 @@ print(root, count, f(root))
 $x^2-3=0$を両方の方法で解き，近似解，反復回数，`abs(f(root))`を比較せよ．二分法は区間`[1, 2]`，ニュートン法は初期値2を使え．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 2 - 3
@@ -298,7 +289,6 @@ print(b_root, b_count, abs(f(b_root)))
 print(n_root, n_count, abs(f(n_root)))
 ```
 ````
--->
 
 ## エラーが出たときにチェックすること
 
@@ -322,8 +312,7 @@ print(n_root, n_count, abs(f(n_root)))
 6. 結果をMarkdownセルに2文程度で説明せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 
@@ -336,7 +325,6 @@ print(root, count, f(root))
 ```
 区間の両端で符号が異なるため二分法を適用できる．近似解は約0.7391であり，その点の関数値は0に非常に近い．
 ````
--->
 
 ````{warning} 課題2
 ニュートン法で$\cos x-x=0$の近似解を求め，課題1と比較せよ．
@@ -349,8 +337,7 @@ print(root, count, f(root))
 6. 二つの方法の違いをMarkdownセルに3文程度で説明せよ．
 ````
 
-<!--
-````{dropdown} 解答例
+````{hidden-answer} 解答例
 ```python
 def derivative(x):
     return -math.sin(x) - 1
@@ -361,7 +348,6 @@ print(abs(root - newton_root))
 ```
 二つの方法からほぼ同じ近似解が得られる．この例ではニュートン法の反復回数が少ない．ただし，ニュートン法には導関数と適切な初期値が必要である．
 ````
--->
 
 ### 提出方法
 

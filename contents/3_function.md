@@ -252,7 +252,7 @@ Pythonでは英小文字を基本とし，複数の単語は`calculate_total`の
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 def show_message():
     print("関数を呼び出しました．")
@@ -349,7 +349,7 @@ show_total(120, 3)
 3. 実引数として `3` と `5` をそれぞれ渡し，関数を2回呼び出せ．
 ````
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 def show_square(number):
     print(number ** 2)
@@ -410,7 +410,7 @@ print(result + 10)
 5. 結果が正しいか手計算でも確認せよ．
 ````
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 import math
 
@@ -473,7 +473,7 @@ print(judge_score(120))
 8. `[-3.5, 2.0, -1.2, 0.0, 4.8]`を渡すと，`[3.5, 2.0, 1.2, 0.0, 4.8]`が表示されることを確認せよ．
 ````
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 def absolute_values(numbers):
     results = []
@@ -538,7 +538,7 @@ print(values)
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 def classify_score(score):
     if not (0 <= score <= 100):
@@ -585,7 +585,7 @@ for score in scores:
 ````
 
 
-````{dropdown} 解答例
+````{visible-answer} 解答例
 ```python
 def count_passes(scores):
     count = 0
