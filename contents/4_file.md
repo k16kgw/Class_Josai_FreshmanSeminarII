@@ -24,11 +24,13 @@
 ```python
 def absolute_values(numbers):
     results = []
+
     for number in numbers:
         if number >= 0:
             results.append(number)
         else:
             results.append(-number)
+    
     return results
 
 numbers = [-3.5, 2.0, -1.2, 0.0, 4.8]
@@ -57,8 +59,8 @@ def classify_score(score):
         return "B"
     elif score >= 60:
         return "C"
-
-    return "F"
+    else:
+        return "F"
 
 scores = [-1, 0, 59, 60, 69, 70, 79, 80, 94, 95, 100, 101]
 

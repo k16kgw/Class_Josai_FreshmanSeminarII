@@ -23,7 +23,7 @@ project:
     - file: contents/1_python_review.md
     - file: contents/2_control_flow.md
     - file: contents/3_function.md
-    # - file: contents/4_file.md
+    - file: contents/4_file.md
     # - file: contents/5_integer.md
     # - file: contents/6_numerical1.md
     # - file: contents/7_numerical2.md
