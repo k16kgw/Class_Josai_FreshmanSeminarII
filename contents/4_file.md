@@ -1239,27 +1239,30 @@ with open("temperatures.csv", "r", encoding="utf-8") as file:
 ## 課題
 
 ````{warning} 課題1
-文字列のリストをテキストファイルへ保存する関数`save_plan(filename, plans)`を作成せよ．
+文字列のリストをテキストファイルへ保存する関数`save_plan`を作成せよ．
 
 1. Markdownセルに`# 課題1`と記入せよ．
 2. for文とwriteメソッドを使い，予定を1項目につき1行で`plan.txt`へ保存せよ．
 3. 保存後に`plan.txt`を読み込み，3行が正しく保存されたことを表示して確認せよ．
 
-次のテンプレートにある4か所の`_____`を埋めて完成させよ．
+次のテンプレートを基に完成させよ．`【　】`は，引数全体または1行以上の処理を記述する箇所を表す．
 
 ```python
-def save_plan(filename, plans):
-    with open(filename, "_____", encoding="utf-8") as file:
-        for plan in plans:
-            file._____(f"{plan}\n")
+def save_plan(【必要な引数をすべて記入】):
+    【予定をファイルへ保存する処理をまとめて記入】
 
 plans = ["授業の復習をする", "課題を期限までに提出する", "毎週本を読む"]
-_____("plan.txt", plans)
+save_plan("plan.txt", plans)
 
-with open("plan.txt", "r", encoding="utf-8") as file:
-    text = file._____()
+【plan.txtを読み込んで表示する処理をまとめて記入】
+```
 
-print(text)
+**出力例**
+
+```text
+授業の復習をする
+課題を期限までに提出する
+毎週本を読む
 ```
 ````
 
@@ -1298,13 +1301,13 @@ print(text)
 ````
 
 ````{warning} 課題2
-CSVファイルに保存された最高気温の平均を返す関数`average_temperature(filename)`を作成せよ．
+CSVファイルに保存された最高気温の平均を返す関数`average_temperature`を作成せよ．
 
 1. Markdownセルに`# 課題2`と記入し，平日5日分の最高気温を`week_temperature.csv`へ保存せよ．
 2. ヘッダーを除く最高気温を実数へ変換し，その平均を返す関数を完成させよ．
 3. 関数を呼び出し，`平均最高気温は20.5度です．`と表示されることを確認せよ．
 
-次のテンプレートにある7か所の`_____`を埋めて完成させよ．
+次のテンプレートを基に完成させよ．`【　】`は，引数全体または1行以上の処理を記述する箇所を表す．
 
 ```python
 import csv
@@ -1318,27 +1321,19 @@ rows = [
     ["金", 23.5],
 ]
 
-with open("week_temperature.csv", "w", encoding="utf-8", newline="") as file:
-    writer = csv._____(file)
-    writer._____(rows)
+【rowsをweek_temperature.csvへ書き込む処理をまとめて記入】
 
-def average_temperature(filename):
-    total = 0.0
-    count = 0
+def average_temperature(【必要な引数をすべて記入】):
+    【CSVファイルを読み込み，平均を求めて返す処理をまとめて記入】
 
-    with open(filename, "_____", encoding="utf-8") as file:
-        reader = csv.reader(file)
-        _____(reader)
-
-        for row in reader:
-            temperature = _____(row[1])
-            total = total + temperature
-            count = count + 1
-
-    return total / _____
-
-average = _____("week_temperature.csv")
+average = average_temperature("week_temperature.csv")
 print(f"平均最高気温は{average}度です．")
+```
+
+**出力例**
+
+```text
+平均最高気温は20.5度です．
 ```
 ````
 
