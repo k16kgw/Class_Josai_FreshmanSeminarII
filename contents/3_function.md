@@ -251,7 +251,7 @@ Pythonでは英小文字を基本とし，複数の単語は`calculate_total`の
 3. `show_message()`を2回呼び出し，メッセージが2回表示されることを確認せよ．
 ````
 
-<!--
+
 ````{dropdown} 解答例
 ```python
 def show_message():
@@ -261,7 +261,7 @@ show_message()
 show_message()
 ```
 ````
- -->
+
 
 ## ライブラリ（フレッシュマンセミナーI 第12回の復習）
 
@@ -348,7 +348,7 @@ show_total(120, 3)
 2. `number ** 2` を計算し，結果を表示せよ．
 3. 実引数として `3` と `5` をそれぞれ渡し，関数を2回呼び出せ．
 ````
-<!--
+
 ````{dropdown} 解答例
 ```python
 def show_square(number):
@@ -358,7 +358,7 @@ show_square(3)
 show_square(5)
 ```
 ````
- -->
+
 
 ## 戻り値
 
@@ -409,7 +409,7 @@ print(result + 10)
 4. 半径3と半径5の面積をそれぞれ表示せよ．
 5. 結果が正しいか手計算でも確認せよ．
 ````
-<!--
+
 ````{dropdown} 解答例
 ```python
 import math
@@ -422,7 +422,7 @@ print(circle_area(3))
 print(circle_area(5))
 ```
 ````
- -->
+
 
 ## 関数で使うガード節
 
@@ -472,7 +472,7 @@ print(judge_score(120))
 
 8. `[-3.5, 2.0, -1.2, 0.0, 4.8]`を渡すと，`[3.5, 2.0, 1.2, 0.0, 4.8]`が表示されることを確認せよ．
 ````
-<!--
+
 ````{dropdown} 解答例
 ```python
 def absolute_values(numbers):
@@ -491,7 +491,7 @@ values = absolute_values(numbers)
 print(values)
 ```
 ````
- -->
+
 
 ## 関数を使う理由
 
@@ -537,7 +537,7 @@ print(values)
 `if`文，`return`文，ガード節，`for`文をすべて使用せよ．
 ````
 
-<!--
+
 ````{dropdown} 解答例
 ```python
 def classify_score(score):
@@ -562,7 +562,7 @@ for score in scores:
     print(f"{score}点：{grade}")
 ```
 ````
--->
+
 
 ````{warning} 課題2
 得点のリストを受け取り，60点以上の得点の個数を返す関数`count_passes(scores)`を作成せよ．この課題では，<span style="color:red">関数の中で`for`文を使用すること</span>．
@@ -584,7 +584,7 @@ for score in scores:
 関数の定義，仮引数，`for`文，`if`文，`return`文をすべて使用せよ．
 ````
 
-<!--
+
 ````{dropdown} 解答例
 ```python
 def count_passes(scores):
@@ -601,7 +601,7 @@ passed = count_passes(scores)
 print(f"合格者は{passed}人です．")
 ```
 ````
--->
+
 
 ### 提出方法
 
