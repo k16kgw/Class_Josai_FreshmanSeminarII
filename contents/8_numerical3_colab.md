@@ -111,10 +111,25 @@ for _ in range(5):
 ````{note} 演習1
 シードによる再現性を確認せよ．
 
-1. シードを指定せず，`random.random()`を5回実行するコードを2回実行せよ．
-2. 各回の結果が異なることを確認せよ．
-3. 実行前に`random.seed(10)`を指定し，同じ操作を2回行え．
-4. シードを同じにすると結果が一致することを確認せよ．
+次のコードにある2か所の`_____`を適切な値または関数名へ書き換え，同じ乱数列が2回表示されることを確認せよ．
+
+```python
+import random
+
+for _ in range(2):
+    random.seed(_____)
+    values = []
+    for _ in range(5):
+        values.append(random._____())
+    print(values)
+```
+
+**出力例**
+
+```text
+[0.5714025946899135, 0.4288890546751146, 0.5780913011344704, 0.20609823213950174, 0.81332125135732]
+[0.5714025946899135, 0.4288890546751146, 0.5780913011344704, 0.20609823213950174, 0.81332125135732]
+```
 ````
 
 ````{hidden-answer} 解答例
@@ -153,15 +168,40 @@ print(counts)
 ````{note} 演習2
 サイコロを1000回振るシミュレーションを実行せよ．
 
-1. 1から6の出現回数をリスト`counts`へ記録せよ．
-2. 各出目について「`1: 〇回，相対度数 〇`」の形式で表示せよ．
-3. 相対度数の合計が1に近いことを確認せよ．
+次のコードにある4か所の`_____`を適切な値，関数名または式へ書き換えよ．
+
+```python
+import random
+
+random.seed(10)
+trials = _____
+counts = [0, 0, 0, 0, 0, 0]
+
+for _ in range(trials):
+    value = random._____(1, 6)
+    counts[value - 1] = counts[value - 1] + 1
+
+for face in range(1, _____):
+    print(f"{face}: {counts[face - 1]}回，相対度数 {counts[face - 1] / _____}")
+```
+
+**出力例**
+
+```text
+1: 159回，相対度数 0.159
+2: 170回，相対度数 0.17
+3: 141回，相対度数 0.141
+4: 198回，相対度数 0.198
+5: 165回，相対度数 0.165
+6: 167回，相対度数 0.167
+```
 ````
 
 ````{hidden-answer} 解答例
 ```python
 import random
 
+random.seed(10)
 trials = 1000
 counts = [0, 0, 0, 0, 0, 0]
 for _ in range(trials):
@@ -197,9 +237,34 @@ print(pi)
 ````{note} 演習3
 試行回数`1000`，`10000`，`100000`について円周率を近似せよ．
 
-1. 円周率を近似する処理を関数`approximate_pi(trials)`にまとめよ．
-2. 各試行回数で近似値を表示せよ．
-3. `math.pi`との誤差を表示せよ．
+次のコードにある4か所の`_____`を適切な関数名または式へ書き換えよ．
+
+```python
+import math
+import random
+
+def approximate_pi(trials):
+    inside = 0
+    for _ in range(trials):
+        x = random._____()
+        y = random._____()
+        if x ** 2 + y ** 2 <= 1:
+            inside = inside + 1
+    return _____ * inside / trials
+
+random.seed(10)
+for trials in [1000, 10000, 100000]:
+    value = approximate_pi(trials)
+    print(trials, value, abs(value - math._____))
+```
+
+**出力例**
+
+```text
+1000 3.104 0.037592653589793024
+10000 3.1604 0.018807346410206982
+100000 3.1414 0.00019265358979314584
+```
 ````
 
 ````{hidden-answer} 解答例
@@ -216,6 +281,7 @@ def approximate_pi(trials):
             inside = inside + 1
     return 4 * inside / trials
 
+random.seed(10)
 for trials in [1000, 10000, 100000]:
     value = approximate_pi(trials)
     print(trials, value, abs(value - math.pi))
@@ -242,16 +308,35 @@ def monte_carlo_integral(f, a, b, trials):
 ````{note} 演習4
 $\int_0^1x^2\,dx=1/3$をモンテカルロ法で近似せよ．
 
-1. 試行回数を`1000`，`10000`，`100000`とせよ．
-2. 各近似値と正確な値との誤差を表示せよ．
-3. 同じ試行回数でも実行ごとに結果が変わることを確認せよ．
+次のコードにある2か所の`_____`を適切な式または関数名へ書き換えよ．
+
+```python
+def f(x):
+    return _____
+
+random.seed(10)
+for trials in [1000, 10000, 100000]:
+    value = _____(f, 0, 1, trials)
+    print(trials, value, abs(value - 1 / 3))
+```
+
+**出力例**
+
+```text
+1000 0.3337151169125422 0.00038178357920887196
+10000 0.3306476291650284 0.0026857041683049365
+100000 0.33240785623516284 0.0009254770981704796
+```
 ````
 
 ````{hidden-answer} 解答例
 ```python
+import random
+
 def f(x):
     return x ** 2
 
+random.seed(10)
 for trials in [1000, 10000, 100000]:
     value = monte_carlo_integral(f, 0, 1, trials)
     print(trials, value, abs(value - 1 / 3))
@@ -267,12 +352,38 @@ for trials in [1000, 10000, 100000]:
 ````{warning} 課題1
 サイコロを5000回振り，各出目の回数と相対度数を求めよ．
 
-1. Markdownセルに`# 課題1`と記入せよ．
-2. `random.seed(2026)`を指定せよ．
-3. 1から6の出現回数をリストへ記録せよ．
-4. 各出目，回数，相対度数を表示せよ．
-5. 最も多く出た目を表示せよ．
-6. 結果をMarkdownセルに2文程度で説明せよ．
+1. Markdownセルに`# 課題1`と記入し，シードを2026に固定してサイコロを5000回振れ．
+2. 各出目の回数と相対度数，最も多く出た目を表示せよ．
+3. 結果をMarkdownセルに2文程度で説明せよ．
+
+次のテンプレートを基に完成させよ．`【　】`は，1行以上の処理を記述する箇所を表す．
+
+```python
+import random
+
+random.seed(2026)
+trials = 5000
+counts = [0, 0, 0, 0, 0, 0]
+
+【サイコロを5000回振り，各出目の回数を数える処理を記入】
+
+【各出目の回数と相対度数を表示する処理を記入】
+
+most_common = counts.index(max(counts)) + 1
+print(f"最も多く出た目: {most_common}")
+```
+
+**出力例**
+
+```text
+1 863 0.1726
+2 791 0.1582
+3 875 0.175
+4 849 0.1698
+5 813 0.1626
+6 809 0.1618
+最も多く出た目: 3
+```
 ````
 
 ````{hidden-answer} 解答例
@@ -298,16 +409,41 @@ print(f"最も多く出た目: {most_common}")
 ````{warning} 課題2
 $\int_0^\pi\sin x\,dx=2$をモンテカルロ法で近似せよ．
 
-1. Markdownセルに`# 課題2`と記入せよ．
-2. `random.seed(2026)`を指定せよ．
-3. 試行回数`[1000, 3000, 10000, 30000]`で近似値と誤差を求めよ．
-4. 各試行回数，近似値，誤差を表示せよ．
-5. 結果を`monte_carlo.csv`へ`trials,value,error`の形式で保存せよ．
-6. 試行回数と誤差の関係をMarkdownセルに3文程度で説明せよ．
+1. Markdownセルに`# 課題2`と記入し，シードを2026に固定して4種類の試行回数で積分を近似せよ．
+2. 試行回数，近似値，誤差を表示し，csvモジュールを使って`monte_carlo.csv`へ保存せよ．
+3. 試行回数と誤差の関係をMarkdownセルに3文程度で説明せよ．
+
+次のテンプレートを基に完成させよ．`【　】`は，引数全体または1行以上の処理を記述する箇所を表す．
+
+```python
+import csv
+import math
+import random
+
+def f(【必要な引数をすべて記入】):
+    【math.sinを使って関数値を返す処理を記入】
+
+random.seed(2026)
+rows = [["trials", "value", "error"]]
+
+【各試行回数の近似値と誤差を求め，表示してrowsへ追加する処理を記入】
+
+【rowsをmonte_carlo.csvへ書き込む処理を記入】
+```
+
+**出力例**
+
+```text
+1000 2.04419308175357 0.04419308175357006
+3000 2.013969214289819 0.01396921428981912
+10000 1.9989922132021545 0.0010077867978455224
+30000 2.003228663654541 0.0032286636545411085
+```
 ````
 
 ````{hidden-answer} 解答例
 ```python
+import csv
 import math
 import random
 
@@ -315,13 +451,17 @@ def f(x):
     return math.sin(x)
 
 random.seed(2026)
-with open("monte_carlo.csv", "w", encoding="utf-8") as file:
-    file.write("trials,value,error\n")
-    for trials in [1000, 3000, 10000, 30000]:
-        value = monte_carlo_integral(f, 0, math.pi, trials)
-        error = abs(value - 2)
-        print(trials, value, error)
-        file.write(f"{trials},{value},{error}\n")
+rows = [["trials", "value", "error"]]
+
+for trials in [1000, 3000, 10000, 30000]:
+    value = monte_carlo_integral(f, 0, math.pi, trials)
+    error = abs(value - 2)
+    rows.append([trials, value, error])
+    print(trials, value, error)
+
+with open("monte_carlo.csv", "w", encoding="utf-8", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(rows)
 ```
 試行回数を増やすと，近似値は全体として正確な値へ近づく．ただし乱数を使うため，誤差は単調には減らないことがある．CSVへ保存した結果は，次回の可視化で利用できる．
 ````
@@ -354,7 +494,8 @@ with open("monte_carlo.csv", "w", encoding="utf-8") as file:
 
 ## まとめ
 
-- 乱数を使って不確実な現象を模擬できる．
-- シードを固定すると結果を再現できる．
-- モンテカルロ法は乱数を使って円周率や定積分を近似できる．
+1. **疑似乱数で不確実な現象を模擬できる**：サイコロなどの反復試行をプログラムで再現できる．
+2. **シードは再現性を与える**：同じシードと処理順序を使うと，同じ乱数列を生成できる．
+3. **モンテカルロ法は多数の試行から値を推定する**：円周率や定積分を近似できるが，誤差は単調に減るとは限らない．
+
 - 次回はシミュレーション結果をグラフで可視化する．

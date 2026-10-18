@@ -84,11 +84,47 @@ python 第11回_<学籍番号>_<氏名>.py
 ````{note} 演習1
 $x$が0から10までの整数であるとき，$y=2x+1$の折れ線グラフを作成せよ．
 
-1. VS CodeでPythonファイルを作成せよ．
-2. 軸ラベルとタイトルを付けよ．
-3. `linear.png`として保存せよ．
-4. ターミナルからPythonファイルを実行せよ．
-5. `linear.png`が作成されたことを確認せよ．
+次のコードにある3か所の`_____`を適切な値，式またはメソッド名へ書き換え，VS Codeで作成したPythonファイルへ保存せよ．ターミナルから実行し，`linear.png`が作成されたことを確認せよ．
+
+```python
+import matplotlib.pyplot as plt
+
+x = list(range(_____))
+y = []
+
+for value in x:
+    y.append(_____)
+
+plt.plot(x, y, marker="o")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("y = 2x + 1")
+plt._____("linear.png")
+```
+
+**出力例**
+
+```text
+画面には何も表示されず，Fresh2フォルダにlinear.pngが作成される．
+```
+````
+
+````{hidden-answer} 解答例
+```python
+import matplotlib.pyplot as plt
+
+x = list(range(11))
+y = []
+
+for value in x:
+    y.append(2 * value + 1)
+
+plt.plot(x, y, marker="o")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("y = 2x + 1")
+plt.savefig("linear.png")
+```
 ````
 
 ## エラーが出たときにチェックすること
@@ -113,6 +149,8 @@ $x$が0から10までの整数であるとき，$y=2x+1$の折れ線グラフを
 
 ## まとめ
 
-- ターミナルでは現在位置とファイル名を確認して操作する．
-- `.py`ファイルはPythonのソースコードを保存するファイルである．
+1. **ターミナル操作では現在位置が重要である**：pwdで場所，lsでファイルを確認してからコマンドを実行する．
+2. **`.py`ファイルへソースコードを保存する**：VS Codeで保存してから，ターミナルでPythonを実行する．
+3. **生成されたファイルも確認する**：プログラム終了後にlsやFinderで出力ファイルを確認する．
+
 - 次回は生成AIを利用し，Pythonでゲームを作成する．
