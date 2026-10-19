@@ -212,13 +212,20 @@ print(divisors(12))
 ```
 
 ````{note} 演習1
-正の整数の約数をリストとして返す関数`divisors(number)`を使い，18と24の約数を表示せよ．
+正の整数の約数をリストとして返す関数`divisors(number)`を完成させ，18と24の約数を表示せよ．
 
-次のコードにある2か所の`_____`を適切な整数へ書き換えよ．
+`【　】`には，1から`number`までの整数を順番に調べ，約数だけを`result`へ追加する処理を記入せよ．`【　】`は複数行の処理をまとめて表している．
 
 ```python
-print(divisors(_____))
-print(divisors(_____))
+def divisors(number):
+    result = []
+
+    【約数を調べてresultへ追加する処理】
+
+    return result
+
+print(divisors(18))
+print(divisors(24))
 ```
 
 **出力例**
@@ -289,16 +296,14 @@ def is_prime(number):
 例えば，1000に近い整数を調べる場合，999まで調べる代わりに31程度まで調べればよいため，繰り返し回数を減らせる．
 
 ````{note} 演習2
-`is_prime(number)`を使い，1から100までに存在するすべての素数をリストとして表示せよ．
+`is_prime(number)`を使い，1から100までに存在するすべての素数をリストとして表示するコードを完成させよ．
 
-次のコードにある3か所の`_____`を適切な値，関数名またはメソッド名へ書き換えよ．
+`【　】`には，1から100までの各整数を`is_prime(number)`で判定し，素数だけを`primes`へ追加する処理を記入せよ．`【　】`はfor文とif文を含む処理全体を表している．
 
 ```python
 primes = []
 
-for number in range(1, _____):
-    if _____(number):
-        primes._____(number)
+【1から100までの素数をprimesへ追加する処理】
 
 print(primes)
 print(f"100以下の素数の個数は{len(primes)}個です．")
@@ -337,7 +342,20 @@ print(f"100以下の素数の個数は{len(primes)}個です．")
 4. 素数候補の倍数を`False`にする．
 5. 最後まで`True`のまま残った整数を取り出す．
 
-例えば15以下では，2の倍数，3の倍数を順番に除外すると，2，3，5，7，11，13が残る．
+### 30以下の素数を手で探す
+
+30以下の素数を手で探す場合は，1を除外して2から30までを並べる．斜線が付いていない最小の数を素数として残し，その数の倍数を斜線で削除する．
+
+1. **2を残す**：$2^2=4$から，4，6，8，$ldots$，30を削除する．
+2. **3を残す**：$3^2=9$から，まだ削除されていない9，15，21，27を削除する．
+3. **5を残す**：$5^2=25$から，まだ削除されていない25を削除する．
+4. **7を確認する**：$7^2=49$は30より大きいため，これ以上は調べない．
+
+![エラトステネスの篩で30以下の素数を探す手順](./figs/5/sieve_30.svg)
+
+2の段階で削除した6や12を，3の段階でもう一度削除する必要はない．同様に，5より小さい素数の倍数はすでに削除されているため，5の倍数は$5^2=25$から調べればよい．最後まで斜線が付かなかった2，3，5，7，11，13，17，19，23，29が30以下の素数である．
+
+この手順では，次に調べる数の2乗が30を超えた時点で終了する．これは，合成数には平方根以下の約数が少なくとも一つ存在するためである．
 
 ```python
 def sieve(limit):
@@ -372,12 +390,25 @@ print(sieve(30))
 ```
 
 ````{note} 演習3
-エラトステネスの篩を使い，100以下の素数を求めよ．
+エラトステネスの篩を使う関数`sieve(limit)`を完成させ，100以下の素数を求めよ．
 
-次のコードにある1か所の`_____`を適切な関数名へ書き換え，演習2と同じ結果になることを確認せよ．
+`【　】`には，素数候補の倍数を`False`へ変更する二重のfor文を記入せよ．その後，`True`のまま残った整数を`primes`へ追加する処理を記入せよ．一つの`【　】`が複数行の処理を表している．
 
 ```python
-primes = _____(100)
+def sieve(limit):
+    is_prime_number = [True] * (limit + 1)
+    is_prime_number[0] = False
+    is_prime_number[1] = False
+
+    【素数候補の倍数をFalseにする処理】
+
+    primes = []
+
+    【Trueのまま残った整数をprimesへ追加する処理】
+
+    return primes
+
+primes = sieve(100)
 print(primes)
 print(f"100以下の素数の個数は{len(primes)}個です．")
 ```
@@ -392,6 +423,24 @@ print(f"100以下の素数の個数は{len(primes)}個です．")
 
 ````{hidden-answer} 解答例
 ```python
+def sieve(limit):
+    is_prime_number = [True] * (limit + 1)
+    is_prime_number[0] = False
+    is_prime_number[1] = False
+
+    for number in range(2, int(limit ** 0.5) + 1):
+        if is_prime_number[number]:
+            for multiple in range(number ** 2, limit + 1, number):
+                is_prime_number[multiple] = False
+
+    primes = []
+
+    for number in range(2, limit + 1):
+        if is_prime_number[number]:
+            primes.append(number)
+
+    return primes
+
 primes = sieve(100)
 print(primes)
 print(f"100以下の素数の個数は{len(primes)}個です．")
@@ -428,12 +477,26 @@ print(prime_factorize(60))
 内側のwhile文は，同じ数で割り切れる間，素因数をリストへ追加している．例えば60は2で2回割り切れるため，`2`が2回追加される．最後に1より大きな数が残った場合，その数も素因数として追加する．
 
 ````{note} 演習4
-`prime_factorize(number)`を使い，360を素因数分解せよ．
+整数を素因数分解する関数`prime_factorize(number)`を完成させ，360を素因数分解せよ．
 
-次のコードにある1か所の`_____`を適切な関数名へ書き換えよ．
+`【　】`には，`divisor`で割り切れる間，素因数を`factors`へ追加して`number`を更新する処理を記入せよ．さらに，次に調べる整数へ`divisor`を更新せよ．
 
 ```python
-factors = _____(360)
+def prime_factorize(number):
+    factors = []
+    divisor = 2
+
+    while divisor ** 2 <= number:
+        【divisorで割り切れる間の処理】
+
+        【次のdivisorへ更新する処理】
+
+    if number > 1:
+        factors.append(number)
+
+    return factors
+
+factors = prime_factorize(360)
 print(factors)
 ```
 
@@ -446,6 +509,22 @@ print(factors)
 
 ````{hidden-answer} 解答例
 ```python
+def prime_factorize(number):
+    factors = []
+    divisor = 2
+
+    while divisor ** 2 <= number:
+        while number % divisor == 0:
+            factors.append(divisor)
+            number = number // divisor
+
+        divisor = divisor + 1
+
+    if number > 1:
+        factors.append(number)
+
+    return factors
+
 factors = prime_factorize(360)
 print(factors)
 ```
@@ -522,14 +601,20 @@ def gcd(a, b):
 `a, b = b, a % b`では，更新前の`a`と`b`を使って右辺を計算する．その後，`a`へ更新前の`b`，`b`へ余りを代入する．
 
 ````{note} 演習5
-`gcd(a, b)`が正しく動作することを複数の例で確認せよ．
+ユークリッドの互除法を使う関数`gcd(a, b)`を完成させ，複数の例で動作を確認せよ．
 
-次のコードにある6か所の`_____`を適切な整数へ書き換えよ．
+`【　】`には，`b`が0になるまで，`a`と`b`を多重代入で更新する処理を記入せよ．
 
 ```python
-print(gcd(_____, _____))
-print(gcd(_____, _____))
-print(gcd(_____, _____))
+def gcd(a, b):
+    while b != 0:
+        【aとbを多重代入で更新する処理】
+
+    return a
+
+print(gcd(48, 18))
+print(gcd(35, 7))
+print(gcd(8, 15))
 ```
 
 **出力例**
@@ -543,6 +628,12 @@ print(gcd(_____, _____))
 
 ````{hidden-answer} 解答例
 ```python
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+
+    return a
+
 print(gcd(48, 18))
 print(gcd(35, 7))
 print(gcd(8, 15))
@@ -570,17 +661,20 @@ print(lcm(12, 18))
 ```
 
 ````{note} 演習6
-最大公約数と最小公倍数の関係を確認せよ．
+最小公倍数を返す関数`lcm(a, b)`を完成させ，最大公約数と最小公倍数の関係を確認せよ．
 
-次のコードにある4か所の`_____`を適切な関数名へ書き換え，最後の二つの結果が等しいことを確認せよ．
+最初の`【　】`には，`gcd(a, b)`を使って最小公倍数を計算する式を記入せよ．次の`【　】`には，最大公約数と最小公倍数の積を表示する式を記入せよ．最後の二つの結果が等しいことを確認せよ．
 
 ```python
+def lcm(a, b):
+    return 【最小公倍数を計算する式】
+
 a = 24
 b = 36
 
-print(_____(a, b))
-print(_____(a, b))
-print(_____(a, b) * _____(a, b))
+print(gcd(a, b))
+print(lcm(a, b))
+print(【最大公約数と最小公倍数の積を計算する式】)
 print(a * b)
 ```
 
@@ -596,6 +690,9 @@ print(a * b)
 
 ````{hidden-answer} 解答例
 ```python
+def lcm(a, b):
+    return a * b // gcd(a, b)
+
 a = 24
 b = 36
 

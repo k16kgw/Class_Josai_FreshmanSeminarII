@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1050" viewBox="0 0 1200 1050" role="img" aria-labelledby="title desc">
+  <title id="title">エラトステネスの篩で30以下の素数を探す手順</title>
+  <desc id="desc">1から30までを5行6列に並べ，2，3，5の倍数を段階的に斜線で削除し，最後に残った素数を示す図</desc>
+  <defs>
+    <style>
+      text { font-family: YuGothic, "Yu Gothic", sans-serif; }
+      .title { font-size: 34px; font-weight: 700; fill: #172033; }
+      .lead { font-size: 21px; fill: #354052; }
+      .panel { fill: #ffffff; stroke: #cbd3df; stroke-width: 2; rx: 8; }
+      .step { font-size: 24px; font-weight: 700; fill: #172033; }
+      .note { font-size: 17px; fill: #4b586c; }
+      .cell { fill: #f8f9fb; stroke: #9eabba; stroke-width: 1.5; }
+      .number { font-size: 22px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; fill: #273247; }
+      .slash-one { stroke: #677386; stroke-width: 4; stroke-linecap: round; }
+      .slash-two { stroke: #d44b44; stroke-width: 4; stroke-linecap: round; }
+      .slash-three { stroke: #3779b9; stroke-width: 4; stroke-linecap: round; }
+      .slash-five { stroke: #d17a18; stroke-width: 4; stroke-linecap: round; }
+      .prime-border { fill: none; stroke: #23936e; stroke-width: 4; }
+      .legend { font-size: 17px; fill: #354052; }
+    </style>
+
+    <g id="number-grid">
+      <g transform="translate(0 0)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">1</text></g>
+      <g transform="translate(65 0)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">2</text></g>
+      <g transform="translate(130 0)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">3</text></g>
+      <g transform="translate(195 0)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">4</text></g>
+      <g transform="translate(260 0)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">5</text></g>
+      <g transform="translate(325 0)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">6</text></g>
+      <g transform="translate(0 55)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">7</text></g>
+      <g transform="translate(65 55)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">8</text></g>
+      <g transform="translate(130 55)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">9</text></g>
+      <g transform="translate(195 55)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">10</text></g>
+      <g transform="translate(260 55)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">11</text></g>
+      <g transform="translate(325 55)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">12</text></g>
+      <g transform="translate(0 110)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">13</text></g>
+      <g transform="translate(65 110)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">14</text></g>
+      <g transform="translate(130 110)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">15</text></g>
+      <g transform="translate(195 110)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">16</text></g>
+      <g transform="translate(260 110)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">17</text></g>
+      <g transform="translate(325 110)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">18</text></g>
+      <g transform="translate(0 165)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">19</text></g>
+      <g transform="translate(65 165)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">20</text></g>
+      <g transform="translate(130 165)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">21</text></g>
+      <g transform="translate(195 165)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">22</text></g>
+      <g transform="translate(260 165)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">23</text></g>
+      <g transform="translate(325 165)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">24</text></g>
+      <g transform="translate(0 220)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">25</text></g>
+      <g transform="translate(65 220)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">26</text></g>
+      <g transform="translate(130 220)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">27</text></g>
+      <g transform="translate(195 220)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">28</text></g>
+      <g transform="translate(260 220)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">29</text></g>
+      <g transform="translate(325 220)"><rect class="cell" width="65" height="55"/><text class="number" x="32.5" y="28">30</text></g>
+    </g>
+
+    <g id="remove-one"><line class="slash-one" x1="8" y1="47" x2="57" y2="8"/></g>
+    <g id="remove-two">
+      <line class="slash-two" x1="203" y1="47" x2="252" y2="8"/><line class="slash-two" x1="333" y1="47" x2="382" y2="8"/>
+      <line class="slash-two" x1="73" y1="102" x2="122" y2="63"/><line class="slash-two" x1="203" y1="102" x2="252" y2="63"/><line class="slash-two" x1="333" y1="102" x2="382" y2="63"/>
+      <line class="slash-two" x1="73" y1="157" x2="122" y2="118"/><line class="slash-two" x1="203" y1="157" x2="252" y2="118"/><line class="slash-two" x1="333" y1="157" x2="382" y2="118"/>
+      <line class="slash-two" x1="73" y1="212" x2="122" y2="173"/><line class="slash-two" x1="203" y1="212" x2="252" y2="173"/><line class="slash-two" x1="333" y1="212" x2="382" y2="173"/>
+      <line class="slash-two" x1="73" y1="267" x2="122" y2="228"/><line class="slash-two" x1="203" y1="267" x2="252" y2="228"/><line class="slash-two" x1="333" y1="267" x2="382" y2="228"/>
+    </g>
+    <g id="remove-three">
+      <line class="slash-three" x1="138" y1="102" x2="187" y2="63"/><line class="slash-three" x1="138" y1="157" x2="187" y2="118"/>
+      <line class="slash-three" x1="138" y1="212" x2="187" y2="173"/><line class="slash-three" x1="138" y1="267" x2="187" y2="228"/>
+    </g>
+    <g id="remove-five"><line class="slash-five" x1="8" y1="267" x2="57" y2="228"/></g>
+
+    <g id="highlight-two"><rect class="prime-border" x="67" y="2" width="61" height="51" rx="4"/></g>
+    <g id="highlight-three"><rect class="prime-border" x="132" y="2" width="61" height="51" rx="4"/></g>
+    <g id="highlight-five"><rect class="prime-border" x="262" y="2" width="61" height="51" rx="4"/></g>
+    <g id="highlight-all">
+      <rect class="prime-border" x="67" y="2" width="61" height="51" rx="4"/><rect class="prime-border" x="132" y="2" width="61" height="51" rx="4"/>
+      <rect class="prime-border" x="262" y="2" width="61" height="51" rx="4"/><rect class="prime-border" x="2" y="57" width="61" height="51" rx="4"/>
+      <rect class="prime-border" x="262" y="57" width="61" height="51" rx="4"/><rect class="prime-border" x="2" y="112" width="61" height="51" rx="4"/>
+      <rect class="prime-border" x="262" y="112" width="61" height="51" rx="4"/><rect class="prime-border" x="2" y="167" width="61" height="51" rx="4"/>
+      <rect class="prime-border" x="262" y="167" width="61" height="51" rx="4"/><rect class="prime-border" x="262" y="222" width="61" height="51" rx="4"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="1050" fill="#f4f6f9"/>
+  <text class="title" x="55" y="55">30以下の素数を手で探す</text>
+  <text class="lead" x="55" y="91">各段階で1から30までを確認し，消した数の斜線を残したまま次へ進む</text>
+
+  <g transform="translate(50 120)">
+    <rect class="panel" width="525" height="410"/><text class="step" x="35" y="42">1．2の倍数を削除</text>
+    <g transform="translate(68 68)"><use href="#number-grid"/><use href="#remove-one"/><use href="#remove-two"/><use href="#highlight-two"/></g>
+    <text class="note" x="68" y="374">2を残し，4，6，8，…，30を削除する．</text>
+    <text class="note" x="68" y="399">灰色の斜線は，素数ではない1を表す．</text>
+  </g>
+
+  <g transform="translate(625 120)">
+    <rect class="panel" width="525" height="410"/><text class="step" x="35" y="42">2．3の倍数を削除</text>
+    <g transform="translate(68 68)"><use href="#number-grid"/><use href="#remove-one"/><use href="#remove-two"/><use href="#remove-three"/><use href="#highlight-two"/><use href="#highlight-three"/></g>
+    <text class="note" x="68" y="374">赤い斜線を残し，9，15，21，27を削除する．</text>
+    <text class="note" x="68" y="399">6，12，18，24，30はすでに削除されている．</text>
+  </g>
+
+  <g transform="translate(50 570)">
+    <rect class="panel" width="525" height="410"/><text class="step" x="35" y="42">3．5の倍数を削除</text>
+    <g transform="translate(68 68)"><use href="#number-grid"/><use href="#remove-one"/><use href="#remove-two"/><use href="#remove-three"/><use href="#remove-five"/><use href="#highlight-two"/><use href="#highlight-three"/><use href="#highlight-five"/></g>
+    <text class="note" x="68" y="374">これまでの斜線を残し，25を削除する．</text>
+    <text class="note" x="68" y="399">10，15，20，30はすでに削除されている．</text>
+  </g>
+
+  <g transform="translate(625 570)">
+    <rect class="panel" width="525" height="410"/><text class="step" x="35" y="42">4．7を確認して終了</text>
+    <g transform="translate(68 68)"><use href="#number-grid"/><use href="#remove-one"/><use href="#remove-two"/><use href="#remove-three"/><use href="#remove-five"/><use href="#highlight-all"/></g>
+    <text class="note" x="68" y="374">7² = 49 &gt; 30なので，これ以上削除する必要はない．</text>
+    <text class="note" x="68" y="399">緑枠の数が，30以下の素数である．</text>
+  </g>
+
+  <g transform="translate(55 1018)">
+    <line class="slash-two" x1="0" y1="0" x2="28" y2="0"/><text class="legend" x="38" y="6">2の倍数</text>
+    <line class="slash-three" x1="165" y1="0" x2="193" y2="0"/><text class="legend" x="203" y="6">3の倍数</text>
+    <line class="slash-five" x1="330" y1="0" x2="358" y2="0"/><text class="legend" x="368" y="6">5の倍数</text>
+    <rect class="prime-border" x="508" y="-15" width="30" height="25" rx="3"/><text class="legend" x="548" y="6">最後まで残った素数</text>
+  </g>
+</svg>
