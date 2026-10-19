@@ -407,7 +407,7 @@ print(scores)
 ```
 ````
 
-`````{hidden-answer} 解答例
+`````{visible-answer} 解答例
 ```python
 scores = [70, 85, 90, 100, 60]
 scores.sort()
@@ -565,7 +565,7 @@ for subject, score in scores._____():
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 scores = {"国語": 78, "数学": 92, "英語": 84}
 
@@ -644,7 +644,7 @@ ORANGE
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 text = "apple,banana,orange"
 fruits = text.split(",")
@@ -878,7 +878,7 @@ print(text)
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 with open("subjects.txt", "w", encoding="utf-8") as file:
     file.write("条件分岐\n")
@@ -1208,7 +1208,7 @@ with open("temperatures.csv", "_____", encoding="utf-8") as file:
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 import csv
 
