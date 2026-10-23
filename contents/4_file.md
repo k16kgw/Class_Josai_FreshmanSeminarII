@@ -1289,7 +1289,8 @@ save_plan("plan.txt", plans)
 ```
 ````
 
-````{hidden-answer} 解答例
+(assignment-4-1-answer)=
+````{visible-answer} 解答例
 ```python
 def save_plan(filename, plans):
     with open(filename, "w", encoding="utf-8") as file:
@@ -1360,7 +1361,68 @@ print(f"平均最高気温は{average}度です．")
 ```
 ````
 
-````{hidden-answer} 解答例
+(assignment-4-2-answer)=
+````{visible-answer} 解答例
+**空欄1：CSVファイルへの書き込み**
+
+最初の`【rowsをweek_temperature.csvへ書き込む処理をまとめて記入】`には，次のコードを記入する．書き込み用のwriterオブジェクトを作り，writerowsメソッドで`rows`の全行を書き込む．
+
+```python
+with open("week_temperature.csv", "w", encoding="utf-8", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(rows)
+```
+
+**空欄2：関数の引数**
+
+`average_temperature("week_temperature.csv")`と呼び出しているため，関数はファイル名を一つ受け取る．`【必要な引数をすべて記入】`には`filename`を記入する．
+
+```python
+def average_temperature(filename):
+```
+
+**空欄3：CSVファイルの読み込みと平均の計算**
+
+合計を保存する`total`とデータ数を保存する`count`を0で初期化する．次に，引数で受け取ったファイル名を使ってCSVファイルを開く．for文で各行を取り出し，if文でヘッダー行を除外する．最高気温は位置1から取り出し，合計とデータ数を更新する．すべての行を処理したら，合計をデータ数で割って返す．
+
+```python
+    total = 0.0
+    count = 0
+
+    with open(filename, "r", encoding="utf-8") as file:
+        reader = csv.reader(file)
+
+        for row in reader:
+            if row[0] != "曜日":
+                temperature = row[1]
+                total = total + temperature
+                count = count + 1
+
+    return total / count
+```
+
+**float関数を使わない場合のエラー**
+
+csv.readerで読み込んだ各値は文字列である．したがって，`temperature = row[1]`のままでは，`temperature`の型は`str`になる．同じ状況を短いコードで確認する．
+
+```python
+total = 0.0
+temperature = "18.5"
+total = total + temperature
+```
+
+**出力例**
+
+```text
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+```
+
+`total`は`0.0`で初期化したため`float`型である．`float`型と`str`型は加算できないため，`TypeError`が発生する．
+
+[第1回の「変数と型」](./1_python_review.md)で学んだ型変換を使い，`temperature = float(row[1])`としてから加算する必要がある．
+
+**float関数を使った正解のコード**
+
 ```python
 import csv
 
@@ -1383,6 +1445,36 @@ def average_temperature(filename):
 
     with open(filename, "r", encoding="utf-8") as file:
         reader = csv.reader(file)
+
+        for row in reader:
+            if row[0] != "曜日":
+                temperature = float(row[1])
+                total = total + temperature
+                count = count + 1
+
+    return total / count
+
+average = average_temperature("week_temperature.csv")
+print(f"平均最高気温は{average}度です．")
+```
+
+**出力例**
+
+```text
+平均最高気温は20.5度です．
+```
+
+**next関数を使った別解**
+
+5.2節で使用した`next(reader)`を使うと，readerオブジェクトの先頭行を一つ取り出して，ヘッダーを読み飛ばせる．CSVファイルの作成部分は正解コードと同じである．
+
+```python
+def average_temperature(filename):
+    total = 0.0
+    count = 0
+
+    with open(filename, "r", encoding="utf-8") as file:
+        reader = csv.reader(file)
         next(reader)
 
         for row in reader:
@@ -1396,30 +1488,11 @@ average = average_temperature("week_temperature.csv")
 print(f"平均最高気温は{average}度です．")
 ```
 
-**コードの解説**
+**出力例**
 
-- 最初に，ヘッダーと平日5日分の最高気温をweek_temperature.csvへ書き込む．
-- 関数内で，合計を保存する変数とデータ数を数える変数を0で初期化する．
-
-  ```python
-  total = 0.0
-  count = 0
-  ```
-
-- ヘッダーを読み飛ばし，各行の最高気温を実数へ変換して，合計とデータ数を更新する．
-
-  ```python
-  for row in reader:
-      temperature = float(row[1])
-      total = total + temperature
-      count = count + 1
-  ```
-
-- 合計をデータ数で割った平均値を返し，f-stringで表示する．
-
-  ```python
-  return total / count
-  ```
+```text
+平均最高気温は20.5度です．
+```
 ````
 
 ### 提出方法

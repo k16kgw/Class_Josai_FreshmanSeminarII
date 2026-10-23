@@ -44,67 +44,8 @@ writerowsメソッドは二次元のリストを複数行として書き込む�
 
 ### 前回の課題の解答例
 
-**課題1：文字列のリストをファイルへ保存する関数**
-
-ファイル名と文字列のリストを引数として受け取り，各要素を1行ずつ保存する関数を作成した．
-
-```python
-def save_plan(filename, plans):
-    with open(filename, "w", encoding="utf-8") as file:
-        for plan in plans:
-            file.write(f"{plan}\n")
-
-plans = ["授業の復習をする", "課題を期限までに提出する", "毎週本を読む"]
-save_plan("plan.txt", plans)
-
-with open("plan.txt", "r", encoding="utf-8") as file:
-    text = file.read()
-
-print(text)
-```
-
-関数の中では，for文でリストの要素を一つずつ取り出している．各文字列に改行文字`\n`を付けることで，1項目につき1行で保存できる．ファイル名も引数にしているため，別のファイルへ保存するときにも同じ関数を再利用できる．
-
-**課題2：CSVファイルに保存された最高気温の平均**
-
-CSVファイルから数値を読み込み，平均を戻り値として返す関数を作成した．
-
-```python
-import csv
-
-rows = [
-    ["曜日", "最高気温"],
-    ["月", 18.5],
-    ["火", 20.0],
-    ["水", 21.5],
-    ["木", 19.0],
-    ["金", 23.5],
-]
-
-with open("week_temperature.csv", "w", encoding="utf-8", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerows(rows)
-
-def average_temperature(filename):
-    total = 0.0
-    count = 0
-
-    with open(filename, "r", encoding="utf-8") as file:
-        reader = csv.reader(file)
-        next(reader)
-
-        for row in reader:
-            temperature = float(row[1])
-            total = total + temperature
-            count = count + 1
-
-    return total / count
-
-average = average_temperature("week_temperature.csv")
-print(f"平均最高気温は{average}度です．")
-```
-
-`next(reader)`でヘッダーを読み飛ばし，データ行だけを計算に使っている．CSVから読み込んだ値は文字列であるため，`float`関数で実数へ変換してから合計した．すべての行を処理した後で，合計をデータ数で割った値を返している．
+1. [課題1「文字列のリストをファイルへ保存する関数」の解答例](./4_file.md#assignment-4-1-answer)
+2. [課題2「CSVファイルに保存された最高気温の平均」の解答例](./4_file.md#assignment-4-2-answer)
 
 今回は，条件分岐，繰り返し，関数，リストを組み合わせ，整数に関するアルゴリズムを実装する．
 
