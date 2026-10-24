@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="830" viewBox="0 0 980 830" role="img" aria-labelledby="title desc">
+  <title id="title">約数を順番に出力する手続き</title>
+  <desc id="desc">JIS X 0121に準拠したフローチャート．判断記号の「はい」は下，「いいえ」は右へ進む．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+  </defs>
+  <g class="edge"><polyline points="380,72 380,100" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="380,164 380,194" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="380,258 380,288" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="380,352 380,390" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="380,494 380,550" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text class="edge-label" x="396" y="528" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">はい</text></g>
+  <g class="edge"><polyline points="520,442 670,442" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text class="edge-label" x="548" y="430" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">いいえ</text></g>
+  <g class="edge"><polyline points="380,654 380,700" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text class="edge-label" x="396" y="682" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">はい</text></g>
+  <g class="edge"><polyline points="520,602 740,602 740,700" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text class="edge-label" x="548" y="590" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">いいえ</text></g>
+  <g class="edge"><polyline points="540,732 610,732" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="740,764 740,800 140,800 140,320 230,320" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="node"><rect x="290" y="20" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="52">開始</tspan></text></g>
+  <g class="node"><polygon points="242,100 540,100 518,164 220,164" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="138">対象の整数を受け取る</tspan></text></g>
+  <g class="node"><rect x="230" y="194" width="300" height="64" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="232">1を最初の割る数とする</tspan></text></g>
+  <g class="node"><rect x="230" y="288" width="300" height="64" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="326">現在の割る数を調べる</tspan></text></g>
+  <g class="node"><polygon points="380,390 520,442 380,494 240,442" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="436.5">割る数は</tspan><tspan x="380" y="459.5">対象の整数以下か</tspan></text></g>
+  <g class="node"><rect x="670" y="416" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="760" y="448">終了</tspan></text></g>
+  <g class="node"><polygon points="380,550 520,602 380,654 240,602" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="596.5">対象の整数を</tspan><tspan x="380" y="619.5">余りなく割り切れるか</tspan></text></g>
+  <g class="node"><polygon points="242,700 540,700 518,764 220,764" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="380" y="738">その数を約数として出力する</tspan></text></g>
+  <g class="node"><rect x="610" y="700" width="260" height="64" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="740" y="738">割る数を1増やす</tspan></text></g>
+</svg>
