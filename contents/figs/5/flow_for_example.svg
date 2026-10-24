@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="660" viewBox="0 0 820 660" role="img" aria-labelledby="title desc">
+  <title id="title">for文に対応するフローチャート</title>
+  <desc id="desc">JIS X 0121に準拠したフローチャート．判断記号の「はい」は下，「いいえ」は右へ進む．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+  </defs>
+  <g class="edge"><polyline points="300,72 300,110" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="300,182 300,220" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="300,324 300,380" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text class="edge-label" x="316" y="360" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">はい</text></g>
+  <g class="edge"><polyline points="430,272 560,272" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text class="edge-label" x="447" y="260" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">いいえ</text></g>
+  <g class="edge"><polyline points="300,444 300,480" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="300,544 300,620 80,620 80,146 100,146" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="node"><rect x="210" y="20" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="300" y="52">開始</tspan></text></g>
+  <g class="node"><rect x="100" y="110" width="400" height="72" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="300" y="140.5">1以上，4未満の整数から</tspan><tspan x="300" y="163.5">次の整数を取り出す</tspan></text></g>
+  <g class="node"><polygon points="300,220 430,272 300,324 170,272" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="300" y="266.5">次の整数を</tspan><tspan x="300" y="289.5">取り出せたか</tspan></text></g>
+  <g class="node"><rect x="560" y="246" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="650" y="278">終了</tspan></text></g>
+  <g class="node"><polygon points="182,380 440,380 418,444 160,444" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="300" y="418">その整数を出力する</tspan></text></g>
+  <g class="node"><rect x="170" y="480" width="260" height="64" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="300" y="518">次の整数へ進む</tspan></text></g>
+</svg>
