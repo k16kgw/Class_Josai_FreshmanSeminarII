@@ -682,14 +682,33 @@ show_factorization(360)
 ````
 
 ````{hidden-answer} 解答例
+**空欄1：関数の引数**
+
+関数の呼び出しでは`show_factorization(360)`のように，素因数分解する整数を一つ渡している．したがって，引数にはその整数を受け取る変数`number`を記入する．
+
 ```python
 def show_factorization(number):
+```
+
+**空欄2：素因数分解と表示用リストの準備**
+
+最初に`prime_factorize(number)`を呼び出し，素因数を小さい順に並べたリストを得る．式を構成する各文字列は，空のリスト`parts`へ順番に追加する．
+
+```python
     factors = prime_factorize(number)
     parts = []
-    processed = []
+    previous_factor = 0
+```
 
+`previous_factor`には直前に処理した素因数を保存する．素因数は2以上なので，最初の比較のために0を代入しておく．
+
+**空欄2：素因数の個数に応じた文字列の作成**
+
+`prime_factorize`関数が返す素因数は小さい順に並ぶ．現在の`factor`が`previous_factor`と異なるときだけ個数を数えることで，同じ素因数を重複して処理せずに済む．指数が1なら素因数だけを，2以上なら`素因数^指数`を`parts`へ追加する．
+
+```python
     for factor in factors:
-        if factor not in processed:
+        if factor != previous_factor:
             count = factors.count(factor)
 
             if count == 1:
@@ -697,12 +716,47 @@ def show_factorization(number):
             else:
                 parts.append(f"{factor}^{count}")
 
-            processed.append(factor)
+            previous_factor = factor
+```
+
+**空欄2：式の組み立てと表示**
+
+`parts`内の文字列を` × `で結び，元の整数とともに表示する．
+
+```python
+    expression = " × ".join(parts)
+    print(f"{number} = {expression}")
+```
+
+**完成したコード**
+
+```python
+def show_factorization(number):
+    factors = prime_factorize(number)
+    parts = []
+    previous_factor = 0
+
+    for factor in factors:
+        if factor != previous_factor:
+            count = factors.count(factor)
+
+            if count == 1:
+                parts.append(str(factor))
+            else:
+                parts.append(f"{factor}^{count}")
+
+            previous_factor = factor
 
     expression = " × ".join(parts)
     print(f"{number} = {expression}")
 
 show_factorization(360)
+```
+
+**出力例**
+
+```text
+360 = 2^3 × 3^2 × 5
 ```
 ````
 
@@ -732,17 +786,59 @@ print(gcd_list([210, 147, 90, 63]))
 ````
 
 ````{hidden-answer} 解答例
+**空欄1：関数の引数**
+
+関数の呼び出しでは整数のリストを一つ渡しているため，引数にはそのリストを受け取る変数`numbers`を記入する．
+
+```python
+def gcd_list(numbers):
+```
+
+**空欄2：最大公約数の初期値**
+
+最初の要素を，計算途中の最大公約数を保存する`result`の初期値とする．リストの添字は0から始まるため，先頭要素は`numbers[0]`で取り出せる．
+
+```python
+    result = numbers[0]
+```
+
+**空欄2：2番目以降の要素との最大公約数**
+
+2番目の要素の添字は1である．`range(1, len(numbers))`を使い，添字1から最後の要素の添字までを順番に`index`へ代入する．各要素と現在の`result`の最大公約数を求め，結果を`result`へ戻す．
+
+```python
+    for index in range(1, len(numbers)):
+        result = gcd(result, numbers[index])
+```
+
+**空欄2：計算結果の返却**
+
+すべての要素を処理した後，`result`をreturn文で返す．
+
+```python
+    return result
+```
+
+**完成したコード**
+
 ```python
 def gcd_list(numbers):
     result = numbers[0]
 
-    for number in numbers[1:]:
-        result = gcd(result, number)
+    for index in range(1, len(numbers)):
+        result = gcd(result, numbers[index])
 
     return result
 
 print(gcd_list([15, 10, 5]))
 print(gcd_list([210, 147, 90, 63]))
+```
+
+**出力例**
+
+```text
+5
+3
 ```
 ````
 
