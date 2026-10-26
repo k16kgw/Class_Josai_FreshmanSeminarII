@@ -268,7 +268,7 @@ print(divisors(24))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def divisors(number):
     result = []
@@ -353,7 +353,7 @@ print(f"100以下の素数の個数は{len(primes)}個です．")
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 primes = []
 
@@ -456,7 +456,7 @@ print(f"100以下の素数の個数は{len(primes)}個です．")
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def sieve(limit):
     is_prime_number = [True] * (limit + 1)
@@ -524,7 +524,7 @@ print(factors)
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def prime_factorize(number):
     factors = []
@@ -650,7 +650,7 @@ print(gcd(8, 15))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def gcd(a, b):
     while b != 0:
@@ -707,7 +707,7 @@ print(a * b)
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def lcm(a, b):
     return a * b // gcd(a, b)
