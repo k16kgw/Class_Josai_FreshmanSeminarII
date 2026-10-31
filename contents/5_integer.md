@@ -775,7 +775,7 @@ show_factorization(360)
 ````
 
 (assignment-5-1-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **空欄1：関数の引数**
 
 関数の呼び出しでは`show_factorization(360)`のように，素因数分解する整数を一つ渡している．したがって，引数にはその整数を受け取る変数`number`を記入する．
@@ -847,6 +847,11 @@ def show_factorization(number):
 show_factorization(360)
 ```
 
+![課題1の空欄2におけるコードとフローチャートの対応](./figs/5/show_factorization_code_flowchart.svg)
+
+図中の番号は上記の完成コードの行番号に対応する．
+青字のコードを順番に追うことで空欄2に記入する処理全体の流れを確認できる．
+
 **出力例**
 
 ```text
@@ -880,7 +885,7 @@ print(gcd_list([210, 147, 90, 63]))
 ````
 
 (assignment-5-2-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **空欄1：関数の引数**
 
 関数の呼び出しでは整数のリストを一つ渡しているため，引数にはそのリストを受け取る変数`numbers`を記入する．

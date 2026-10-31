@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1700" viewBox="0 0 1700 1700" role="img" aria-labelledby="title desc">
+  <title id="title">素因数分解を式として表示するコードとフローチャートの対応</title>
+  <desc id="desc">show_factorization関数の空欄2について，準備，繰り返し，条件分岐，文字列の作成と表示を，対応するPythonコードとともに示すフローチャート．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+    <style>
+      .shape { fill: #fff; stroke: #263238; stroke-width: 3; }
+      .flow { fill: none; stroke: #263238; stroke-width: 3; stroke-linejoin: miter; marker-end: url(#arrow); }
+      .role { fill: #37474f; font-family: sans-serif; font-size: 19px; font-weight: 600; text-anchor: middle; }
+      .code { fill: #0b57a4; font-family: Menlo, Monaco, monospace; font-size: 21px; font-weight: 600; text-anchor: middle; }
+      .code-small { fill: #0b57a4; font-family: Menlo, Monaco, monospace; font-size: 18px; font-weight: 600; text-anchor: middle; }
+      .branch { fill: #111; font-family: sans-serif; font-size: 20px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 6; stroke-linejoin: round; }
+      .line-number { fill: #fff; font-family: sans-serif; font-size: 14px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+
+  <text x="850" y="40" fill="#263238" font-family="sans-serif" font-size="25" font-weight="700" text-anchor="middle">課題1・空欄2：コードと処理の対応</text>
+  <text x="850" y="72" fill="#607d8b" font-family="sans-serif" font-size="16" text-anchor="middle">青字は，その記号に対応するPythonコードを表す</text>
+
+  <!-- Flow lines -->
+  <polyline class="flow" points="450,190 450,230"/>
+  <polyline class="flow" points="450,400 450,470"/>
+  <polyline class="flow" points="450,650 450,740"/>
+  <polyline class="flow" points="700,830 1350,830 1350,1410"/>
+  <polyline class="flow" points="450,920 450,990"/>
+  <polyline class="flow" points="450,1090 450,1160"/>
+  <polyline class="flow" points="450,1340 450,1400"/>
+  <polyline class="flow" points="680,1250 760,1250"/>
+  <polyline class="flow" points="450,1500 450,1550 970,1550 970,1400"/>
+  <polyline class="flow" points="970,1310 970,1400"/>
+  <polyline class="flow" points="1180,1450 1200,1450"/>
+  <polyline class="flow" points="1350,1510 1350,1610 100,1610 100,560 200,560"/>
+  <polyline class="flow" points="700,560 1090,560"/>
+  <polyline class="flow" points="1370,680 1370,730"/>
+
+  <text class="branch" x="472" y="714">はい</text>
+  <text class="branch" x="740" y="812">いいえ</text>
+  <text class="branch" x="472" y="964">はい</text>
+  <text class="branch" x="720" y="542">いいえ</text>
+  <text class="branch" x="472" y="1382">はい</text>
+  <text class="branch" x="696" y="1232">いいえ</text>
+
+  <!-- Function start -->
+  <rect class="shape" x="140" y="100" width="620" height="90" rx="45"/>
+  <circle cx="168" cy="127" r="18" fill="#0b57a4"/>
+  <text class="line-number" x="168" y="127">1</text>
+  <text class="role" x="450" y="134">関数の処理を開始する</text>
+  <text class="code" x="450" y="166">def show_factorization(number):</text>
+
+  <!-- Preparation -->
+  <polygon class="shape" points="160,230 740,230 780,315 740,400 160,400 120,315"/>
+  <circle cx="166" cy="258" r="22" fill="#0b57a4"/>
+  <text class="line-number" x="166" y="258">2–4</text>
+  <text class="role" x="450" y="270">素因数と表示用リストを準備する</text>
+  <text class="code-small" x="450" y="311">factors = prime_factorize(number)</text>
+  <text class="code-small" x="450" y="342">parts = []</text>
+  <text class="code-small" x="450" y="373">previous_factor = 0</text>
+
+  <!-- For loop -->
+  <polygon class="shape" points="450,470 700,560 450,650 200,560"/>
+  <circle cx="278" cy="512" r="18" fill="#0b57a4"/>
+  <text class="line-number" x="278" y="512">6</text>
+  <text class="role" x="450" y="544">次のfactorを取り出せたか</text>
+  <text class="code" x="450" y="590">for factor in factors:</text>
+
+  <!-- Final expression -->
+  <polygon class="shape" points="1120,475 1650,475 1620,680 1090,680"/>
+  <circle cx="1152" cy="507" r="23" fill="#0b57a4"/>
+  <text class="line-number" x="1152" y="507">17–18</text>
+  <text class="role" x="1370" y="520">式を組み立てて表示する</text>
+  <text class="code-small" x="1370" y="570">expression = " × ".join(parts)</text>
+  <text class="code-small" x="1370" y="615">print(f"{number} = {expression}")</text>
+
+  <rect class="shape" x="1250" y="730" width="240" height="80" rx="40"/>
+  <text class="role" x="1370" y="778">関数の終了</text>
+
+  <!-- Duplicate check -->
+  <polygon class="shape" points="450,740 700,830 450,920 200,830"/>
+  <circle cx="278" cy="782" r="18" fill="#0b57a4"/>
+  <text class="line-number" x="278" y="782">7</text>
+  <text class="role" x="450" y="814">直前と異なる素因数か</text>
+  <text class="code-small" x="450" y="860">if factor != previous_factor:</text>
+
+  <!-- Count -->
+  <rect class="shape" x="200" y="990" width="500" height="100"/>
+  <circle cx="228" cy="1018" r="18" fill="#0b57a4"/>
+  <text class="line-number" x="228" y="1018">8</text>
+  <text class="role" x="450" y="1028">同じ素因数の個数を数える</text>
+  <text class="code-small" x="450" y="1065">count = factors.count(factor)</text>
+
+  <!-- Exponent decision -->
+  <polygon class="shape" points="450,1160 680,1250 450,1340 220,1250"/>
+  <circle cx="294" cy="1200" r="21" fill="#0b57a4"/>
+  <text class="line-number" x="294" y="1200">10</text>
+  <text class="role" x="450" y="1234">個数は1か</text>
+  <text class="code" x="450" y="1277">if count == 1:</text>
+
+  <!-- Append simple factor -->
+  <rect class="shape" x="200" y="1400" width="500" height="100"/>
+  <circle cx="228" cy="1428" r="21" fill="#0b57a4"/>
+  <text class="line-number" x="228" y="1428">11</text>
+  <text class="role" x="450" y="1438">素因数だけを追加する</text>
+  <text class="code-small" x="450" y="1475">parts.append(str(factor))</text>
+
+  <!-- Append factor with exponent -->
+  <rect class="shape" x="760" y="1190" width="420" height="120"/>
+  <circle cx="788" cy="1218" r="21" fill="#0b57a4"/>
+  <text class="line-number" x="788" y="1218">13</text>
+  <text class="role" x="970" y="1235">指数を付けて追加する</text>
+  <text class="code-small" x="970" y="1276">parts.append(f"{factor}^{count}")</text>
+
+  <!-- Store processed factor -->
+  <rect class="shape" x="760" y="1400" width="420" height="100"/>
+  <circle cx="788" cy="1428" r="21" fill="#0b57a4"/>
+  <text class="line-number" x="788" y="1428">15</text>
+  <text class="role" x="970" y="1438">処理した素因数を記録する</text>
+  <text class="code-small" x="970" y="1475">previous_factor = factor</text>
+
+  <!-- Continue loop -->
+  <rect class="shape" x="1200" y="1400" width="300" height="110"/>
+  <circle cx="1228" cy="1428" r="18" fill="#0b57a4"/>
+  <text class="line-number" x="1228" y="1428">6</text>
+  <text class="role" x="1350" y="1442">次のfactorへ進む</text>
+  <text class="code-small" x="1350" y="1480">for factor in factors:</text>
+</svg>
