@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1280" viewBox="0 0 1280 1280" role="img" aria-labelledby="title desc">
+  <title id="title">ニュートン法の手続き</title>
+  <desc id="desc">JIS X 0121に準拠したフローチャート．判断記号の「はい」は下，「いいえ」は右へ進む．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+  </defs>
+  <g class="edge"><polyline points="360,72 360,100" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,172 360,210" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,282 360,320" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,392 360,430" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,534 360,590" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text x="376" y="572" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">はい</text></g>
+  <g class="edge"><polyline points="510,482 630,482" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text x="530" y="470" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">いいえ</text></g>
+  <g class="edge"><polyline points="800,514 800,550" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,694 360,750" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text x="376" y="732" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">はい</text></g>
+  <g class="edge"><polyline points="510,642 630,642" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text x="530" y="630" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">いいえ</text></g>
+  <g class="edge"><polyline points="800,674 800,710" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,822 360,860" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="360,972 360,1030" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text x="376" y="1012" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">はい</text></g>
+  <g class="edge"><polyline points="520,916 650,916" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/><text x="540" y="904" fill="#111" font-family="sans-serif" font-size="17" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="5" stroke-linejoin="round">いいえ</text></g>
+  <g class="edge"><polyline points="360,1102 360,1140" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="edge"><polyline points="800,948 800,1240 130,1240 130,356 190,356" style="fill:none;stroke:#263238;stroke-width:2px;stroke-linejoin:miter" marker-end="url(#arrow)"/></g>
+  <g class="node"><rect x="270" y="20" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="52">開始</tspan></text></g>
+  <g class="node"><polygon points="172,100 570,100 548,172 150,172" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="130.5">関数，導関数，初期値，</tspan><tspan x="360" y="153.5">許容誤差，最大反復回数を受け取る</tspan></text></g>
+  <g class="node"><polygon points="218,210 502,210 530,246 502,282 218,282 190,246" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="252">初期値を現在の近似値とする</tspan></text></g>
+  <g class="node"><rect x="190" y="320" width="340" height="72" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="362">次の反復へ進む</tspan></text></g>
+  <g class="node"><polygon points="360,430 510,482 360,534 210,482" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="476.5">最大反復回数を</tspan><tspan x="360" y="499.5">超えていないか</tspan></text></g>
+  <g class="node"><polygon points="652,450 970,450 948,514 630,514" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="800" y="476.5">収束しなかった</tspan><tspan x="800" y="499.5">という結果を出す</tspan></text></g>
+  <g class="node"><rect x="710" y="550" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="800" y="582">終了</tspan></text></g>
+  <g class="node"><polygon points="360,590 510,642 360,694 210,642" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="636.5">導関数の値は</tspan><tspan x="360" y="659.5">0でないか</tspan></text></g>
+  <g class="node"><polygon points="652,610 970,610 948,674 630,674" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="800" y="636.5">更新できない</tspan><tspan x="800" y="659.5">という結果を出す</tspan></text></g>
+  <g class="node"><rect x="710" y="710" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="800" y="742">終了</tspan></text></g>
+  <g class="node"><rect x="180" y="750" width="360" height="72" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="780.5">接線を使って</tspan><tspan x="360" y="803.5">新しい近似値を求める</tspan></text></g>
+  <g class="node"><polygon points="360,860 520,916 360,972 200,916" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="910.5">近似値の変化は</tspan><tspan x="360" y="933.5">許容誤差未満か</tspan></text></g>
+  <g class="node"><polygon points="212,1030 530,1030 508,1102 190,1102" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="1060.5">新しい近似値と</tspan><tspan x="360" y="1083.5">反復回数を結果として出す</tspan></text></g>
+  <g class="node"><rect x="270" y="1140" width="180" height="52" rx="26" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="360" y="1172">終了</tspan></text></g>
+  <g class="node"><rect x="650" y="884" width="300" height="64" style="fill:#fff;stroke:#263238;stroke-width:2px"/><text text-anchor="middle" fill="#111" font-family="sans-serif" font-size="17"><tspan x="800" y="922">現在の近似値を更新する</tspan></text></g>
+</svg>

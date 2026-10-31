@@ -774,6 +774,7 @@ show_factorization(360)
 ```
 ````
 
+(assignment-5-1-answer)=
 ````{hidden-answer} 解答例
 **空欄1：関数の引数**
 
@@ -878,6 +879,7 @@ print(gcd_list([210, 147, 90, 63]))
 ```
 ````
 
+(assignment-5-2-answer)=
 ````{hidden-answer} 解答例
 **空欄1：関数の引数**
 
