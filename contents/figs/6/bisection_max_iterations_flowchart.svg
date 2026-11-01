@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1700" viewBox="0 0 1600 1700" role="img" aria-labelledby="title desc">
+  <title id="title">最大反復回数を加えた二分法の変更箇所</title>
+  <desc id="desc">区間の幅だけを使う二分法へ，最大反復回数，反復回数の初期化，複合終了条件，反復回数の更新，反復回数を含む戻り値を追加した図．追加または変更箇所を赤枠と赤字で示す．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+    <style>
+      .shape { fill: #fff; stroke: #263238; stroke-width: 3; }
+      .changed-shape { fill: #fff4dc; stroke: #c62828; stroke-width: 4; }
+      .flow { fill: none; stroke: #263238; stroke-width: 3; stroke-linejoin: miter; marker-end: url(#arrow); }
+      .role { fill: #37474f; font-family: sans-serif; font-size: 20px; font-weight: 600; text-anchor: middle; }
+      .code { fill: #0b57a4; font-family: Menlo, Monaco, monospace; font-size: 20px; font-weight: 600; text-anchor: middle; }
+      .code-small { font-size: 16px; }
+      .changed-role { fill: #8e1b16; }
+      .changed-code { fill: #c62828; }
+      .branch { fill: #111; font-family: sans-serif; font-size: 20px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 6; stroke-linejoin: round; }
+      .legend { fill: #8e1b16; font-family: sans-serif; font-size: 18px; font-weight: 700; }
+      .heading { fill: #263238; font-family: sans-serif; font-size: 27px; font-weight: 700; text-anchor: middle; }
+      .subheading { fill: #607d8b; font-family: sans-serif; font-size: 17px; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="1600" height="1700" fill="#fff"/>
+  <text class="heading" x="800" y="42">最大反復回数の追加によるフローチャートの変更</text>
+  <text class="subheading" x="800" y="75">青字は各図記号に対応するPythonコードを表す</text>
+  <g transform="translate(1030 135)">
+        <rect x="0" y="-23" width="42" height="28" class="shape changed-shape"/>
+        <text x="58" y="0" class="legend">赤枠・赤字は追加または変更した処理</text>
+      </g>
+  <g><polyline class="flow" points="450,210 450,270"/></g>
+  <g><polyline class="flow" points="450,390 450,470"/></g>
+  <g><polyline class="flow" points="450,700 450,780"/><text class="branch" x="472" y="748">はい</text></g>
+  <g><polyline class="flow" points="830,585 910,585"/><text class="branch" x="850" y="567">いいえ</text></g>
+  <g><polyline class="flow" points="1210,670 1210,730"/></g>
+  <g><polyline class="flow" points="450,890 450,960"/></g>
+  <g><polyline class="flow" points="450,1160 450,1250"/><text class="branch" x="472" y="1215">はい</text></g>
+  <g><polyline class="flow" points="720,1060 910,1060"/><text class="branch" x="750" y="1042">いいえ</text></g>
+  <g><polyline class="flow" points="450,1360 450,1430"/></g>
+  <g><polyline class="flow" points="1160,1115 1160,1390 450,1390 450,1430"/></g>
+  <g><polyline class="flow" points="450,1550 450,1630 100,1630 100,585 70,585"/></g>
+  <g id="start"><rect class="shape changed-shape" x="50" y="100" width="800" height="110" rx="55"/><text class="role changed-role" x="450" y="145">最大反復回数を引数で受け取る</text><text class="code changed-code code-small" x="450" y="178">def bisection(f, a, b, tolerance=1e-8, max_iterations=100):</text></g>
+  <g id="setup"><polygon class="shape changed-shape" points="214,270 686,270 720,330 686,390 214,390 180,330"/><text class="role changed-role" x="450" y="320">反復回数を0とする</text><text class="code changed-code" x="450" y="353">count = 0</text></g>
+  <g id="while"><polygon class="shape changed-shape" points="450,470 830,585 450,700 70,585"/><text class="role changed-role" x="450" y="575">区間幅と反復回数が継続条件を満たすか</text><text class="code changed-code code-small" x="450" y="608">while b - a &gt; tolerance and count &lt; max_iterations:</text></g>
+  <g id="midpoint"><rect class="shape" x="150" y="780" width="600" height="110"/><text class="role" x="450" y="825">区間の中点を求める</text><text class="code" x="450" y="858">midpoint = (a + b) / 2</text></g>
+  <g id="sign"><polygon class="shape" points="450,960 720,1060 450,1160 180,1060"/><text class="role" x="450" y="1037.5">左端と中点の関数値の</text>
+<text class="role" x="450" y="1062.5">積は0以下か</text><text class="code" x="450" y="1095.5">if f(a) * f(midpoint) &lt;= 0:</text></g>
+  <g id="updateB"><rect class="shape" x="200" y="1250" width="500" height="110"/><text class="role" x="450" y="1295">右端を中点へ移す</text><text class="code" x="450" y="1328">b = midpoint</text></g>
+  <g id="updateA"><rect class="shape" x="910" y="1005" width="500" height="110"/><text class="role" x="1160" y="1050">左端を中点へ移す</text><text class="code" x="1160" y="1083">a = midpoint</text></g>
+  <g id="increment"><rect class="shape changed-shape" x="190" y="1430" width="520" height="120"/><text class="role changed-role" x="450" y="1480">反復回数を1増やす</text><text class="code changed-code" x="450" y="1513">count = count + 1</text></g>
+  <g id="result"><polygon class="shape changed-shape" points="940,500 1510,500 1480,670 910,670"/><text class="role changed-role" x="1210" y="562.5">最後の区間の中点と</text>
+<text class="role changed-role" x="1210" y="587.5">反復回数を返す</text><text class="code changed-code" x="1210" y="620.5">return (a + b) / 2, count</text></g>
+  <g id="end"><rect class="shape" x="1080" y="730" width="260" height="80" rx="40"/><text class="role" x="1210" y="777.5">関数の終了</text></g>
+</svg>

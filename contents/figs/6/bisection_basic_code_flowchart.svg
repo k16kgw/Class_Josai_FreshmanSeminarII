@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1300" viewBox="0 0 1500 1300" role="img" aria-labelledby="title desc">
+  <title id="title">最大反復回数を使用しない二分法のコード付きフローチャート</title>
+  <desc id="desc">区間の幅だけを終了条件とする二分法について，while文，中点の計算，条件分岐，端点の更新，return文を対応する図記号の中に示す．判断のはいは下，いいえは右へ進む．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+    <style>
+      .shape { fill: #fff; stroke: #263238; stroke-width: 3; }
+      .changed-shape { fill: #fff4dc; stroke: #c62828; stroke-width: 4; }
+      .flow { fill: none; stroke: #263238; stroke-width: 3; stroke-linejoin: miter; marker-end: url(#arrow); }
+      .role { fill: #37474f; font-family: sans-serif; font-size: 20px; font-weight: 600; text-anchor: middle; }
+      .code { fill: #0b57a4; font-family: Menlo, Monaco, monospace; font-size: 20px; font-weight: 600; text-anchor: middle; }
+      .code-small { font-size: 16px; }
+      .changed-role { fill: #8e1b16; }
+      .changed-code { fill: #c62828; }
+      .branch { fill: #111; font-family: sans-serif; font-size: 20px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 6; stroke-linejoin: round; }
+      .legend { fill: #8e1b16; font-family: sans-serif; font-size: 18px; font-weight: 700; }
+      .heading { fill: #263238; font-family: sans-serif; font-size: 27px; font-weight: 700; text-anchor: middle; }
+      .subheading { fill: #607d8b; font-family: sans-serif; font-size: 17px; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="1500" height="1300" fill="#fff"/>
+  <text class="heading" x="750" y="42">二分法の反復部分：コードと処理の対応</text>
+  <text class="subheading" x="750" y="75">青字は各図記号に対応するPythonコードを表す</text>
+  
+  <g><polyline class="flow" points="430,180 430,240"/></g>
+  <g><polyline class="flow" points="430,440 430,520"/><text class="branch" x="452" y="485">はい</text></g>
+  <g><polyline class="flow" points="690,340 820,340"/><text class="branch" x="715" y="322">いいえ</text></g>
+  <g><polyline class="flow" points="1080,405 1080,465"/></g>
+  <g><polyline class="flow" points="430,630 430,700"/></g>
+  <g><polyline class="flow" points="430,900 430,990"/><text class="branch" x="452" y="955">はい</text></g>
+  <g><polyline class="flow" points="690,800 830,800"/><text class="branch" x="715" y="782">いいえ</text></g>
+  <g><polyline class="flow" points="430,1100 430,1150"/></g>
+  <g><polyline class="flow" points="1080,855 1080,1125 430,1125 430,1150"/></g>
+  <g><polyline class="flow" points="430,1184 430,1220 100,1220 100,340 170,340"/></g>
+  <g id="start"><rect class="shape" x="250" y="100" width="360" height="80" rx="40"/><text class="role" x="430" y="147.5">反復処理の開始</text></g>
+  <g id="while"><polygon class="shape" points="430,240 690,340 430,440 170,340"/><text class="role" x="430" y="317.5">区間の幅は</text>
+<text class="role" x="430" y="342.5">許容誤差より大きいか</text><text class="code" x="430" y="375.5">while b - a &gt; tolerance:</text></g>
+  <g id="midpoint"><rect class="shape" x="145" y="520" width="570" height="110"/><text class="role" x="430" y="565">区間の中点を求める</text><text class="code" x="430" y="598">midpoint = (a + b) / 2</text></g>
+  <g id="sign"><polygon class="shape" points="430,700 690,800 430,900 170,800"/><text class="role" x="430" y="777.5">左端と中点の関数値の</text>
+<text class="role" x="430" y="802.5">積は0以下か</text><text class="code" x="430" y="835.5">if f(a) * f(midpoint) &lt;= 0:</text></g>
+  <g id="updateB"><rect class="shape" x="180" y="990" width="500" height="110"/><text class="role" x="430" y="1035">右端を中点へ移す</text><text class="code" x="430" y="1068">b = midpoint</text></g>
+  <g id="updateA"><rect class="shape" x="830" y="745" width="500" height="110"/><text class="role" x="1080" y="790">左端を中点へ移す</text><text class="code" x="1080" y="823">a = midpoint</text></g>
+  <g id="join"><circle class="shape" cx="430" cy="1167" r="17"/></g>
+  <g id="result"><polygon class="shape" points="850,275 1340,275 1310,405 820,405"/><text class="role" x="1080" y="330">最後の区間の中点を返す</text><text class="code" x="1080" y="363">return (a + b) / 2</text></g>
+  <g id="end"><rect class="shape" x="950" y="465" width="260" height="80" rx="40"/><text class="role" x="1080" y="512.5">関数の終了</text></g>
+</svg>
