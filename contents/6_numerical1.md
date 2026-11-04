@@ -148,7 +148,7 @@ print(f(2))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def f(x):
     return x ** 3 - 2
@@ -425,7 +425,7 @@ print(g(root))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def g(x):
     return x ** 3 + x - 1
@@ -463,7 +463,7 @@ for tolerance in [1e-2, 1e-4, 1e-6, 1e-8]:
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 for tolerance in [1e-2, 1e-4, 1e-6, 1e-8]:
     root, count = bisection(f, 1, 2, tolerance)
@@ -496,7 +496,7 @@ $$
 
 ![ニュートン法の手続き](./figs/6/flow_newton.svg)
 
-````{hidden-answer} ニュートン法の手続き図解
+````{visible-answer} ニュートン法の手続き図解
 ![ニュートン・ラフソン法の反復](./figs/6/newton_raphson_diagram.svg)
 ````
 
@@ -604,7 +604,7 @@ print(f(root))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def f(x):
     return x ** 3 - 2
@@ -665,7 +665,7 @@ for count in range(6):
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def f(x):
     return x ** 3 - 2 * x + 2
@@ -715,7 +715,7 @@ def derivative(x):
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def f(x):
     return x ** 2 - 3
