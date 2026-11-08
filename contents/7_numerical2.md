@@ -230,7 +230,7 @@ print(abs(value - exact) / exact)
 | D | ____ | ____ |
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 **A：離散化誤差**
 
 ```text
@@ -401,15 +401,17 @@ print(value)
 ````{note} 演習2
 $f(x)=x^2$の$x=3$における微分係数を，前進差分と中心差分で近似せよ．
 
-三つの`____`を上から順に刻み幅，前進差分の関数名，中心差分の関数名で置き換えよ．二つの方法について，近似値と絶対誤差を表示せよ．
+2つの`____`を適切に埋めよ．
+上から順に前進差分の計算，中心差分の計算をする．
+二つの方法について，近似値と絶対誤差を表示せよ．
 
 ```python
 def f(x):
     return x ** 2
 
-h = ____
-forward = ____(f, 3, h)
-center = ____(f, 3, h)
+h = 1e-3
+forward = ____
+center = ____
 print(forward, abs(forward - 6))
 print(center, abs(center - 6))
 ```
@@ -422,7 +424,7 @@ print(center, abs(center - 6))
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -444,19 +446,21 @@ print(center, abs(center - 6))
 ````{note} 演習3
 $f(x)=\sin x$の$x=\pi/4$における微分係数を中心差分で近似せよ．
 
-二つの`____`を上から順に`math`モジュールの関数名，中心差分の関数名で置き換えよ．刻み幅ごとの絶対誤差を表示し，その変化を確認せよ．
+2つの`____`を適切に埋めよ．
+上から順に`math.sin`を使って関数値を返す計算，中心差分の計算をする．
+刻み幅ごとの近似値と絶対誤差を表示し，その変化を確認せよ．
 
 ```python
 import math
 
 def f(x):
-    return math.____(x)
+    return ____
 
 x = math.pi / 4
 exact = math.cos(x)
 
 for h in [1e-1, 1e-2, 1e-3, 1e-4]:
-    value = ____(f, x, h)
+    value = ____
     print(h, value, abs(value - exact))
 ```
 
@@ -470,7 +474,7 @@ for h in [1e-1, 1e-2, 1e-3, 1e-4]:
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 
@@ -607,15 +611,17 @@ print(value)
 ````{note} 演習4
 $f(x)=x^2$を0から1まで，区分求積法と台形公式で積分せよ．
 
-二つの`____`を上から順に区分求積法の関数名，台形公式の関数名で置き換えよ．二つの方法について，近似値と絶対誤差を表示せよ．
+2つの`____`を適切に埋めよ．
+上から順に区分求積法の計算，台形公式の計算をする．
+二つの方法について，近似値と絶対誤差を表示せよ．
 
 ```python
 def f(x):
     return x ** 2
 
 exact = 1 / 3
-riemann_value = ____(f, 0, 1, 100)
-trapezoidal_value = ____(f, 0, 1, 100)
+riemann_value = ____
+trapezoidal_value = ____
 print(riemann_value, abs(riemann_value - exact))
 print(trapezoidal_value, abs(trapezoidal_value - exact))
 ```
@@ -628,7 +634,7 @@ print(trapezoidal_value, abs(trapezoidal_value - exact))
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -650,12 +656,14 @@ print(trapezoidal_value, abs(trapezoidal_value - exact))
 ````{note} 演習5
 分割数と絶対誤差の関係を調べよ．
 
-二つの`____`を上から順に区分求積法の関数名，台形公式の関数名で置き換えよ．実行後，分割数を10倍にしたときの絶対誤差の変化をMarkdownセルに2文程度で説明せよ．演習4で定義した`f`と`exact`を使うこと．
+2つの`____`を適切に埋めよ．
+上から順に区分求積法の絶対誤差，台形公式の絶対誤差を計算する．
+演習4で定義した`f`と`exact`を使い，分割数を10倍にしたときの絶対誤差の変化をMarkdownセルに2文程度で説明せよ．
 
 ```python
 for n in [10, 100, 1000, 10000]:
-    error_r = abs(____(f, 0, 1, n) - exact)
-    error_t = abs(____(f, 0, 1, n) - exact)
+    error_r = ____
+    error_t = ____
     print(n, error_r, error_t)
 ```
 
@@ -669,7 +677,7 @@ for n in [10, 100, 1000, 10000]:
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 for n in [10, 100, 1000, 10000]:
     error_r = abs(riemann_sum(f, 0, 1, n) - exact)
@@ -745,7 +753,7 @@ exact = math.cos(x)
 ````
 
 (assignment-7-1-answer)=
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 **空欄1：関数の定義**
 
 微分係数を調べる点を引数`x`として受け取り，`math.sin(x)`を返す．
@@ -830,7 +838,7 @@ rows = [["n", "riemann_error", "trapezoidal_error"]]
 ````
 
 (assignment-7-2-answer)=
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 **空欄1：関数の定義**
 
 積分する点を引数`x`として受け取り，`x ** 3`を返す．
