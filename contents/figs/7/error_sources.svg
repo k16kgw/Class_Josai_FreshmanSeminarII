@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">数値計算で誤差が生じる流れ</title>
+  <desc id="desc">数学上の問題を近似方法に置き換え，浮動小数点数で計算して近似結果を得るまでに，離散化誤差，打切り誤差，丸め誤差，桁落ち，誤差の伝播と累積が関係することを示す図</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#214f7a"/>
+    </marker>
+    <style>
+      text {
+        font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+        fill: #111827;
+        letter-spacing: 0;
+      }
+      .stage-title { font-size: 30px; font-weight: 700; }
+      .stage-body { font-size: 22px; }
+      .error-title { font-size: 26px; font-weight: 700; }
+      .error-body { font-size: 20px; }
+      .group-title { font-size: 22px; font-weight: 700; }
+      .flow { stroke: #214f7a; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .connector { stroke: #b85f00; stroke-width: 3; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="760" fill="#ffffff"/>
+
+  <rect x="55" y="85" width="270" height="150" rx="8" fill="#e8f1fb" stroke="#2563a6" stroke-width="4"/>
+  <text x="190" y="145" class="stage-title" text-anchor="middle">数学上の問題</text>
+  <text x="190" y="190" class="stage-body" text-anchor="middle">連続量・無限過程</text>
+
+  <path d="M 325 160 H 395" class="flow"/>
+
+  <rect x="405" y="85" width="270" height="150" rx="8" fill="#e8f1fb" stroke="#2563a6" stroke-width="4"/>
+  <text x="540" y="145" class="stage-title" text-anchor="middle">近似方法</text>
+  <text x="540" y="190" class="stage-body" text-anchor="middle">有限個の点・有限項</text>
+
+  <path d="M 675 160 H 745" class="flow"/>
+
+  <rect x="755" y="85" width="300" height="150" rx="8" fill="#e8f1fb" stroke="#2563a6" stroke-width="4"/>
+  <text x="905" y="145" class="stage-title" text-anchor="middle">浮動小数点計算</text>
+  <text x="905" y="190" class="stage-body" text-anchor="middle">有限桁で演算</text>
+
+  <path d="M 1055 160 H 1125" class="flow"/>
+
+  <rect x="1135" y="85" width="210" height="150" rx="8" fill="#e8f1fb" stroke="#2563a6" stroke-width="4"/>
+  <text x="1240" y="145" class="stage-title" text-anchor="middle">近似結果</text>
+  <text x="1240" y="190" class="stage-body" text-anchor="middle">誤差を含む値</text>
+
+  <path d="M 540 235 V 285" class="connector"/>
+  <text x="540" y="320" class="group-title" text-anchor="middle" fill="#9a4f00">近似の作り方に由来</text>
+
+  <rect x="285" y="345" width="245" height="145" rx="8" fill="#fff1df" stroke="#d97706" stroke-width="3"/>
+  <text x="407" y="397" class="error-title" text-anchor="middle">離散化誤差</text>
+  <text x="407" y="437" class="error-body" text-anchor="middle">連続的な問題を</text>
+  <text x="407" y="468" class="error-body" text-anchor="middle">有限個の点へ置換</text>
+
+  <rect x="550" y="345" width="245" height="145" rx="8" fill="#fff1df" stroke="#d97706" stroke-width="3"/>
+  <text x="672" y="397" class="error-title" text-anchor="middle">打切り誤差</text>
+  <text x="672" y="437" class="error-body" text-anchor="middle">無限に続く展開を</text>
+  <text x="672" y="468" class="error-body" text-anchor="middle">有限項で終了</text>
+
+  <path d="M 905 235 V 285" class="connector"/>
+  <text x="980" y="320" class="group-title" text-anchor="middle" fill="#9a4f00">有限桁の計算に由来</text>
+
+  <rect x="815" y="345" width="245" height="145" rx="8" fill="#fff1df" stroke="#d97706" stroke-width="3"/>
+  <text x="937" y="397" class="error-title" text-anchor="middle">丸め誤差</text>
+  <text x="937" y="437" class="error-body" text-anchor="middle">表せない桁を</text>
+  <text x="937" y="468" class="error-body" text-anchor="middle">有限桁へ丸める</text>
+
+  <rect x="1080" y="345" width="245" height="145" rx="8" fill="#fff1df" stroke="#d97706" stroke-width="3"/>
+  <text x="1202" y="397" class="error-title" text-anchor="middle">桁落ち</text>
+  <text x="1202" y="437" class="error-body" text-anchor="middle">近い二数の引き算で</text>
+  <text x="1202" y="468" class="error-body" text-anchor="middle">有効数字を失う</text>
+
+  <path d="M 407 490 V 545 M 672 490 V 545 M 937 490 V 545 M 1202 490 V 545" class="connector"/>
+
+  <rect x="245" y="545" width="1110" height="145" rx="8" fill="#fff1df" stroke="#d97706" stroke-width="4"/>
+  <text x="800" y="602" class="error-title" text-anchor="middle">誤差の伝播と累積</text>
+  <text x="800" y="645" class="error-body" text-anchor="middle">途中で生じた誤差が後の計算へ伝わり，繰り返しや多数の加算によって最終結果へ影響する</text>
+
+  <path d="M 120 617 H 215" class="flow"/>
+  <text x="55" y="600" class="stage-body">計算を</text>
+  <text x="55" y="632" class="stage-body">進める</text>
+</svg>
