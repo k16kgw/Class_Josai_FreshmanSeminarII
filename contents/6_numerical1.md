@@ -789,7 +789,7 @@ print(f(0), f(1))
 ````
 
 (assignment-6-1-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **空欄1：関数の引数と関数値**
 
 関数の呼び出しでは実数を一つ渡すため，引数を`x`とする．`math.cos(x)`から`x`を引き，関数値として返す．
@@ -855,7 +855,7 @@ def derivative(【必要な引数をすべて記入】):
 ````
 
 (assignment-6-2-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **空欄1：導関数**
 
 $f'(x)=-\sin x-1$を，`math.sin`を使って定義する．引数は課題1の関数と同じく`x`とする．
@@ -935,7 +935,7 @@ print(abs(root - newton_root))
 ````
 
 (advanced-assignment-6-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **設定例**
 
 許容誤差を0，最大反復回数を100とする．本文で定義した`bisection`を使い，$f(x)=x^2-2$の正の解を区間$[1,2]$で求める．

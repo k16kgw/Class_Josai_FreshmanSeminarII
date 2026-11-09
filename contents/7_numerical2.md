@@ -230,7 +230,7 @@ print(abs(value - exact) / exact)
 | D | ____ | ____ |
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **A：離散化誤差**
 
 ```text
@@ -424,7 +424,7 @@ print(center, abs(center - 6))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -474,7 +474,7 @@ for h in [1e-1, 1e-2, 1e-3, 1e-4]:
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 import math
 
@@ -634,7 +634,7 @@ print(trapezoidal_value, abs(trapezoidal_value - exact))
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 def f(x):
     return x ** 2
@@ -677,7 +677,7 @@ for n in [10, 100, 1000, 10000]:
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 for n in [10, 100, 1000, 10000]:
     error_r = abs(riemann_sum(f, 0, 1, n) - exact)
