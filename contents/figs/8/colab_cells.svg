@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
+  <title id="title">③ コードを実行し，テキストで説明を書く</title>
+  <desc id="desc">コードセルにprint(1+2)を入力し左の実行ボタンで3を表示する．プラステキストから見出しや考察を書くセルを追加できる．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <style>
+      text { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 22px; fill: #1e293b; }
+      .title { font-size: 30px; font-weight: 700; }
+      .small { font-size: 18px; fill: #475569; }
+      .code { font-family: Menlo, Consolas, monospace; font-size: 21px; }
+      .number { font-size: 21px; font-weight: 700; fill: #fff; }
+      .bold { font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1160" height="600" fill="#fff"/>
+  <text x="30" y="48" class="title">③ コードを実行し，テキストで説明を書く</text>
+  <rect x="30" y="85" width="740" height="450" rx="8" fill="#f8fafc" stroke="#d4dbe5"/><text x="52" y="124" class="bold">Colab</text><text x="143" y="124" class="">第8回_学籍番号_氏名.ipynb</text><text x="52" y="165" class="small">ファイル　編集　表示　挿入　ランタイム</text><line x1="30" y1="185" x2="770" y2="185" stroke="#d4dbe5"/><text x="70" y="220" class="">＋ コード</text><text x="235" y="220" class="">＋ テキスト</text><rect x="624" y="195" width="125" height="38" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="643" y="221" class="small">接続</text><rect x="228" y="192" width="143" height="40" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="399" cy="211" r="17" fill="#b45309"/><text x="393" y="218" class="number">3</text><rect x="62" y="260" width="679" height="90" rx="8" fill="#fff" stroke="#d4dbe5"/><circle cx="96" cy="298" r="19" fill="#334155"/><path d="M 91 287 L 107 298 L 91 309 z" fill="#fff"/><text x="143" y="305" class="code">print(1 + 2)</text><circle cx="355" cy="297" r="17" fill="#b45309"/><text x="349" y="304" class="number">1</text><rect x="73" y="275" width="46" height="46" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="96" cy="248" r="17" fill="#b45309"/><text x="90" y="255" class="number">2</text><text x="143" y="388" class="code">3</text><rect x="62" y="419" width="679" height="83" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="85" y="451" class="code"># 第8回　数値計算3</text><text x="85" y="484" class="small">学籍番号：123456　氏名：城西太郎</text><circle cx="815" cy="118" r="17" fill="#b45309"/><text x="809" y="125" class="number">1</text><text x="845" y="125" class="">コードを入力する</text><circle cx="815" cy="233" r="17" fill="#b45309"/><text x="809" y="240" class="number">2</text><text x="845" y="240" class="">▶ または</text><text x="845" y="271" class="">Shift + Enterで実行</text><text x="845" y="302" class="">下に 3 が出れば成功</text><circle cx="815" cy="398" r="17" fill="#b45309"/><text x="809" y="405" class="number">3</text><text x="845" y="405" class="">「＋ テキスト」で</text><text x="845" y="436" class="">見出しや考察を書く</text>
+  <text x="30" y="580" class="small">操作説明用の模式図（実画面の表示・配置は異なる場合がある）</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
+  <title id="title">① ログインしてノートブックを作る</title>
+  <desc id="desc">大学のアカウントを確認し，ノートブックを開く画面のノートブックを新規作成を選ぶ．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <style>
+      text { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 22px; fill: #1e293b; }
+      .title { font-size: 30px; font-weight: 700; }
+      .small { font-size: 18px; fill: #475569; }
+      .code { font-family: Menlo, Consolas, monospace; font-size: 21px; }
+      .number { font-size: 21px; font-weight: 700; fill: #fff; }
+      .bold { font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1160" height="600" fill="#fff"/>
+  <text x="30" y="48" class="title">① ログインしてノートブックを作る</text>
+  <rect x="30" y="85" width="740" height="450" rx="8" fill="#f8fafc" stroke="#d4dbe5"/><text x="55" y="125" class="bold">Google Colab</text><circle cx="714" cy="116" r="19" fill="#dbeafe"/><text x="704" y="124" class="small">A</text><rect x="684" y="89" width="59" height="55" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="666" cy="113" r="17" fill="#b45309"/><text x="660" y="120" class="number">1</text><rect x="80" y="175" width="640" height="310" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="110" y="218" class="bold">ノートブックを開く</text><text x="110" y="265" class="small">最近使用したノートブック</text><text x="110" y="312" class="small">Google ドライブ　 GitHub　 アップロード</text><rect x="380" y="405" width="310" height="50" rx="8" fill="#eff6ff" stroke="#93c5fd"/><text x="403" y="438" class="">ノートブックを新規作成</text><rect x="380" y="405" width="310" height="50" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="356" cy="431" r="17" fill="#b45309"/><text x="350" y="438" class="number">2</text><circle cx="815" cy="118" r="17" fill="#b45309"/><text x="809" y="125" class="number">1</text><text x="845" y="125" class="">右上のアイコンで</text><text x="845" y="156" class="">大学のアカウントを</text><text x="845" y="187" class="">確認する</text><circle cx="815" cy="323" r="17" fill="#b45309"/><text x="809" y="330" class="number">2</text><text x="845" y="330" class="">新規作成を選ぶ</text><text x="845" y="361" class="">画面が違う場合は</text><text x="845" y="392" class="">「ファイル」から</text><text x="845" y="423" class="">新規作成できる</text>
+  <text x="30" y="580" class="small">操作説明用の模式図（実画面の表示・配置は異なる場合がある）</text>
+</svg>

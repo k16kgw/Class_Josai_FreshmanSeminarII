@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
+  <title id="title">⑤ 計算で作ったCSVもダウンロードする</title>
+  <desc id="desc">左のフォルダアイコンからファイル一覧を開き，monte_carlo.csvのメニューでダウンロードを選ぶ．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <style>
+      text { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 22px; fill: #1e293b; }
+      .title { font-size: 30px; font-weight: 700; }
+      .small { font-size: 18px; fill: #475569; }
+      .code { font-family: Menlo, Consolas, monospace; font-size: 21px; }
+      .number { font-size: 21px; font-weight: 700; fill: #fff; }
+      .bold { font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1160" height="600" fill="#fff"/>
+  <text x="30" y="48" class="title">⑤ 計算で作ったCSVもダウンロードする</text>
+  <rect x="30" y="85" width="740" height="450" rx="8" fill="#f8fafc" stroke="#d4dbe5"/><text x="52" y="124" class="bold">Colab</text><text x="143" y="124" class="">第8回_学籍番号_氏名.ipynb</text><text x="52" y="165" class="small">ファイル　編集　表示　挿入　ランタイム</text><line x1="30" y1="185" x2="770" y2="185" stroke="#d4dbe5"/><text x="70" y="220" class="">＋ コード</text><text x="235" y="220" class="">＋ テキスト</text><rect x="624" y="195" width="125" height="38" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="643" y="221" class="small">接続</text><rect x="40" y="241" width="42" height="283" rx="8" fill="#eef2f6" stroke="#d4dbe5"/><path d="M 48 284 h 12 l 5 6 h 10 v 20 H 48 z" fill="#64748b"/><rect x="43" y="277" width="36" height="39" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="61" cy="256" r="17" fill="#b45309"/><text x="55" y="263" class="number">1</text><rect x="88" y="241" width="470" height="283" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="107" y="281" class="bold">ファイル</text><text x="109" y="331" class="small">↻　一覧を更新</text><text x="109" y="380" class="small">sample_data</text><text x="109" y="426" class="code">monte_carlo.csv</text><text x="516" y="426" class="bold">⋮</text><rect x="502" y="397" width="44" height="40" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="574" cy="418" r="17" fill="#b45309"/><text x="568" y="425" class="number">2</text><rect x="320" y="450" width="300" height="57" rx="8" fill="#fff7ed" stroke="#b45309"/><text x="342" y="486" class="">ダウンロード</text><circle cx="815" cy="118" r="17" fill="#b45309"/><text x="809" y="125" class="number">1</text><text x="845" y="125" class="">左のフォルダを開く</text><circle cx="815" cy="233" r="17" fill="#b45309"/><text x="809" y="240" class="number">2</text><text x="845" y="240" class="">CSVの右の ⋮ から</text><text x="845" y="271" class="">ダウンロードを選ぶ</text><text x="800" y="379" class="">ファイルがなければ</text><text x="800" y="412" class="">課題２の保存セルを</text><text x="800" y="445" class="">実行し，一覧を更新</text>
+  <text x="30" y="580" class="small">操作説明用の模式図（実画面の表示・配置は異なる場合がある）</text>
+</svg>

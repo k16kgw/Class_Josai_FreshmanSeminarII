@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
+  <title id="title">④ Notebookをパソコンへダウンロードする</title>
+  <desc id="desc">ファイル，ダウンロード，ipynbをダウンロードの順にメニューを選び，提出用のNotebookを保存する．</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
+    <style>
+      text { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 22px; fill: #1e293b; }
+      .title { font-size: 30px; font-weight: 700; }
+      .small { font-size: 18px; fill: #475569; }
+      .code { font-family: Menlo, Consolas, monospace; font-size: 21px; }
+      .number { font-size: 21px; font-weight: 700; fill: #fff; }
+      .bold { font-weight: 700; }
+    </style>
+  </defs>
+  <rect width="1160" height="600" fill="#fff"/>
+  <text x="30" y="48" class="title">④ Notebookをパソコンへダウンロードする</text>
+  <rect x="30" y="85" width="740" height="450" rx="8" fill="#f8fafc" stroke="#d4dbe5"/><text x="52" y="124" class="bold">Colab</text><text x="143" y="124" class="">第8回_学籍番号_氏名.ipynb</text><text x="52" y="165" class="small">ファイル　編集　表示　挿入　ランタイム</text><line x1="30" y1="185" x2="770" y2="185" stroke="#d4dbe5"/><text x="70" y="220" class="">＋ コード</text><text x="235" y="220" class="">＋ テキスト</text><rect x="624" y="195" width="125" height="38" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="643" y="221" class="small">接続</text><rect x="43" y="143" width="90" height="35" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="46" cy="124" r="17" fill="#b45309"/><text x="40" y="131" class="number">1</text><rect x="43" y="184" width="340" height="271" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="64" y="223" class="small">ノートブックを新規作成</text><text x="64" y="266" class="small">ノートブックを開く</text><text x="64" y="309" class="small">保存</text><rect x="50" y="340" width="325" height="48" rx="8" fill="#fff7ed" stroke="#b45309"/><text x="65" y="372" class="">ダウンロード　　　　 ▸</text><circle cx="350" cy="407" r="17" fill="#b45309"/><text x="344" y="414" class="number">2</text><rect x="385" y="340" width="370" height="110" rx="8" fill="#fff" stroke="#d4dbe5"/><text x="400" y="374" class="">.ipynb をダウンロード</text><text x="400" y="421" class="small">.py をダウンロード</text><rect x="390" y="345" width="360" height="44" rx="6" fill="none" stroke="#b45309" stroke-width="3"/><circle cx="710" cy="316" r="17" fill="#b45309"/><text x="704" y="323" class="number">3</text><circle cx="815" cy="118" r="17" fill="#b45309"/><text x="809" y="125" class="number">1</text><text x="845" y="125" class="">「ファイル」を開く</text><circle cx="815" cy="233" r="17" fill="#b45309"/><text x="809" y="240" class="number">2</text><text x="845" y="240" class="">「ダウンロード」を</text><text x="845" y="271" class="">選ぶ</text><circle cx="815" cy="368" r="17" fill="#b45309"/><text x="809" y="375" class="number">3</text><text x="845" y="375" class="">.ipynb を選ぶ</text><text x="845" y="406" class="">保存先はパソコンの</text><text x="845" y="437" class="">ダウンロードフォルダ</text><text x="845" y="468" class="">などを確認する</text>
+  <text x="30" y="580" class="small">操作説明用の模式図（実画面の表示・配置は異なる場合がある）</text>
+</svg>
