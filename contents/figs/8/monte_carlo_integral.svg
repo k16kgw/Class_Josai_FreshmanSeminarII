@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">モンテカルロ積分：関数値の平均から面積を近似する</title>
+  <desc id="desc">左は区間0から1で一様に選んだ6点と関数xの二乗の値．右は同じ関数と，6個の関数値の平均を高さとする長方形．長方形の面積で定積分を近似する．</desc>
+  <defs>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#214f7a"/></marker>
+    <marker id="measure-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/></marker>
+    <style>
+      text { font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif; fill: #111827; }
+      .title { font-size: 32px; font-weight: 700; }
+      .heading { font-size: 25px; font-weight: 700; }
+      .label { font-size: 23px; }
+      .small { font-size: 20px; fill: #475569; }
+      .point { font-size: 21px; font-style: italic; }
+      .axis { stroke: #214f7a; stroke-width: 3; fill: none; marker-end: url(#axis-arrow); }
+      .function { stroke: #2563a6; stroke-width: 5; fill: none; stroke-linecap: round; }
+      .sample { stroke: #d97706; stroke-width: 3; }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#fff"/>
+  <text x="600" y="55" class="title" text-anchor="middle">モンテカルロ積分による近似</text>
+  <text x="320" y="112" class="heading" text-anchor="middle">① 乱数で選んだ点の関数値を求める</text>
+  <text x="900" y="112" class="heading" text-anchor="middle">② 平均の高さ × 区間の幅</text>
+  <path d="M 100.00 500.00 L 104.00 499.97 L 108.00 499.88 L 112.00 499.73 L 116.00 499.52 L 120.00 499.25 L 124.00 498.92 L 128.00 498.53 L 132.00 498.08 L 136.00 497.57 L 140.00 497.00 L 144.00 496.37 L 148.00 495.68 L 152.00 494.93 L 156.00 494.12 L 160.00 493.25 L 164.00 492.32 L 168.00 491.33 L 172.00 490.28 L 176.00 489.17 L 180.00 488.00 L 184.00 486.77 L 188.00 485.48 L 192.00 484.13 L 196.00 482.72 L 200.00 481.25 L 204.00 479.72 L 208.00 478.13 L 212.00 476.48 L 216.00 474.77 L 220.00 473.00 L 224.00 471.17 L 228.00 469.28 L 232.00 467.33 L 236.00 465.32 L 240.00 463.25 L 244.00 461.12 L 248.00 458.93 L 252.00 456.68 L 256.00 454.37 L 260.00 452.00 L 264.00 449.57 L 268.00 447.08 L 272.00 444.53 L 276.00 441.92 L 280.00 439.25 L 284.00 436.52 L 288.00 433.73 L 292.00 430.88 L 296.00 427.97 L 300.00 425.00 L 304.00 421.97 L 308.00 418.88 L 312.00 415.73 L 316.00 412.52 L 320.00 409.25 L 324.00 405.92 L 328.00 402.53 L 332.00 399.08 L 336.00 395.57 L 340.00 392.00 L 344.00 388.37 L 348.00 384.68 L 352.00 380.93 L 356.00 377.12 L 360.00 373.25 L 364.00 369.32 L 368.00 365.33 L 372.00 361.28 L 376.00 357.17 L 380.00 353.00 L 384.00 348.77 L 388.00 344.48 L 392.00 340.13 L 396.00 335.72 L 400.00 331.25 L 404.00 326.72 L 408.00 322.13 L 412.00 317.48 L 416.00 312.77 L 420.00 308.00 L 424.00 303.17 L 428.00 298.28 L 432.00 293.33 L 436.00 288.32 L 440.00 283.25 L 444.00 278.12 L 448.00 272.93 L 452.00 267.68 L 456.00 262.37 L 460.00 257.00 L 464.00 251.57 L 468.00 246.08 L 472.00 240.53 L 476.00 234.92 L 480.00 229.25 L 484.00 223.52 L 488.00 217.73 L 492.00 211.88 L 496.00 205.97 L 500.00 200.00 L 500 500 Z" fill="#eff6ff"/>
+  <path d="M 82 500 H 530" class="axis"/>
+  <path d="M 100 515 V 160" class="axis"/>
+  <path d="M 100.00 500.00 L 104.00 499.97 L 108.00 499.88 L 112.00 499.73 L 116.00 499.52 L 120.00 499.25 L 124.00 498.92 L 128.00 498.53 L 132.00 498.08 L 136.00 497.57 L 140.00 497.00 L 144.00 496.37 L 148.00 495.68 L 152.00 494.93 L 156.00 494.12 L 160.00 493.25 L 164.00 492.32 L 168.00 491.33 L 172.00 490.28 L 176.00 489.17 L 180.00 488.00 L 184.00 486.77 L 188.00 485.48 L 192.00 484.13 L 196.00 482.72 L 200.00 481.25 L 204.00 479.72 L 208.00 478.13 L 212.00 476.48 L 216.00 474.77 L 220.00 473.00 L 224.00 471.17 L 228.00 469.28 L 232.00 467.33 L 236.00 465.32 L 240.00 463.25 L 244.00 461.12 L 248.00 458.93 L 252.00 456.68 L 256.00 454.37 L 260.00 452.00 L 264.00 449.57 L 268.00 447.08 L 272.00 444.53 L 276.00 441.92 L 280.00 439.25 L 284.00 436.52 L 288.00 433.73 L 292.00 430.88 L 296.00 427.97 L 300.00 425.00 L 304.00 421.97 L 308.00 418.88 L 312.00 415.73 L 316.00 412.52 L 320.00 409.25 L 324.00 405.92 L 328.00 402.53 L 332.00 399.08 L 336.00 395.57 L 340.00 392.00 L 344.00 388.37 L 348.00 384.68 L 352.00 380.93 L 356.00 377.12 L 360.00 373.25 L 364.00 369.32 L 368.00 365.33 L 372.00 361.28 L 376.00 357.17 L 380.00 353.00 L 384.00 348.77 L 388.00 344.48 L 392.00 340.13 L 396.00 335.72 L 400.00 331.25 L 404.00 326.72 L 408.00 322.13 L 412.00 317.48 L 416.00 312.77 L 420.00 308.00 L 424.00 303.17 L 428.00 298.28 L 432.00 293.33 L 436.00 288.32 L 440.00 283.25 L 444.00 278.12 L 448.00 272.93 L 452.00 267.68 L 456.00 262.37 L 460.00 257.00 L 464.00 251.57 L 468.00 246.08 L 472.00 240.53 L 476.00 234.92 L 480.00 229.25 L 484.00 223.52 L 488.00 217.73 L 492.00 211.88 L 496.00 205.97 L 500.00 200.00" class="function"/>
+  <text x="87.00" y="530.00" class="label" text-anchor="end" >0</text>
+  <text x="500.00" y="530.00" class="label" text-anchor="middle" >1</text>
+  <text x="85.00" y="207.00" class="label" text-anchor="end" >1</text>
+  <path d="M 95 200 H 105" stroke="#214f7a" stroke-width="2"/>
+  <text x="538.00" y="508.00" class="point" text-anchor="start" >x</text>
+  <text x="97.00" y="145.00" class="point" text-anchor="middle" >y</text>
+  <text x="496.00" y="170.00" class="label" text-anchor="end" fill="#2563a6">f(x) = x²</text>
+  <rect x="700" y="409.47" width="400" height="90.53" fill="#fff1df" stroke="#d97706" stroke-width="3"/>
+  <path d="M 682 500 H 1130" class="axis"/>
+  <path d="M 700 515 V 160" class="axis"/>
+  <path d="M 700.00 500.00 L 704.00 499.97 L 708.00 499.88 L 712.00 499.73 L 716.00 499.52 L 720.00 499.25 L 724.00 498.92 L 728.00 498.53 L 732.00 498.08 L 736.00 497.57 L 740.00 497.00 L 744.00 496.37 L 748.00 495.68 L 752.00 494.93 L 756.00 494.12 L 760.00 493.25 L 764.00 492.32 L 768.00 491.33 L 772.00 490.28 L 776.00 489.17 L 780.00 488.00 L 784.00 486.77 L 788.00 485.48 L 792.00 484.13 L 796.00 482.72 L 800.00 481.25 L 804.00 479.72 L 808.00 478.13 L 812.00 476.48 L 816.00 474.77 L 820.00 473.00 L 824.00 471.17 L 828.00 469.28 L 832.00 467.33 L 836.00 465.32 L 840.00 463.25 L 844.00 461.12 L 848.00 458.93 L 852.00 456.68 L 856.00 454.37 L 860.00 452.00 L 864.00 449.57 L 868.00 447.08 L 872.00 444.53 L 876.00 441.92 L 880.00 439.25 L 884.00 436.52 L 888.00 433.73 L 892.00 430.88 L 896.00 427.97 L 900.00 425.00 L 904.00 421.97 L 908.00 418.88 L 912.00 415.73 L 916.00 412.52 L 920.00 409.25 L 924.00 405.92 L 928.00 402.53 L 932.00 399.08 L 936.00 395.57 L 940.00 392.00 L 944.00 388.37 L 948.00 384.68 L 952.00 380.93 L 956.00 377.12 L 960.00 373.25 L 964.00 369.32 L 968.00 365.33 L 972.00 361.28 L 976.00 357.17 L 980.00 353.00 L 984.00 348.77 L 988.00 344.48 L 992.00 340.13 L 996.00 335.72 L 1000.00 331.25 L 1004.00 326.72 L 1008.00 322.13 L 1012.00 317.48 L 1016.00 312.77 L 1020.00 308.00 L 1024.00 303.17 L 1028.00 298.28 L 1032.00 293.33 L 1036.00 288.32 L 1040.00 283.25 L 1044.00 278.12 L 1048.00 272.93 L 1052.00 267.68 L 1056.00 262.37 L 1060.00 257.00 L 1064.00 251.57 L 1068.00 246.08 L 1072.00 240.53 L 1076.00 234.92 L 1080.00 229.25 L 1084.00 223.52 L 1088.00 217.73 L 1092.00 211.88 L 1096.00 205.97 L 1100.00 200.00" class="function"/>
+  <text x="687.00" y="530.00" class="label" text-anchor="end" >0</text>
+  <text x="1100.00" y="530.00" class="label" text-anchor="middle" >1</text>
+  <text x="685.00" y="207.00" class="label" text-anchor="end" >1</text>
+  <path d="M 695 200 H 705" stroke="#214f7a" stroke-width="2"/>
+  <text x="1138.00" y="508.00" class="point" text-anchor="start" >x</text>
+  <text x="697.00" y="145.00" class="point" text-anchor="middle" >y</text>
+  <text x="1096.00" y="170.00" class="label" text-anchor="end" fill="#2563a6">f(x) = x²</text>
+  <!-- Six uniform samples generated by random.Random(21); subscripts follow draw order. -->
+  <line x1="165.98" y1="500" x2="165.98" y2="491.84" class="sample"/>
+  <circle cx="165.98" cy="491.84" r="6" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+  <text x="165.98" y="532" class="point" text-anchor="middle">x₁</text>
+  <line x1="375.91" y1="500" x2="375.91" y2="357.27" class="sample"/>
+  <circle cx="375.91" cy="357.27" r="6" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+  <line x1="375.91" y1="505" x2="375.91" y2="533" stroke="#94a3b8" stroke-width="1"/>
+  <text x="375.91" y="555" class="point" text-anchor="middle">x₂</text>
+  <line x1="354.00" y1="500" x2="354.00" y2="379.03" class="sample"/>
+  <circle cx="354.00" cy="379.03" r="6" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+  <text x="354.00" y="532" class="point" text-anchor="middle">x₃</text>
+  <line x1="291.64" y1="500" x2="291.64" y2="431.14" class="sample"/>
+  <circle cx="291.64" cy="431.14" r="6" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+  <text x="291.64" y="532" class="point" text-anchor="middle">x₄</text>
+  <line x1="186.41" y1="500" x2="186.41" y2="486.00" class="sample"/>
+  <circle cx="186.41" cy="486.00" r="6" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+  <line x1="186.41" y1="505" x2="186.41" y2="533" stroke="#94a3b8" stroke-width="1"/>
+  <text x="186.41" y="555" class="point" text-anchor="middle">x₅</text>
+  <line x1="417.05" y1="500" x2="417.05" y2="311.52" class="sample"/>
+  <circle cx="417.05" cy="311.52" r="6" fill="#d97706" stroke="#fff" stroke-width="1.5"/>
+  <text x="417.05" y="532" class="point" text-anchor="middle">x₆</text>
+  <line x1="680" y1="409.47" x2="1110" y2="409.47" stroke="#d97706" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="830.00" y="389.47" class="label" text-anchor="middle" style="fill: #b45309; font-weight: 700">関数値の平均</text>
+  <line x1="700" y1="555" x2="1100" y2="555" stroke="#d97706" stroke-width="2" marker-start="url(#measure-arrow)" marker-end="url(#measure-arrow)"/>
+  <text x="900.00" y="586.00" class="small" text-anchor="middle" >区間の幅 b − a（この例では1）</text>
+  <text x="300.00" y="586.00" class="small" text-anchor="middle" >点が近くに集まる場所もある</text>
+  <rect x="90" y="625" width="1020" height="70" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="600.00" y="665.00" class="heading" text-anchor="middle" >積分の近似値 ＝ 区間の幅 × 関数値の平均</text>
+</svg>
