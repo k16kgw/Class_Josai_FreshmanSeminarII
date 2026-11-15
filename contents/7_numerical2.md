@@ -753,7 +753,7 @@ exact = math.cos(x)
 ````
 
 (assignment-7-1-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **空欄1：関数の定義**
 
 微分係数を調べる点を引数`x`として受け取り，`math.sin(x)`を返す．
@@ -838,7 +838,7 @@ rows = [["n", "riemann_error", "trapezoidal_error"]]
 ````
 
 (assignment-7-2-answer)=
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 **空欄1：関数の定義**
 
 積分する点を引数`x`として受け取り，`x ** 3`を返す．
