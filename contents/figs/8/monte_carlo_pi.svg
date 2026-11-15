@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
   <title id="title">点の割合から円周率を推定する</title>
-  <desc id="desc">一辺1の正方形にランダムな点を置く．原点からの距離が1以下の点は4分の1円の内部にあり，その割合は円周率を4で割った値に近づく．</desc>
+  <desc id="desc">一辺1の正方形にランダムな点を置く．原点からの距離が1以下の点は四分円の内部にあり，その割合は円周率を4で割った値に近づく．</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker>
     <style>
@@ -27,5 +27,4 @@
   <rect x="540" y="365" width="580" height="126" rx="8" fill="#f0fdf4" stroke="#86b398"/>
   <text x="565" y="410" class="">内側の点の数 / 全体の点の数 ≈ π / 4</text>
   <text x="565" y="459" class="bold">π ≈ 4 × inside / trials</text>
-  <text x="30" y="580" class="small">操作説明用の模式図（実画面の表示・配置は異なる場合がある）</text>
 </svg>
