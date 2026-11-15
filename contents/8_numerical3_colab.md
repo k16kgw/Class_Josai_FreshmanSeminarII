@@ -320,7 +320,7 @@ for _ in range(2):
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 import random
 
@@ -438,7 +438,7 @@ for face in range(_____, _____):
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 import random
 
@@ -536,7 +536,7 @@ for trials in [1000, 10000, 100000]:
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 import math
 import random
@@ -629,7 +629,7 @@ for trials in [1000, 10000, 100000]:
 ```
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 import random
 
@@ -746,7 +746,7 @@ print(f"最も多く出た目: {most_common}")
 ````
 
 (assignment-8-1-answer)=
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 以下のコードは設問の順に別々のCodeセルで実行する．Markdownの記入例はMarkdownセルへコピーして使える．
 
 **設問1：シミュレーション**
@@ -848,7 +848,7 @@ rows = [["trials", "value", "error"]]
 ````
 
 (assignment-8-2-answer)=
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 本文の`monte_carlo_integral`を定義したセルを先に実行する．以下のコードは設問の順に別々のCodeセルで実行する．
 
 **設問1：手計算による積分値（Markdownの記入例）**
@@ -953,7 +953,7 @@ $$
 ````
 
 (assignment-8-advanced-answer)=
-````{visible-answer} 発展的課題の解答例
+````{hidden-answer} 発展的課題の解答例
 冒頭の復習の`trapezoidal`と本文の`monte_carlo_integral`を定義したセルを先に実行する．以下のコードは設問の順に別々のCodeセルで実行する．
 
 **設問1：積分する関数**
