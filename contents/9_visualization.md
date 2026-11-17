@@ -69,16 +69,16 @@ print(f"{error:.12f}")
 Matplotlibのグラフへ日本語を表示するため，最初のCodeセルで次を実行する．
 
 ```python
-!pip install japanize-matplotlib
+!pip install matplotlib-fontja
 
 import matplotlib.pyplot as plt
-import japanize_matplotlib
+import matplotlib_fontja
 ```
 
 ````{dropdown} コードの補足
-- `!pip install japanize-matplotlib`は，Colabのランタイムへ日本語表示用のライブラリをインストールする命令である．行頭の`!`は，Pythonのコードではなく，ランタイムのOSに対する命令を実行する記号である．
+- `!pip install matplotlib-fontja`は，Colabのランタイムへ日本語表示用のライブラリをインストールする命令である．行頭の`!`は，Pythonのコードではなく，ランタイムのOSに対する命令を実行する記号である．
 - `matplotlib.pyplot`は，グラフを作成する機能をまとめたモジュールである．この講義では`plt`という短い名前で使用する．
-- `japanize_matplotlib`を読み込むと，日本語を表示できるフォントがMatplotlibへ設定される．
+- `matplotlib_fontja`を読み込むと，日本語を表示できるフォントがMatplotlibへ設定される．
 ````
 
 ```{tip} 注意：ランタイムを再起動した場合
@@ -499,10 +499,10 @@ plt.show()
 ## エラーが出たときの確認
 
 - **`NameError`**：`plt`，`random`などを読み込むセルや，使用する変数を定義するセルを先に実行したか確認する．
-- **`ModuleNotFoundError`**：`japanize_matplotlib`をインストールしたセルが実行済みか確認する．ランタイムを再起動した場合は，インストールからやり直す．
+- **`ModuleNotFoundError`**：`matplotlib-fontja`をインストールしたセルが実行済みか確認する．ランタイムを再起動した場合は，インストールからやり直す．
 - **`FileNotFoundError`**：ファイル一覧に`monte_carlo.csv`が表示されているか，ファイル名の大文字・小文字や拡張子が一致しているか確認する．
 - **`ValueError`**：横軸と縦軸へ渡したリストの要素数が同じか確認する．たとえば，`x`が5個，`y`が4個では対応する点を作れない．
-- **日本語が四角で表示される場合**：`import japanize_matplotlib`を実行した後で，グラフを作成するセルを再実行する．
+- **日本語が四角で表示される場合**：`import matplotlib_fontja`を実行した後で，グラフを作成するセルを再実行する．
 - **対数目盛で点が表示されない場合**：横軸と縦軸のデータに0以下の値が含まれていないか確認する．
 
 ## 課題
