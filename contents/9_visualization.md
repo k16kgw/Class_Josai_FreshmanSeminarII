@@ -123,6 +123,7 @@ Colabのランタイムを再起動すると，インストールしたライブ
 ## Matplotlibの基本
 
 **Matplotlib**：Pythonでグラフを作成するためのライブラリ．
+**Matplotlib**：Pythonでグラフを作成するためのライブラリ．
 
 次のコードは，$y=x^2$の折れ線グラフを作成する．
 
@@ -199,6 +200,8 @@ plt.show()
 二つの数値の関係を確認するには，`ax.scatter`で散布図を作成する．次のコードは，学習時間と確認テストの得点を点で表す．
 
 ```python
+import matplotlib.pyplot as plt
+
 hours = [1, 2, 3, 4, 5, 6]
 scores = [48, 55, 63, 70, 78, 84]
 
@@ -227,6 +230,8 @@ plt.show()
 身長`[150, 155, 160, 165, 170, 175]`と歩幅`[60, 62, 65, 67, 70, 72]`の散布図を作成せよ．次の`【　】`へ，散布図，軸ラベル，タイトル，グリッドを設定する処理をまとめて記入せよ．グラフから読み取れる傾向をMarkdownセルに1文で記述せよ．
 
 ```python
+import matplotlib.pyplot as plt
+
 heights = [150, 155, 160, 165, 170, 175]
 steps = [60, 62, 65, 67, 70, 72]
 
@@ -237,6 +242,9 @@ fig, ax = plt.subplots()
 plt.show()
 ```
 
+- `heights`：身長を保存するリスト．
+- `steps`：同じ位置の人の歩幅を保存するリスト．
+
 **出力例**
 
 ![身長と歩幅の関係を表す散布図](./figs/9/exercise2_height_step.png)
@@ -244,8 +252,11 @@ plt.show()
 
 ````{hidden-answer} 解答例
 ```python
+import matplotlib.pyplot as plt
+
 heights = [150, 155, 160, 165, 170, 175]
 steps = [60, 62, 65, 67, 70, 72]
+
 
 fig, ax = plt.subplots()
 ax.scatter(heights, steps)
@@ -291,6 +302,7 @@ plt.show()
 faces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 counts = [415, 448, 410, 381, 443, 432, 420, 429, 430, 383, 400, 409]
 
+faces = [1, 2, 3, 4, 5, 6]
 fig, ax = plt.subplots()
 
 【出目ごとの回数を棒グラフで表示する処理を記入】
@@ -330,6 +342,7 @@ plt.show()
 
 ```python
 import random
+import matplotlib.pyplot as plt
 
 random.seed(2026)
 data = []
@@ -337,12 +350,19 @@ data = []
 for _ in range(1000):
     data.append(random.gauss(0, 1))
 
+faces = [1, 2, 3, 4, 5, 6]
 fig, ax = plt.subplots()
 ax.hist(data, bins=20, edgecolor="white")
 ax.set_xlabel("値")
 ax.set_ylabel("度数")
 ax.set_title("正規乱数の分布")
 plt.show()
+```
+
+**Markdownの記入例**
+
+```markdown
+最も多い1は190回，最も少ない4は156回であり，各出目の回数にはばらつきが見える．1000回で割った相対度数はそれぞれ0.190と0.156で，確率$1/6\approx0.1667$の周りにばらついている．
 ```
 
 ````{dropdown} コードの補足
@@ -456,7 +476,6 @@ ax.set_ylabel("計算時間（秒）")
 ax.set_title("二つの方法の計算時間")
 ax.set_xscale("log")
 ax.set_yscale("log")
-ax.legend()
 ax.grid()
 plt.show()
 ```
@@ -502,6 +521,7 @@ counts = [0] * 12
 
 【12面体サイコロを5000回振り，各出目の回数を数える処理を記入】
 
+faces = list(range(1, 13))
 faces = list(range(1, 13))
 fig, ax = plt.subplots()
 
@@ -554,6 +574,7 @@ plt.show()
 import csv
 
 trials_values = []
+values = []
 errors = []
 
 【monte_carlo.csvから試行回数と絶対誤差を読み込む処理を記入】
@@ -577,15 +598,119 @@ plt.show()
 import csv
 
 trials_values = []
+values = []
 errors = []
 
-with open("monte_carlo.csv", "r", encoding="utf-8") as file:
+with open("monte_carlo.csv", "r", encoding="utf-8", newline="") as file:
     reader = csv.reader(file)
     next(reader)
 
     for row in reader:
         trials_values.append(int(row[0]))
+        values.append(float(row[1]))
         errors.append(float(row[2]))
+```
+
+**設問2：近似値と手計算の値の比較**
+
+```python
+fig_values, ax_values = plt.subplots()
+ax_values.plot(trials_values, values, marker="o", label="Monte Carlo")
+ax_values.axhline(2, color="orange", label="Exact value")
+ax_values.set_xlabel("Number of trials")
+ax_values.set_ylabel("Integral value")
+ax_values.set_title("Monte Carlo integral estimates")
+ax_values.legend()
+ax_values.grid()
+```
+
+**設問3：絶対誤差の図と二つの図の保存**
+
+```python
+fig_values.savefig("integral_values.png", dpi=150, bbox_inches="tight")
+
+fig_errors, ax_errors = plt.subplots()
+ax_errors.plot(trials_values, errors, marker="o")
+ax_errors.set_xlabel("Number of trials")
+ax_errors.set_ylabel("Absolute error")
+ax_errors.set_title("Monte Carlo integration error")
+ax_errors.set_xscale("log")
+ax_errors.set_yscale("log")
+ax_errors.grid()
+fig_errors.savefig("integral_errors.png", dpi=150, bbox_inches="tight")
+plt.show()
+```
+
+**設問4：考察（Markdownの記入例）**
+
+```markdown
+### 設問4：考察
+
+試行回数に沿った変化を見るため折れ線グラフを使い，近似値の図では手計算の値2に対する上下のずれを，誤差の図ではその大きさを比較した．誤差は1000回で約0.0442，10000回で約0.00101と桁が異なるため，両対数目盛を使うと比率の変化が読み取りやすい．30000回では誤差が約0.00323に増えており，乱数によるばらつきのため試行回数を増やすたびに誤差が小さくなるわけではない．
+```
+````
+
+````{note} 発展的課題（追加点対象，必ずしも取り組まなくて良い）
+欠席などで得点の不足が心配な場合は取り組むことを薦める．提出内容に応じて追加点の対象とする．
+
+第8回の発展的課題で扱った$\int_0^1 e^{-x^2}\,dx$について，台形公式とモンテカルロ積分をグラフで比較せよ．
+
+1. Markdownセルに`# 発展的課題`と記入する．台形公式の分割数とモンテカルロ積分の試行回数を`100`，`1000`，`10000`とし，モンテカルロ積分ではシード`2026`，`2027`，`2028`の結果をそれぞれ求めよ．第8回発展的課題のコードを利用してよい．
+2. 分割数`200000`の台形公式の結果を基準値とし，各近似値と基準値との差の絶対値を求めよ．横軸を分割数・試行回数として両対数目盛の同じ図に4本の線を描き，凡例で方法とシードを区別せよ．
+3. 図を`integration_comparison.png`へ保存し，方法による違いと同じ方法でもシードで結果が変わることを，図の数値を根拠にMarkdownセルで説明せよ．基準値も近似値であることに触れること．
+````
+
+(assignment-9-advanced-answer)=
+````{hidden-answer} 発展的課題の解答例
+**設問1：計算する関数と近似値**
+
+```markdown
+# 発展的課題
+```
+
+```python
+import math
+import random
+import matplotlib.pyplot as plt
+
+def trapezoidal(f, a, b, n):
+    h = (b - a) / n
+    total = (f(a) + f(b)) / 2
+    for i in range(1, n):
+        total += f(a + i * h)
+    return h * total
+
+def monte_carlo_integral(f, a, b, trials):
+    total = 0
+    for _ in range(trials):
+        total += f(random.uniform(a, b))
+    return (b - a) * total / trials
+
+def f(x):
+    return math.exp(-x ** 2)
+
+sizes = [100, 1000, 10000]
+trapezoidal_values = []
+for n in sizes:
+    trapezoidal_values.append(trapezoidal(f, 0, 1, n))
+
+seeds = [2026, 2027, 2028]
+monte_carlo_values = []
+for seed in seeds:
+    values_for_seed = []
+    for trials in sizes:
+        random.seed(seed)
+        values_for_seed.append(monte_carlo_integral(f, 0, 1, trials))
+    monte_carlo_values.append(values_for_seed)
+```
+
+**設問2：基準値との差と比較グラフ**
+
+```python
+reference = trapezoidal(f, 0, 1, 200000)
+trapezoidal_differences = []
+for value in trapezoidal_values:
+    trapezoidal_differences.append(abs(value - reference))
 
 fig, ax = plt.subplots()
 ax.plot(trials_values, errors, marker="o")
@@ -594,7 +719,14 @@ ax.set_ylabel("絶対誤差")
 ax.set_title("モンテカルロ積分の絶対誤差")
 ax.set_xscale("log")
 ax.set_yscale("log")
+ax.legend()
 ax.grid()
+```
+
+**設問3：図の保存と考察**
+
+```python
+fig.savefig("integration_comparison.png", dpi=150, bbox_inches="tight")
 plt.show()
 ```
 
