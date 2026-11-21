@@ -28,7 +28,7 @@ project:
     - file: contents/6_numerical1.md
     - file: contents/7_numerical2.md
     - file: contents/8_numerical3_colab.md
-    - file: contents/9_visualization.md
+    # - file: contents/9_visualization.md
     # - file: contents/10_test.md
     # - file: contents/11_unix_editor.md
     # - file: contents/12_ai_game1.md

@@ -306,7 +306,7 @@ plt.show()
 ![xとxの三乗の関係を表す折れ線グラフ](./figs/9/exercise1_cubic.png)
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 x = [-3, -2, -1, 0, 1, 2, 3]
 y = []
@@ -385,7 +385,7 @@ plt.show()
 ![身長と歩幅の関係を表す散布図](./figs/9/exercise2_height_step.png)
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 import matplotlib.pyplot as plt
 
@@ -452,7 +452,7 @@ plt.show()
 ![12面体サイコロの出目ごとの回数を表す棒グラフ](./figs/9/exercise3_dice_bar.png)
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 faces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 counts = [415, 448, 410, 381, 443, 432, 420, 429, 430, 383, 400, 409]
@@ -537,7 +537,7 @@ for bins in [____]:
 ![区間数30で表した正規乱数のヒストグラム](./figs/9/exercise4_histogram_bins30.png)
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 for bins in [10, 30]:
     fig, ax = plt.subplots()
@@ -611,7 +611,7 @@ plt.show()
 ![二つの方法の計算時間を比較する両対数グラフ](./figs/9/exercise5_log_comparison.png)
 ````
 
-````{visible-answer} 解答例
+````{hidden-answer} 解答例
 ```python
 sizes = [10, 100, 1000, 10000]
 method_a = [0.00001, 0.0001, 0.001, 0.01]
@@ -699,7 +699,7 @@ plt.show()
 ````
 
 (assignment-9-1-answer)=
-````{visible-answer} 課題1の解答例
+````{hidden-answer} 課題1の解答例
 ```python
 # 課題1
 import math
@@ -780,7 +780,7 @@ plt.show()
 ````
 
 (assignment-9-2-answer)=
-````{visible-answer} 課題2の解答例
+````{hidden-answer} 課題2の解答例
 ```python
 # 課題2
 import random
@@ -825,7 +825,7 @@ plt.show()
 ````
 
 (assignment-9-advanced-answer)=
-````{visible-answer} 発展的課題の解答例
+````{hidden-answer} 発展的課題の解答例
 **設問1：計算する関数と近似値**
 
 ```markdown
