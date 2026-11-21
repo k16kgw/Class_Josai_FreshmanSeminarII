@@ -320,7 +320,7 @@ for _ in range(2):
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 import random
 
@@ -438,7 +438,7 @@ for face in range(_____, _____):
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 import random
 
@@ -536,7 +536,7 @@ for trials in [1000, 10000, 100000]:
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 import math
 import random
@@ -629,7 +629,7 @@ for trials in [1000, 10000, 100000]:
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 ```python
 import random
 
@@ -702,7 +702,7 @@ for seed in [10, 20, 30]:
 
 次の課題に取り組むこと．取り組むソフトウェアはGoogle Colab・Jupyter Notebookの別を問わないが，<span style="color:red">Google Colabで実施した場合は最後にファイルを保存すること</span>を忘れないようにすること．
 
-(assignment-8-1)=
+<span id="assignment-8-1"></span>
 ````{warning} 課題1
 1から12までの数字が等しい確率で出る12面体サイコロを5000回振り，各出目の回数と相対度数を求めよ．
 
@@ -746,7 +746,7 @@ print(f"最も多く出た目: {most_common}")
 ```
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 以下のコードは設問の順に別々のCodeセルで実行する．Markdownの記入例はMarkdownセルへコピーして使える．
 
 **設問1：シミュレーション**
@@ -790,7 +790,7 @@ print(f"最も多く出た目: {most_common}")
 ```
 ````
 
-(assignment-8-2)=
+<span id="assignment-8-2"></span>
 ````{warning} 課題2
 $\int_0^\pi\sin x\,dx$の値を手計算で求め，モンテカルロ積分の結果と比較せよ．
 
@@ -848,7 +848,7 @@ rows = [["trials", "value", "error"]]
 
 ````
 
-````{hidden-answer} 解答例
+````{visible-answer} 解答例
 本文の`monte_carlo_integral`を定義したセルを先に実行する．以下のコードは設問の順に別々のCodeセルで実行する．
 
 **設問1：手計算による積分値（Markdownの記入例）**
@@ -953,7 +953,7 @@ $$
 ````
 
 (assignment-8-advanced-answer)=
-````{hidden-answer} 発展的課題の解答例
+````{visible-answer} 発展的課題の解答例
 冒頭の復習の`trapezoidal`と本文の`monte_carlo_integral`を定義したセルを先に実行する．以下のコードは設問の順に別々のCodeセルで実行する．
 
 **設問1：積分する関数**

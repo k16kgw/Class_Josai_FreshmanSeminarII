@@ -54,8 +54,8 @@ print(f"{error:.12f}")
 
 ### 第8回課題の解説
 
-1. [課題1「12面体サイコロのシミュレーション」](./8_numerical3_colab.md#assignment-8-1)
-2. [課題2「モンテカルロ積分とCSVファイルへの保存」](./8_numerical3_colab.md#assignment-8-2)
+1. [課題1「12面体サイコロのシミュレーション」](/contents/numerical3-colab#assignment-8-1)
+2. [課題2「モンテカルロ積分とCSVファイルへの保存」](/contents/numerical3-colab#assignment-8-2)
 
 ### Notebookの作成
 
@@ -123,9 +123,80 @@ Jupyter Notebookのカーネルを再起動すると，読み込んだモジュ�
 ## Matplotlibの基本
 
 **Matplotlib**：Pythonでグラフを作成するためのライブラリ．
-**Matplotlib**：Pythonでグラフを作成するためのライブラリ．
 
-次のコードは$y=x^2$の折れ線グラフを作成する．
+以下のコードを上から順にCodeセルへ入力して実行し，$y=x^2$の折れ線グラフを作成する．
+
+- **横軸と縦軸のデータ**
+
+  ```python
+  x = [1, 2, 3, 4, 5]
+  y = [1, 4, 9, 16, 25]
+  ```
+
+  `x`は横軸に使用する値，`y`は縦軸に使用する値を順番に格納したリストである．同じ位置にある値が一組になるため，最初の点は$(1,1)$，2番目の点は$(2,4)$となる．二つのリストの要素数はそろえる．
+
+- **図と描画領域の作成**
+
+  ```python
+  fig, ax = plt.subplots()
+  ```
+
+  `plt.subplots()`はFigureとAxesを作成して返す．`fig`は図全体を表すFigure，`ax`は座標軸を含む描画領域を表すAxesである．`fig, ax =`では返された二つのオブジェクトをそれぞれの変数へ代入している．以降は`ax`に対して線，軸ラベル，タイトルなどを追加する．
+
+- **点と線の描画**
+
+  ```python
+  ax.plot(x, y, marker="o", label="$y=x^2$")
+  ```
+
+  `ax.plot(x, y)`は`x`を横座標，`y`を縦座標として点を配置し，リストの順番に線で結ぶ．`marker="o"`は各点を丸印で表示する指定である．`label="$y=x^2$"`は線に$y=x^2$という名前を付ける指定であり，`$`で囲んだ部分はLaTeX記法で数式として表示される．
+
+- **軸ラベルの設定**
+
+  ```python
+  ax.set_xlabel("x軸")
+  ax.set_ylabel("y軸")
+  ```
+
+  `ax.set_xlabel("x軸")`は横軸のラベルを「x軸」に設定する．`ax.set_ylabel("y軸")`は縦軸のラベルを「y軸」に設定する．引用符内にはグラフへ表示したい文字列を指定するため，Pythonの変数名と一致させる必要はない．軸ラベルには，その軸が表す量や単位を記す．
+
+- **タイトルの設定**
+
+  ```python
+  ax.set_title("二乗の値")
+  ```
+
+  `ax.set_title`はグラフの上部にタイトルを表示する．タイトルには，グラフが表す内容を簡潔に記す．
+
+- **凡例の表示**
+
+  ```python
+  ax.legend()
+  ```
+
+  `ax.legend()`は`label`で付けた線の名前を凡例として表示する．複数の線を描いた場合は，凡例によって各線が表すデータを区別できる．
+
+- **グリッドの表示**
+
+  ```python
+  ax.grid()
+  ```
+
+  `ax.grid()`は縦軸と横軸の目盛に沿ったグリッドを表示する．点の座標や値の変化を読み取りやすくなる．
+
+- **完成した図の表示**
+
+  ```python
+  plt.show()
+  ```
+
+  `plt.show()`は設定を終えた図をNotebookの出力欄に表示する．この行まで実行すると完成したグラフを確認できる．
+
+![xとxの二乗の関係を表す折れ線グラフ](./figs/9/line_square.png)
+
+**完成したコード**
+
+各Codeセルで実行した処理を一つにまとめると，次のコードになる．
 
 ```python
 x = [1, 2, 3, 4, 5]
@@ -133,23 +204,65 @@ y = [1, 4, 9, 16, 25]
 
 fig, ax = plt.subplots()
 ax.plot(x, y, marker="o", label="$y=x^2$")
-ax.set_xlabel("x")
-ax.set_ylabel("y")
+ax.set_xlabel("x軸")
+ax.set_ylabel("y軸")
 ax.set_title("二乗の値")
 ax.legend()
 ax.grid()
 plt.show()
 ```
 
-````{dropdown} コードの補足
-- `plt.subplots()`は図全体を表す`fig`と，グラフを描く領域を表す`ax`を作成する．
-- `ax.plot(x, y)`は`x`と`y`の対応する値を点として置き，順番に線で結ぶ．`marker="o"`は各点を丸印で示す指定である．
-- `label`で線の説明を設定し，`ax.legend()`で凡例を表示する．
-- `ax.set_xlabel`，`ax.set_ylabel`，`ax.set_title`はそれぞれ横軸ラベル，縦軸ラベル，タイトルを設定する．
-- `ax.grid()`は値を読み取りやすくするためのグリッドを表示する．`plt.show()`は完成した図を表示する．
-````
+### 折れ線グラフによる関数の表示
 
-![xとxの二乗の関係を表す折れ線グラフ](./figs/9/line_square.png)
+折れ線グラフでは点の間を直線で結ぶ．横軸の値を細かく取ると短い線分が連続するため，関数の形を滑らかな曲線として表示できる．ここではNumPyを使い，$-3$から$3$までの範囲に101個の値を用意する．
+
+**横軸と縦軸のデータ**
+
+```python
+import numpy as np
+
+x = np.linspace(-3, 3, 101)
+y = x ** 2
+```
+
+**NumPy**：数値計算に使用するライブラリ．`import numpy as np`によって，NumPyを`np`という短い名前で使用する．
+
+`np.linspace(-3, 3, 101)`は$-3$から$3$までを等間隔に区切り，両端を含む101個の値を作る．隣り合う値の間隔は$(3-(-3))/(101-1)=0.06$である．作成された`x`はNumPyの配列であるため，`x ** 2`によって各要素をそれぞれ2乗できる．
+
+**関数のグラフの描画**
+
+```python
+fig, ax = plt.subplots()
+ax.plot(x, y, label="$y=x^2$")
+ax.set_xlabel("xの値")
+ax.set_ylabel("xの2乗")
+ax.set_title("関数 $y=x^2$のグラフ")
+ax.legend()
+ax.grid()
+plt.show()
+```
+
+`ax.plot`は101個の点を順番に短い線分で結ぶ．点を5個だけ使用した先ほどのグラフより，放物線の形を細かく表せる．
+
+![linspaceで横軸を細かくしたy=xの2乗のグラフ](./figs/9/function_square_linspace.png)
+
+**完成したコード**
+
+```python
+import numpy as np
+
+x = np.linspace(-3, 3, 101)
+y = x ** 2
+
+fig, ax = plt.subplots()
+ax.plot(x, y, label="$y=x^2$")
+ax.set_xlabel("xの値")
+ax.set_ylabel("xの2乗")
+ax.set_title("関数 $y=x^2$のグラフ")
+ax.legend()
+ax.grid()
+plt.show()
+```
 
 ````{note} 演習1
 $-3\leq x\leq3$における$y=x^3$の折れ線グラフを作成せよ．次の`____`を埋め，軸ラベル，タイトル，グリッドを表示せよ．
@@ -163,8 +276,8 @@ for value in x:
 
 fig, ax = plt.subplots()
 ax.plot(____)
-ax.set_xlabel("x")
-ax.set_ylabel("y")
+ax.set_xlabel("xの値")
+ax.set_ylabel("xの3乗")
 ax.set_title("三乗の値")
 ax.grid()
 plt.show()
@@ -185,8 +298,8 @@ for value in x:
 
 fig, ax = plt.subplots()
 ax.plot(x, y, marker="o")
-ax.set_xlabel("x")
-ax.set_ylabel("y")
+ax.set_xlabel("xの値")
+ax.set_ylabel("xの3乗")
 ax.set_title("三乗の値")
 ax.grid()
 plt.show()
@@ -223,11 +336,13 @@ plt.show()
 ![学習時間と得点の関係を表す散布図](./figs/9/scatter_study_score.png)
 
 ```{tip} 注意：相関関係と因果関係
-二つの値がともに増減する関係を**相関関係**という．一方の変化が他方の変化を引き起こす関係を**因果関係**という．散布図に相関関係が見えても，それだけで因果関係があるとは判断できない．
+- **相関関係**：二つの変数の間に関連が見られる関係．
+- **因果関係**：一方の変化が他方の変化を引き起こす関係．
+- 散布図から相関関係が読み取れても，因果関係があるとは判断できない．
 ```
 
 ````{note} 演習2
-身長`[150, 155, 160, 165, 170, 175]`と歩幅`[60, 62, 65, 67, 70, 72]`の散布図を作成せよ．次の`【　】`へ，散布図，軸ラベル，タイトル，グリッドを設定する処理をまとめて記入せよ．グラフから読み取れる傾向をMarkdownセルに1文で記述せよ．
+身長`[150, 155, 160, 165, 170, 175]`と歩幅`[60, 62, 65, 67, 70, 72]`の散布図を作成せよ．次の`____`を埋め，軸ラベル，タイトル，グリッドを表示せよ．グラフから読み取れる傾向をMarkdownセルに1文で記述せよ．
 
 ```python
 import matplotlib.pyplot as plt
@@ -236,9 +351,11 @@ heights = [150, 155, 160, 165, 170, 175]
 steps = [60, 62, 65, 67, 70, 72]
 
 fig, ax = plt.subplots()
-
-【身長と歩幅の散布図を作成し，表示項目を設定する処理を記入】
-
+ax.____(heights, steps)
+ax.set_xlabel(____)
+ax.set_ylabel(____)
+ax.set_title(____)
+ax.____()
 plt.show()
 ```
 
@@ -296,17 +413,19 @@ plt.show()
 ![科目ごとの得点を表す棒グラフ](./figs/9/bar_subject_scores.png)
 
 ````{note} 演習3
-第8回課題1で得た12面体サイコロの出目ごとの回数を棒グラフで表示せよ．次の`【　】`へ，棒グラフ，軸ラベル，タイトル，各棒の値を設定する処理をまとめて記入せよ．
+第8回課題1で得た12面体サイコロの出目ごとの回数を棒グラフで表示せよ．次の`____`を埋め，軸ラベル，タイトル，各棒の値を表示せよ．
 
 ```python
 faces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 counts = [415, 448, 410, 381, 443, 432, 420, 429, 430, 383, 400, 409]
 
-faces = [1, 2, 3, 4, 5, 6]
 fig, ax = plt.subplots()
-
-【出目ごとの回数を棒グラフで表示する処理を記入】
-
+bars = ax.____(faces, counts)
+ax.set_xlabel(____)
+ax.set_ylabel(____)
+ax.set_title(____)
+ax.set_xticks(____)
+ax.bar_label(____)
 plt.show()
 ```
 
@@ -443,7 +562,7 @@ plt.show()
 ```
 
 ````{note} 演習5
-次の二つの計算時間を同じグラフに表示せよ．横軸と縦軸を対数目盛にし，軸ラベル，タイトル，凡例，グリッドを設定せよ．`【　】`には複数行の処理をまとめて記入する．
+次の二つの計算時間を同じグラフに表示せよ．次の`____`を埋め，横軸と縦軸を対数目盛にして軸ラベル，タイトル，凡例，グリッドを表示せよ．
 
 ```python
 sizes = [10, 100, 1000, 10000]
@@ -451,9 +570,15 @@ method_a = [0.00001, 0.0001, 0.001, 0.01]
 method_b = [0.00002, 0.0004, 0.04, 4.0]
 
 fig, ax = plt.subplots()
-
-【二つの計算時間を両対数グラフで比較する処理を記入】
-
+ax.plot(sizes, ____, marker="o", label=____)
+ax.plot(sizes, ____, marker="s", label=____)
+ax.set_xlabel(____)
+ax.set_ylabel(____)
+ax.set_title(____)
+ax.set_xscale(____)
+ax.set_yscale(____)
+ax.____()
+ax.____()
 plt.show()
 ```
 
@@ -476,6 +601,7 @@ ax.set_ylabel("計算時間（秒）")
 ax.set_title("二つの方法の計算時間")
 ax.set_xscale("log")
 ax.set_yscale("log")
+ax.legend()
 ax.grid()
 plt.show()
 ```
@@ -508,21 +634,115 @@ plt.show()
 ## 課題
 
 ````{warning} 課題1
-第8回課題1の12面体サイコロを5000回振るシミュレーションを再実行し，出目ごとの回数を棒グラフで可視化せよ．シードは2026とし，軸ラベル，タイトル，各棒の回数を表示すること．棒グラフを選んだ理由と結果の特徴をMarkdownセルに3文程度で記述せよ．
+第6回で扱った$f(x)=\cos x-x$と第7回で扱った数値微分を組み合わせ，$x=1$における微分係数を前進差分と中心差分で近似せよ．刻み幅を`1e-1`から`1e-5`まで変え，二つの方法の絶対誤差を同じ両対数グラフで可視化すること．軸ラベル，タイトル，点，凡例，グリッドを表示し，誤差の変化と二つの方法の違いをMarkdownセルに3文程度で記述せよ．
 
 次のテンプレートを基に完成させよ．`【　】`は説明に対応する複数行の処理を記述する箇所を表す．
 
 ```python
 # 課題1
+import math
+
+def f(x):
+    return math.cos(x) - x
+
+def derivative(x):
+    return -math.sin(x) - 1
+
+def forward_difference(f, x, h):
+    return (f(x + h) - f(x)) / h
+
+def central_difference(f, x, h):
+    return (f(x + h) - f(x - h)) / (2 * h)
+
+x = 1
+exact = derivative(x)
+h_values = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
+forward_errors = []
+central_errors = []
+
+【各刻み幅における前進差分と中心差分の絶対誤差を求める処理を記入】
+
+fig, ax = plt.subplots()
+
+【二つの絶対誤差を両対数グラフで比較する処理を記入】
+
+plt.show()
+```
+
+**出力例**
+
+![前進差分と中心差分の絶対誤差を比較する両対数グラフ](./figs/9/assignment1_differentiation_error.png)
+````
+
+(assignment-9-1-answer)=
+````{hidden-answer} 課題1の解答例
+```python
+# 課題1
+import math
+
+def f(x):
+    return math.cos(x) - x
+
+def derivative(x):
+    return -math.sin(x) - 1
+
+def forward_difference(f, x, h):
+    return (f(x + h) - f(x)) / h
+
+def central_difference(f, x, h):
+    return (f(x + h) - f(x - h)) / (2 * h)
+
+x = 1
+exact = derivative(x)
+h_values = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
+forward_errors = []
+central_errors = []
+
+for h in h_values:
+    forward = forward_difference(f, x, h)
+    central = central_difference(f, x, h)
+    forward_errors.append(abs(forward - exact))
+    central_errors.append(abs(central - exact))
+
+fig, ax = plt.subplots()
+ax.plot(h_values, forward_errors, marker="o", label="前進差分")
+ax.plot(h_values, central_errors, marker="s", label="中心差分")
+ax.set_xlabel("刻み幅")
+ax.set_ylabel("絶対誤差")
+ax.set_title("数値微分の絶対誤差")
+ax.set_xscale("log")
+ax.set_yscale("log")
+ax.legend()
+ax.grid()
+plt.show()
+```
+
+**コードの補足**
+
+- 第6回で扱った関数$f(x)=\cos x-x$と導関数$f'(x)=-\sin x-1$を使用する．
+- for文で刻み幅を一つずつ取り出し，前進差分と中心差分の絶対誤差を別々のリストへ追加する．
+- 絶対誤差が複数の桁にわたるため，横軸と縦軸を対数目盛にして誤差の減り方を比較する．
+
+**考察例**
+
+横軸は刻み幅，縦軸は数値微分の絶対誤差を表す．刻み幅を小さくすると両方の絶対誤差が小さくなり，同じ刻み幅では中心差分の絶対誤差が前進差分より小さい．刻み幅`1e-5`では前進差分の絶対誤差が約$2.70\times10^{-6}$，中心差分が約$9.86\times10^{-12}$となった．
+````
+
+````{warning} 課題2
+1から8までの数字が等しい確率で出る8面体サイコロを5000回振るモンテカルロ・シミュレーションを行い，出目ごとの回数を棒グラフで可視化せよ．シードは2026とし，軸ラベル，タイトル，各棒の回数を表示すること．棒グラフを選んだ理由と結果の特徴をMarkdownセルに3文程度で記述せよ．
+
+次のテンプレートを基に完成させよ．`【　】`は説明に対応する複数行の処理を記述する箇所を表す．
+
+```python
+# 課題2
 import random
 
 random.seed(2026)
-counts = [0] * 12
+counts = [0] * 8
 
-【12面体サイコロを5000回振り，各出目の回数を数える処理を記入】
+【8面体サイコロを5000回振り，各出目の回数を数える処理を記入】
 
-faces = list(range(1, 13))
-faces = list(range(1, 13))
+faces = list(range(1, 9))
 fig, ax = plt.subplots()
 
 【棒グラフを作成し，表示項目と各棒の回数を設定する処理を記入】
@@ -532,122 +752,42 @@ plt.show()
 
 **出力例**
 
-![12面体サイコロを5000回振った結果の棒グラフ](./figs/9/assignment1_dice_bar.png)
-````
-
-(assignment-9-1-answer)=
-````{hidden-answer} 課題1の解答例
-```python
-# 課題1
-import random
-
-random.seed(2026)
-counts = [0] * 12
-
-for _ in range(5000):
-    value = random.randint(1, 12)
-    counts[value - 1] = counts[value - 1] + 1
-
-faces = list(range(1, 13))
-fig, ax = plt.subplots()
-bars = ax.bar(faces, counts)
-ax.set_xlabel("出目")
-ax.set_ylabel("回数")
-ax.set_title("12面体サイコロを5000回振った結果")
-ax.set_xticks(faces)
-ax.bar_label(bars)
-plt.show()
-```
-
-**考察例**
-
-横軸は12面体サイコロの出目，縦軸は5000回中の出現回数を表す．項目ごとの回数を比較するため，棒グラフを選んだ．出現回数は381回から448回までの範囲にあり，理論上の期待回数$5000/12\approx416.7$の周りにばらついている．
-````
-
-````{warning} 課題2
-第8回課題2で作成した`monte_carlo.csv`をcsvモジュールで読み込み，試行回数と絶対誤差の関係を折れ線グラフで可視化せよ．横軸と縦軸を対数目盛とし，軸ラベル，タイトル，点，グリッドを表示すること．折れ線グラフと対数目盛を選んだ理由，絶対誤差の変化をMarkdownセルに3文程度で記述せよ．
-
-次のテンプレートを基に完成させよ．`【　】`は説明に対応する複数行の処理を記述する箇所を表す．
-
-```python
-# 課題2
-import csv
-
-trials_values = []
-values = []
-errors = []
-
-【monte_carlo.csvから試行回数と絶対誤差を読み込む処理を記入】
-
-fig, ax = plt.subplots()
-
-【試行回数と絶対誤差の関係を両対数グラフで表示する処理を記入】
-
-plt.show()
-```
-
-**出力例**
-
-![モンテカルロ積分の試行回数と絶対誤差の関係](./figs/9/assignment2_monte_carlo_error.png)
+![8面体サイコロを5000回振った結果の棒グラフ](./figs/9/assignment2_dice_bar.png)
 ````
 
 (assignment-9-2-answer)=
 ````{hidden-answer} 課題2の解答例
 ```python
 # 課題2
-import csv
+import random
 
-trials_values = []
-values = []
-errors = []
+random.seed(2026)
+counts = [0] * 8
 
-with open("monte_carlo.csv", "r", encoding="utf-8", newline="") as file:
-    reader = csv.reader(file)
-    next(reader)
+for _ in range(5000):
+    value = random.randint(1, 8)
+    counts[value - 1] = counts[value - 1] + 1
 
-    for row in reader:
-        trials_values.append(int(row[0]))
-        values.append(float(row[1]))
-        errors.append(float(row[2]))
-```
-
-**設問2：近似値と手計算の値の比較**
-
-```python
-fig_values, ax_values = plt.subplots()
-ax_values.plot(trials_values, values, marker="o", label="Monte Carlo")
-ax_values.axhline(2, color="orange", label="Exact value")
-ax_values.set_xlabel("Number of trials")
-ax_values.set_ylabel("Integral value")
-ax_values.set_title("Monte Carlo integral estimates")
-ax_values.legend()
-ax_values.grid()
-```
-
-**設問3：絶対誤差の図と二つの図の保存**
-
-```python
-fig_values.savefig("integral_values.png", dpi=150, bbox_inches="tight")
-
-fig_errors, ax_errors = plt.subplots()
-ax_errors.plot(trials_values, errors, marker="o")
-ax_errors.set_xlabel("Number of trials")
-ax_errors.set_ylabel("Absolute error")
-ax_errors.set_title("Monte Carlo integration error")
-ax_errors.set_xscale("log")
-ax_errors.set_yscale("log")
-ax_errors.grid()
-fig_errors.savefig("integral_errors.png", dpi=150, bbox_inches="tight")
+faces = list(range(1, 9))
+fig, ax = plt.subplots()
+bars = ax.bar(faces, counts)
+ax.set_xlabel("出目")
+ax.set_ylabel("回数")
+ax.set_title("8面体サイコロを5000回振った結果")
+ax.set_xticks(faces)
+ax.bar_label(bars)
 plt.show()
 ```
 
-**設問4：考察（Markdownの記入例）**
+**コードの補足**
 
-```markdown
-### 設問4：考察
+- `random.randint(1, 8)`で1から8までの整数を等しい確率で一つ生成する．
+- 出た目に対応する`counts`の要素へ1を加え，5000回分の回数を集計する．
+- `ax.bar`で出目ごとの回数を棒にし，`ax.bar_label`で各棒の上へ回数を表示する．
 
-試行回数に沿った変化を見るため折れ線グラフを使い，近似値の図では手計算の値2に対する上下のずれを，誤差の図ではその大きさを比較した．誤差は1000回で約0.0442，10000回で約0.00101と桁が異なるため，両対数目盛を使うと比率の変化が読み取りやすい．30000回では誤差が約0.00323に増えており，乱数によるばらつきのため試行回数を増やすたびに誤差が小さくなるわけではない．
-```
+**考察例**
+
+横軸は8面体サイコロの出目，縦軸は5000回中の出現回数を表す．独立した八つの項目の回数を比較するため，棒グラフを選んだ．出現回数は576回から656回までの範囲にあり，理論上の期待回数$5000/8=625$の周りにばらついている．
 ````
 
 ````{note} 発展的課題（追加点対象，必ずしも取り組まなくて良い）
