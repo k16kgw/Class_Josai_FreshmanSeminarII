@@ -702,6 +702,7 @@ for seed in [10, 20, 30]:
 
 次の課題に取り組むこと．取り組むソフトウェアはGoogle Colab・Jupyter Notebookの別を問わないが，<span style="color:red">Google Colabで実施した場合は最後にファイルを保存すること</span>を忘れないようにすること．
 
+(assignment-8-1)=
 ````{warning} 課題1
 1から12までの数字が等しい確率で出る12面体サイコロを5000回振り，各出目の回数と相対度数を求めよ．
 
@@ -745,7 +746,6 @@ print(f"最も多く出た目: {most_common}")
 ```
 ````
 
-(assignment-8-1-answer)=
 ````{hidden-answer} 解答例
 以下のコードは設問の順に別々のCodeセルで実行する．Markdownの記入例はMarkdownセルへコピーして使える．
 
@@ -790,6 +790,7 @@ print(f"最も多く出た目: {most_common}")
 ```
 ````
 
+(assignment-8-2)=
 ````{warning} 課題2
 $\int_0^\pi\sin x\,dx$の値を手計算で求め，モンテカルロ積分の結果と比較せよ．
 
@@ -847,7 +848,6 @@ rows = [["trials", "value", "error"]]
 
 ````
 
-(assignment-8-2-answer)=
 ````{hidden-answer} 解答例
 本文の`monte_carlo_integral`を定義したセルを先に実行する．以下のコードは設問の順に別々のCodeセルで実行する．
 
