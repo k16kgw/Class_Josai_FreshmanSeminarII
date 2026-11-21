@@ -658,7 +658,7 @@ plt.show()
 ## 課題
 
 ````{warning} 課題1
-第6回で扱った$f(x)=\cos x-x$と第7回で扱った数値微分を組み合わせ，$x=1$における微分係数を前進差分と中心差分で近似せよ．刻み幅を`1e-1`から`1e-5`まで変え，二つの方法の絶対誤差を同じ両対数グラフで可視化すること．軸ラベル，タイトル，点，凡例，グリッドを表示し，誤差の変化と二つの方法の違いをMarkdownセルに3文程度で記述せよ．
+関数$f(x)=\cos x-x$について，$x=1$における微分係数を前進差分と中心差分で近似せよ．刻み幅を`1e-1`から`1e-5`まで変え，二つの方法の絶対誤差を同じ両対数グラフで可視化すること．軸ラベル，タイトル，点，凡例，グリッドを表示し，誤差の変化と二つの方法の違いをMarkdownセルに3文程度で記述せよ．
 
 次のテンプレートを基に完成させよ．`【　】`は説明に対応する複数行の処理を記述する箇所を表す．
 
@@ -743,7 +743,7 @@ plt.show()
 
 **コードの補足**
 
-- 第6回で扱った関数$f(x)=\cos x-x$と導関数$f'(x)=-\sin x-1$を使用する．
+- 関数$f(x)=\cos x-x$と導関数$f'(x)=-\sin x-1$を使用する．
 - for文で刻み幅を一つずつ取り出し，前進差分と中心差分の絶対誤差を別々のリストへ追加する．
 - 絶対誤差が複数の桁にわたるため，横軸と縦軸を対数目盛にして誤差の減り方を比較する．
 
@@ -876,11 +876,27 @@ trapezoidal_differences = []
 for value in trapezoidal_values:
     trapezoidal_differences.append(abs(value - reference))
 
+monte_carlo_differences = []
+for values_for_seed in monte_carlo_values:
+    differences_for_seed = []
+    for value in values_for_seed:
+        differences_for_seed.append(abs(value - reference))
+    monte_carlo_differences.append(differences_for_seed)
+
 fig, ax = plt.subplots()
-ax.plot(trials_values, errors, marker="o")
-ax.set_xlabel("試行回数")
-ax.set_ylabel("絶対誤差")
-ax.set_title("モンテカルロ積分の絶対誤差")
+ax.plot(sizes, trapezoidal_differences, marker="o", label="台形公式")
+
+for i in range(len(seeds)):
+    ax.plot(
+        sizes,
+        monte_carlo_differences[i],
+        marker="o",
+        label=f"モンテカルロ積分：seed={seeds[i]}",
+    )
+
+ax.set_xlabel("分割数・試行回数")
+ax.set_ylabel("基準値との差の絶対値")
+ax.set_title("数値積分の比較")
 ax.set_xscale("log")
 ax.set_yscale("log")
 ax.legend()
@@ -894,9 +910,13 @@ fig.savefig("integration_comparison.png", dpi=150, bbox_inches="tight")
 plt.show()
 ```
 
+**出力例**
+
+![台形公式と三つのシードによるモンテカルロ積分の比較](./figs/9/advanced_integration_comparison.png)
+
 **考察例**
 
-横軸は試行回数，縦軸はモンテカルロ積分の絶対誤差を表す．試行回数という順序をもつ量に対する絶対誤差の変化を確認するため，折れ線グラフを選んだ．試行回数が増えると全体として絶対誤差は小さくなるが，10000回から30000回では増加しており，毎回単調に減少するわけではない．
+台形公式では分割数を10倍にすると，基準値との差は約100分の1になった．モンテカルロ積分では試行回数を増やすと全体として差は小さくなるが，シード2026と2028では1000回から10000回に増やしたときに差が大きくなった．基準値は分割数200000の台形公式で求めた近似値であり，正確な値ではない．
 ````
 
 ### 提出方法
